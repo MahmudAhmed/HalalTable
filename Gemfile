@@ -30,6 +30,9 @@ gem "figaro"
 gem 'faker'
 gem 'pry-rails'
 gem 'jquery-rails'
+gem 'annotate'
+gem 'email_validator'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -53,6 +56,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'guard', '>= 2.2.2', require: false
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'rack-livereload'
+  gem 'rb-fsevent', require: false
 end
 
 group :test do

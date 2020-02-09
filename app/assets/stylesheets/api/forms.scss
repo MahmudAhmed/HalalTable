@@ -1,0 +1,105 @@
+input {
+  margin: 0 0 20px 0;
+}
+
+// .input > label {
+//   display: block;
+//   font-weight: 700;
+//   padding: 0 0 5px 0;
+// }
+
+.input, #primary-location {
+  box-sizing: border-box;
+  background-color: white;
+  display: block;
+  border: 1px solid #ccc;
+  padding: 16px;
+  width: 100%;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: .875rem;
+  margin-bottom: .8rem;
+
+}
+
+#primary-location{
+  cursor: pointer;
+}
+
+#primary-location, select {
+  box-sizing: border-box;
+    // width: 268px;
+    // padding: 5px;
+    // font-size: 16px;
+    // line-height: 1;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat;
+    background-position: 96%;
+    background-size: 10px 10px;
+    -webkit-appearance: none;
+    // opacity: 0.5
+    // background-position-x: 244px;
+}
+
+
+
+.modal-form > h1 {
+  display: inline-block;
+  padding-top: 1rem;
+  font-size: 30px;
+  line-height: 1.165;
+  color: #333;
+  margin: 0 0 .2rem;
+  // font-family: 'Muli', sans-serif;
+  font-family: 'Signika', sans-serif;
+}
+
+hr {
+  border: 1px solid rgba(0,0,0,.12);
+  border-width: 1px 0 0;
+  clear: both;
+  margin: .5rem 0;
+  height: 0;
+  box-sizing: content-box;
+}
+
+.btn {
+  // display: block;
+  box-sizing: border-box;
+  padding: 20px 30px;
+  width: 100%;
+  background-color: #DA3743;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  border-radius: 3px;
+  transition: background-color 300ms ease-out;
+}
+
+.btn:hover {
+  background-color: #b8222d;
+}
+
+.button-alternative {
+  font-weight: 500;
+  font-size: 14px;
+}
+.button-alternative strong {
+  color: #DA3743;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button-alternative strong:hover {
+  color: #b8222d;
+  font-weight: 700;
+}
+
+.form-errors {
+    color: #d30303;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    font-size: 14px; 
+    font-weight: 500;
+}

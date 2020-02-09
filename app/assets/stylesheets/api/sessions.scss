@@ -1,0 +1,57 @@
+// Place all the styles related to the Api/sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.modal-form{
+font-family: 'Muli', sans-serif;
+  // font-family: 'Signika', sans-serif;  
+  position: absolute;
+  top: 100px;
+  /* bottom: 0; */
+  left: 50%;
+  /* right: 50%; */
+  z-index: 3;
+  background-color: #fff;
+  // border: 1px solid black; 
+  // border-radius: 5px;
+  width: 400px;
+  margin-left: -220px;
+  padding: 30px 30px;
+}
+
+.modal-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  // background-color: blue;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+
+.modal-login {
+  display: none;
+}
+
+.modal-signup {
+  // background-color: red;
+  display: none;
+}
+
+.modal-close{
+  font-weight: 400;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 38px;
+  cursor: pointer;
+  z-index: 5;
+
+}
+
+.is-open {
+  display: block;
+}
+
+
