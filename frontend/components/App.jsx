@@ -6,8 +6,8 @@ import LoginFormContainer from "./session_forms/login_form_container";
 import SignupFormContainer from "./session_forms/signup_form_container";
 import NavBar from "./nav_bar/nav_bar_container";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCalendarAlt, faMapMarkerAlt, faAngleDown, faMapPin } from "@fortawesome/free-solid-svg-icons";
-library.add(faCalendarAlt, faAngleDown, faMapMarkerAlt, faMapPin);
+import { faCalendarAlt, faMapMarkerAlt, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+library.add(faCalendarAlt, faAngleDown, faMapMarkerAlt);
 
 
 
