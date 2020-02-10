@@ -52,7 +52,6 @@ class NavBar extends React.Component {
 
 
   render() {
-    // debugger
     const { currentUser } = this.props;
     const display = currentUser ? (
       <>
@@ -109,7 +108,6 @@ class NavBar extends React.Component {
           </div>
       </>
     );
-    debugger
     return (
       <section className="header-bar">
         <nav className="left-header">

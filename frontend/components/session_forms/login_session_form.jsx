@@ -46,7 +46,6 @@ class LoginSessionForm extends React.Component {
   render() {
 
     const { errors, loggedIn } = this.props;
-    // debugger
     const displayErrors = errors.map((err, idx) => <h3 className="form-errors" key={idx}>{err}</h3>);
     loggedIn ? $(".modal-login").removeClass("is-open") : "";
 

@@ -27,7 +27,7 @@ class SignInPage extends React.Component {
 
 
   render() {
-    debugger
+    
     const { errors } = this.props;
     const displayErrors = errors.map((err, idx) => <h3 className="form-errors" key={idx}>{err}</h3>);
 

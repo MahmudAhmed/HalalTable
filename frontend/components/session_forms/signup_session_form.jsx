@@ -18,7 +18,6 @@ class SignUpSessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     const user = Object.assign({}, this.state);
     this.props.signup(user);
     this.state = {
@@ -31,7 +30,6 @@ class SignUpSessionForm extends React.Component {
   }
 
   handleChange(field) {
-    // debugger
     return e => {
       this.setState({ [field]: e.target.value });
     };
@@ -57,7 +55,6 @@ class SignUpSessionForm extends React.Component {
   render() {
 
     const { errors, loggedIn } = this.props;
-    // debugger
     const displayErrors = errors.map((err, idx) => <h3 className="form-errors" key={idx}>{err}</h3>);
     loggedIn ?  $(".modal-signup").removeClass("is-open") : "";
 
