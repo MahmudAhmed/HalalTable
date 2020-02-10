@@ -4,9 +4,15 @@ import LoginSessionForm from "../session_forms/login_form_container";
 import SignUpSessionForm from "../session_forms/signup_form_container";
 import ChangeLocation from "./change_location";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { faHamburger } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 class NavBar extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.toggleDisplay = this.toggleDisplay.bind(this)
+  }
 
   handleSessionClick(targetElement) {
     return (e) => {
@@ -17,56 +23,88 @@ class NavBar extends React.Component {
 
   toggleDisplay(targetElement) {
     return (e) => {
-      $(`.${targetElement}`).toggleClass("is-open");
-      $(`.${targetElement}-triangle`).toggleClass("is-open");
+      if ($(`.${targetElement}`).hasClass("is-open")) {
+        $(`.${targetElement}`).removeClass("is-open");
+        $(`.${targetElement}-triangle`).removeClass("is-open");
+        return; 
+      }
+      $(".is-open").removeClass("is-open");
+      $(`.${targetElement}`).addClass("is-open");
+      $(`.${targetElement}-triangle`).addClass("is-open");
     }
   }
 
   handleLogout(e){
     e.preventDefault();
-    // debugger
-    // $(".header-menu").removeClass("is-open");
-    // $(".header-menu-triangle").removeClass("is-open");
     this.props.logout()
+    $(".sidenav").removeClass("is-open");
   }
+
+  handleDarkClick(e) {
+    e.preventDefault();
+    $(".sidenav").removeClass("is-open");
+  }
+
 
   render() {
     // debugger
     const { currentUser } = this.props;
     const display = currentUser ? (
-      <ul className="right-header">
-        <li className="nav-bar-calender">
-          <div onClick={this.toggleDisplay("calender")}><FontAwesomeIcon icon="calendar-alt" className="header-icon calendar-icon"/></div>
-          <span className="calender-triangle"></span>
-          <ul className="calender">
-            <div className="menu-sub-header">Upcoming</div>
-            <div className="no-reservations">You have no upcoming reservations</div>
-          </ul>
-        </li>
-        <li className="main-menu">
-          <div className="greetings" onClick={this.toggleDisplay("header-menu")}>
-            <p> Hi, {currentUser.first_name}!</p>
-            <div>
-              <FontAwesomeIcon icon="angle-down" className="header-icon change-location-icon dropdown-icon" />
+      <>
+        <ul className="right-header">
+          <li className="nav-bar-calender">
+            <div onClick={this.toggleDisplay("calender")}><FontAwesomeIcon icon="calendar-alt" className="header-icon calendar-icon"/></div>
+            <span className="calender-triangle"></span>
+            <ul className="calender">
+              <div className="menu-sub-header">Upcoming</div>
+              <div className="no-reservations">You have no upcoming reservations</div>
+            </ul>
+          </li>
+          <li className="main-menu">
+            <div className="greetings" onClick={this.toggleDisplay("header-menu")}>
+              <p> Hi, {currentUser.first_name}!</p>
+              <div>
+                <FontAwesomeIcon icon="angle-down" className="header-icon change-location-icon dropdown-icon" />
+              </div>
             </div>
-          </div>
-          <span className="header-menu-triangle"></span>
-          <ul className="header-menu">
+            <span className="header-menu-triangle"></span>
+            <ul className="header-menu">
+              <li><a href="#">My Profile</a></li>
+              <li><a href="#">My Dining History</a></li>
+              <li><a href="#">My Saved Restaurants</a></li>
+              <li><a href="#" onClick={this.handleLogout.bind(this)}>Sign Out</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div className="sidenav">
+          <section className="sidbar-screen" onClick={this.handleDarkClick}></section>
+          <ul className="sidenav-menu">
+            <div className="top-bar"></div>
             <li><a href="#">My Profile</a></li>
+            <li><a href="#">Favorites</a></li>
             <li><a href="#">My Dining History</a></li>
-            <li><a href="#">My Saved Restaurants</a></li>
             <li><a href="#" onClick={this.handleLogout.bind(this)}>Sign Out</a></li>
           </ul>
-        </li>
-      </ul> ) : (
-      <ul className="header-buttons">
-          <li> <a href="#" className="signup-btn" title="Sign Up" onClick={this.handleSessionClick("modal-signup")}>Sign Up</a></li>
-          <li> <a href="#" className="signin-btn" title="Sign In" onClick={this.handleSessionClick("modal-login")}>Sign In</a></li>
-      </ul>
+        </div>
+      </> ) : ( <>
+        <ul className="header-buttons">
+            <li> <a href="#" className="signup-btn" title="Sign Up" onClick={this.handleSessionClick("modal-signup")}>Sign Up</a></li>
+            <li> <a href="#" className="signin-btn" title="Sign In" onClick={this.handleSessionClick("modal-login")}>Sign In</a></li>
+        </ul>
+          <div className="sidenav">
+            <section className="sidbar-screen" onClick={this.handleDarkClick}></section>
+            <ul className="sidenav-menu">
+              <div className="top-bar"></div>
+            <li> <Link to="/signup">Sign Up</Link></li>
+            <li> <Link to="/login">Sign In</Link></li>
+            </ul>
+          </div>
+      </>
     );
     return (
       <section className="header-bar">
         <nav className="left-header">
+          {/* <span id="fullscreen"></span> */}
           <h1 className="header-logo">
             <img src="/assets/logo-2.png" />
           </h1>
@@ -77,6 +115,10 @@ class NavBar extends React.Component {
           <LoginSessionForm />
           <SignUpSessionForm />
         </nav>
+        <div id="hamburger-icon" onClick={this.toggleDisplay("sidenav")}>
+          <FontAwesomeIcon icon="bars" className="header-icon hamburger-icon" />
+        </div>
+        
       </section>
       );
   }

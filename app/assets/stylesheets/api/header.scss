@@ -9,6 +9,7 @@
   white-space: nowrap;
   display: flex;
   justify-content: space-between;
+  z-index: 100;
 }
 
 .signin-btn, .signup-btn{
@@ -35,8 +36,7 @@
 }
 
 .header-buttons{
-  display: flex;
-  z-index: 10;
+  padding: 10px
 }
 
 .sign-in{
@@ -55,8 +55,7 @@
   border-left: .5px solid #E0E0E0;
   border-right: .5px solid #E0E0E0;
   margin-left: 15px;
-  // box-sizing: border-box;
-  // overflow: hidden;
+
 }
 
 .change-location-icon {
@@ -81,7 +80,7 @@
   color: #999;
 }
 
-.greetings{
+.greetings, .left-header {
   display: flex;
 }
 
@@ -93,9 +92,11 @@
   color: black;
 }
 
-.right-header{
+.right-header, .header-buttons{
   z-index: 1;
   display: flex;
+  position: absolute;
+  right: 5%;
   box-sizing: border-box;
   align-items: center;
 }
@@ -127,19 +128,13 @@
   width: 232px;
 }
 
-.header-menu li, .location li {
+.header-menu li, .location li, .sidenav-menu li{
   padding: .8rem 1rem;
   cursor: pointer;
 }
 
-.header-menu li:hover {
+.header-menu li:hover, .sidenav-menu li:hover {
   background-color: rgba(0,0,0,.03);
-}
-
-
-
-.left-header {
-  display: flex;
 }
 
 .header-logo{
@@ -154,7 +149,7 @@
   cursor: pointer;
 }
 
-.nav-bar-calender, .nav-bar-location, .main-menu{
+.header-nav, .nav-bar-calender, .nav-bar-location, .main-menu, #hamburger-icon{
   position: relative;
 }
 
@@ -215,7 +210,72 @@
 
 .no-reservations{
   padding: 16px;
-    // white-space: nowrap;
+}
 
-  // flex-wrap: nowrap;
+.hamburger-icon{
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  padding: 15px;
+  font-size: 25px;
+  z-index: 1000;
+  right: -10px;
+}
+
+.sidenav-menu {
+  // display: none;
+  font-family: 'Muli', sans-serif;
+  height: 100%;
+  width: 220px;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  background-color:white;
+  border-left: 1px solid rgba(0,0,0,.12);
+  box-shadow: -1px -1px 0 0 rgba(0,0,0,.15);
+
+}
+
+.sidenav{
+  display: none;
+  // transition: .15s right ease-in-out,.15s right ease-in-out;
+  //   transition-property: right, right;
+  //   transition-duration: 0.15s, 0.15s;
+  //   transition-timing-function: ease-in-out, ease-in-out;
+  //   transition-delay: 0s, 0s;
+
+}
+
+.sidbar-screen{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  // background-color: blue;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.top-bar{
+  height: 54px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+
+
+
+@media all and (max-width: 600px) {
+  .right-header, .nav-bar-location, .header-buttons{
+    display: none;
+  }
+  .hamburger-icon{
+    display: block;
+  }
+
+  .header-bar {
+    width: 100%;
+  }
+
 }

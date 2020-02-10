@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import SignUpSessionForm from "./signup_session_form";
 import { signup } from "../../actions/session_action";
+import SignUpPage from "./signup_page";
 
 const mapStateToProps = ({ entities, errors, session }) => ({
   errors: errors.session,
@@ -12,3 +13,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpSessionForm);
+export const SignUpPageContainer = connect(mapStateToProps, mapDispatchToProps)(SignUpPage);

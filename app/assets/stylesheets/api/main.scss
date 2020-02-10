@@ -1,4 +1,4 @@
-#doc{
+#root{
 
   padding-top: 30px;
   background-color: #F7F7F7;
@@ -14,4 +14,11 @@
   background-color: #383838;
   color: white;
 
+}
+
+@media all and (max-width: 600px) {
+
+  #root{
+    padding: 0;
+  }
 }

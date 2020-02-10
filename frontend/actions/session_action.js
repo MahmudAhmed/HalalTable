@@ -38,7 +38,10 @@ export const login = formData => dispatch => {
 
 export const signup = formData => dispatch => {
   return APIUtil.signUpUser(formData)
-    .then((user) => dispatch(receiveCurrentUser(user)),
+    .then((user) => { 
+      dispatch(receiveCurrentUser(user));
+      return true;
+    },
       (err) => dispatch(receiveErrors(err.responseJSON)));
 };
 

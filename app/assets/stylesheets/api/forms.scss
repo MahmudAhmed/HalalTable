@@ -42,7 +42,7 @@ input {
 
 
 
-.modal-form > h1 {
+.modal-form > h1, .session-form > h1 {
   display: inline-block;
   padding-top: 1rem;
   font-size: 30px;
@@ -102,4 +102,30 @@ hr {
     margin-bottom: 5px;
     font-size: 14px; 
     font-weight: 500;
+}
+
+.session-page{
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  margin: auto;
+  height: 100%;
+  overflow: scroll;
+}
+
+.session-form{
+  font-family: 'Muli', sans-serif;
+  width: 90%;
+  padding: 30px 30px;
+  margin: auto;
+
+}
+
+@media all and (min-width: 1200px) {
+
+  .session-form{
+    width: 600px;
+  }
 }
