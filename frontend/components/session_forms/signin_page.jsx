@@ -1,6 +1,5 @@
 import React from "react";
-import { Redirect, Link } from "react-router-dom";
-
+import { Redirect, Link } from "react-router-dom"
 class SignInPage extends React.Component {
   constructor(props) {
     super(props);

@@ -1,17 +1,16 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import LoginSessionForm from "../session_forms/login_form_container";
 import SignUpSessionForm from "../session_forms/signup_form_container";
 import ChangeLocation from "./change_location";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHamburger } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class NavBar extends React.Component {
 
   constructor(props){
     super(props);
     this.toggleDisplay = this.toggleDisplay.bind(this)
+    this.loginDemoUser = this.loginDemoUser.bind(this)
   }
 
   handleSessionClick(targetElement) {
@@ -44,6 +43,12 @@ class NavBar extends React.Component {
     e.preventDefault();
     $(".sidenav").removeClass("is-open");
   }
+
+  loginDemoUser(){
+    this.props.login({ email: "demo@ht.com", password: "fireball42" })
+    $(".sidenav").removeClass("is-open");
+  }
+  
 
 
   render() {
@@ -90,6 +95,8 @@ class NavBar extends React.Component {
         <ul className="header-buttons">
             <li> <a href="#" className="signup-btn" title="Sign Up" onClick={this.handleSessionClick("modal-signup")}>Sign Up</a></li>
             <li> <a href="#" className="signin-btn" title="Sign In" onClick={this.handleSessionClick("modal-login")}>Sign In</a></li>
+            <li className="signin-btn demo-button" title="Use Demo Account" onClick={this.loginDemoUser}>Demo</li>
+
         </ul>
           <div className="sidenav">
             <section className="sidbar-screen" onClick={this.handleDarkClick}></section>
@@ -97,10 +104,12 @@ class NavBar extends React.Component {
               <div className="top-bar"></div>
             <li> <Link to="/signup">Sign Up</Link></li>
             <li> <Link to="/login">Sign In</Link></li>
+            <li onClick={this.loginDemoUser}> Demo User </li>
             </ul>
           </div>
       </>
     );
+    debugger
     return (
       <section className="header-bar">
         <nav className="left-header">
@@ -124,4 +133,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

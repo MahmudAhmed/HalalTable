@@ -262,8 +262,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session_forms/signup_form_container */ "./frontend/components/session_forms/signup_form_container.js");
 /* harmony import */ var _change_location__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./change_location */ "./frontend/components/nav_bar/change_location.jsx");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -281,8 +280,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
- // import { Link } from "react-router-dom";
 
 
 
@@ -303,6 +300,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
     _this.toggleDisplay = _this.toggleDisplay.bind(_assertThisInitialized(_this));
+    _this.loginDemoUser = _this.loginDemoUser.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -340,6 +338,15 @@ function (_React$Component) {
     key: "handleDarkClick",
     value: function handleDarkClick(e) {
       e.preventDefault();
+      $(".sidenav").removeClass("is-open");
+    }
+  }, {
+    key: "loginDemoUser",
+    value: function loginDemoUser() {
+      this.props.login({
+        email: "demo@ht.com",
+        password: "fireball42"
+      });
       $(".sidenav").removeClass("is-open");
     }
   }, {
@@ -415,7 +422,11 @@ function (_React$Component) {
         className: "signin-btn",
         title: "Sign In",
         onClick: this.handleSessionClick("modal-login")
-      }, "Sign In"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Sign In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "signin-btn demo-button",
+        title: "Use Demo Account",
+        onClick: this.loginDemoUser
+      }, "Demo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidenav"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "sidbar-screen",
@@ -424,11 +435,14 @@ function (_React$Component) {
         className: "sidenav-menu"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "top-bar"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
         to: "/signup"
-      }, "Sign Up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+      }, "Sign Up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
         to: "/login"
-      }, "Sign In")))));
+      }, "Sign In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        onClick: this.loginDemoUser
+      }, " Demo User "))));
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "header-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -452,7 +466,7 @@ function (_React$Component) {
   return NavBar;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (NavBar);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(NavBar));
 
 /***/ }),
 
@@ -484,6 +498,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     logout: function logout() {
       return dispatch(Object(_actions_session_action__WEBPACK_IMPORTED_MODULE_2__["logout"])());
+    },
+    login: function login(user) {
+      return dispatch(Object(_actions_session_action__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
     }
   };
 };

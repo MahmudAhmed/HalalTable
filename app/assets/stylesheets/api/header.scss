@@ -234,6 +234,8 @@
   background-color:white;
   border-left: 1px solid rgba(0,0,0,.12);
   box-shadow: -1px -1px 0 0 rgba(0,0,0,.15);
+  overflow: scroll;
+
 
 }
 
@@ -261,6 +263,16 @@
 .top-bar{
   height: 54px;
   border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.demo-button{
+  cursor: pointer;
+  color: black;
+  transition: background-color 300ms ease-out;
+}
+.demo-button:hover{
+  color: white;
+  background-color: #DA3743;
 }
 
 
