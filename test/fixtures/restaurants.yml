@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  phone_number: MyString
+  street_address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  website: MyString
+  description: MyText
+  open_time: 2020-02-10 16:18:15
+  close_time: 2020-02-10 16:18:15
+  price_range: 1
+  capacity: 1
+  cuisines: MyString
+  owner_id: 1
+
+two:
+  name: MyString
+  phone_number: MyString
+  street_address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  website: MyString
+  description: MyText
+  open_time: 2020-02-10 16:18:15
+  close_time: 2020-02-10 16:18:15
+  price_range: 1
+  capacity: 1
+  cuisines: MyString
+  owner_id: 1
