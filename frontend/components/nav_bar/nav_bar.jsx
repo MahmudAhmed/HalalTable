@@ -113,7 +113,7 @@ class NavBar extends React.Component {
         <nav className="left-header">
           {/* <span id="fullscreen"></span> */}
           <h1 className="header-logo">
-            <img src="/assets/logo-2.png" />
+            <img src={window.headerLogo} />
           </h1>
           <ChangeLocation toggleDisplay={this.toggleDisplay} />
         </nav>
@@ -125,9 +125,8 @@ class NavBar extends React.Component {
         <div id="hamburger-icon" onClick={this.toggleDisplay("sidenav")}>
           <FontAwesomeIcon icon="bars" className="header-icon hamburger-icon" />
         </div>
-        
       </section>
-      );
+    );
   }
 }
 
