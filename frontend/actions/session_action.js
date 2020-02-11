@@ -8,16 +8,16 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
 ////regular actions
 
-export const receiveCurrentUser = user => ({
+const receiveCurrentUser = user => ({
   type: RECEIVE_USER,
   user
 });
 
-export const logoutCurrentUser = () => ({
+const logoutCurrentUser = () => ({
   type: LOGOUT_USER
 });
 
-export const receiveErrors = errors => {
+const receiveErrors = errors => {
   return {
     type: RECEIVE_ERRORS,
     errors

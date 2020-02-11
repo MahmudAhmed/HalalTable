@@ -1,16 +1,4 @@
-class Restaurant < ApplicationRecord
-  validates :name, :phone_number, :street_address, :city, 
-    :state, :zip, :description, :open_time, :close_time, 
-      :price_range, :capacity, :cuisines, presence: true
-  validates :street_address, uniqueness: true
-
-  belongs_to :owner, 
-    class_name: :User,
-    foreign_key: :owner_id
-
-end
-
-
+json.extract! restaurant, :id, :name, :street_address, :city, :state, :zip, :website, :description, :open_time, :close_time, :price_range, :capacity, :cuisines, :owner_id
 
 #  name: "Addy’s Barbeque",
 #  phone_number: "(718) 433-9568",

@@ -16,10 +16,6 @@ class Api::UsersController < ApplicationController
   end
 
 
-  def index 
-    #testing
-  end
-
   private 
 
   def users_param

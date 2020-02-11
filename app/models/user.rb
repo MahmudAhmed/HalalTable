@@ -33,6 +33,12 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token!
 
+
+  has_many :restaurants, foreign_key: :owner_id
+
+
+
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
