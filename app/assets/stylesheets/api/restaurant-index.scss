@@ -1,0 +1,146 @@
+.index-page{
+  display: flex;
+  margin: auto;
+  width: 90%;
+  justify-content: center;
+}
+
+.filter-bar{
+  background-color: red;
+  width: 14rem;
+}
+
+.filter-search-bar{
+  height: 72px;
+  width: 90%;
+  margin: auto;
+  background-color: black;
+}
+
+.restaurants-index{
+  background-color: white;
+  font-family: 'Muli', sans-serif;
+  width: 75%;
+}
+
+.top-index-section{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.top-index-border{
+  flex-grow: 1;
+  border-top: 1px solid #f1f2f4;
+  margin-right: 8px;
+}
+
+.top-index-text, .top-index-icon{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #6f737b;
+  padding-right: 4px;
+}
+
+.top-index-icon:hover{
+  color: brown;
+  cursor: pointer
+}
+
+.restaurant-index-item{
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  display: flex;
+  // flex-direction: row;
+}
+
+.restaurant-details > h1{
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #247f9e;
+  padding-bottom: 2px;
+}
+
+.restaurant-details {
+  padding-top: 5px;
+  padding-left: 2.5%;
+  width: 100%;
+}
+
+.price-cuisines-city{
+  // padding-top: 2px;
+  margin: 5px 0;
+}
+
+.pcc {
+  font-size: 14px;
+  font-weight: 400;
+  color: #2d333f;
+  // white-space: nowrap;
+  // line-height: 20px;
+}
+
+
+.addBulletPoint::before{
+    margin-left: 8px;
+    padding-right: 8px;
+    content: '•';
+    color: #d8d9db!important;
+}
+
+.index-image{
+  width: 37%;
+  max-width: 13rem; 
+  // padding-right: 10px;
+}
+
+.index-image img{
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  min-width: 120px;
+  
+
+}
+
+* {
+  max-width: 100vw;
+}
+
+.time-slot-container{
+  display: flex;
+  // overflow: scroll;
+}
+
+.time-slot{
+  padding: 0 4px;
+  margin-top: 10px;
+}
+
+.time-slot:first-child{
+  padding-left: 0;
+}
+
+.time-slot a {
+  background: #da3743;
+  border: 1px solid #da3743;
+  border-radius: 4px;
+  padding: 3px 10px;
+}
+.time-slot a:hover {
+  border-color: #bb232e;
+  background: #bb232e;
+}
+
+.time-slot > a > span{
+  color: white; 
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  // line-height: 20px;
+}
+
+.index-reviews{
+  margin: 5px 0; 
+}

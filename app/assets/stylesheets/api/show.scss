@@ -1,0 +1,118 @@
+.show-page{
+  background-color: #FFF;
+  margin: auto;
+  width: 90%;
+}
+
+#show-page-splash{
+  height: 230px;
+  cursor: pointer;
+  position: relative;
+}
+
+.splash-img{
+  height: 230px;
+  background-size: cover;
+  background-position: center;
+}
+
+
+#favorite-button{
+  background-color: #fff;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  
+}
+
+#favorite-button:hover{
+  border: 2px solid #da3743;
+}
+
+.splash-favorite-button{
+  padding: calc(.75rem - 1px) calc(1rem - 1px);
+  display: flex;
+}
+
+.bookmark-icon{
+  color: black;
+  padding: 2px 5px;
+}
+
+.page-content{
+  position: relative;
+  display: flex;
+  width: 1200px;
+  margin: auto;
+  // top: 10px;
+}
+.nav-list{
+  display: flex;
+  border-bottom: 1px solid #d8d9db;
+  // width: 100%;
+}
+
+.nav-list li{
+  background-color: red;
+  padding: 10px;
+
+}
+
+
+.left-content{
+  background-color: purple;
+  width: 740px;
+  margin: 0 50px 0 50px;
+  position: absolute;
+  top: -40px;
+}
+
+.reservation-forms{
+  background-color: blue;
+  width: 420px;
+  position: absolute;
+  top: -40px;
+  right: -30px;
+}
+
+.reservation-form-title{
+  font-size: 21px;
+  font-weight: 700;
+  border-bottom: 1px solid #d8d9db;
+  text-align: center;
+  padding: 6.5px 0;
+}
+
+.restaurant-details{
+  padding: 2rem 1rem 1rem;
+  box-sizing: border-box;
+}
+
+#restaurant-title{
+  // padding: 30px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #d8d9db;
+  margin: 0 0 1rem;
+}
+
+.restaurant-stats{
+  display: flex;
+  margin-bottom: .675rem;
+}
+
+.restaurant-stats > section{
+  margin-right: 15px;
+}
+
+.restaurant-stats span{
+  margin-left: 5px;
+}
+
+#restaurant-overview {
+  line-height: 24px;
+}
