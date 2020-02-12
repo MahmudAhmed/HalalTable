@@ -51,18 +51,27 @@
 .nav-list{
   display: flex;
   border-bottom: 1px solid #d8d9db;
-  // width: 100%;
+  width: 100%;
+  background-color: white;
 }
 
 .nav-list li{
-  background-color: red;
+  // background-color: red;
+  font-weight: 600;
   padding: 10px;
+  border-bottom: 1px solid transparent;
+
+}
+
+.nav-list li:hover {
+  color: #DA3743;
+  border-bottom: 1px solid #DA3743;
 
 }
 
 
 .left-content{
-  background-color: purple;
+  // background-color: purple;
   width: 740px;
   margin: 0 50px 0 50px;
   position: absolute;
@@ -115,4 +124,117 @@
 
 #restaurant-overview {
   line-height: 24px;
+}
+
+.display-subheader{
+  padding: 0 0 15px 0;
+  font-weight: 700;
+  font-size: 21px;
+  border-bottom: 1px solid #d8d9db;
+  padding: 10px 0;
+  margin-bottom: 15px;
+}
+
+.overall-review-left > p{
+  margin: 10px 0;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+#show-review span{
+  padding-left: 10px;
+  font-weight: 400;
+
+}
+
+.ratings-breakdown{
+  display: flex;
+  padding: 10px 0;
+  margin-bottom: 10px;
+
+}
+
+.ratings-breakdown > li{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0 0.5rem;
+  position: relative;
+  text-align: center;
+  border-right: .5px solid #d8d9db;    
+}
+.ratings-breakdown > li:last-child{
+  border-right: 0px;
+}
+
+.ratings-breakdown > li > span{
+  padding-left: 15px;
+  // text-align: center;
+  display: block;
+  // background-color: red;
+  font-weight: 500;
+  line-height: 1.33;
+
+}
+.ratings-breakdown > li > p{
+  // margin: 15px;
+  text-align: center;
+  display: block;
+  // background-color: blue;
+  // font-size: 0.875rem;
+  font-weight: normal;
+  text-transform: capitalize;
+  white-space: nowrap;
+  padding-left: 10px;
+}
+
+.overall-review-container{
+  display: flex;
+  // background-color: pink;
+  border-bottom: 1px solid #d8d9db;
+  padding: 0 15px;
+}
+
+.overall-review-left{
+  width: 50%;
+  // background-color: white;
+}
+
+.overall-review-right{
+  width: 50%;
+  // background-color: green;
+}
+
+.review-bars{
+  padding: 20px;
+  
+}
+
+.back-bar{
+  cursor: pointer;
+  align-items: center;
+  margin-left: 10px;
+  height: 25px;
+  width: 250px;
+  border: 1px solid #d8d9db;
+
+}
+
+.back-bar:hover{
+  border: 1px solid #DA3743;
+}
+
+#bar{
+  display: flex;
+  padding-bottom: 0.5rem;
+  align-items: center;
+}
+
+.bar-label{
+  padding-top: 2px;
+}
+
+.bar-percentage{
+  background-color: #DA3743;
+  height: 23px;
 }

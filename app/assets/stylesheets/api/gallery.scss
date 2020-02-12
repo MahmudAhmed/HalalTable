@@ -3,17 +3,12 @@
   // position: relative;
 }
 
-#gallery-div > h2 {
-  padding: 0 0 15px 0;
-  font-weight: 700;
-  font-size: 20px;
-}
-
-
 
 .photo-container{
   display: flex;
   overflow: auto;
+  height: 315px;
+  margin-bottom: 15px;
 }
 
 .image-container > img{
