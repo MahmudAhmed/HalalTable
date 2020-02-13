@@ -617,8 +617,9 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "photo-container"
-      }, photos.map(function (photo) {
+      }, photos.map(function (photo, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: idx,
           className: "image-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: photo.src
@@ -874,9 +875,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -893,25 +894,47 @@ var RestaurantShow =
 function (_React$Component) {
   _inherits(RestaurantShow, _React$Component);
 
-  function RestaurantShow() {
+  function RestaurantShow(props) {
+    var _this;
+
     _classCallCheck(this, RestaurantShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(RestaurantShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RestaurantShow).call(this, props)); // debugger
+
+    _this.header = $(".nav-list");
+    _this.sticky = _this.header.offsetTop;
+    _this.stickyHeader = _this.stickyHeader.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(RestaurantShow, [{
     key: "componentDidMount",
-    // constructor(props){
-    //   super(props);
-    //   this.state = this.props.restaurant
-    // }
     value: function componentDidMount() {
       // debugger
       this.props.requestRestaurant(this.props.match.params.restaurantId);
     }
   }, {
+    key: "stickyHeader",
+    value: function stickyHeader(e) {
+      if (window.pageYOffset > this.sticky) {
+        // $(".nav-list")[0].classList.add("sticky");
+        $(".nav-list").addClass("sticky");
+        debugger;
+      } else {
+        // $(".nav-list")[0].removeClass("sticky");
+        debugger;
+        $(".nav-list").removeClass("sticky");
+      } // this.header.addClass('sticky')
+
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      window.addEventListener("scroll", function () {
+        return _this2.stickyHeader();
+      });
       if (!this.props.restaurant) return null;
       var restaurant = this.props.restaurant;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {

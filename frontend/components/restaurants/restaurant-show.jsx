@@ -5,19 +5,46 @@ import PhotoGallery from "./photo_gallery";
 import ReviewsIndex from "./reviews_index";
 
 class RestaurantShow extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = this.props.restaurant
-  // }
+  
+  constructor(props){
+    super(props);
+    // debugger
+    this.header = $(".nav-list")
 
+    this.sticky = this.header.offsetTop;
+    this.stickyHeader = this.stickyHeader.bind(this)
+    
+  }
+  
+  
   componentDidMount() {
     // debugger
+    
     this.props.requestRestaurant(this.props.match.params.restaurantId);
+  }
+  
+  
+  stickyHeader(e) {
+    if (window.pageYOffset > this.sticky) {
+      // $(".nav-list")[0].classList.add("sticky");
+      $(".nav-list").addClass("sticky");
+      debugger
+    } else {
+      // $(".nav-list")[0].removeClass("sticky");
+      debugger
+      $(".nav-list").removeClass("sticky");
+
+    }
+    // this.header.addClass('sticky')
   }
 
   render() {
+    window.addEventListener("scroll", () => this.stickyHeader() )
+
+
     if (!this.props.restaurant) return null; 
     const { restaurant } = this.props;
+
     return (
       <section className="show-page">
         <div id="show-page-splash">
@@ -41,7 +68,7 @@ class RestaurantShow extends React.Component {
         </div>
         <section className="page-content">
           <main className="left-content">
-              <ul className="nav-list">
+            <ul className="nav-list" >
                 <li>
                   <a href="#">
                     <span>Overview</span>

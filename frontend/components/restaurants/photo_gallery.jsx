@@ -8,7 +8,7 @@ class PhotoGallery extends React.Component {
   render(){
     return (
       <div className="photo-container">
-        {photos.map( photo => <div className="image-container"><img src={photo.src}/></div>)}
+        {photos.map( (photo, idx) => <div key={idx} className="image-container"><img src={photo.src}/></div>)}
       </div>
 
     )

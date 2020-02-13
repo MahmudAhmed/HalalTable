@@ -36,7 +36,11 @@ class User < ApplicationRecord
 
   has_many :restaurants, foreign_key: :owner_id
 
+  has_many :reviews
 
+  has_many :favorites
+
+  has_many :reservations
 
 
   def password=(password)
