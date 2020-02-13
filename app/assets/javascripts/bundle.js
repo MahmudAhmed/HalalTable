@@ -811,6 +811,135 @@ var photos = [{
 
 /***/ }),
 
+/***/ "./frontend/components/restaurants/reservation_index.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/restaurants/reservation_index.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+var now = new Date();
+var currYear = now.getFullYear();
+var currMonth = now.getMonth();
+var currDay = now.getDate();
+var min = new Date(currYear, currMonth, currDay).toISOString().slice(0, 10);
+
+var ReservationForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ReservationForm, _React$Component);
+
+  function ReservationForm(props) {
+    var _this;
+
+    _classCallCheck(this, ReservationForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ReservationForm).call(this, props));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.state = {
+      partySize: 1,
+      date: min,
+      time: ""
+    }; // // this.time = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+    // this.open_hour = "10:00 AM";
+    // this.close_hour = "11:00 PM"
+
+    return _this;
+  }
+
+  _createClass(ReservationForm, [{
+    key: "handleChange",
+    value: function handleChange(field) {
+      var _this2 = this;
+
+      // debugger
+      return function (e) {
+        debugger;
+
+        _this2.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var restaurant = this.props.restaurant;
+      var openTime = new Date(restaurant.open_time);
+      var closeTime = new Date(restaurant.close_time);
+      var restaurantHours = [];
+      debugger;
+
+      while (true) {
+        if (openTime.getTime() === closeTime.getTime()) break; // 
+
+        restaurantHours.push(new Date(openTime.getTime()));
+        openTime.setHours(openTime.getHours() + 1);
+      }
+
+      ;
+      debugger;
+      var partySize = Array(20).fill().map(function (_, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i + 1,
+          value: "".concat(i + 1)
+        }, i + 1);
+      });
+      var timeSlots = restaurantHours.map(function (time, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i,
+          value: time
+        }, time.toLocaleString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
+        className: "reservation-forms"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "reservation-form-title"
+      }, "Make a reservation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-form-party-size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, partySize)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "date",
+        min: min,
+        value: this.state.date,
+        onChange: this.handleChange("date")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, timeSlots)));
+    }
+  }]);
+
+  return ReservationForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ReservationForm);
+
+/***/ }),
+
 /***/ "./frontend/components/restaurants/restaurant-show-container.js":
 /*!**********************************************************************!*\
   !*** ./frontend/components/restaurants/restaurant-show-container.js ***!
@@ -861,10 +990,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
-/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _photo_gallery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./photo_gallery */ "./frontend/components/restaurants/photo_gallery.jsx");
-/* harmony import */ var _reviews_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reviews_index */ "./frontend/components/restaurants/reviews_index.jsx");
+/* harmony import */ var _photo_gallery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./photo_gallery */ "./frontend/components/restaurants/photo_gallery.jsx");
+/* harmony import */ var _reviews_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reviews_index */ "./frontend/components/restaurants/reviews_index.jsx");
+/* harmony import */ var react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-anchor-link-smooth-scroll */ "./node_modules/react-anchor-link-smooth-scroll/lib/anchor-link.js");
+/* harmony import */ var react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
+/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _reservation_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./reservation_index */ "./frontend/components/restaurants/reservation_index.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -889,6 +1021,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var RestaurantShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -901,8 +1035,6 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RestaurantShow).call(this, props)); // debugger
 
-    _this.header = $(".nav-list");
-    _this.sticky = _this.header.offsetTop;
     _this.stickyHeader = _this.stickyHeader.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -910,28 +1042,32 @@ function (_React$Component) {
   _createClass(RestaurantShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger
       this.props.requestRestaurant(this.props.match.params.restaurantId);
     }
   }, {
-    key: "stickyHeader",
-    value: function stickyHeader(e) {
-      if (window.pageYOffset > this.sticky) {
-        // $(".nav-list")[0].classList.add("sticky");
-        $(".nav-list").addClass("sticky");
-        debugger;
-      } else {
-        // $(".nav-list")[0].removeClass("sticky");
-        debugger;
-        $(".nav-list").removeClass("sticky");
-      } // this.header.addClass('sticky')
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.header = document.getElementById("nav-list");
 
+      if (this.header) {
+        this.sticky = this.header.offsetTop;
+      }
+    }
+  }, {
+    key: "stickyHeader",
+    value: function stickyHeader() {
+      if (window.pageYOffset - 317 > this.sticky) {
+        this.header.classList.add("sticky");
+      } else if (this.header.classList.contains('sticky')) {
+        this.header.classList.remove("sticky");
+      }
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
+      // debugger
       window.addEventListener("scroll", function () {
         return _this2.stickyHeader();
       });
@@ -959,24 +1095,29 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
         className: "left-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "nav-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Overview"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Photos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Menu"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
+        id: "nav-list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        href: "#overview-section",
+        offset: "45"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Overview"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        href: "#photos-section",
+        offset: "45"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Photos"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        href: "#menu-section",
+        offset: "45"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Menu"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        href: "#show-review",
+        offset: "45"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Reviews")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "restaurant-details"
+        className: "restaurant-details",
+        id: "overview-section"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "restaurant-title"
       }, restaurant.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "star-ratings"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_5___default.a, {
         rating: 4.403,
         starDimension: "20px",
         starSpacing: "1px",
@@ -1001,91 +1142,16 @@ function (_React$Component) {
       }, "The second-ever P.J.'s, overlooking the Hudson River in the Financial District since 2006. Serving up fresh food, frosty drinks and good, old-fashioned conversation."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "gallery-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "display-subheader"
-      }, "Photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_photo_gallery__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "show-review"
+        className: "display-subheader",
+        id: "photos-section"
+      }, "Photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_photo_gallery__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "menu-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "display-subheader"
-      }, "What 175 People Are Saying"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "overall-review-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "overall-review-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Overall ratings and reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Your trust is our top concern, so businesses can't pay to alter or remove their reviews."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        rating: 4.403,
-        starDimension: "20px",
-        starSpacing: "1px",
-        starRatedColor: "orange"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.4 based on recent ratings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "ratings-breakdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambience")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "3.9"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Value")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "overall-review-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "review-bars"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        id: "bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "bar-label"
-      }, "5"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "back-bar",
-        title: "100 reviews"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bar-percentage",
-        style: {
-          width: "50%"
-        }
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        id: "bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "bar-label"
-      }, "4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "back-bar",
-        title: "65 reviews"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bar-percentage",
-        style: {
-          width: "25%"
-        }
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        id: "bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "bar-label"
-      }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "back-bar",
-        title: "40 reviews"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bar-percentage",
-        style: {
-          width: "10%"
-        }
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        id: "bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "bar-label"
-      }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "back-bar",
-        title: "20 reviews"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bar-percentage",
-        style: {
-          width: "5%"
-        }
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        id: "bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "bar-label"
-      }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "back-bar",
-        title: "10 reviews"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bar-percentage",
-        style: {
-          width: "1%"
-        }
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_4__["default"], null))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
-        className: "reservation-forms"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "reservation-form-title"
-      }, "Make a reservation"))));
+        className: "display-subheader",
+        id: "menu-section"
+      }, "Menu")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_3__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservation_index__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        restaurant: this.props.restaurant
+      })));
     }
   }]);
 
@@ -1353,6 +1419,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _reviews_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reviews_index_item */ "./frontend/components/restaurants/reviews_index_item.jsx");
+/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
+/* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1374,6 +1442,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ReviewsIndex =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1388,7 +1457,86 @@ function (_React$Component) {
   _createClass(ReviewsIndex, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "show-review"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "display-subheader"
+      }, "What 175 People Are Saying"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "overall-review-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "overall-review-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Overall ratings and reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Your trust is our top concern, so businesses can't pay to alter or remove their reviews."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        rating: 4.403,
+        starDimension: "20px",
+        starSpacing: "1px",
+        starRatedColor: "orange"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.4 based on recent ratings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "ratings-breakdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambience")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "3.9"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Value")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "overall-review-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "review-bars"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "bar-label"
+      }, "5"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "back-bar",
+        title: "100 reviews"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bar-percentage",
+        style: {
+          width: "50%"
+        }
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "bar-label"
+      }, "4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "back-bar",
+        title: "65 reviews"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bar-percentage",
+        style: {
+          width: "25%"
+        }
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "bar-label"
+      }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "back-bar",
+        title: "40 reviews"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bar-percentage",
+        style: {
+          width: "10%"
+        }
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "bar-label"
+      }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "back-bar",
+        title: "20 reviews"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bar-percentage",
+        style: {
+          width: "5%"
+        }
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "bar-label"
+      }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "back-bar",
+        title: "10 reviews"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bar-percentage",
+        style: {
+          width: "1%"
+        }
+      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
   }]);
 
@@ -33422,6 +33570,647 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
+
+/***/ }),
+
+/***/ "./node_modules/react-anchor-link-smooth-scroll/lib/anchor-link.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/react-anchor-link-smooth-scroll/lib/anchor-link.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+	else {}
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _anchorLink = __webpack_require__(1);
+
+var _anchorLink2 = _interopRequireDefault(_anchorLink);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _anchorLink2.default;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AnchorLink = function (_Component) {
+  _inherits(AnchorLink, _Component);
+
+  function AnchorLink(props) {
+    _classCallCheck(this, AnchorLink);
+
+    var _this = _possibleConstructorReturn(this, (AnchorLink.__proto__ || Object.getPrototypeOf(AnchorLink)).call(this, props));
+
+    _this.smoothScroll = _this.smoothScroll.bind(_this);
+    return _this;
+  }
+
+  _createClass(AnchorLink, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      __webpack_require__(3).polyfill();
+    }
+  }, {
+    key: 'smoothScroll',
+    value: function smoothScroll(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var offset = function offset() {
+        return 0;
+      };
+      if (typeof this.props.offset !== 'undefined') {
+        if (!!(this.props.offset && this.props.offset.constructor && this.props.offset.apply)) {
+          offset = this.props.offset;
+        } else {
+          offset = function offset() {
+            return parseInt(_this2.props.offset);
+          };
+        }
+      }
+      var id = e.currentTarget.getAttribute('href').slice(1);
+      var $anchor = document.getElementById(id);
+      var offsetTop = $anchor.getBoundingClientRect().top + window.pageYOffset;
+      window.scroll({
+        top: offsetTop - offset(),
+        behavior: 'smooth'
+      });
+      if (this.props.onClick) {
+        this.props.onClick(e);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          offset = _props.offset,
+          rest = _objectWithoutProperties(_props, ['offset']);
+
+      return _react2.default.createElement('a', _extends({}, rest, { onClick: this.smoothScroll }));
+    }
+  }]);
+
+  return AnchorLink;
+}(_react.Component);
+
+exports.default = AnchorLink;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* smoothscroll v0.4.0 - 2018 - Dustan Kasten, Jeremias Menichelli - MIT License */
+(function () {
+  'use strict';
+
+  // polyfill
+  function polyfill() {
+    // aliases
+    var w = window;
+    var d = document;
+
+    // return if scroll behavior is supported and polyfill is not forced
+    if (
+      'scrollBehavior' in d.documentElement.style &&
+      w.__forceSmoothScrollPolyfill__ !== true
+    ) {
+      return;
+    }
+
+    // globals
+    var Element = w.HTMLElement || w.Element;
+    var SCROLL_TIME = 468;
+
+    // object gathering original scroll methods
+    var original = {
+      scroll: w.scroll || w.scrollTo,
+      scrollBy: w.scrollBy,
+      elementScroll: Element.prototype.scroll || scrollElement,
+      scrollIntoView: Element.prototype.scrollIntoView
+    };
+
+    // define timing method
+    var now =
+      w.performance && w.performance.now
+        ? w.performance.now.bind(w.performance)
+        : Date.now;
+
+    /**
+     * indicates if a the current browser is made by Microsoft
+     * @method isMicrosoftBrowser
+     * @param {String} userAgent
+     * @returns {Boolean}
+     */
+    function isMicrosoftBrowser(userAgent) {
+      var userAgentPatterns = ['MSIE ', 'Trident/', 'Edge/'];
+
+      return new RegExp(userAgentPatterns.join('|')).test(userAgent);
+    }
+
+    /*
+     * IE has rounding bug rounding down clientHeight and clientWidth and
+     * rounding up scrollHeight and scrollWidth causing false positives
+     * on hasScrollableSpace
+     */
+    var ROUNDING_TOLERANCE = isMicrosoftBrowser(w.navigator.userAgent) ? 1 : 0;
+
+    /**
+     * changes scroll position inside an element
+     * @method scrollElement
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {undefined}
+     */
+    function scrollElement(x, y) {
+      this.scrollLeft = x;
+      this.scrollTop = y;
+    }
+
+    /**
+     * returns result of applying ease math function to a number
+     * @method ease
+     * @param {Number} k
+     * @returns {Number}
+     */
+    function ease(k) {
+      return 0.5 * (1 - Math.cos(Math.PI * k));
+    }
+
+    /**
+     * indicates if a smooth behavior should be applied
+     * @method shouldBailOut
+     * @param {Number|Object} firstArg
+     * @returns {Boolean}
+     */
+    function shouldBailOut(firstArg) {
+      if (
+        firstArg === null ||
+        typeof firstArg !== 'object' ||
+        firstArg.behavior === undefined ||
+        firstArg.behavior === 'auto' ||
+        firstArg.behavior === 'instant'
+      ) {
+        // first argument is not an object/null
+        // or behavior is auto, instant or undefined
+        return true;
+      }
+
+      if (typeof firstArg === 'object' && firstArg.behavior === 'smooth') {
+        // first argument is an object and behavior is smooth
+        return false;
+      }
+
+      // throw error when behavior is not supported
+      throw new TypeError(
+        'behavior member of ScrollOptions ' +
+          firstArg.behavior +
+          ' is not a valid value for enumeration ScrollBehavior.'
+      );
+    }
+
+    /**
+     * indicates if an element has scrollable space in the provided axis
+     * @method hasScrollableSpace
+     * @param {Node} el
+     * @param {String} axis
+     * @returns {Boolean}
+     */
+    function hasScrollableSpace(el, axis) {
+      if (axis === 'Y') {
+        return el.clientHeight + ROUNDING_TOLERANCE < el.scrollHeight;
+      }
+
+      if (axis === 'X') {
+        return el.clientWidth + ROUNDING_TOLERANCE < el.scrollWidth;
+      }
+    }
+
+    /**
+     * indicates if an element has a scrollable overflow property in the axis
+     * @method canOverflow
+     * @param {Node} el
+     * @param {String} axis
+     * @returns {Boolean}
+     */
+    function canOverflow(el, axis) {
+      var overflowValue = w.getComputedStyle(el, null)['overflow' + axis];
+
+      return overflowValue === 'auto' || overflowValue === 'scroll';
+    }
+
+    /**
+     * indicates if an element can be scrolled in either axis
+     * @method isScrollable
+     * @param {Node} el
+     * @param {String} axis
+     * @returns {Boolean}
+     */
+    function isScrollable(el) {
+      var isScrollableY = hasScrollableSpace(el, 'Y') && canOverflow(el, 'Y');
+      var isScrollableX = hasScrollableSpace(el, 'X') && canOverflow(el, 'X');
+
+      return isScrollableY || isScrollableX;
+    }
+
+    /**
+     * finds scrollable parent of an element
+     * @method findScrollableParent
+     * @param {Node} el
+     * @returns {Node} el
+     */
+    function findScrollableParent(el) {
+      var isBody;
+
+      do {
+        el = el.parentNode;
+
+        isBody = el === d.body;
+      } while (isBody === false && isScrollable(el) === false);
+
+      isBody = null;
+
+      return el;
+    }
+
+    /**
+     * self invoked function that, given a context, steps through scrolling
+     * @method step
+     * @param {Object} context
+     * @returns {undefined}
+     */
+    function step(context) {
+      var time = now();
+      var value;
+      var currentX;
+      var currentY;
+      var elapsed = (time - context.startTime) / SCROLL_TIME;
+
+      // avoid elapsed times higher than one
+      elapsed = elapsed > 1 ? 1 : elapsed;
+
+      // apply easing to elapsed time
+      value = ease(elapsed);
+
+      currentX = context.startX + (context.x - context.startX) * value;
+      currentY = context.startY + (context.y - context.startY) * value;
+
+      context.method.call(context.scrollable, currentX, currentY);
+
+      // scroll more if we have not reached our destination
+      if (currentX !== context.x || currentY !== context.y) {
+        w.requestAnimationFrame(step.bind(w, context));
+      }
+    }
+
+    /**
+     * scrolls window or element with a smooth behavior
+     * @method smoothScroll
+     * @param {Object|Node} el
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {undefined}
+     */
+    function smoothScroll(el, x, y) {
+      var scrollable;
+      var startX;
+      var startY;
+      var method;
+      var startTime = now();
+
+      // define scroll context
+      if (el === d.body) {
+        scrollable = w;
+        startX = w.scrollX || w.pageXOffset;
+        startY = w.scrollY || w.pageYOffset;
+        method = original.scroll;
+      } else {
+        scrollable = el;
+        startX = el.scrollLeft;
+        startY = el.scrollTop;
+        method = scrollElement;
+      }
+
+      // scroll looping over a frame
+      step({
+        scrollable: scrollable,
+        method: method,
+        startTime: startTime,
+        startX: startX,
+        startY: startY,
+        x: x,
+        y: y
+      });
+    }
+
+    // ORIGINAL METHODS OVERRIDES
+    // w.scroll and w.scrollTo
+    w.scroll = w.scrollTo = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        original.scroll.call(
+          w,
+          arguments[0].left !== undefined
+            ? arguments[0].left
+            : typeof arguments[0] !== 'object'
+              ? arguments[0]
+              : w.scrollX || w.pageXOffset,
+          // use top prop, second argument if present or fallback to scrollY
+          arguments[0].top !== undefined
+            ? arguments[0].top
+            : arguments[1] !== undefined
+              ? arguments[1]
+              : w.scrollY || w.pageYOffset
+        );
+
+        return;
+      }
+
+      // LET THE SMOOTHNESS BEGIN!
+      smoothScroll.call(
+        w,
+        d.body,
+        arguments[0].left !== undefined
+          ? ~~arguments[0].left
+          : w.scrollX || w.pageXOffset,
+        arguments[0].top !== undefined
+          ? ~~arguments[0].top
+          : w.scrollY || w.pageYOffset
+      );
+    };
+
+    // w.scrollBy
+    w.scrollBy = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0])) {
+        original.scrollBy.call(
+          w,
+          arguments[0].left !== undefined
+            ? arguments[0].left
+            : typeof arguments[0] !== 'object' ? arguments[0] : 0,
+          arguments[0].top !== undefined
+            ? arguments[0].top
+            : arguments[1] !== undefined ? arguments[1] : 0
+        );
+
+        return;
+      }
+
+      // LET THE SMOOTHNESS BEGIN!
+      smoothScroll.call(
+        w,
+        d.body,
+        ~~arguments[0].left + (w.scrollX || w.pageXOffset),
+        ~~arguments[0].top + (w.scrollY || w.pageYOffset)
+      );
+    };
+
+    // Element.prototype.scroll and Element.prototype.scrollTo
+    Element.prototype.scroll = Element.prototype.scrollTo = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        // if one number is passed, throw error to match Firefox implementation
+        if (typeof arguments[0] === 'number' && arguments[1] === undefined) {
+          throw new SyntaxError('Value could not be converted');
+        }
+
+        original.elementScroll.call(
+          this,
+          // use left prop, first number argument or fallback to scrollLeft
+          arguments[0].left !== undefined
+            ? ~~arguments[0].left
+            : typeof arguments[0] !== 'object' ? ~~arguments[0] : this.scrollLeft,
+          // use top prop, second argument or fallback to scrollTop
+          arguments[0].top !== undefined
+            ? ~~arguments[0].top
+            : arguments[1] !== undefined ? ~~arguments[1] : this.scrollTop
+        );
+
+        return;
+      }
+
+      var left = arguments[0].left;
+      var top = arguments[0].top;
+
+      // LET THE SMOOTHNESS BEGIN!
+      smoothScroll.call(
+        this,
+        this,
+        typeof left === 'undefined' ? this.scrollLeft : ~~left,
+        typeof top === 'undefined' ? this.scrollTop : ~~top
+      );
+    };
+
+    // Element.prototype.scrollBy
+    Element.prototype.scrollBy = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        original.elementScroll.call(
+          this,
+          arguments[0].left !== undefined
+            ? ~~arguments[0].left + this.scrollLeft
+            : ~~arguments[0] + this.scrollLeft,
+          arguments[0].top !== undefined
+            ? ~~arguments[0].top + this.scrollTop
+            : ~~arguments[1] + this.scrollTop
+        );
+
+        return;
+      }
+
+      this.scroll({
+        left: ~~arguments[0].left + this.scrollLeft,
+        top: ~~arguments[0].top + this.scrollTop,
+        behavior: arguments[0].behavior
+      });
+    };
+
+    // Element.prototype.scrollIntoView
+    Element.prototype.scrollIntoView = function() {
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        original.scrollIntoView.call(
+          this,
+          arguments[0] === undefined ? true : arguments[0]
+        );
+
+        return;
+      }
+
+      // LET THE SMOOTHNESS BEGIN!
+      var scrollableParent = findScrollableParent(this);
+      var parentRects = scrollableParent.getBoundingClientRect();
+      var clientRects = this.getBoundingClientRect();
+
+      if (scrollableParent !== d.body) {
+        // reveal element inside parent
+        smoothScroll.call(
+          this,
+          scrollableParent,
+          scrollableParent.scrollLeft + clientRects.left - parentRects.left,
+          scrollableParent.scrollTop + clientRects.top - parentRects.top
+        );
+
+        // reveal parent in viewport unless is fixed
+        if (w.getComputedStyle(scrollableParent).position !== 'fixed') {
+          w.scrollBy({
+            left: parentRects.left,
+            top: parentRects.top,
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        // reveal element in viewport
+        w.scrollBy({
+          left: clientRects.left,
+          top: clientRects.top,
+          behavior: 'smooth'
+        });
+      }
+    };
+  }
+
+  if (true) {
+    // commonjs
+    module.exports = { polyfill: polyfill };
+  } else {}
+
+}());
+
+
+/***/ })
+/******/ ]);
+});
 
 /***/ }),
 
