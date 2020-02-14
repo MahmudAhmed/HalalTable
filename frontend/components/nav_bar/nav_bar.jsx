@@ -113,7 +113,7 @@ class NavBar extends React.Component {
         <nav className="left-header">
           {/* <span id="fullscreen"></span> */}
           <h1 className="header-logo">
-            <img src={window.headerLogo} />
+            <Link to="/restaurants/"><img src={window.headerLogo} /></Link>
           </h1>
           <ChangeLocation toggleDisplay={this.toggleDisplay} />
         </nav>

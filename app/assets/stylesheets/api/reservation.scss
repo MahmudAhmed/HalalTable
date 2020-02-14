@@ -3,7 +3,7 @@
   background-color: white;
   width: 320px;
   position: absolute;
-  top: -40px;
+  top: -42px;
   // right: 30px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
@@ -15,6 +15,7 @@
 }
 
 .reservation-form-title{
+  padding: 26px 0;
   height: 48px;
   font-size: 21px;
   font-weight: 700;
@@ -27,7 +28,7 @@
 }
 
 .reservation-inputs{
-  padding-top: 20px;
+  padding: 20px;
   width: 100%;
   // flex-wrap: wrap;
 }
@@ -119,6 +120,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 #reserve-btn{
   padding-top: 10px;
+  width: 90%;
+  margin: auto !important;
 }
 
 .reservation-size:hover, .reservation-time:hover, #reservation-date:hover{

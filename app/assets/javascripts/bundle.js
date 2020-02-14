@@ -510,9 +510,11 @@ function (_React$Component) {
         className: "left-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "header-logo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
+        to: "/restaurants/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.headerLogo
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_change_location__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_change_location__WEBPACK_IMPORTED_MODULE_3__["default"], {
         toggleDisplay: this.toggleDisplay
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "hamburger-icon",
@@ -891,17 +893,19 @@ function (_React$Component) {
       var openTime = new Date(restaurant.open_time);
       var utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
       var closeTime = new Date(restaurant.close_time);
+      if (openTime > closeTime) closeTime.setDate(closeTime.getDate() + 1);
       var utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
-      var restaurantHours = []; // debugger
+      var restaurantHours = [];
+      debugger;
 
       while (true) {
+        if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
         restaurantHours.push(new Date(utcOpenTime.getTime()));
-        if (utcOpenTime.getTime() === utcCloseTime.getTime()) break;
         utcOpenTime.setHours(utcOpenTime.getHours() + 1);
       }
 
-      ; // debugger
-
+      ;
+      debugger;
       var partySize = Array(20).fill().map(function (_, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: i + 1,
@@ -988,7 +992,7 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(_ref, ownProps) {
   var entities = _ref.entities;
   // debugger
-  // debugger
+  debugger;
   return {
     restaurant: entities.restaurants[ownProps.match.params.restaurantId]
   };
@@ -1076,10 +1080,8 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      debugger;
       this.header = document.getElementById("nav-list");
       this.resForm = document.getElementById("reservation-forms");
-      debugger;
 
       if (this.header) {
         this.sticky = this.header.offsetTop;
@@ -1088,14 +1090,26 @@ function (_React$Component) {
   }, {
     key: "stickyHeader",
     value: function stickyHeader() {
-      debugger;
-
-      if (window.pageYOffset - 317 >= this.sticky) {
-        this.header.classList.add("sticky");
-        this.resForm.classList.add("sticky");
-      } else if (this.header.classList.contains('sticky')) {
-        this.header.classList.remove("sticky");
-        this.resForm.classList.remove("sticky");
+      if (this.header) {
+        if (window.pageYOffset - 317 >= this.sticky) {
+          this.header.classList.add("sticky");
+          this.resForm.classList.add("sticky");
+        } else if (this.header.classList.contains('sticky')) {
+          this.header.classList.remove("sticky");
+          this.resForm.classList.remove("sticky");
+        }
+      }
+    }
+  }, {
+    key: "getPrice",
+    value: function getPrice(price_range) {
+      // debugger
+      if (price_range === "$$") {
+        return "$30 and under";
+      } else if (price_range === "$$$") {
+        return "$31 to $50";
+      } else if (price_range === "$$$$") {
+        return "$50 and over";
       }
     }
   }, {
@@ -1103,7 +1117,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      // debugger
+      debugger;
       window.addEventListener("scroll", function () {
         return _this2.stickyHeader();
       });
@@ -1168,7 +1182,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: ["far", "money-bill-alt"],
         className: "cash-icon"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$31 to $50")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.getPrice(restaurant.price_range))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "cuisines-type"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: "utensils",

@@ -7,7 +7,7 @@ import {
 
 const mSTP = ({ entities }, ownProps) => {
   // debugger
-  // debugger
+  debugger
   return {
     restaurant: entities.restaurants[ownProps.match.params.restaurantId]
   }

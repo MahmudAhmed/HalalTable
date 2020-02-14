@@ -6,13 +6,14 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarRatings from "react-star-ratings";
 import ReservationForm from "./reservation_index";
 
+
+
 class RestaurantShow extends React.Component {
   
   constructor(props){
     super(props);
     // debugger
     this.stickyHeader = this.stickyHeader.bind(this)
-
   }
   
   
@@ -21,10 +22,8 @@ class RestaurantShow extends React.Component {
   }
   
   componentDidUpdate() {
-    debugger
     this.header = document.getElementById("nav-list");
     this.resForm = document.getElementById("reservation-forms");
-    debugger
     if (this.header) {
       this.sticky = this.header.offsetTop
     }
@@ -33,20 +32,33 @@ class RestaurantShow extends React.Component {
   
   
   stickyHeader() {
-    debugger
-    if ((window.pageYOffset - 317) >= this.sticky) {
-      this.header.classList.add("sticky");
-      this.resForm.classList.add("sticky");
-    } else if (this.header.classList.contains('sticky')) {
-      this.header.classList.remove("sticky");
-      this.resForm.classList.remove("sticky");
+    if (this.header){
+      if ((window.pageYOffset - 317) >= this.sticky) {
+        this.header.classList.add("sticky");
+        this.resForm.classList.add("sticky");
+      } else if (this.header.classList.contains('sticky')) {
+        this.header.classList.remove("sticky");
+        this.resForm.classList.remove("sticky");
+      }
+    }
+  }
+
+  getPrice(price_range){
+    // debugger
+    if (price_range === "$$") {
+      return "$30 and under"
+    } else if (price_range === "$$$") {
+      return "$31 to $50"
+    } else if (price_range === "$$$$") {
+      return "$50 and over"
     }
   }
 
   render() {
-    // debugger
+    debugger
     window.addEventListener("scroll", () => this.stickyHeader() )
     if (!this.props.restaurant) return null; 
+    
     const { restaurant } = this.props;
     return (
       <section className="show-page">
@@ -118,7 +130,7 @@ class RestaurantShow extends React.Component {
                     icon={["far", "money-bill-alt"]}
                     className="cash-icon"
                   />
-                  <span>$31 to $50</span>
+                  <span>{this.getPrice(restaurant.price_range)}</span>
                 </section>
                 <section id="cuisines-type">
                   <FontAwesomeIcon icon="utensils" className="cuisines-icon" />

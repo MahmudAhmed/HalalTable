@@ -4,6 +4,11 @@
   width: 90%;
   // height: auto !important;
 }
+.clearfix::after {
+  content: ":)";
+  clear: both;
+  display: block;
+}
 
 #show-page-splash{
   height: 230px;
@@ -47,16 +52,14 @@
   display: flex;
   width: 1200px;
   margin: auto;
-  // top: 10px;
-  height: 100%;
-  background-color: purple;
+
 }
 
 .left-content{
   // background-color: purple;
   width: 740px;
   margin: 0 50px 0 50px;
-  position: absolute;
+  position: relative;
   top: -40px;
 
 }
