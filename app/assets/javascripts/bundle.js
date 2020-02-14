@@ -889,28 +889,30 @@ function (_React$Component) {
     value: function render() {
       var restaurant = this.props.restaurant;
       var openTime = new Date(restaurant.open_time);
+      var utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
       var closeTime = new Date(restaurant.close_time);
-      var restaurantHours = [];
-      debugger;
+      var utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
+      var restaurantHours = []; // debugger
 
       while (true) {
-        if (openTime.getTime() === closeTime.getTime()) break; // 
-
-        restaurantHours.push(new Date(openTime.getTime()));
-        openTime.setHours(openTime.getHours() + 1);
+        restaurantHours.push(new Date(utcOpenTime.getTime()));
+        if (utcOpenTime.getTime() === utcCloseTime.getTime()) break;
+        utcOpenTime.setHours(utcOpenTime.getHours() + 1);
       }
 
-      ;
-      debugger;
+      ; // debugger
+
       var partySize = Array(20).fill().map(function (_, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: i + 1,
+          id: "select-option",
           value: "".concat(i + 1)
         }, i + 1);
       });
       var timeSlots = restaurantHours.map(function (time, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: i,
+          id: "select-option",
           value: time
         }, time.toLocaleString('en-US', {
           hour: 'numeric',
@@ -918,18 +920,45 @@ function (_React$Component) {
           hour12: true
         }));
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
-        className: "reservation-forms"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "reservation-forms",
+        className: "sticky"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "reservation-form-title"
       }, "Make a reservation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-inputs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-form-party-size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, partySize)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "reservation-labels"
+      }, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "select-party-size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "reservation-size"
+      }, partySize))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "date-time-reservation"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choose-date"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "reservation-labels"
+      }, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "reservation-date"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "date",
         min: min,
         value: this.state.date,
         onChange: this.handleChange("date")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, timeSlots)));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choose-time"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "reservation-labels"
+      }, "Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "reservation-time"
+      }, timeSlots)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "reserve-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn"
+      }, "Find a Table")));
     }
   }]);
 
@@ -1047,7 +1076,10 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
+      debugger;
       this.header = document.getElementById("nav-list");
+      this.resForm = document.getElementById("reservation-forms");
+      debugger;
 
       if (this.header) {
         this.sticky = this.header.offsetTop;
@@ -1056,10 +1088,14 @@ function (_React$Component) {
   }, {
     key: "stickyHeader",
     value: function stickyHeader() {
-      if (window.pageYOffset - 317 > this.sticky) {
+      debugger;
+
+      if (window.pageYOffset - 317 >= this.sticky) {
         this.header.classList.add("sticky");
+        this.resForm.classList.add("sticky");
       } else if (this.header.classList.contains('sticky')) {
         this.header.classList.remove("sticky");
+        this.resForm.classList.remove("sticky");
       }
     }
   }, {
@@ -1149,9 +1185,13 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "display-subheader",
         id: "menu-section"
-      }, "Menu")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_3__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservation_index__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }, "Menu")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_3__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
+        className: "right-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservation_index__WEBPACK_IMPORTED_MODULE_6__["default"], {
         restaurant: this.props.restaurant
-      })));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "right-details"
+      }))));
     }
   }]);
 

@@ -21,8 +21,10 @@ class RestaurantShow extends React.Component {
   }
   
   componentDidUpdate() {
+    debugger
     this.header = document.getElementById("nav-list");
-
+    this.resForm = document.getElementById("reservation-forms");
+    debugger
     if (this.header) {
       this.sticky = this.header.offsetTop
     }
@@ -31,10 +33,13 @@ class RestaurantShow extends React.Component {
   
   
   stickyHeader() {
-    if ((window.pageYOffset - 317) > this.sticky) {
+    debugger
+    if ((window.pageYOffset - 317) >= this.sticky) {
       this.header.classList.add("sticky");
+      this.resForm.classList.add("sticky");
     } else if (this.header.classList.contains('sticky')) {
       this.header.classList.remove("sticky");
+      this.resForm.classList.remove("sticky");
     }
   }
 
@@ -136,10 +141,33 @@ class RestaurantShow extends React.Component {
                   Menu
                 </h2>
               </div>
-              <ReviewsIndex />
+              <section>
+                <ReviewsIndex />
+                {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur. */}
+              </section>
             </div>
           </main>
-          <ReservationForm restaurant={this.props.restaurant}/>
+          <aside className="right-content">
+            <div>
+              <ReservationForm restaurant={this.props.restaurant} />
+            </div>
+            <div className="right-details">
+
+            </div>
+          </aside>
+          
         </section>
       </section>
     );

@@ -2,6 +2,7 @@
   background-color: #FFF;
   margin: auto;
   width: 90%;
+  // height: auto !important;
 }
 
 #show-page-splash{
@@ -47,42 +48,9 @@
   width: 1200px;
   margin: auto;
   // top: 10px;
+  height: 100%;
+  background-color: purple;
 }
-#nav-list{
-  display: flex;
-  border-bottom: 1px solid #d8d9db;
-  // width: 100%;
-  width: 740px;
-  background-color: white;
-  z-index: 1000;
-
-}
-
-.sticky{
-  position: fixed;
-  top: 0;
-  // padding-top: 45px;
-}
-
-.sticky + #nav-list{
-  padding-top: 45px;
-}
-
-
-#nav-list li{
-  // background-color: red;
-  font-weight: 600;
-  padding: 10px;
-  border-bottom: 1px solid transparent;
-
-}
-
-#nav-list li:hover {
-  color: #DA3743;
-  border-bottom: 1px solid #DA3743;
-
-}
-
 
 .left-content{
   // background-color: purple;
@@ -93,29 +61,48 @@
 
 }
 
-.reservation-forms{
-  background-color: blue;
-  width: 420px;
-  position: absolute;
-  top: -40px;
-  right: -30px;
+#nav-list{
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  display: flex;
+  border-bottom: 1px solid #d8d9db;
+  width: 740px;
+  background-color: white;
+  z-index: 1000;
+  height: 48px;
 }
 
-.reservation-form-title{
-  font-size: 21px;
-  font-weight: 700;
-  border-bottom: 1px solid #d8d9db;
-  text-align: center;
-  padding: 6.5px 0;
+.sticky{
+  position: fixed !important;
+  top: 0 !important;
+  // padding-top: 45px;
+}
+
+// .sticky + #nav-list{
+//   padding-top: 45px;
+// }
+
+
+#nav-list li{
+  // background-color: red;
+  font-weight: 600;
+  padding: 10px;
+  border-bottom: 1px solid transparent;
+}
+
+#nav-list li:hover {
+  color: #DA3743;
+  border-bottom: 1px solid #DA3743;
+
 }
 
 .restaurant-details{
   padding: 2rem 1rem 1rem;
   box-sizing: border-box;
+  // margin-top: 48px;
 }
 
 #restaurant-title{
-  // padding: 30px 0;
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
@@ -253,4 +240,5 @@
   background-color: #DA3743;
   height: 23px;
 }
+
 

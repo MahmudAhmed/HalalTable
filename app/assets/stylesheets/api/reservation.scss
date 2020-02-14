@@ -1,0 +1,127 @@
+
+#reservation-forms{
+  background-color: white;
+  width: 320px;
+  position: absolute;
+  top: -40px;
+  // right: 30px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: 0 2px 8px rgba(153,153,153,.4);
+  z-index: 1000;
+  // padding: 10px;
+  
+  box-sizing: border-box;
+}
+
+.reservation-form-title{
+  height: 48px;
+  font-size: 21px;
+  font-weight: 700;
+  height: 48px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #d8d9db;
+}
+
+.reservation-inputs{
+  padding-top: 20px;
+  width: 100%;
+  // flex-wrap: wrap;
+}
+
+.select-party-size:before{
+  content: 'for';
+  color: black;
+  position: absolute;
+  left: 5px;
+  height: 35px;
+}
+
+.select-party-size{
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+.date-time-reservation{
+  display: flex;
+  // justify-content: space-between;
+}
+
+.reservation-size, .reservation-time{
+  box-sizing: border-box;
+  background-color: white;
+  outline: none;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #d8d9db;
+  padding: 1px 30px 0;
+  height: 35px;
+  width: 100%;
+  font-weight: 500;
+  margin-bottom: .8rem;
+  cursor: pointer;
+
+}
+
+.reservation-labels{
+  font-size: .875rem;
+  font-weight: 700;
+  padding-bottom: 1rem;
+  padding-left: 5px;
+  // background-color: red;
+}
+
+
+#reservation-date {
+  font-size: 13.33333px;
+  border-bottom: 1px solid #d8d9db;
+  padding: 9px 0 6px 10px;
+  font-size: 13.5px;
+  width: 100%;
+}
+input[type="date"] {
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+
+input[type="date"]::-webkit-validation-bubble-arrow{
+    display: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button { 
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 100;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat;
+  background-size: 10px 10px;
+  color: transparent;
+}
+
+
+.choose-date, .choose-time{
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}
+
+.choose-date{
+  margin-right: 10px;
+  
+}
+
+#reserve-btn{
+  padding-top: 10px;
+}
+
+.reservation-size:hover, .reservation-time:hover, #reservation-date:hover{
+  border-bottom: 1.5px solid #D1323D;
+}
+
