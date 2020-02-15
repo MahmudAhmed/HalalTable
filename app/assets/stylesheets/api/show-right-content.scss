@@ -1,12 +1,46 @@
 .right-content{
-  background-color: blue;
   height: 1000px;
   width: 320px;
   position: relative;
-  // left: 830px;
 }
 
 .restaurant-right-details{
-  background-color: red;
   padding-top: 300px;
+  padding: 300px .25rem 16px;
+}
+
+
+.restaurant-right-details > section{
+  display: flex;
+  margin: 0 0 1rem;
+}
+
+.restaurant-right-details  div{
+  align-self: center;
+  margin: 0 0 0 .5rem;
+}
+
+.right-side-details-icon{
+  margin: .25rem 0 0;
+  flex-shrink: 1;
+}
+
+.right-side-header{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.restaurant-right-details p{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+#sidebar-map{
+  width: 100%;
+  height: 200px;
+  background-color: forestgreen;
+  margin: 0 0 .625rem 0;
+
 }

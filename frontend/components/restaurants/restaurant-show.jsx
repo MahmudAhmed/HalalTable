@@ -159,6 +159,12 @@ class RestaurantShow extends React.Component {
               <ReservationForm restaurant={restaurant} />
             </div>
             <div className="restaurant-right-details">
+              <div id="sidebar-map">
+
+
+
+
+              </div>
               <section>
                 <FontAwesomeIcon
                   icon={["far", "building"]}
