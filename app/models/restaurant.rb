@@ -31,6 +31,8 @@ class Restaurant < ApplicationRecord
     class_name: :User,
     foreign_key: :owner_id
 
+  has_one :menu
+
   has_many :reviews
 
   has_many :favorites

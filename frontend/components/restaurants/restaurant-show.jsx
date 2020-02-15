@@ -5,6 +5,7 @@ import ReviewsIndex from "./reviews_index";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarRatings from "react-star-ratings";
 import ReservationForm from "./reservation_index";
+import MenuItems from "./menu";
 
 const getPrice = (price_range) => {
   if (price_range === "$$") {
@@ -54,8 +55,8 @@ class RestaurantShow extends React.Component {
   render() {
     window.addEventListener("scroll", () => this.stickyHeader() )
     if (!this.props.restaurant) return null; 
-    
-    const { restaurant, reviews } = this.props;
+    // debugger
+    const { restaurant, reviews, menu } = this.props;
     const reviewCount = Object.keys(reviews).length;
     // debugger
     return (
@@ -148,6 +149,9 @@ class RestaurantShow extends React.Component {
                 <h2 className="display-subheader" id="menu-section">
                   Menu
                 </h2>
+                <ul>
+                  {Object.values(menu.menu_items).map( (item, idx) => <MenuItems key={idx} item={item}/>)}
+                </ul>
               </div>
               <section>
                 <ReviewsIndex reviews={reviews} restaurant={restaurant} />

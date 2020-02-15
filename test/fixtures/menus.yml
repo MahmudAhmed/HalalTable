@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: menus
+#
+#  id            :bigint           not null, primary key
+#  restaurant_id :integer          not null
+#  item_1        :string           not null
+#  item_2        :string           not null
+#  item_3        :string
+#  item_4        :string
+#  item_5        :string
+#  item_6        :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  restaurant_id: 1
+  item_1: MyString
+  item_2: MyString
+  item_3: MyString
+  item_4: MyString
+  item_5: MyString
+  item_6: MyString
+
+two:
+  restaurant_id: 1
+  item_1: MyString
+  item_2: MyString
+  item_3: MyString
+  item_4: MyString
+  item_5: MyString
+  item_6: MyString

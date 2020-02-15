@@ -8,10 +8,11 @@
 #  overall       :integer          not null
 #  food          :integer          not null
 #  service       :integer          not null
-#  ambiance      :integer          not null
 #  body          :text             not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  value         :integer
+#  ambience      :integer          not null
 #
 
 class Review < ApplicationRecord

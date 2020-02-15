@@ -86,6 +86,40 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/menus_action.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/menus_action.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_MENU, requestMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_MENU", function() { return RECEIVE_MENU; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestMenu", function() { return requestMenu; });
+/* harmony import */ var _util_menus_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/menus_util */ "./frontend/util/menus_util.js");
+ ///const
+
+var RECEIVE_MENU = "RECEIVE_MENU"; ////regular actions
+
+var receiveMenu = function receiveMenu(menu) {
+  return {
+    type: RECEIVE_MENU,
+    menu: menu
+  };
+}; ///thunk actions
+
+
+var requestMenu = function requestMenu(restaurantId) {
+  return function (dispatch) {
+    return _util_menus_util__WEBPACK_IMPORTED_MODULE_0__["fetchMenu"](restaurantId).then(function (menu) {
+      return dispatch(receiveMenu(menu));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/restaurant_action.js":
 /*!***********************************************!*\
   !*** ./frontend/actions/restaurant_action.js ***!
@@ -101,6 +135,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestRestaurant", function() { return requestRestaurant; });
 /* harmony import */ var _util_restaurant_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/restaurant_util */ "./frontend/util/restaurant_util.js");
 /* harmony import */ var _reviews_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reviews_action */ "./frontend/actions/reviews_action.js");
+/* harmony import */ var _menus_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menus_action */ "./frontend/actions/menus_action.js");
+
 
  ///const
 
@@ -133,7 +169,8 @@ var requestRestaurant = function requestRestaurant(restaurantId) {
   return function (dispatch) {
     return _util_restaurant_util__WEBPACK_IMPORTED_MODULE_0__["fetchRestaurant"](restaurantId).then(function (restaurant) {
       dispatch(receiveRestaurant(restaurant));
-      dispatch(Object(_reviews_action__WEBPACK_IMPORTED_MODULE_1__["requestReviews"])(restaurant.id));
+      dispatch(Object(_reviews_action__WEBPACK_IMPORTED_MODULE_1__["requestReviews"])(restaurantId));
+      dispatch(Object(_menus_action__WEBPACK_IMPORTED_MODULE_2__["requestMenu"])(restaurantId));
     });
   };
 };
@@ -609,6 +646,87 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/restaurants/menu.jsx":
+/*!**************************************************!*\
+  !*** ./frontend/components/restaurants/menu.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var MenuItems =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(MenuItems, _React$Component);
+
+  function MenuItems() {
+    _classCallCheck(this, MenuItems);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MenuItems).apply(this, arguments));
+  }
+
+  _createClass(MenuItems, [{
+    key: "render",
+    value: function render() {
+      debugger;
+      var item = this.props.item;
+      if (item === "") return null;
+
+      var _item$split = item.split("-->"),
+          _item$split2 = _slicedToArray(_item$split, 3),
+          dish = _item$split2[0],
+          desciption = _item$split2[1],
+          price = _item$split2[2];
+
+      debugger;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "restaurant-menu-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-menu-dish"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, dish), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-menu-description"
+      }, desciption));
+    }
+  }]);
+
+  return MenuItems;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (MenuItems);
+
+/***/ }),
+
 /***/ "./frontend/components/restaurants/photo_gallery.jsx":
 /*!***********************************************************!*\
   !*** ./frontend/components/restaurants/photo_gallery.jsx ***!
@@ -1023,9 +1141,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(_ref, ownProps) {
   var entities = _ref.entities;
+  var tempMenu = {
+    menu_items: {
+      item_1: ""
+    }
+  };
   return {
     restaurant: entities.restaurants[ownProps.match.params.restaurantId],
-    reviews: Object.values(entities.reviews)
+    reviews: Object.values(entities.reviews),
+    menu: entities.menus[ownProps.match.params.restaurantId] || tempMenu
   };
 };
 
@@ -1060,6 +1184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _reservation_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./reservation_index */ "./frontend/components/restaurants/reservation_index.jsx");
+/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./menu */ "./frontend/components/restaurants/menu.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1077,6 +1202,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1148,10 +1274,12 @@ function (_React$Component) {
       window.addEventListener("scroll", function () {
         return _this2.stickyHeader();
       });
-      if (!this.props.restaurant) return null;
+      if (!this.props.restaurant) return null; // debugger
+
       var _this$props = this.props,
           restaurant = _this$props.restaurant,
-          reviews = _this$props.reviews;
+          reviews = _this$props.reviews,
+          menu = _this$props.menu;
       var reviewCount = Object.keys(reviews).length; // debugger
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -1230,7 +1358,12 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "display-subheader",
         id: "menu-section"
-      }, "Menu")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, "Menu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(menu.menu_items).map(function (item, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_menu__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          key: idx,
+          item: item
+        });
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
         reviews: reviews,
         restaurant: restaurant
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
@@ -1595,7 +1728,6 @@ function (_React$Component) {
       var _this$props = this.props,
           reviews = _this$props.reviews,
           restaurant = _this$props.restaurant;
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-review"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -2572,6 +2704,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _restaurants_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./restaurants_reducer */ "./frontend/reducers/restaurants_reducer.js");
 /* harmony import */ var _reviews_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reviews_reducer */ "./frontend/reducers/reviews_reducer.js");
+/* harmony import */ var _menus_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./menus_reducer */ "./frontend/reducers/menus_reducer.js");
+
 
 
 
@@ -2579,7 +2713,8 @@ __webpack_require__.r(__webpack_exports__);
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   restaurants: _restaurants_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  reviews: _reviews_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  reviews: _reviews_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  menus: _menus_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -2602,6 +2737,41 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/menus_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/menus_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/restaurant_action */ "./frontend/actions/restaurant_action.js");
+/* harmony import */ var _actions_menus_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/menus_action */ "./frontend/actions/menus_action.js");
+
+
+
+var menusReducer = function menusReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_menus_action__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_MENU"]:
+      return Object.assign(action.menu);
+
+    case _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RESTAURANTS"]:
+      return [];
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (menusReducer);
 
 /***/ }),
 
@@ -2836,6 +3006,25 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/menus_util.js":
+/*!*************************************!*\
+  !*** ./frontend/util/menus_util.js ***!
+  \*************************************/
+/*! exports provided: fetchMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchMenu", function() { return fetchMenu; });
+var fetchMenu = function fetchMenu(restaurantId) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/restaurants/".concat(restaurantId, "/menus")
+  });
+};
 
 /***/ }),
 

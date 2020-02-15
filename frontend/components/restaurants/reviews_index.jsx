@@ -6,7 +6,6 @@ class ReviewsIndex extends React.Component {
 
   render() {
     const { reviews, restaurant } = this.props;
-    debugger
     return (
       <div id="show-review">
         <h2 className="display-subheader">What {reviews.length} People Are Saying</h2>

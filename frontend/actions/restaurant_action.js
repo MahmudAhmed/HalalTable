@@ -1,10 +1,12 @@
 import * as APIUtil from "../util/restaurant_util";
 import { requestReviews } from "./reviews_action";
+import { requestMenu } from "./menus_action";
 
 ///const
 
 export const RECEIVE_RESTAURANTS = "RECEIVE_RESTAURANTS";
 export const RECEIVE_RESTAURANT = "RECEIVE_RESTAURANT";
+
 
 ////regular actions
 
@@ -29,6 +31,7 @@ export const requestRestaurants = () => dispatch => {
 export const requestRestaurant = (restaurantId) => dispatch => {
   return APIUtil.fetchRestaurant(restaurantId).then(restaurant => {
     dispatch(receiveRestaurant(restaurant))
-    dispatch(requestReviews(restaurant.id))
+    dispatch(requestReviews(restaurantId))
+    dispatch(requestMenu(restaurantId))
   });
 };
