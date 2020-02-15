@@ -16,7 +16,7 @@
 
 class Review < ApplicationRecord
   validates :body, presence: true
-  validates :overall, :food, :service, :ambiance, :value, :inclusion => { :in => 0..5 }
+  validates :overall, :food, :service, :ambience, :inclusion => { :in => 0..5 }
   
   belongs_to :restaurant
 

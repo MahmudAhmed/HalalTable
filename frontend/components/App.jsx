@@ -6,14 +6,19 @@ import LoginFormContainer from "./session_forms/login_form_container";
 import SignupFormContainer from "./session_forms/signup_form_container";
 import NavBar from "./nav_bar/nav_bar_container";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBookmark, faCommentAlt, faMoneyBillAlt } from "@fortawesome/free-regular-svg-icons";
+import { faBookmark, faCommentAlt, faMoneyBillAlt, faBuilding, faClock, faCreditCard } from "@fortawesome/free-regular-svg-icons";
 import {
   faCalendarAlt,
   faMapMarkerAlt,
   faAngleDown,
   faBars,
   faHamburger,
-  faUtensils
+  faUtensils,
+  faSignLanguage,
+  faTshirt,
+  faSubway,
+  faExternalLinkAlt,
+  faPhoneAlt
   
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,7 +31,16 @@ library.add(
   faBookmark, 
   faCommentAlt, 
   faUtensils, 
-  faMoneyBillAlt
+  faMoneyBillAlt,
+  faBuilding,
+  faClock,
+  faSignLanguage,
+  faTshirt,
+  faSubway,
+  faCreditCard,
+  faExternalLinkAlt,
+  faPhoneAlt
+
 );
 import { SignInPageContainer } from "./session_forms/login_form_container";
 import { SignUpPageContainer } from "./session_forms/signup_form_container";

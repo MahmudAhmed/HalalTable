@@ -278,7 +278,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCalendarAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faMapMarkerAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faHamburger"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBookmark"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUtensils"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faMoneyBillAlt"]);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCalendarAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faMapMarkerAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faHamburger"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBookmark"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUtensils"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faMoneyBillAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBuilding"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faClock"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSignLanguage"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faTshirt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSubway"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCreditCard"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faExternalLinkAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faPhoneAlt"]);
 
 
 
@@ -1231,14 +1231,60 @@ function (_React$Component) {
         className: "display-subheader",
         id: "menu-section"
       }, "Menu")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        reviews: reviews
+        reviews: reviews,
+        restaurant: restaurant
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "right-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservation_index__WEBPACK_IMPORTED_MODULE_6__["default"], {
         restaurant: restaurant
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "right-details"
-      }))));
+        className: "restaurant-right-details"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: ["far", "building"],
+        className: "right-side-details-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "right-side-header"
+      }, "Neighborhood"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Edgewater"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: ["far", "clock"],
+        className: "right-side-details-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "right-side-header"
+      }, "Hours of operation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Mon-Sun"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "7:00 am - 11:00 pm"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: "utensils",
+        className: "right-side-details-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "right-side-header"
+      }, "Cuisines"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Steak"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: "sign-language",
+        className: "right-side-details-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "right-side-header"
+      }, "Dining style"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fine Dining"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: "tshirt",
+        className: "right-side-details-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "right-side-header"
+      }, "Dress code"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Business Casual"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: "subway",
+        className: "right-side-details-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "right-side-header"
+      }, "Public transit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Public transportation within one block."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: ["far", "credit-card"],
+        className: "right-side-details-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "right-side-header"
+      }, "Payment options"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "AMEX, Discover, MasterCard, Visa"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: "external-link-alt",
+        className: "right-side-details-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "right-side-header"
+      }, "Website"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "url"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: "phone-alt",
+        className: "right-side-details-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "right-side-header"
+      }, "Phone number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(201) 313-9463")))))));
     }
   }]);
 
@@ -1544,23 +1590,26 @@ function (_React$Component) {
   _createClass(ReviewsIndex, [{
     key: "render",
     value: function render() {
-      var reviews = this.props.reviews;
+      var _this$props = this.props,
+          reviews = _this$props.reviews,
+          restaurant = _this$props.restaurant;
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-review"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "display-subheader"
-      }, "What XX People Are Saying"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, "What ", reviews.length, " People Are Saying"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "overall-review-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "overall-review-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Overall ratings and reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Your trust is our top concern, so businesses can't pay to alter or remove their reviews."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        rating: 4.5,
+        rating: restaurant.overall_ratings,
         starDimension: "20px",
         starSpacing: "1px",
         starRatedColor: "orange"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.5 based on recent ratings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, restaurant.overall_ratings.toFixed(1), " based on recent ratings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "ratings-breakdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambiance")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Value")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, restaurant.overall_ratings.toFixed(1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Overall")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, restaurant.overall_food_ratings.toFixed(1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, restaurant.overall_service_ratings.toFixed(1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, restaurant.overall_ambience_ratings.toFixed(1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambience")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "overall-review-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "review-bars"
@@ -1574,8 +1623,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bar-percentage",
         style: {
-          width: "50%" // width: `${reviews.review_percentage[1]}`
-
+          width: "".concat(restaurant.total_ratings[5])
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: "bar"
@@ -1587,7 +1635,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bar-percentage",
         style: {
-          width: "25%"
+          width: "".concat(restaurant.total_ratings[4])
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: "bar"
@@ -1599,7 +1647,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bar-percentage",
         style: {
-          width: "10%"
+          width: "".concat(restaurant.total_ratings[3])
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: "bar"
@@ -1611,7 +1659,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bar-percentage",
         style: {
-          width: "5%"
+          width: "".concat(restaurant.total_ratings[2])
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: "bar"
@@ -1623,7 +1671,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bar-percentage",
         style: {
-          width: "1%"
+          width: "".concat(restaurant.total_ratings[1])
         }
       })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, reviews.map(function (review) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1689,20 +1737,18 @@ function (_React$Component) {
   }
 
   _createClass(ReviewsIndexItem, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {// requestUser
-    }
-  }, {
     key: "render",
     value: function render() {
       var review = this.props.review;
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "reviews-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-side-reviews"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "profile-pic"
+        className: "profile-pic",
+        style: {
+          backgroundColor: 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')'
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-pic-initial"
       }, review.first_name[0] + review.last_name[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1725,9 +1771,9 @@ function (_React$Component) {
         starRatedColor: "red"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "user-review-breakdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.food)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.service)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.ambiance)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Overall"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.overall)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.food)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.service)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "last-child"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Value"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.value))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.ambience))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "the-review"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, review.body))));
     }

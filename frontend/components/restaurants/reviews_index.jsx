@@ -5,10 +5,11 @@ import StarRatings from "react-star-ratings";
 class ReviewsIndex extends React.Component {
 
   render() {
-    const { reviews } = this.props;
+    const { reviews, restaurant } = this.props;
+    debugger
     return (
       <div id="show-review">
-        <h2 className="display-subheader">What XX People Are Saying</h2>
+        <h2 className="display-subheader">What {reviews.length} People Are Saying</h2>
         <section className="overall-review-container">
           <section className="overall-review-left">
             <p>Overall ratings and reviews</p>
@@ -19,30 +20,30 @@ class ReviewsIndex extends React.Component {
 
             <div>
               <StarRatings
-                rating={4.5}
+                rating={restaurant.overall_ratings}
                 starDimension="20px"
                 starSpacing="1px"
                 starRatedColor="orange"
               />
-              <span>4.5 based on recent ratings</span>
+              <span>{restaurant.overall_ratings.toFixed(1)} based on recent ratings</span>
             </div>
 
             <ul className="ratings-breakdown">
               <li>
-                <span>4.1</span>
+                <span>{restaurant.overall_ratings.toFixed(1)}</span>
+                <p>Overall</p>
+              </li>
+              <li>
+                <span>{restaurant.overall_food_ratings.toFixed(1)}</span>
                 <p>Food</p>
               </li>
               <li>
-                <span>4.1</span>
+                <span>{restaurant.overall_service_ratings.toFixed(1)}</span>
                 <p>Service</p>
               </li>
               <li>
-                <span>4.1</span>
-                <p>Ambiance</p>
-              </li>
-              <li>
-                <span>4.1</span>
-                <p>Value</p>
+                <span>{restaurant.overall_ambience_ratings.toFixed(1)}</span>
+                <p>Ambience</p>
               </li>
             </ul>
           </section>
@@ -54,8 +55,7 @@ class ReviewsIndex extends React.Component {
                   <div
                     className="bar-percentage"
                     style={{
-                      width: "50%"
-                      // width: `${reviews.review_percentage[1]}`
+                      width: `${restaurant.total_ratings[5]}`
                     }}
                   ></div>
                 </div>
@@ -66,7 +66,7 @@ class ReviewsIndex extends React.Component {
                   <div
                     className="bar-percentage"
                     style={{
-                      width: "25%"
+                      width: `${restaurant.total_ratings[4]}`
                     }}
                   ></div>
                 </div>
@@ -77,7 +77,7 @@ class ReviewsIndex extends React.Component {
                   <div
                     className="bar-percentage"
                     style={{
-                      width: "10%"
+                      width: `${restaurant.total_ratings[3]}`
                     }}
                   ></div>
                 </div>
@@ -88,7 +88,7 @@ class ReviewsIndex extends React.Component {
                   <div
                     className="bar-percentage"
                     style={{
-                      width: "5%"
+                      width: `${restaurant.total_ratings[2]}`
                     }}
                   ></div>
                 </div>
@@ -99,7 +99,7 @@ class ReviewsIndex extends React.Component {
                   <div
                     className="bar-percentage"
                     style={{
-                      width: "1%"
+                      width: `${restaurant.total_ratings[1]}`
                     }}
                   ></div>
                 </div>

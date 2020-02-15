@@ -4,18 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class ReviewsIndexItem extends React.Component {
 
-  componentDidMount(){
-    // requestUser
-  }
+  
 
 
   render() {
     const { review } = this.props;
-    debugger
     return (
       <li className="reviews-index-item">
         <div className="left-side-reviews">
-          <div className="profile-pic">
+          <div className="profile-pic" style={{backgroundColor: 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')'}}>
             <div className="profile-pic-initial">{review.first_name[0] + review.last_name[0]}</div>
           </div>
           <div className="left-bottom">
@@ -43,6 +40,10 @@ class ReviewsIndexItem extends React.Component {
 
           <ul className="user-review-breakdown">
             <li>
+              <p>Overall</p>
+              <span>{review.overall}</span>
+            </li>
+            <li>
               <p>Food</p>
               <span>{review.food}</span>
             </li>
@@ -50,13 +51,9 @@ class ReviewsIndexItem extends React.Component {
               <p>Service</p>
               <span>{review.service}</span>
             </li>
-            <li>
-              <p>Ambience</p>
-              <span>{review.ambiance}</span>
-            </li>
             <div className="last-child">
-              <p>Value</p>
-              <span>{review.value}</span>
+              <p>Ambience</p>
+              <span>{review.ambience}</span>
             </div>
           </ul>
           <section id="the-review">
@@ -70,5 +67,6 @@ class ReviewsIndexItem extends React.Component {
   }
 
 }
+
 
 export default ReviewsIndexItem;

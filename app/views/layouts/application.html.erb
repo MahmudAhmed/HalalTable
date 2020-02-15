@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Halal Tables</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
 
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}" %>
