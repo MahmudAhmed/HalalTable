@@ -4,24 +4,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class ReviewsIndexItem extends React.Component {
 
+  componentDidMount(){
+    // requestUser
+  }
+
 
   render() {
-
+    const { review } = this.props;
+    debugger
     return (
       <li className="reviews-index-item">
         <div className="left-side-reviews">
           <div className="profile-pic">
-            <div className="profile-pic-initial">MA</div>
+            <div className="profile-pic-initial">{review.first_name[0] + review.last_name[0]}</div>
           </div>
           <div className="left-bottom">
-            <div className="profile-pic-name">El Chapo</div>
-            <div className="profile-pic-city">Brooklyn</div>
+            <div className="profile-pic-name">{review.first_name + " " + review.last_name}</div>
+            <div className="profile-pic-city">{review.city}</div>
             <div className="profile-pic-reviews">
               <FontAwesomeIcon
                 icon={["far", "comment-alt"]}
                 className="profile-review-icon"
               />            
-              <p>1 review</p>
+              <p>{review.total_reviews_by_user} {review.total_reviews_by_user === 1 ? "review" : "reviews"}</p>
             </div>
           </div>
 
@@ -29,7 +34,7 @@ class ReviewsIndexItem extends React.Component {
         <div className="right-side-reviews">
           <div>
             <StarRatings
-              rating={4.403}
+              rating={review.overall}
               starDimension="20px"
               starSpacing="1px"
               starRatedColor="red"
@@ -39,24 +44,24 @@ class ReviewsIndexItem extends React.Component {
           <ul className="user-review-breakdown">
             <li>
               <p>Food</p>
-              <span>5</span>
+              <span>{review.food}</span>
             </li>
             <li>
               <p>Service</p>
-              <span>5</span>
+              <span>{review.service}</span>
             </li>
             <li>
               <p>Ambience</p>
-              <span>5</span>
+              <span>{review.ambiance}</span>
             </li>
             <div className="last-child">
               <p>Value</p>
-              <span>5</span>
+              <span>{review.value}</span>
             </div>
           </ul>
           <section id="the-review">
             <p>
-              Anonymous methods and anonymous types are really all called Chuck Norris. They just don't like to boast.
+              {review.body}
             </p>
           </section>
         </div>

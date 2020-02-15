@@ -100,6 +100,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestRestaurants", function() { return requestRestaurants; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestRestaurant", function() { return requestRestaurant; });
 /* harmony import */ var _util_restaurant_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/restaurant_util */ "./frontend/util/restaurant_util.js");
+/* harmony import */ var _reviews_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reviews_action */ "./frontend/actions/reviews_action.js");
+
  ///const
 
 var RECEIVE_RESTAURANTS = "RECEIVE_RESTAURANTS";
@@ -130,7 +132,42 @@ var requestRestaurants = function requestRestaurants() {
 var requestRestaurant = function requestRestaurant(restaurantId) {
   return function (dispatch) {
     return _util_restaurant_util__WEBPACK_IMPORTED_MODULE_0__["fetchRestaurant"](restaurantId).then(function (restaurant) {
-      return dispatch(receiveRestaurant(restaurant));
+      dispatch(receiveRestaurant(restaurant));
+      dispatch(Object(_reviews_action__WEBPACK_IMPORTED_MODULE_1__["requestReviews"])(restaurant.id));
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/reviews_action.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/reviews_action.js ***!
+  \********************************************/
+/*! exports provided: RECEIVE_REVIEWS, requestReviews */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_REVIEWS", function() { return RECEIVE_REVIEWS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestReviews", function() { return requestReviews; });
+/* harmony import */ var _util_reviews_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/reviews_util */ "./frontend/util/reviews_util.js");
+ ///const
+
+var RECEIVE_REVIEWS = "RECEIVE_REVIEWS"; ////regular actions
+
+var receiveReviews = function receiveReviews(reviews) {
+  return {
+    type: RECEIVE_REVIEWS,
+    reviews: reviews
+  };
+}; ///thunk actions
+
+
+var requestReviews = function requestReviews(restaurantId) {
+  return function (dispatch) {
+    return _util_reviews_util__WEBPACK_IMPORTED_MODULE_0__["fetchReviews"](restaurantId).then(function (reviews) {
+      return dispatch(receiveReviews(reviews));
     });
   };
 };
@@ -867,10 +904,7 @@ function (_React$Component) {
       partySize: 1,
       date: min,
       time: ""
-    }; // // this.time = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-    // this.open_hour = "10:00 AM";
-    // this.close_hour = "11:00 PM"
-
+    };
     return _this;
   }
 
@@ -881,8 +915,7 @@ function (_React$Component) {
 
       // debugger
       return function (e) {
-        debugger;
-
+        // debugger
         _this2.setState(_defineProperty({}, field, e.target.value));
       };
     }
@@ -895,8 +928,7 @@ function (_React$Component) {
       var closeTime = new Date(restaurant.close_time);
       if (openTime > closeTime) closeTime.setDate(closeTime.getDate() + 1);
       var utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
-      var restaurantHours = [];
-      debugger;
+      var restaurantHours = []; // debugger
 
       while (true) {
         if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
@@ -904,8 +936,8 @@ function (_React$Component) {
         utcOpenTime.setHours(utcOpenTime.getHours() + 1);
       }
 
-      ;
-      debugger;
+      ; // debugger
+
       var partySize = Array(20).fill().map(function (_, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: i + 1,
@@ -991,10 +1023,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(_ref, ownProps) {
   var entities = _ref.entities;
-  // debugger
-  debugger;
   return {
-    restaurant: entities.restaurants[ownProps.match.params.restaurantId]
+    restaurant: entities.restaurants[ownProps.match.params.restaurantId],
+    reviews: Object.values(entities.reviews)
   };
 };
 
@@ -1002,8 +1033,7 @@ var mDTP = function mDTP(dispatch) {
   return {
     requestRestaurant: function requestRestaurant(restaurantId) {
       return dispatch(Object(_actions_restaurant_action__WEBPACK_IMPORTED_MODULE_2__["requestRestaurant"])(restaurantId));
-    } // requestRestaurant: restaurantId => dispatch(requestRestaurant(restaurantId))
-
+    }
   };
 };
 
@@ -1056,6 +1086,16 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var getPrice = function getPrice(price_range) {
+  if (price_range === "$$") {
+    return "$30 and under";
+  } else if (price_range === "$$$") {
+    return "$31 to $50";
+  } else if (price_range === "$$$$") {
+    return "$50 and over";
+  }
+};
+
 var RestaurantShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1066,8 +1106,7 @@ function (_React$Component) {
 
     _classCallCheck(this, RestaurantShow);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(RestaurantShow).call(this, props)); // debugger
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RestaurantShow).call(this, props));
     _this.stickyHeader = _this.stickyHeader.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -1080,6 +1119,7 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
+      // this.props.requestRestaurant(this.props.match.params.restaurantId);
       this.header = document.getElementById("nav-list");
       this.resForm = document.getElementById("reservation-forms");
 
@@ -1101,28 +1141,19 @@ function (_React$Component) {
       }
     }
   }, {
-    key: "getPrice",
-    value: function getPrice(price_range) {
-      // debugger
-      if (price_range === "$$") {
-        return "$30 and under";
-      } else if (price_range === "$$$") {
-        return "$31 to $50";
-      } else if (price_range === "$$$$") {
-        return "$50 and over";
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      debugger;
       window.addEventListener("scroll", function () {
         return _this2.stickyHeader();
       });
       if (!this.props.restaurant) return null;
-      var restaurant = this.props.restaurant;
+      var _this$props = this.props,
+          restaurant = _this$props.restaurant,
+          reviews = _this$props.reviews;
+      var reviewCount = Object.keys(reviews).length; // debugger
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "show-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1168,28 +1199,28 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "star-ratings"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        rating: 4.403,
+        rating: restaurant.overall_ratings,
         starDimension: "20px",
         starSpacing: "1px",
         starRatedColor: "orange"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.4")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, restaurant.overall_ratings.toFixed(1))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "total-reviews"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: ["far", "comment-alt"],
         className: "stats-icon"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "451 Reviews")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, reviewCount, " Reviews")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "price-range"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: ["far", "money-bill-alt"],
         className: "cash-icon"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.getPrice(restaurant.price_range))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, getPrice(restaurant.price_range))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "cuisines-type"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: "utensils",
         className: "cuisines-icon"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "American"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, restaurant.cuisines))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "restaurant-overview"
-      }, "The second-ever P.J.'s, overlooking the Hudson River in the Financial District since 2006. Serving up fresh food, frosty drinks and good, old-fashioned conversation."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, restaurant.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "gallery-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "display-subheader",
@@ -1199,10 +1230,12 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "display-subheader",
         id: "menu-section"
-      }, "Menu")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_3__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
+      }, "Menu")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        reviews: reviews
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "right-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservation_index__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        restaurant: this.props.restaurant
+        restaurant: restaurant
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-details"
       }))));
@@ -1511,22 +1544,23 @@ function (_React$Component) {
   _createClass(ReviewsIndex, [{
     key: "render",
     value: function render() {
+      var reviews = this.props.reviews;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-review"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "display-subheader"
-      }, "What 175 People Are Saying"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, "What XX People Are Saying"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "overall-review-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "overall-review-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Overall ratings and reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Your trust is our top concern, so businesses can't pay to alter or remove their reviews."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        rating: 4.403,
+        rating: 4.5,
         starDimension: "20px",
         starSpacing: "1px",
         starRatedColor: "orange"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.4 based on recent ratings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.5 based on recent ratings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "ratings-breakdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambience")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "3.9"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Value")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambiance")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4.1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Value")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "overall-review-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "review-bars"
@@ -1540,7 +1574,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bar-percentage",
         style: {
-          width: "50%"
+          width: "50%" // width: `${reviews.review_percentage[1]}`
+
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: "bar"
@@ -1590,7 +1625,12 @@ function (_React$Component) {
         style: {
           width: "1%"
         }
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, reviews.map(function (review) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: review.id,
+          review: review
+        });
+      }))));
     }
   }]);
 
@@ -1649,8 +1689,14 @@ function (_React$Component) {
   }
 
   _createClass(ReviewsIndexItem, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {// requestUser
+    }
+  }, {
     key: "render",
     value: function render() {
+      var review = this.props.review;
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "reviews-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1659,31 +1705,31 @@ function (_React$Component) {
         className: "profile-pic"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-pic-initial"
-      }, "MA")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, review.first_name[0] + review.last_name[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-bottom"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-pic-name"
-      }, "El Chapo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, review.first_name + " " + review.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-pic-city"
-      }, "Brooklyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, review.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-pic-reviews"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: ["far", "comment-alt"],
         className: "profile-review-icon"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "1 review")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, review.total_reviews_by_user, " ", review.total_reviews_by_user === 1 ? "review" : "reviews")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-side-reviews"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        rating: 4.403,
+        rating: review.overall,
         starDimension: "20px",
         starSpacing: "1px",
         starRatedColor: "red"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "user-review-breakdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "5")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Food"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.food)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.service)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ambience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.ambiance)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "last-child"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Value"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "5"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Value"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, review.value))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         id: "the-review"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Anonymous methods and anonymous types are really all called Chuck Norris. They just don't like to boast."))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, review.body))));
     }
   }]);
 
@@ -2431,13 +2477,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _actions_session_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_action */ "./frontend/actions/session_action.js");
-/* harmony import */ var _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/restaurant_action */ "./frontend/actions/restaurant_action.js");
-/* harmony import */ var _util_restaurant_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./util/restaurant_util */ "./frontend/util/restaurant_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
 
 
 
@@ -2463,8 +2503,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.requestRestaurants = _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_5__["requestRestaurants"];
-  window.requestRestaurant = _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_5__["requestRestaurant"];
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
@@ -2485,12 +2523,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _restaurants_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./restaurants_reducer */ "./frontend/reducers/restaurants_reducer.js");
+/* harmony import */ var _reviews_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reviews_reducer */ "./frontend/reducers/reviews_reducer.js");
+
 
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  restaurants: _restaurants_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  restaurants: _restaurants_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  reviews: _reviews_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -2540,9 +2581,11 @@ var restaurantsReducer = function restaurantsReducer() {
 
   switch (action.type) {
     case _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RESTAURANTS"]:
+      // debugger
       return Object.assign({}, action.restaurants);
 
     case _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RESTAURANT"]:
+      // debugger
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, _defineProperty({}, action.restaurant.id, action.restaurant));
 
     default:
@@ -2551,6 +2594,41 @@ var restaurantsReducer = function restaurantsReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (restaurantsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/reviews_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/reviews_reducer.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_reviews_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/reviews_action */ "./frontend/actions/reviews_action.js");
+/* harmony import */ var _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/restaurant_action */ "./frontend/actions/restaurant_action.js");
+
+
+
+var reviewsReducer = function reviewsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_reviews_action__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEWS"]:
+      return Object.assign(action.reviews);
+
+    case _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_RESTAURANTS"]:
+      return [];
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (reviewsReducer);
 
 /***/ }),
 
@@ -2734,6 +2812,25 @@ var fetchRestaurant = function fetchRestaurant(restaurantId) {
   return $.ajax({
     method: "GET",
     url: "/api/restaurants/".concat(restaurantId)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/reviews_util.js":
+/*!***************************************!*\
+  !*** ./frontend/util/reviews_util.js ***!
+  \***************************************/
+/*! exports provided: fetchReviews */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchReviews", function() { return fetchReviews; });
+var fetchReviews = function fetchReviews(restaurantId) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/restaurants/".concat(restaurantId, "/reviews")
   });
 };
 

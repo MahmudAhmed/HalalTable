@@ -54,10 +54,11 @@
 
 .profile-pic-reviews{
   display: flex;
-  text-align: center;
+  // text-align: center;
   font-size: 12px;
   font-weight: bold;
   line-height: 1.43;
+  justify-content: center;
   // white-space: nowrap;
 
 

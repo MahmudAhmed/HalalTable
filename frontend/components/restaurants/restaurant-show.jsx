@@ -6,13 +6,20 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarRatings from "react-star-ratings";
 import ReservationForm from "./reservation_index";
 
-
+const getPrice = (price_range) => {
+  if (price_range === "$$") {
+    return "$30 and under"
+  } else if (price_range === "$$$") {
+    return "$31 to $50"
+  } else if (price_range === "$$$$") {
+    return "$50 and over"
+  }
+}
 
 class RestaurantShow extends React.Component {
   
   constructor(props){
     super(props);
-    // debugger
     this.stickyHeader = this.stickyHeader.bind(this)
   }
   
@@ -22,6 +29,7 @@ class RestaurantShow extends React.Component {
   }
   
   componentDidUpdate() {
+    // this.props.requestRestaurant(this.props.match.params.restaurantId);
     this.header = document.getElementById("nav-list");
     this.resForm = document.getElementById("reservation-forms");
     if (this.header) {
@@ -43,23 +51,13 @@ class RestaurantShow extends React.Component {
     }
   }
 
-  getPrice(price_range){
-    // debugger
-    if (price_range === "$$") {
-      return "$30 and under"
-    } else if (price_range === "$$$") {
-      return "$31 to $50"
-    } else if (price_range === "$$$$") {
-      return "$50 and over"
-    }
-  }
-
   render() {
-    debugger
     window.addEventListener("scroll", () => this.stickyHeader() )
     if (!this.props.restaurant) return null; 
     
-    const { restaurant } = this.props;
+    const { restaurant, reviews } = this.props;
+    const reviewCount = Object.keys(reviews).length;
+    // debugger
     return (
       <section className="show-page">
         <div id="show-page-splash">
@@ -111,36 +109,34 @@ class RestaurantShow extends React.Component {
               <div className="restaurant-stats">
                 <section id="star-ratings">
                   <StarRatings
-                    rating={4.403}
+                    rating={restaurant.overall_ratings}
                     starDimension="20px"
                     starSpacing="1px"
                     starRatedColor="orange"
                   />
-                  <span>4.4</span>
+                  <span>{restaurant.overall_ratings.toFixed(1)}</span>
                 </section>
                 <section id="total-reviews">
                   <FontAwesomeIcon
                     icon={["far", "comment-alt"]}
                     className="stats-icon"
                   />
-                  <span>451 Reviews</span>
+                  <span>{reviewCount} Reviews</span>
                 </section>
                 <section id="price-range">
                   <FontAwesomeIcon
                     icon={["far", "money-bill-alt"]}
                     className="cash-icon"
                   />
-                  <span>{this.getPrice(restaurant.price_range)}</span>
+                  <span>{getPrice(restaurant.price_range)}</span>
                 </section>
                 <section id="cuisines-type">
                   <FontAwesomeIcon icon="utensils" className="cuisines-icon" />
-                  <span>American</span>
+                  <span>{restaurant.cuisines}</span>
                 </section>
               </div>
               <div id="restaurant-overview">
-                The second-ever P.J.'s, overlooking the Hudson River in the
-                Financial District since 2006. Serving up fresh food, frosty
-                drinks and good, old-fashioned conversation.
+                {restaurant.description}
               </div>
               <div id="gallery-div">
                 <h2 className="display-subheader" id="photos-section">
@@ -154,26 +150,13 @@ class RestaurantShow extends React.Component {
                 </h2>
               </div>
               <section>
-                <ReviewsIndex />
-                {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse dolorum, at quod eveniet ullam animi molestias natus cupiditate laudantium. Modi magni quam ratione id. Explicabo ipsum quis unde autem! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi vitae veritatis ipsam at similique ab officiis dolore. Repellat nostrum veniam corrupti quam, inventore facere laborum, dolorem unde perferendis tenetur praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti rerum ea adipisci, at voluptatibus necessitatibus officiis quod facere. Sequi earum natus harum cumque magni excepturi enim asperiores maiores consequatur. */}
+                <ReviewsIndex reviews={reviews} />
               </section>
             </div>
           </main>
           <aside className="right-content">
             <div>
-              <ReservationForm restaurant={this.props.restaurant} />
+              <ReservationForm restaurant={restaurant} />
             </div>
             <div className="right-details">
 

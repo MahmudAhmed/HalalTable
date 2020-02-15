@@ -18,17 +18,12 @@ class ReservationForm extends React.Component {
       date: min,
       time: ""  
     };
-    // // this.time = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-    // this.open_hour = "10:00 AM";
-    // this.close_hour = "11:00 PM"
-
-    
   }
 
   handleChange(field){
     // debugger
     return e => {
-      debugger
+      // debugger
       this.setState({[field]: e.target.value})
     }
   }
@@ -44,7 +39,7 @@ class ReservationForm extends React.Component {
     if (openTime > closeTime) closeTime.setDate(closeTime.getDate() + 1);
     let utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
     const restaurantHours = [];
-    debugger
+    // debugger
     while (true){
 
       if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
@@ -52,7 +47,7 @@ class ReservationForm extends React.Component {
       utcOpenTime.setHours(utcOpenTime.getHours() + 1);
     };
 
-    debugger
+    // debugger
     const partySize = Array(20).fill().map((_, i) => <option key={i+1} id="select-option" value={`${i+1}`}>{i+1}</option>);
     const timeSlots = restaurantHours.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true })}</option>)
     return (

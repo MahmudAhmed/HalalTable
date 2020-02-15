@@ -5,10 +5,10 @@ import StarRatings from "react-star-ratings";
 class ReviewsIndex extends React.Component {
 
   render() {
-
+    const { reviews } = this.props;
     return (
       <div id="show-review">
-        <h2 className="display-subheader">What 175 People Are Saying</h2>
+        <h2 className="display-subheader">What XX People Are Saying</h2>
         <section className="overall-review-container">
           <section className="overall-review-left">
             <p>Overall ratings and reviews</p>
@@ -19,12 +19,12 @@ class ReviewsIndex extends React.Component {
 
             <div>
               <StarRatings
-                rating={4.403}
+                rating={4.5}
                 starDimension="20px"
                 starSpacing="1px"
                 starRatedColor="orange"
               />
-              <span>4.4 based on recent ratings</span>
+              <span>4.5 based on recent ratings</span>
             </div>
 
             <ul className="ratings-breakdown">
@@ -33,15 +33,15 @@ class ReviewsIndex extends React.Component {
                 <p>Food</p>
               </li>
               <li>
-                <span>4.3</span>
+                <span>4.1</span>
                 <p>Service</p>
               </li>
               <li>
-                <span>4.2</span>
-                <p>Ambience</p>
+                <span>4.1</span>
+                <p>Ambiance</p>
               </li>
               <li>
-                <span>3.9</span>
+                <span>4.1</span>
                 <p>Value</p>
               </li>
             </ul>
@@ -55,6 +55,7 @@ class ReviewsIndex extends React.Component {
                     className="bar-percentage"
                     style={{
                       width: "50%"
+                      // width: `${reviews.review_percentage[1]}`
                     }}
                   ></div>
                 </div>
@@ -107,10 +108,9 @@ class ReviewsIndex extends React.Component {
           </section>
         </section>
         <div>
-          <ReviewsIndexItem />
-          <ReviewsIndexItem />
-          <ReviewsIndexItem />
-          <ReviewsIndexItem />
+          <ul>
+              { reviews.map(review => <ReviewsIndexItem key={review.id} review={review}/>)}
+          </ul>
         </div>
       </div>
     );
