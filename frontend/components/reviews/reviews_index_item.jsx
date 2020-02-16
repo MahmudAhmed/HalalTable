@@ -8,7 +8,18 @@ class ReviewsIndexItem extends React.Component {
 
 
   render() {
-    const { review } = this.props;
+    const { review, currentUser, deleteReview } = this.props;
+    debugger
+    const displayButtons = currentUser === review.user_id ? ( 
+    <div className="edit-delete-review-btns">
+        <span id="secondary-link"
+          // onClick={handleBtnClick}
+        >Edit</span>
+        <span id="secondary-link"
+          onClick={() => deleteReview(review.restaurant_id, review.id)}
+        >Delete</span>
+    </div>
+    ) : "";
     return (
       <li className="reviews-index-item">
         <div className="left-side-reviews">
@@ -60,6 +71,7 @@ class ReviewsIndexItem extends React.Component {
             <p>
               {review.body}
             </p>
+            {displayButtons}
           </section>
         </div>
       </li>

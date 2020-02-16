@@ -1,11 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PhotoGallery from "./photo_gallery";
-import ReviewsIndex from "./reviews_index";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarRatings from "react-star-ratings";
 import ReservationForm from "./reservation_index";
 import MenuItems from "./menu";
+import ReviewsIndexContainer from "../reviews/review_index_container";
 
 const getPrice = (price_range) => {
   if (price_range === "$$") {
@@ -55,7 +55,6 @@ class RestaurantShow extends React.Component {
   render() {
     window.addEventListener("scroll", () => this.stickyHeader() )
     if (!this.props.restaurant) return null; 
-    // debugger
     const { restaurant, reviews, menu } = this.props;
     const reviewCount = Object.keys(reviews).length;
     // debugger
@@ -154,7 +153,7 @@ class RestaurantShow extends React.Component {
                 </ul>
               </div>
               <section>
-                <ReviewsIndex reviews={reviews} restaurant={restaurant} />
+                <ReviewsIndexContainer reviews={reviews} restaurant={restaurant} />
               </section>
             </div>
           </main>

@@ -3,11 +3,9 @@ import React from "react";
 class MenuItems extends React.Component {
 
   render() {
-    debugger
     const { item } = this.props;
     if (item === "") return null; 
     const [ dish, desciption, price ] = item.split("-->") 
-    debugger
     return (
       <li className="restaurant-menu-item">
         <div className="restaurant-menu-dish">

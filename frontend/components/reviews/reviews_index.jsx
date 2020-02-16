@@ -1,11 +1,22 @@
 import React from "react";
 import ReviewsIndexItem from "./reviews_index_item";
 import StarRatings from "react-star-ratings";
+import ReviewFormContainer from "./review_form_container";
 
 class ReviewsIndex extends React.Component {
 
+  handleBtnClick(e){
+    e.preventDefault();
+    const btn = document.getElementsByClassName("leave-a-review-button")[0]
+    const form = document.getElementsByClassName("leave-a-review-form-container")[0]
+    form.classList.toggle("is-open");
+    btn.classList.toggle("is-open");
+  }
+  
+
   render() {
-    const { reviews, restaurant } = this.props;
+    // debugger
+    const { reviews, restaurant, currentUser, deleteReview } = this.props;
     return (
       <div id="show-review">
         <h2 className="display-subheader">What {reviews.length} People Are Saying</h2>
@@ -106,9 +117,17 @@ class ReviewsIndex extends React.Component {
             </ul>
           </section>
         </section>
+        <div className="leave-a-review">
+          <div className="leave-a-review-form-container">
+            <ReviewFormContainer handleBtnClick={this.handleBtnClick}/>
+          </div>
+          <button 
+          className="btn leave-a-review-button is-open"
+          onClick={this.handleBtnClick}>Leave a Review</button>   
+        </div>
         <div>
           <ul>
-              { reviews.map(review => <ReviewsIndexItem key={review.id} review={review}/>)}
+              { reviews.map(review => <ReviewsIndexItem key={review.id} review={review} currentUser={currentUser} deleteReview={deleteReview}/>)}
           </ul>
         </div>
       </div>
