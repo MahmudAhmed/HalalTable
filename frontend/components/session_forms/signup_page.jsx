@@ -19,7 +19,13 @@ class SignUpPage extends React.Component {
     const { signup } = this.props;
     const user = Object.assign({}, this.state);
     $(".sidenav").removeClass("is-open");
-    signup(user);
+    signup(user).then( () => this.setState({
+      email: "",
+      password: "",
+      first_name: "",
+      last_name: "",
+      primary_location: ""
+    }));
   }
 
   handleChange(field) {
@@ -65,7 +71,6 @@ class SignUpPage extends React.Component {
             className="input"
             type="password"
             placeholder="Password *"
-            value={this.state.password}
             onChange={this.handleChange("password")}
             required
           />

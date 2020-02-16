@@ -16,11 +16,12 @@ class LoginSessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.login(user); 
-    this.setState({
-      email: "",
-      password: ""
-    })  
+    this.props.login(user).then(() => this.setState({
+        email: "",
+        password: ""
+      }) 
+    ); 
+     
   }
 
   handleChange(field) {
@@ -79,7 +80,6 @@ class LoginSessionForm extends React.Component {
             className="input"
             type="password"
             placeholder="Password"
-            value={this.state.password}
             onChange={this.handleChange("password")}
             required
           />

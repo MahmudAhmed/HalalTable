@@ -11,12 +11,24 @@ class SignInPage extends React.Component {
 
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   debugger
+  //   if (nextProps.location !== this.props.location) {
+  //     this.setState({ prevPath: this.props.location })
+  //   }
+  // }
+
   handleSubmit(e) {
     e.preventDefault();
-    const { login } = this.props;
+    const { login, history } = this.props;
+    let url = "/"
+    if (history.location.state) {
+      url = history.location.state.from.pathname
+    }
     const user = Object.assign({}, this.state);
     $(".sidenav").removeClass("is-open");
-    login(user);
+    login(user).then(() => history.push(url) )
+    
   }
 
   handleChange(field) {
@@ -27,7 +39,6 @@ class SignInPage extends React.Component {
 
 
   render() {
-    
     const { errors } = this.props;
     const displayErrors = errors.map((err, idx) => <h3 className="form-errors" key={idx}>{err}</h3>);
 
@@ -50,7 +61,6 @@ class SignInPage extends React.Component {
             className="input"
             type="password"
             placeholder="Password"
-            value={this.state.password}
             onChange={this.handleChange("password")}
             required
           />

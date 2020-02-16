@@ -3,9 +3,6 @@ import ReviewsIndex from "./reviews_index";
 import { updateReview, deleteReview } from "../../actions/reviews_action";
 
 
-
-
-
 const mSTP = ({session}) => ({
     currentUser: session.id,
 })

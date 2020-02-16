@@ -525,6 +525,7 @@ function (_React$Component) {
     key: "handleLogout",
     value: function handleLogout(e) {
       e.preventDefault();
+      debugger;
       this.props.logout();
       $(".sidenav").removeClass("is-open");
     }
@@ -1130,8 +1131,7 @@ function (_React$Component) {
         }));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "reservation-forms",
-        className: "sticky"
+        id: "reservation-forms"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "reservation-form-title"
       }, "Make a reservation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1195,14 +1195,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(_ref, ownProps) {
-  var entities = _ref.entities,
-      session = _ref.session;
+  var entities = _ref.entities;
   var tempMenu = {
     menu_items: {
       item_1: ""
     }
-  }; // debugger
-
+  };
   return {
     restaurant: entities.restaurants[ownProps.match.params.restaurantId],
     reviews: Object.values(entities.reviews),
@@ -1300,9 +1298,16 @@ function (_React$Component) {
       this.props.requestRestaurant(this.props.match.params.restaurantId);
     }
   }, {
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(newProps) {
+      if (newProps.match.params.restaurantId !== this.props.match.params.restaurantId) {
+        var id = newProps.match.params.restaurantId;
+        this.props.requestRestaurant(id);
+      }
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      // this.props.requestRestaurant(this.props.match.params.restaurantId);
       this.header = document.getElementById("nav-list");
       this.resForm = document.getElementById("reservation-forms");
 
@@ -1328,6 +1333,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      // debugger
       window.addEventListener("scroll", function () {
         return _this2.stickyHeader();
       });
@@ -1336,8 +1342,7 @@ function (_React$Component) {
           restaurant = _this$props.restaurant,
           reviews = _this$props.reviews,
           menu = _this$props.menu;
-      var reviewCount = Object.keys(reviews).length; // debugger
-
+      var reviewCount = Object.keys(reviews).length;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "show-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1731,6 +1736,118 @@ var mDTP = function mDTP(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/reviews/create_review_form_container.js":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/reviews/create_review_form_container.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_reviews_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/reviews_action */ "./frontend/actions/reviews_action.js");
+/* harmony import */ var _review_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_form */ "./frontend/components/reviews/review_form.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+var mSTP = function mSTP(_ref, ownProps) {
+  var errors = _ref.errors;
+  return {
+    restaurantId: ownProps.match.params.restaurantId,
+    errors: errors.reviews,
+    review: {
+      overall: 5,
+      food: 5,
+      service: 5,
+      ambience: 5,
+      body: ""
+    }
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    formAction: function formAction(formData, restaurantId) {
+      return dispatch(Object(_actions_reviews_action__WEBPACK_IMPORTED_MODULE_1__["createReview"])(formData, restaurantId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_review_form__WEBPACK_IMPORTED_MODULE_2__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/reviews/edit_review_form_container.js":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/reviews/edit_review_form_container.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_reviews_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/reviews_action */ "./frontend/actions/reviews_action.js");
+/* harmony import */ var _review_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_form */ "./frontend/components/reviews/review_form.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+var mSTP = function mSTP(_ref, ownProps) {
+  var entities = _ref.entities,
+      errors = _ref.errors;
+  return {
+    restaurantId: ownProps.match.params.restaurantId,
+    errors: errors.reviews,
+    review: entities.reviews[ownProps.match.params.id]
+  };
+};
+
+var mDTP = function mDTP(dispatch, ownProps) {
+  return {
+    formAction: function formAction(formData, restaurantId) {
+      return dispatch(Object(_actions_reviews_action__WEBPACK_IMPORTED_MODULE_1__["updateReview"])(formData, restaurantId, ownProps.match.params.id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_review_form__WEBPACK_IMPORTED_MODULE_2__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/reviews/review_button.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/reviews/review_button.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var ReviewButton = function ReviewButton(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn leave-a-review-button"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/restaurants/".concat(props.match.params.restaurantId, "/leave-a-review")
+  }, "Leave a Review"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ReviewButton));
+
+/***/ }),
+
 /***/ "./frontend/components/reviews/review_form.jsx":
 /*!*****************************************************!*\
   !*** ./frontend/components/reviews/review_form.jsx ***!
@@ -1744,6 +1861,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1767,6 +1885,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ReviewForm =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1778,13 +1897,7 @@ function (_React$Component) {
     _classCallCheck(this, ReviewForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ReviewForm).call(this, props));
-    _this.state = {
-      overall: 5,
-      food: 5,
-      service: 5,
-      ambience: 5,
-      body: ""
-    };
+    _this.state = props.review;
     _this.changeRating = _this.changeRating.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.changeRating = _this.changeRating.bind(_assertThisInitialized(_this));
@@ -1808,16 +1921,22 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.createReview(this.state, this.props.restaurantId).then(this.props.handleBtnClick(e));
+      var _this$props = this.props,
+          formAction = _this$props.formAction,
+          restaurantId = _this$props.restaurantId,
+          history = _this$props.history,
+          errors = _this$props.errors;
+      formAction(this.state, restaurantId).then(function () {
+        return errors.length === 0 ? history.push("/restaurants/".concat(restaurantId)) : "";
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          errors = _this$props.errors,
-          handleBtnClick = _this$props.handleBtnClick;
+      var errors = this.props.errors;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
+        onSubmit: this.handleSubmit,
+        className: "review-form"
       }, errors.map(function (err, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           key: idx,
@@ -1883,55 +2002,113 @@ function (_React$Component) {
         className: "btn",
         id: "review-form-btn"
       }, "Submit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "secondary-link",
-        onClick: handleBtnClick
-      }, "Cancel"));
+        id: "secondary-link"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/restaurants/".concat(this.props.match.params.restaurantId)
+      }, "Cancel")));
     }
   }]);
 
   return ReviewForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ReviewForm);
-
-/***/ }),
-
-/***/ "./frontend/components/reviews/review_form_container.js":
-/*!**************************************************************!*\
-  !*** ./frontend/components/reviews/review_form_container.js ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_reviews_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/reviews_action */ "./frontend/actions/reviews_action.js");
-/* harmony import */ var _review_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_form */ "./frontend/components/reviews/review_form.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-
-
-var mSTP = function mSTP(_ref, ownProps) {
-  var errors = _ref.errors;
-  // debugger
-  return {
-    restaurantId: ownProps.match.params.restaurantId,
-    errors: errors.reviews
-  };
-};
-
-var mDTP = function mDTP(dispatch) {
-  return {
-    createReview: function createReview(formData, restaurantId) {
-      return dispatch(Object(_actions_reviews_action__WEBPACK_IMPORTED_MODULE_1__["createReview"])(formData, restaurantId));
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_review_form__WEBPACK_IMPORTED_MODULE_2__["default"])));
+/* harmony default export */ __webpack_exports__["default"] = (ReviewForm); // import React from "react";
+// import StarRatings from "react-star-ratings";
+// import { Route, Link, withRouter } from "react-router-dom";
+// class ReviewForm extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = { overall: 5, food: 5, service: 5, ambience: 5, body: "" };
+//     this.changeRating = this.changeRating.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this)
+//     this.changeRating = this.changeRating.bind(this)
+//     this.handleTextarea = this.handleTextarea.bind(this)
+//   }
+//   changeRating(newRating, name) {
+//     this.setState({
+//       [name]: newRating
+//     });
+//   }
+//   handleTextarea(e) {
+//     this.setState({
+//       body: e.target.value
+//     })
+//   }
+//   handleSubmit(e) {
+//     e.preventDefault();
+//     this.props.createReview(this.state, this.props.restaurantId).then(this.props.handleBtnClick(e))
+//   }
+//   render() {
+//     const { errors, handleBtnClick } = this.props
+//     return (
+//       <form onSubmit={this.handleSubmit} >
+//         {errors.map((err, idx) => <h2 key={idx} className="review-errors" >{err}</h2>)}
+//         <div className="review-form-option">
+//           <label id="review-form-label">Overall</label>
+//           <StarRatings
+//             rating={this.state.overall}
+//             changeRating={this.changeRating}
+//             starDimension="20px"
+//             starSpacing="1px"
+//             starRatedColor="red"
+//             name='overall'
+//           />
+//         </div>
+//         <div className="review-form-option">
+//           <label id="review-form-label">Food</label>
+//           <StarRatings
+//             rating={this.state.food}
+//             changeRating={this.changeRating}
+//             starDimension="20px"
+//             starSpacing="1px"
+//             starRatedColor="red"
+//             name='food'
+//           />
+//         </div>
+//         <div className="review-form-option">
+//           <label id="review-form-label">Service</label>
+//           <StarRatings
+//             rating={this.state.service}
+//             changeRating={this.changeRating}
+//             starDimension="20px"
+//             starSpacing="1px"
+//             starRatedColor="red"
+//             name='service'
+//           />
+//         </div>
+//         <div className="review-form-option">
+//           <label id="review-form-label">Ambience</label>
+//           <StarRatings
+//             rating={this.state.ambience}
+//             changeRating={this.changeRating}
+//             starDimension="20px"
+//             starSpacing="1px"
+//             starRatedColor="red"
+//             name='ambience'
+//           />
+//         </div>
+//         <div className="review-form-option">
+//           <label id="review-form-label">How was your experience?</label>
+//           <br />
+//           <textarea
+//             className="textarea-form-input"
+//             defaultValue={this.state.body}
+//             onChange={this.handleTextarea}
+//             cols="70" rows="10"
+//             placeholder="Would you recommend to our friends and family?"
+//             required></textarea>
+//         </div>
+//         <button className="btn"
+//           id="review-form-btn"
+//         >Submit</button>
+//         <span id="secondary-link"
+//           onClick={handleBtnClick}
+//         >Cancel</span>
+//       </form>
+//     );
+//   }
+// }
+// export default ReviewForm;
 
 /***/ }),
 
@@ -1987,7 +2164,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reviews_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reviews_index_item */ "./frontend/components/reviews/reviews_index_item.jsx");
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _review_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./review_form_container */ "./frontend/components/reviews/review_form_container.js");
+/* harmony import */ var _create_review_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./create_review_form_container */ "./frontend/components/reviews/create_review_form_container.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _review_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./review_button */ "./frontend/components/reviews/review_button.jsx");
+/* harmony import */ var _edit_review_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./edit_review_form_container */ "./frontend/components/reviews/edit_review_form_container.js");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/route_util */ "./frontend/util/route_util.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2011,6 +2192,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
+
+
 var ReviewsIndex =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2023,15 +2208,6 @@ function (_React$Component) {
   }
 
   _createClass(ReviewsIndex, [{
-    key: "handleBtnClick",
-    value: function handleBtnClick(e) {
-      e.preventDefault();
-      var btn = document.getElementsByClassName("leave-a-review-button")[0];
-      var form = document.getElementsByClassName("leave-a-review-form-container")[0];
-      form.classList.toggle("is-open");
-      btn.classList.toggle("is-open");
-    }
-  }, {
     key: "render",
     value: function render() {
       // debugger
@@ -2120,15 +2296,21 @@ function (_React$Component) {
           width: "".concat(restaurant.total_ratings[1])
         }
       })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "leave-a-review"
+        className: "leave-a-review",
+        id: "review-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "leave-a-review-form-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        handleBtnClick: this.handleBtnClick
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn leave-a-review-button is-open",
-        onClick: this.handleBtnClick
-      }, "Leave a Review")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, reviews.map(function (review) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectRoute"], {
+        path: "/restaurants/:restaurantId/leave-a-review",
+        component: _create_review_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectRoute"], {
+        path: "/restaurants/:restaurantId/reviews/:id",
+        component: _edit_review_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+        exact: true,
+        path: "/restaurants/:restaurantId",
+        component: _review_button__WEBPACK_IMPORTED_MODULE_5__["default"]
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, reviews.map(function (review) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: review.id,
           review: review,
@@ -2142,7 +2324,146 @@ function (_React$Component) {
   return ReviewsIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ReviewsIndex);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(ReviewsIndex)); // import React from "react";
+// import ReviewsIndexItem from "./reviews_index_item";
+// import StarRatings from "react-star-ratings";
+// import ReviewFormContainer from "./review_form_container";
+// import { Route } from "react-router-dom";
+// class ReviewsIndex extends React.Component {
+//   // handleBtnClick(e){
+//   //   e.preventDefault();
+//   //   const btn = document.getElementsByClassName("leave-a-review-button")[0]
+//   //   const form = document.getElementsByClassName("leave-a-review-form-container")[0]
+//   //   form.classList.toggle("is-open");
+//   //   btn.classList.toggle("is-open");
+//   // }
+//   render() {
+//     // debugger
+//     const { reviews, restaurant, currentUser, deleteReview } = this.props;
+//     return (
+//       <div id="show-review">
+//         <h2 className="display-subheader">What {reviews.length} People Are Saying</h2>
+//         <section className="overall-review-container">
+//           <section className="overall-review-left">
+//             <p>Overall ratings and reviews</p>
+//             <p>
+//               Your trust is our top concern, so businesses can't pay to alter or
+//               remove their reviews.
+//             </p>
+//             <div>
+//               <StarRatings
+//                 rating={restaurant.overall_ratings}
+//                 starDimension="20px"
+//                 starSpacing="1px"
+//                 starRatedColor="orange"
+//               />
+//               <span>{restaurant.overall_ratings.toFixed(1)} based on recent ratings</span>
+//             </div>
+//             <ul className="ratings-breakdown">
+//               <li>
+//                 <span>{restaurant.overall_ratings.toFixed(1)}</span>
+//                 <p>Overall</p>
+//               </li>
+//               <li>
+//                 <span>{restaurant.overall_food_ratings.toFixed(1)}</span>
+//                 <p>Food</p>
+//               </li>
+//               <li>
+//                 <span>{restaurant.overall_service_ratings.toFixed(1)}</span>
+//                 <p>Service</p>
+//               </li>
+//               <li>
+//                 <span>{restaurant.overall_ambience_ratings.toFixed(1)}</span>
+//                 <p>Ambience</p>
+//               </li>
+//             </ul>
+//           </section>
+//           <section className="overall-review-right">
+//             <ul className="review-bars">
+//               <li id="bar">
+//                 <span className="bar-label">5</span>
+//                 <div className="back-bar" title="100 reviews">
+//                   <div
+//                     className="bar-percentage"
+//                     style={{
+//                       width: `${restaurant.total_ratings[5]}`
+//                     }}
+//                   ></div>
+//                 </div>
+//               </li>
+//               <li id="bar">
+//                 <span className="bar-label">4</span>
+//                 <div className="back-bar" title="65 reviews">
+//                   <div
+//                     className="bar-percentage"
+//                     style={{
+//                       width: `${restaurant.total_ratings[4]}`
+//                     }}
+//                   ></div>
+//                 </div>
+//               </li>
+//               <li id="bar">
+//                 <span className="bar-label">3</span>
+//                 <div className="back-bar" title="40 reviews">
+//                   <div
+//                     className="bar-percentage"
+//                     style={{
+//                       width: `${restaurant.total_ratings[3]}`
+//                     }}
+//                   ></div>
+//                 </div>
+//               </li>
+//               <li id="bar">
+//                 <span className="bar-label">2</span>
+//                 <div className="back-bar" title="20 reviews">
+//                   <div
+//                     className="bar-percentage"
+//                     style={{
+//                       width: `${restaurant.total_ratings[2]}`
+//                     }}
+//                   ></div>
+//                 </div>
+//               </li>
+//               <li id="bar">
+//                 <span className="bar-label">1</span>
+//                 <div className="back-bar" title="10 reviews">
+//                   <div
+//                     className="bar-percentage"
+//                     style={{
+//                       width: `${restaurant.total_ratings[1]}`
+//                     }}
+//                   ></div>
+//                 </div>
+//               </li>
+//             </ul>
+//           </section>
+//         </section>
+//         <div className="leave-a-review" id="review-form">
+//           <div className="leave-a-review-form-container">
+//             <Route path="/restaurants/:restaurantId/leave-a-review" component={ReviewFormContainer} />
+//             {/* <ReviewFormContainer handleBtnClick={this.handleBtnClick}/> */}
+//           </div>
+//           <button
+//             className="btn leave-a-review-button is-open"
+//             onClick={this.handleBtnClick}>Leave a Review</button>
+//         </div>
+//         <div>
+//           <ul>
+//             {reviews.map(review =>
+//               <ReviewsIndexItem
+//                 key={review.id}
+//                 review={review}
+//                 currentUser={currentUser}
+//                 deleteReview={deleteReview}
+//                 handleBtnClick={this.handleBtnClick}
+//               />)}
+//           </ul>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+// export default ReviewsIndex;
 
 /***/ }),
 
@@ -2160,6 +2481,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-anchor-link-smooth-scroll */ "./node_modules/react-anchor-link-smooth-scroll/lib/anchor-link.js");
+/* harmony import */ var react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2182,6 +2506,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var ReviewsIndexItem =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2199,14 +2525,18 @@ function (_React$Component) {
       var _this$props = this.props,
           review = _this$props.review,
           currentUser = _this$props.currentUser,
-          deleteReview = _this$props.deleteReview;
-      debugger;
+          deleteReview = _this$props.deleteReview,
+          match = _this$props.match;
       var displayButtons = currentUser === review.user_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-delete-review-btns"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        href: "#show-review",
+        offset: "45"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "secondary-link" // onClick={handleBtnClick}
-
-      }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "secondary-link"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+        to: "/restaurants/".concat(match.params.restaurantId, "/reviews/").concat(review.id)
+      }, "Edit"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "secondary-link",
         onClick: function onClick() {
           return deleteReview(review.restaurant_id, review.id);
@@ -2254,7 +2584,7 @@ function (_React$Component) {
   return ReviewsIndexItem;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ReviewsIndexItem);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(ReviewsIndexItem));
 
 /***/ }),
 
@@ -2389,21 +2719,24 @@ function (_React$Component) {
   _createClass(LoginSessionForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.login(user);
-      this.setState({
-        email: "",
-        password: ""
+      this.props.login(user).then(function () {
+        return _this2.setState({
+          email: "",
+          password: ""
+        });
       });
     }
   }, {
     key: "handleChange",
     value: function handleChange(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, field, e.target.value));
+        _this3.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
@@ -2458,7 +2791,6 @@ function (_React$Component) {
         className: "input",
         type: "password",
         placeholder: "Password",
-        value: this.state.password,
         onChange: this.handleChange("password"),
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -2530,16 +2862,32 @@ function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } // componentWillReceiveProps(nextProps) {
+  //   debugger
+  //   if (nextProps.location !== this.props.location) {
+  //     this.setState({ prevPath: this.props.location })
+  //   }
+  // }
+
 
   _createClass(SignInPage, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var login = this.props.login;
+      var _this$props = this.props,
+          login = _this$props.login,
+          history = _this$props.history;
+      var url = "/";
+
+      if (history.location.state) {
+        url = history.location.state.from.pathname;
+      }
+
       var user = Object.assign({}, this.state);
       $(".sidenav").removeClass("is-open");
-      login(user);
+      login(user).then(function () {
+        return history.push(url);
+      });
     }
   }, {
     key: "handleChange",
@@ -2576,7 +2924,6 @@ function (_React$Component) {
         className: "input",
         type: "password",
         placeholder: "Password",
-        value: this.state.password,
         onChange: this.handleChange("password"),
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -2698,19 +3045,29 @@ function (_React$Component) {
   _createClass(SignUpPage, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var signup = this.props.signup;
       var user = Object.assign({}, this.state);
       $(".sidenav").removeClass("is-open");
-      signup(user);
+      signup(user).then(function () {
+        return _this2.setState({
+          email: "",
+          password: "",
+          first_name: "",
+          last_name: "",
+          primary_location: ""
+        });
+      });
     }
   }, {
     key: "handleChange",
     value: function handleChange(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, field, e.target.value));
+        _this3.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
@@ -2753,7 +3110,6 @@ function (_React$Component) {
         className: "input",
         type: "password",
         placeholder: "Password *",
-        value: this.state.password,
         onChange: this.handleChange("password"),
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
@@ -2853,24 +3209,27 @@ function (_React$Component) {
   _createClass(SignUpSessionForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.signup(user);
-      this.state = {
-        email: "",
-        password: "",
-        first_name: "",
-        last_name: "",
-        primary_location: ""
-      };
+      this.props.signup(user).then(function () {
+        return _this2.setState({
+          email: "",
+          password: "",
+          first_name: "",
+          last_name: "",
+          primary_location: ""
+        });
+      });
     }
   }, {
     key: "handleChange",
     value: function handleChange(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, field, e.target.value));
+        _this3.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
@@ -2942,7 +3301,6 @@ function (_React$Component) {
         className: "input",
         type: "password",
         placeholder: "Password *",
-        value: this.state.password,
         onChange: this.handleChange("password"),
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
@@ -3522,13 +3880,19 @@ var Protect = function Protect(_ref2) {
   var Component = _ref2.component,
       path = _ref2.path,
       loggedIn = _ref2.loggedIn,
-      exact = _ref2.exact;
+      exact = _ref2.exact,
+      location = _ref2.location;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: path,
     exact: exact,
     render: function render(props) {
       return !loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-        to: "/login"
+        to: {
+          pathname: "/login",
+          state: {
+            from: location
+          }
+        }
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
     }
   });

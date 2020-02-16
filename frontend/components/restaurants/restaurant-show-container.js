@@ -5,9 +5,9 @@ import {
   requestRestaurant
 } from "../../actions/restaurant_action";
 
-const mSTP = ({ entities, session }, ownProps) => {
+const mSTP = ({ entities }, ownProps) => {
   const tempMenu = { menu_items: {item_1: ""} } 
-  // debugger
+
   return {
     restaurant: entities.restaurants[ownProps.match.params.restaurantId],
     reviews: Object.values(entities.reviews),

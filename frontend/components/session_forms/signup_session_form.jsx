@@ -19,14 +19,14 @@ class SignUpSessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.signup(user);
-    this.state = {
+    this.props.signup(user).then(() => this.setState({
       email: "",
       password: "",
       first_name: "",
       last_name: "",
       primary_location: ""
-    };
+    }));
+    
   }
 
   handleChange(field) {
@@ -104,7 +104,6 @@ class SignUpSessionForm extends React.Component {
             className="input"
             type="password"
             placeholder="Password *"
-            value={this.state.password}
             onChange={this.handleChange("password")}
             required
           />

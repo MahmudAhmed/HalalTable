@@ -51,7 +51,7 @@ class ReservationForm extends React.Component {
     const partySize = Array(20).fill().map((_, i) => <option key={i+1} id="select-option" value={`${i+1}`}>{i+1}</option>);
     const timeSlots = restaurantHours.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true })}</option>)
     return (
-      <div id="reservation-forms" className="sticky">
+      <div id="reservation-forms">
         <h3 className="reservation-form-title">Make a reservation</h3>
 
         <div className="reservation-inputs">  

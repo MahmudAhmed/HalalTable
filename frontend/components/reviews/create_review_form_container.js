@@ -7,16 +7,16 @@ import { withRouter } from "react-router-dom";
 
 
 const mSTP = ({errors}, ownProps) => {
-  // debugger
   return {
     restaurantId: ownProps.match.params.restaurantId,
     errors: errors.reviews,
+    review: { overall: 5, food: 5, service: 5, ambience: 5, body: "" }
   }
 };
 
 
 const mDTP = (dispatch) => ({
-  createReview: (formData, restaurantId) => dispatch(createReview(formData, restaurantId)),
+  formAction: (formData, restaurantId) => dispatch(createReview(formData, restaurantId)),
 });
 
 export default withRouter(connect(mSTP, mDTP)(ReviewForm));

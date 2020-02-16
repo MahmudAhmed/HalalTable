@@ -28,15 +28,20 @@ class RestaurantShow extends React.Component {
   componentDidMount() {
     this.props.requestRestaurant(this.props.match.params.restaurantId);
   }
-  
+
+  componentWillReceiveProps(newProps){
+    if (newProps.match.params.restaurantId !== this.props.match.params.restaurantId) {
+      const id = newProps.match.params.restaurantId
+      this.props.requestRestaurant(id);
+    }
+  }
+
   componentDidUpdate() {
-    // this.props.requestRestaurant(this.props.match.params.restaurantId);
     this.header = document.getElementById("nav-list");
     this.resForm = document.getElementById("reservation-forms");
     if (this.header) {
       this.sticky = this.header.offsetTop
     }
-   
   }
   
   
@@ -53,11 +58,11 @@ class RestaurantShow extends React.Component {
   }
 
   render() {
+    // debugger
     window.addEventListener("scroll", () => this.stickyHeader() )
     if (!this.props.restaurant) return null; 
     const { restaurant, reviews, menu } = this.props;
     const reviewCount = Object.keys(reviews).length;
-    // debugger
     return (
       <section className="show-page">
         <div id="show-page-splash">
@@ -153,6 +158,7 @@ class RestaurantShow extends React.Component {
                 </ul>
               </div>
               <section>
+
                 <ReviewsIndexContainer reviews={reviews} restaurant={restaurant} />
               </section>
             </div>

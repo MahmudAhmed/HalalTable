@@ -1,6 +1,10 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Link, withRouter } from "react-router-dom";
+
+
 
 class ReviewsIndexItem extends React.Component {
 
@@ -8,13 +12,14 @@ class ReviewsIndexItem extends React.Component {
 
 
   render() {
-    const { review, currentUser, deleteReview } = this.props;
-    debugger
+    const { review, currentUser, deleteReview, match } = this.props;
     const displayButtons = currentUser === review.user_id ? ( 
     <div className="edit-delete-review-btns">
-        <span id="secondary-link"
-          // onClick={handleBtnClick}
-        >Edit</span>
+        
+        <AnchorLink href="#show-review" offset="45">
+          <span id="secondary-link"
+          ><Link to={`/restaurants/${match.params.restaurantId}/reviews/${review.id}`}>Edit</Link></span>
+        </AnchorLink>
         <span id="secondary-link"
           onClick={() => deleteReview(review.restaurant_id, review.id)}
         >Delete</span>
@@ -81,4 +86,4 @@ class ReviewsIndexItem extends React.Component {
 }
 
 
-export default ReviewsIndexItem;
+export default withRouter(ReviewsIndexItem);
