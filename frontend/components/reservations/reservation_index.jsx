@@ -40,12 +40,13 @@ class ReservationForm extends React.Component {
     
     this.handleChange = this.handleChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
+    this.handleTimeClick = this.handleTimeClick.bind(this);
     this.availableTime = [];
   }
 
   handleChange(field){
     return e => {
-      this.setState({[field]: new Date(e.target.value)})
+      this.setState({[field]: (field === "time" ? new Date(e.target.value) : e.target.value)})
     }
   }
 
@@ -76,9 +77,16 @@ class ReservationForm extends React.Component {
     })
     document.querySelector(".available-time-slots").classList.add("is-open")
   }
+
+  handleTimeClick(e){
+    e.preventDefault();
+    const { createReservation, currentUserId } = this.props;
+    const formData = { party_size: this.state.partySize, date: this.state.date, time: this.state.time, restaurant_id: this.props.restaurant.id}
+    createReservation(formData, currentUserId)
+  }
   
   render() {
-    debugger
+    // debugger
     const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
 
     const timeSlots = this.restaurantHours.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</option>)
@@ -112,7 +120,14 @@ class ReservationForm extends React.Component {
           <section className="available-time-slots">
             <h2>Select a time:</h2>
             <ul className="time-slots">
-              {this.state.slots ? this.state.slots.map((time, idx) => <li key={idx} className="time-slot-btn">{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</li>) : ""}
+              {
+                this.state.slots.map((time, idx) => 
+                <li key={idx} 
+                onClick={this.handleTimeClick}
+                className="time-slot-btn">
+                {time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+                </li>)
+              }
             </ul>
           </section>
         </div> 

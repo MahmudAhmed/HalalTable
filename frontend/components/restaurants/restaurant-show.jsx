@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PhotoGallery from "./photo_gallery";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarRatings from "react-star-ratings";
-import ReservationForm from "../reservations/reservation_index";
+import ReservationFormContainer from "../reservations/reservation_container";
+
 import MenuItems from "./menu";
 import ReviewsIndexContainer from "../reviews/review_index_container";
 
@@ -162,7 +163,7 @@ class RestaurantShow extends React.Component {
           </main>
           <aside className="right-content">
             <div>
-              <ReservationForm restaurant={restaurant} />
+              <ReservationFormContainer restaurant={restaurant} />
             </div>
             <div className="restaurant-right-details">
               <div id="sidebar-map">

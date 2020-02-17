@@ -784,6 +784,41 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/reservations/reservation_container.js":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/reservations/reservation_container.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reservation_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reservation_index */ "./frontend/components/reservations/reservation_index.jsx");
+/* harmony import */ var _actions_reservations_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/reservations_action */ "./frontend/actions/reservations_action.js");
+
+
+
+
+var mSTP = function mSTP(_ref) {
+  var session = _ref.session;
+  return {
+    currentUserId: session.id
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    createReservation: function createReservation() {
+      return dispatch(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_2__["createReservation"].apply(void 0, arguments));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_reservation_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/reservations/reservation_index.jsx":
 /*!****************************************************************!*\
   !*** ./frontend/components/reservations/reservation_index.jsx ***!
@@ -868,6 +903,7 @@ function (_React$Component) {
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleBtnClick = _this.handleBtnClick.bind(_assertThisInitialized(_this));
+    _this.handleTimeClick = _this.handleTimeClick.bind(_assertThisInitialized(_this));
     _this.availableTime = [];
     return _this;
   }
@@ -878,7 +914,7 @@ function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, field, new Date(e.target.value)));
+        _this2.setState(_defineProperty({}, field, field === "time" ? new Date(e.target.value) : e.target.value));
       };
     }
   }, {
@@ -914,9 +950,26 @@ function (_React$Component) {
       document.querySelector(".available-time-slots").classList.add("is-open");
     }
   }, {
+    key: "handleTimeClick",
+    value: function handleTimeClick(e) {
+      e.preventDefault();
+      var _this$props = this.props,
+          createReservation = _this$props.createReservation,
+          currentUserId = _this$props.currentUserId;
+      var formData = {
+        party_size: this.state.partySize,
+        date: this.state.date,
+        time: this.state.time,
+        restaurant_id: this.props.restaurant.id
+      };
+      createReservation(formData, currentUserId);
+    }
+  }, {
     key: "render",
     value: function render() {
-      debugger;
+      var _this4 = this;
+
+      // debugger
       var partySize = Array(20).fill().map(function (_, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: i + 1,
@@ -974,16 +1027,17 @@ function (_React$Component) {
         className: "available-time-slots"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Select a time:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "time-slots"
-      }, this.state.slots ? this.state.slots.map(function (time, idx) {
+      }, this.state.slots.map(function (time, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx,
+          onClick: _this4.handleTimeClick,
           className: "time-slot-btn"
         }, time.toLocaleString('en-US', {
           hour: 'numeric',
           minute: 'numeric',
           hour12: true
         }));
-      }) : ""))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "reserve-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn",
@@ -1378,7 +1432,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _reservations_reservation_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reservations/reservation_index */ "./frontend/components/reservations/reservation_index.jsx");
+/* harmony import */ var _reservations_reservation_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reservations/reservation_container */ "./frontend/components/reservations/reservation_container.js");
 /* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./menu */ "./frontend/components/restaurants/menu.jsx");
 /* harmony import */ var _reviews_review_index_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../reviews/review_index_container */ "./frontend/components/reviews/review_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1566,7 +1620,7 @@ function (_React$Component) {
         restaurant: restaurant
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "right-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservations_reservation_index__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservations_reservation_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
         restaurant: restaurant
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-right-details"

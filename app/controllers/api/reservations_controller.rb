@@ -15,7 +15,7 @@ class Api::ReservationsController < ApplicationController
     @reservation.user_id = current_user.id
 
     if @reservation.save 
-      render :show
+      render json: @reservation
     else
       render json: @reservation.errors.full_messages, status: 422
     end
@@ -44,7 +44,7 @@ class Api::ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:party_size, :date, :time)
+    params.require(:reservation).permit(:party_size, :date, :time, :restaurant_id)
   end
 
 end
