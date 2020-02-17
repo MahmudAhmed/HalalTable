@@ -119,7 +119,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 #reserve-btn{
-  padding-top: 10px;
   width: 90%;
   margin: auto !important;
 }
@@ -128,3 +127,37 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-bottom: 1.5px solid #D1323D;
 }
 
+.available-time-slots{
+  display: none;
+  box-sizing: border-box;
+}
+
+.available-time-slots > h2 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.time-slots{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  white-space: nowrap;
+  // flex-wrap: wrap;
+}
+
+.time-slot-btn{
+  background-color: #da3743;
+  cursor: pointer;
+  border-radius: 2px;
+  text-align: center;
+  color: #fff;
+  padding: 8px 15px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.time-slot-btn:hover{
+  background-color: #B8222E;
+
+}

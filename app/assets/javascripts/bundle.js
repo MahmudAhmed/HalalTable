@@ -685,6 +685,220 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/reservations/reservation_index.jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/reservations/reservation_index.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+var now = new Date();
+var currYear = now.getFullYear();
+var currMonth = now.getMonth();
+var currDay = now.getDate();
+var min = new Date(currYear, currMonth, currDay).toISOString().slice(0, 10);
+
+var getRestaurantHours = function getRestaurantHours(open, close) {
+  var openTime = new Date(open);
+  var utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
+  var closeTime = new Date(close);
+  var utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
+  if (openTime > closeTime) utcCloseTime.setDate(utcCloseTime.getDate() + 1);
+  var restaurantHours = [];
+
+  while (true) {
+    if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
+    restaurantHours.push(new Date(utcOpenTime.getTime()));
+    utcOpenTime.setHours(utcOpenTime.getHours() + 1);
+  }
+
+  ;
+  return restaurantHours;
+};
+
+var ReservationForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ReservationForm, _React$Component);
+
+  function ReservationForm(props) {
+    var _this;
+
+    _classCallCheck(this, ReservationForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ReservationForm).call(this, props));
+    _this.restaurantHours = getRestaurantHours(props.restaurant.open_time, props.restaurant.close_time);
+    _this.state = {
+      partySize: 1,
+      date: min,
+      time: _this.restaurantHours[0],
+      slots: [_this.restaurantHours[0], _this.restaurantHours[1], _this.restaurantHours[2]]
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleBtnClick = _this.handleBtnClick.bind(_assertThisInitialized(_this));
+    _this.availableTime = [];
+    return _this;
+  }
+
+  _createClass(ReservationForm, [{
+    key: "handleChange",
+    value: function handleChange(field) {
+      var _this2 = this;
+
+      debugger;
+      return function (e) {
+        _this2.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
+    key: "handleBtnClick",
+    value: function handleBtnClick(e) {
+      debugger;
+      e.preventDefault(); // this.setState({
+      //   slots: []
+      // })
+
+      var idx = this.restaurantHours.indexOf(this.state.time);
+
+      if (idx === 0) {
+        this.availableTime[0] = this.restaurantHours[idx];
+        this.availableTime[1] = this.restaurantHours[idx + 1];
+        this.availableTime[2] = this.restaurantHours[idx + 2];
+      } else if (idx === this.restaurantHours.length - 1) {
+        this.availableTime[0] = this.restaurantHours[idx - 2];
+        this.availableTime[1] = this.restaurantHours[idx - 1];
+        this.availableTime[2] = this.restaurantHours[idx];
+      } else {
+        this.availableTime[0] = this.restaurantHours[idx - 1];
+        this.availableTime[1] = this.restaurantHours[idx];
+        this.availableTime[2] = this.restaurantHours[idx + 1];
+      }
+
+      debugger;
+      this.setState({
+        slots: _toConsumableArray(this.availableTime)
+      });
+      document.querySelector(".available-time-slots").classList.add("is-open");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      debugger;
+      var partySize = Array(20).fill().map(function (_, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i + 1,
+          id: "select-option",
+          value: "".concat(i + 1)
+        }, i + 1);
+      });
+      var timeSlots = this.restaurantHours.map(function (time, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i,
+          id: "select-option",
+          value: time
+        }, time.toLocaleString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "reservation-forms"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "reservation-form-title"
+      }, "Make a reservation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-inputs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-form-party-size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "reservation-labels"
+      }, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "select-party-size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "reservation-size",
+        onChange: this.handleChange("partySize")
+      }, partySize))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "date-time-reservation"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choose-date"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "reservation-labels"
+      }, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "reservation-date"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "date",
+        min: min,
+        value: this.state.date,
+        onChange: this.handleChange("date")
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choose-time"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "reservation-labels"
+      }, "Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "reservation-time",
+        onChange: this.handleChange("time")
+      }, timeSlots))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "available-time-slots"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Select a time:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "time-slots"
+      }, this.state.slots ? this.state.slots.map(function (time, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: idx,
+          className: "time-slot-btn"
+        }, time.toLocaleString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }));
+      }) : ""))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "reserve-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn",
+        onClick: this.handleBtnClick
+      }, "Find a Table")));
+    }
+  }]);
+
+  return ReservationForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ReservationForm);
+
+/***/ }),
+
 /***/ "./frontend/components/restaurants/menu.jsx":
 /*!**************************************************!*\
   !*** ./frontend/components/restaurants/menu.jsx ***!
@@ -1005,160 +1219,6 @@ var photos = [{
 
 /***/ }),
 
-/***/ "./frontend/components/restaurants/reservation_index.jsx":
-/*!***************************************************************!*\
-  !*** ./frontend/components/restaurants/reservation_index.jsx ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-var now = new Date();
-var currYear = now.getFullYear();
-var currMonth = now.getMonth();
-var currDay = now.getDate();
-var min = new Date(currYear, currMonth, currDay).toISOString().slice(0, 10);
-
-var ReservationForm =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(ReservationForm, _React$Component);
-
-  function ReservationForm(props) {
-    var _this;
-
-    _classCallCheck(this, ReservationForm);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ReservationForm).call(this, props));
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.state = {
-      partySize: 1,
-      date: min,
-      time: ""
-    };
-    return _this;
-  }
-
-  _createClass(ReservationForm, [{
-    key: "handleChange",
-    value: function handleChange(field) {
-      var _this2 = this;
-
-      // debugger
-      return function (e) {
-        // debugger
-        _this2.setState(_defineProperty({}, field, e.target.value));
-      };
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var restaurant = this.props.restaurant;
-      var openTime = new Date(restaurant.open_time);
-      var utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
-      var closeTime = new Date(restaurant.close_time);
-      if (openTime > closeTime) closeTime.setDate(closeTime.getDate() + 1);
-      var utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
-      var restaurantHours = []; // debugger
-
-      while (true) {
-        if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
-        restaurantHours.push(new Date(utcOpenTime.getTime()));
-        utcOpenTime.setHours(utcOpenTime.getHours() + 1);
-      }
-
-      ; // debugger
-
-      var partySize = Array(20).fill().map(function (_, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: i + 1,
-          id: "select-option",
-          value: "".concat(i + 1)
-        }, i + 1);
-      });
-      var timeSlots = restaurantHours.map(function (time, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: i,
-          id: "select-option",
-          value: time
-        }, time.toLocaleString('en-US', {
-          hour: 'numeric',
-          minute: 'numeric',
-          hour12: true
-        }));
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "reservation-forms"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "reservation-form-title"
-      }, "Make a reservation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "reservation-inputs"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "reservation-form-party-size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "reservation-labels"
-      }, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "select-party-size"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "reservation-size"
-      }, partySize))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "date-time-reservation"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "choose-date"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "reservation-labels"
-      }, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "reservation-date"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "date",
-        min: min,
-        value: this.state.date,
-        onChange: this.handleChange("date")
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "choose-time"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "reservation-labels"
-      }, "Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "reservation-time"
-      }, timeSlots)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "reserve-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn"
-      }, "Find a Table")));
-    }
-  }]);
-
-  return ReservationForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (ReservationForm);
-
-/***/ }),
-
 /***/ "./frontend/components/restaurants/restaurant-show-container.js":
 /*!**********************************************************************!*\
   !*** ./frontend/components/restaurants/restaurant-show-container.js ***!
@@ -1218,7 +1278,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _reservation_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./reservation_index */ "./frontend/components/restaurants/reservation_index.jsx");
+/* harmony import */ var _reservations_reservation_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reservations/reservation_index */ "./frontend/components/reservations/reservation_index.jsx");
 /* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./menu */ "./frontend/components/restaurants/menu.jsx");
 /* harmony import */ var _reviews_review_index_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../reviews/review_index_container */ "./frontend/components/reviews/review_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1410,7 +1470,7 @@ function (_React$Component) {
         restaurant: restaurant
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "right-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservation_index__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservations_reservation_index__WEBPACK_IMPORTED_MODULE_5__["default"], {
         restaurant: restaurant
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-right-details"

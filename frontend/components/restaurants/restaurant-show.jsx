@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PhotoGallery from "./photo_gallery";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarRatings from "react-star-ratings";
-import ReservationForm from "./reservation_index";
+import ReservationForm from "../reservations/reservation_index";
 import MenuItems from "./menu";
 import ReviewsIndexContainer from "../reviews/review_index_container";
 
