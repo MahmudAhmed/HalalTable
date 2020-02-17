@@ -8,7 +8,9 @@ const currDay = now.getDate();
 const min = new Date(currYear, currMonth, currDay)
 .toISOString()
 .slice(0, 10);
+
 const getRestaurantHours = (open, close) => {
+  debugger
   const openTime = new Date(open);
   let utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
   const closeTime = new Date(close);
