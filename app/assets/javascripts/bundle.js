@@ -416,13 +416,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 
 
-var ChangeLocation = function ChangeLocation(_ref) {
-  var toggleDisplay = _ref.toggleDisplay;
+var ChangeLocation = function ChangeLocation() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nav-bar-location"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-    id: "change-location",
-    onClick: toggleDisplay("location")
+    id: "change-location"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
     icon: "map-marker-alt",
     className: "header-icon change-location-icon"
@@ -493,7 +491,6 @@ function (_React$Component) {
     _classCallCheck(this, NavBar);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
-    _this.toggleDisplay = _this.toggleDisplay.bind(_assertThisInitialized(_this));
     _this.loginDemoUser = _this.loginDemoUser.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -503,37 +500,26 @@ function (_React$Component) {
     value: function handleSessionClick(targetElement) {
       return function (e) {
         e.preventDefault();
-        $(".".concat(targetElement)).addClass("is-open");
+        document.querySelector(".".concat(targetElement)).classList.toggle("is-open");
       };
     }
   }, {
-    key: "toggleDisplay",
-    value: function toggleDisplay(targetElement) {
-      return function (e) {
-        if ($(".".concat(targetElement)).hasClass("is-open")) {
-          $(".".concat(targetElement)).removeClass("is-open");
-          $(".".concat(targetElement, "-triangle")).removeClass("is-open");
-          return;
-        }
-
-        $(".is-open").removeClass("is-open");
-        $(".".concat(targetElement)).addClass("is-open");
-        $(".".concat(targetElement, "-triangle")).addClass("is-open");
-      };
+    key: "handleSideBarClick",
+    value: function handleSideBarClick() {
+      document.querySelector(".sidenav").classList.toggle("is-open");
     }
   }, {
     key: "handleLogout",
     value: function handleLogout(e) {
       e.preventDefault();
-      debugger;
       this.props.logout();
-      $(".sidenav").removeClass("is-open");
+      document.querySelector(".sidenav").classList.remove("is-open");
     }
   }, {
     key: "handleDarkClick",
     value: function handleDarkClick(e) {
       e.preventDefault();
-      $(".sidenav").removeClass("is-open");
+      document.querySelector(".sidenav").classList.remove("is-open");
     }
   }, {
     key: "loginDemoUser",
@@ -542,7 +528,7 @@ function (_React$Component) {
         email: "demo@ht.com",
         password: "fireball42"
       });
-      $(".sidenav").removeClass("is-open");
+      document.querySelector(".sidenav").classList.remove("is-open");
     }
   }, {
     key: "render",
@@ -552,9 +538,7 @@ function (_React$Component) {
         className: "right-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nav-bar-calender"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this.toggleDisplay("calender")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
         icon: "calendar-alt",
         className: "header-icon calendar-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -568,8 +552,7 @@ function (_React$Component) {
       }, "You have no upcoming reservations"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "main-menu"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "greetings",
-        onClick: this.toggleDisplay("header-menu")
+        className: "greetings"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " Hi, ", currentUser.first_name, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
         icon: "angle-down",
         className: "header-icon change-location-icon dropdown-icon"
@@ -646,11 +629,9 @@ function (_React$Component) {
         to: "/restaurants/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.headerLogo
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_change_location__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        toggleDisplay: this.toggleDisplay
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_change_location__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "hamburger-icon",
-        onClick: this.toggleDisplay("sidenav")
+        onClick: this.handleSideBarClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
         icon: "bars",
         className: "header-icon hamburger-icon"
@@ -2861,14 +2842,9 @@ function (_React$Component) {
       password: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.loginDemoUser = _this.loginDemoUser.bind(_assertThisInitialized(_this));
     return _this;
-  } // componentWillReceiveProps(nextProps) {
-  //   debugger
-  //   if (nextProps.location !== this.props.location) {
-  //     this.setState({ prevPath: this.props.location })
-  //   }
-  // }
-
+  }
 
   _createClass(SignInPage, [{
     key: "handleSubmit",
@@ -2884,7 +2860,7 @@ function (_React$Component) {
       }
 
       var user = Object.assign({}, this.state);
-      $(".sidenav").removeClass("is-open");
+      document.querySelector(".sidenav").classList.remove("is-open");
       login(user).then(function () {
         return history.push(url);
       });
@@ -2897,6 +2873,26 @@ function (_React$Component) {
       return function (e) {
         _this2.setState(_defineProperty({}, field, e.target.value));
       };
+    }
+  }, {
+    key: "loginDemoUser",
+    value: function loginDemoUser() {
+      var _this$props2 = this.props,
+          login = _this$props2.login,
+          history = _this$props2.history;
+      var url = "/";
+
+      if (history.location.state) {
+        url = history.location.state.from.pathname;
+      }
+
+      document.querySelector(".sidenav").classList.remove("is-open");
+      login({
+        email: "demo@ht.com",
+        password: "fireball42"
+      }).then(function () {
+        return history.push(url);
+      });
     }
   }, {
     key: "render",
@@ -2932,7 +2928,12 @@ function (_React$Component) {
         className: "button-alternative"
       }, "New to HalalTable?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup"
-      }, "  Create an account")))));
+      }, " Create an account"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "signin-btn",
+        id: "demo-span-button",
+        title: "Use Demo Account",
+        onClick: this.loginDemoUser
+      }, "Try A Demo Account Instead.")));
     }
   }]);
 

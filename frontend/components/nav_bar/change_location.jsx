@@ -1,12 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const ChangeLocation = ({toggleDisplay}) => {
+export const ChangeLocation = () => {
   
   
   return (
   <div className="nav-bar-location">
-    <section id="change-location" onClick={toggleDisplay("location")}>
+    <section id="change-location" >
         <div>
           <FontAwesomeIcon icon="map-marker-alt" className="header-icon change-location-icon" />
         </div>

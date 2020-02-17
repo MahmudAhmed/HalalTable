@@ -8,27 +8,19 @@ class SignInPage extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-
+    this.loginDemoUser = this.loginDemoUser.bind(this);
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   debugger
-  //   if (nextProps.location !== this.props.location) {
-  //     this.setState({ prevPath: this.props.location })
-  //   }
-  // }
 
   handleSubmit(e) {
     e.preventDefault();
     const { login, history } = this.props;
-    let url = "/"
+    let url = "/";
     if (history.location.state) {
-      url = history.location.state.from.pathname
+      url = history.location.state.from.pathname;
     }
     const user = Object.assign({}, this.state);
-    $(".sidenav").removeClass("is-open");
-    login(user).then(() => history.push(url) )
-    
+    document.querySelector(".sidenav").classList.remove("is-open");
+    login(user).then(() => history.push(url));
   }
 
   handleChange(field) {
@@ -37,14 +29,26 @@ class SignInPage extends React.Component {
     };
   }
 
+  loginDemoUser() {
+    const { login, history } = this.props;
+    let url = "/";
+    if (history.location.state) {
+      url = history.location.state.from.pathname;
+    }
+    document.querySelector(".sidenav").classList.remove("is-open");
+    login({ email: "demo@ht.com", password: "fireball42" }).then(() => history.push(url));
+  }
 
   render() {
     const { errors } = this.props;
-    const displayErrors = errors.map((err, idx) => <h3 className="form-errors" key={idx}>{err}</h3>);
+    const displayErrors = errors.map((err, idx) => (
+      <h3 className="form-errors" key={idx}>
+        {err}
+      </h3>
+    ));
 
     return (
       <div className="session-page">
-
         <form className="session-form" onSubmit={this.handleSubmit}>
           <h1>Please sign in</h1>
           <hr />
@@ -66,10 +70,20 @@ class SignInPage extends React.Component {
           />
           <button className="btn">Sign In</button>
           <br />
-          <span className="button-alternative">New to HalalTable?
-          <strong><Link to="/signup">  Create an account</Link></strong>
+          <span className="button-alternative">
+            New to HalalTable?
+            <strong>
+              <Link to="/signup"> Create an account</Link>
+            </strong>
           </span>
-
+          <span
+            className="signin-btn"
+            id="demo-span-button"
+            title="Use Demo Account"
+            onClick={this.loginDemoUser}
+          >
+            Try A Demo Account Instead.
+          </span>
         </form>
       </div>
     );

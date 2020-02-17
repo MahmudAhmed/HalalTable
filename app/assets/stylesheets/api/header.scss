@@ -58,6 +58,7 @@
 
 }
 
+
 .change-location-icon {
   font-size: 24px;
   padding-right: 15px;
@@ -153,10 +154,11 @@
   position: relative;
 }
 
+
 .calender-triangle, .location-triangle{
   display: none;
   box-shadow: -1px -1px 0 0px rgba(0,0,0,.15);
-  z-index: 1;
+  z-index: 1000;
   border-style: solid;
   border-width: 6px;
   border-color:#fff transparent transparent #fff;
@@ -176,6 +178,17 @@
   white-space: pre-wrap;
 
 }
+
+.nav-bar-calender:hover .calender, 
+  .nav-bar-calender:hover .calender-triangle,
+    .nav-bar-location:hover .location,
+      .nav-bar-location:hover .location-triangle,
+        .main-menu:hover .header-menu,
+          .main-menu:hover .header-menu-triangle {
+            display: block;
+          }
+
+
 
 .location {
   width: 318px;

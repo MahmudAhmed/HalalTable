@@ -50,6 +50,15 @@ font-family: 'Muli', sans-serif;
 
 }
 
+#demo-span-button{
+  padding: 0;
+  cursor: pointer;
+}
+
+#demo-span-button:hover{
+  text-decoration: underline;
+}
+
 .is-open {
   display: block;
 }
