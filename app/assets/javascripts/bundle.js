@@ -768,9 +768,9 @@ function (_React$Component) {
       time: _this.restaurantHours[0],
       slots: [_this.restaurantHours[0], _this.restaurantHours[1], _this.restaurantHours[2]]
     };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this)); // this.handleBtnClick = this.handleBtnClick.bind(this);
-    // this.availableTime = [];
-
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleBtnClick = _this.handleBtnClick.bind(_assertThisInitialized(_this));
+    _this.availableTime = [];
     return _this;
   }
 
@@ -787,12 +787,15 @@ function (_React$Component) {
   }, {
     key: "handleBtnClick",
     value: function handleBtnClick(e) {
-      // debugger
-      e.preventDefault(); // this.setState({
-      //   slots: []
-      // })
+      var _this3 = this;
 
-      var idx = this.restaurantHours.indexOf(this.state.time);
+      e.preventDefault();
+      var idx;
+      this.restaurantHours.forEach(function (time, i) {
+        if (time.getTime() === _this3.state.time.getTime()) {
+          idx = i;
+        }
+      });
 
       if (idx === 0) {
         this.availableTime[0] = this.restaurantHours[idx];
@@ -824,12 +827,7 @@ function (_React$Component) {
           id: "select-option",
           value: "".concat(i + 1)
         }, i + 1);
-      }); // const partySize = [
-      //   <option value="1">Audi</option>,
-      //   <option value="2">BMW</option>,
-      //   <option value="3">Citroen</option>
-      // ]
-
+      });
       debugger;
       var timeSlots = this.restaurantHours.map(function (time, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -881,10 +879,20 @@ function (_React$Component) {
         className: "available-time-slots"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Select a time:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "time-slots"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.slots ? this.state.slots.map(function (time, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: idx,
+          className: "time-slot-btn"
+        }, time.toLocaleString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }));
+      }) : ""))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "reserve-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn"
+        className: "btn",
+        onClick: this.handleBtnClick
       }, "Find a Table")));
     }
   }]);
@@ -1325,8 +1333,7 @@ function (_React$Component) {
 
     _classCallCheck(this, RestaurantShow);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(RestaurantShow).call(this, props)); // this.state = props.match.params.restaurantId;
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RestaurantShow).call(this, props));
     _this.stickyHeader = _this.stickyHeader.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -1335,25 +1342,11 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestRestaurant(this.props.match.params.restaurantId);
-    } // componentWillReceiveProps(newProps){
-    //   if (newProps.match.params.restaurantId !== this.props.match.params.restaurantId) {
-    //     const id = newProps.match.params.restaurantId
-    //     this.props.requestRestaurant(id);
-    //   }
-    // }
-    // static getDerivedStateFromProps(props, state) {
-    //   debugger
-    //   if (props.match.params.restaurantId !== this.props.match.params.restaurantId) {
-    //     const id = props.match.params.restaurantId
-    //     this.props.requestRestaurant(id);
-    //   }
-    // }
-
+    }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (this.props.match.params.restaurantId !== prevProps.match.params.restaurantId) {
-        // this.props.requestRestaurant(this.props.match.params.restaurantId);
         var id = this.props.match.params.restaurantId;
         this.props.requestRestaurant(id);
       }
@@ -1383,7 +1376,6 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      // debugger
       window.addEventListener("scroll", function () {
         return _this2.stickyHeader();
       });
