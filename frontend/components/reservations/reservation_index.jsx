@@ -40,19 +40,19 @@ class ReservationForm extends React.Component {
     };
     
     this.handleChange = this.handleChange.bind(this);
-    this.handleBtnClick = this.handleBtnClick.bind(this);
-    this.availableTime = [];
+    // this.handleBtnClick = this.handleBtnClick.bind(this);
+    // this.availableTime = [];
   }
 
   handleChange(field){
     debugger
     return e => {
-      this.setState({[field]: e.target.value})
+      this.setState({[field]: new Date(e.target.value)})
     }
   }
 
   handleBtnClick(e){
-    debugger
+    // debugger
     e.preventDefault();
     // this.setState({
     //   slots: []
@@ -84,6 +84,12 @@ class ReservationForm extends React.Component {
   render() {
     debugger
     const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
+    // const partySize = [
+    //   <option value="1">Audi</option>,
+    //   <option value="2">BMW</option>,
+    //   <option value="3">Citroen</option>
+    // ]
+    debugger
     const timeSlots = this.restaurantHours.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</option>)
     return (
       <div id="reservation-forms">
@@ -91,9 +97,9 @@ class ReservationForm extends React.Component {
         <div className="reservation-inputs">  
           <div className="reservation-form-party-size">
             <span className="reservation-labels">Party Size</span>
-            <div className="select-party-size">
+            <form className="select-party-size">
               <select className="reservation-size" onChange={this.handleChange("partySize")}>{partySize}</select>
-            </div>
+            </form>
           </div>
           <section className="date-time-reservation">
             <div className="choose-date">
@@ -115,12 +121,12 @@ class ReservationForm extends React.Component {
           <section className="available-time-slots">
             <h2>Select a time:</h2>
             <ul className="time-slots">
-              {this.state.slots ? this.state.slots.map((time, idx) => <li key={idx} className="time-slot-btn">{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</li>) : ""}
+              {/* {this.state.slots ? this.state.slots.map((time, idx) => <li key={idx} className="time-slot-btn">{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</li>) : ""} */}
             </ul>
           </section>
         </div> 
         <div id="reserve-btn">
-          <button className="btn" onClick={this.handleBtnClick}>Find a Table</button>
+          <button className="btn">Find a Table</button>
         </div> 
       </div>
     );

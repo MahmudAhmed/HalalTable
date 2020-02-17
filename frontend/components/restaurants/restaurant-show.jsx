@@ -21,6 +21,7 @@ class RestaurantShow extends React.Component {
   
   constructor(props){
     super(props);
+    // this.state = props.match.params.restaurantId;
     this.stickyHeader = this.stickyHeader.bind(this)
   }
   
@@ -28,15 +29,29 @@ class RestaurantShow extends React.Component {
   componentDidMount() {
     this.props.requestRestaurant(this.props.match.params.restaurantId);
   }
+  // componentWillReceiveProps(newProps){
+  //   if (newProps.match.params.restaurantId !== this.props.match.params.restaurantId) {
+  //     const id = newProps.match.params.restaurantId
+  //     this.props.requestRestaurant(id);
+  //   }
+  // }
 
-  componentWillReceiveProps(newProps){
-    if (newProps.match.params.restaurantId !== this.props.match.params.restaurantId) {
-      const id = newProps.match.params.restaurantId
+  // static getDerivedStateFromProps(props, state) {
+  //   debugger
+  //   if (props.match.params.restaurantId !== this.props.match.params.restaurantId) {
+  //     const id = props.match.params.restaurantId
+  //     this.props.requestRestaurant(id);
+  //   }
+  // }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.restaurantId !== prevProps.match.params.restaurantId) {
+      // this.props.requestRestaurant(this.props.match.params.restaurantId);
+      const id = this.props.match.params.restaurantId
       this.props.requestRestaurant(id);
     }
-  }
 
-  componentDidUpdate() {
+
     this.header = document.getElementById("nav-list");
     this.resForm = document.getElementById("reservation-forms");
     if (this.header) {

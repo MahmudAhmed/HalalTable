@@ -732,6 +732,7 @@ var currDay = now.getDate();
 var min = new Date(currYear, currMonth, currDay).toISOString().slice(0, 10);
 
 var getRestaurantHours = function getRestaurantHours(open, close) {
+  debugger;
   var openTime = new Date(open);
   var utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
   var closeTime = new Date(close);
@@ -767,9 +768,9 @@ function (_React$Component) {
       time: _this.restaurantHours[0],
       slots: [_this.restaurantHours[0], _this.restaurantHours[1], _this.restaurantHours[2]]
     };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleBtnClick = _this.handleBtnClick.bind(_assertThisInitialized(_this));
-    _this.availableTime = [];
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this)); // this.handleBtnClick = this.handleBtnClick.bind(this);
+    // this.availableTime = [];
+
     return _this;
   }
 
@@ -780,13 +781,13 @@ function (_React$Component) {
 
       debugger;
       return function (e) {
-        _this2.setState(_defineProperty({}, field, e.target.value));
+        _this2.setState(_defineProperty({}, field, new Date(e.target.value)));
       };
     }
   }, {
     key: "handleBtnClick",
     value: function handleBtnClick(e) {
-      debugger;
+      // debugger
       e.preventDefault(); // this.setState({
       //   slots: []
       // })
@@ -823,7 +824,13 @@ function (_React$Component) {
           id: "select-option",
           value: "".concat(i + 1)
         }, i + 1);
-      });
+      }); // const partySize = [
+      //   <option value="1">Audi</option>,
+      //   <option value="2">BMW</option>,
+      //   <option value="3">Citroen</option>
+      // ]
+
+      debugger;
       var timeSlots = this.restaurantHours.map(function (time, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: i,
@@ -845,7 +852,7 @@ function (_React$Component) {
         className: "reservation-form-party-size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "reservation-labels"
-      }, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "select-party-size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "reservation-size",
@@ -874,20 +881,10 @@ function (_React$Component) {
         className: "available-time-slots"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Select a time:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "time-slots"
-      }, this.state.slots ? this.state.slots.map(function (time, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: idx,
-          className: "time-slot-btn"
-        }, time.toLocaleString('en-US', {
-          hour: 'numeric',
-          minute: 'numeric',
-          hour12: true
-        }));
-      }) : ""))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "reserve-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn",
-        onClick: this.handleBtnClick
+        className: "btn"
       }, "Find a Table")));
     }
   }]);
@@ -1328,7 +1325,8 @@ function (_React$Component) {
 
     _classCallCheck(this, RestaurantShow);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(RestaurantShow).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RestaurantShow).call(this, props)); // this.state = props.match.params.restaurantId;
+
     _this.stickyHeader = _this.stickyHeader.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -1337,18 +1335,29 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestRestaurant(this.props.match.params.restaurantId);
-    }
-  }, {
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps(newProps) {
-      if (newProps.match.params.restaurantId !== this.props.match.params.restaurantId) {
-        var id = newProps.match.params.restaurantId;
-        this.props.requestRestaurant(id);
-      }
-    }
+    } // componentWillReceiveProps(newProps){
+    //   if (newProps.match.params.restaurantId !== this.props.match.params.restaurantId) {
+    //     const id = newProps.match.params.restaurantId
+    //     this.props.requestRestaurant(id);
+    //   }
+    // }
+    // static getDerivedStateFromProps(props, state) {
+    //   debugger
+    //   if (props.match.params.restaurantId !== this.props.match.params.restaurantId) {
+    //     const id = props.match.params.restaurantId
+    //     this.props.requestRestaurant(id);
+    //   }
+    // }
+
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.match.params.restaurantId !== prevProps.match.params.restaurantId) {
+        // this.props.requestRestaurant(this.props.match.params.restaurantId);
+        var id = this.props.match.params.restaurantId;
+        this.props.requestRestaurant(id);
+      }
+
       this.header = document.getElementById("nav-list");
       this.resForm = document.getElementById("reservation-forms");
 
