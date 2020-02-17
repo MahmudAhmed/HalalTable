@@ -10,7 +10,6 @@ const min = new Date(currYear, currMonth, currDay)
 .slice(0, 10);
 
 const getRestaurantHours = (open, close) => {
-  debugger
   const openTime = new Date(open);
   let utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
   const closeTime = new Date(close);
@@ -45,7 +44,6 @@ class ReservationForm extends React.Component {
   }
 
   handleChange(field){
-    debugger
     return e => {
       this.setState({[field]: new Date(e.target.value)})
     }
@@ -73,7 +71,6 @@ class ReservationForm extends React.Component {
       this.availableTime[1] = this.restaurantHours[idx]
       this.availableTime[2] = this.restaurantHours[idx+1]
     }
-    debugger
     this.setState({
       slots: [...this.availableTime]
     })
@@ -84,7 +81,6 @@ class ReservationForm extends React.Component {
     debugger
     const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
 
-    debugger
     const timeSlots = this.restaurantHours.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</option>)
     return (
       <div id="reservation-forms">
