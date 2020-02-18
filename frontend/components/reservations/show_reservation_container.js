@@ -5,8 +5,6 @@ import { requestReservation } from "../../actions/reservations_action";
 
 
 const mSTP = ({session, entities}, ownProps) => {
-  // const test = entities.restaurants[entities.reservations[ownProps.match.params.reservationId].restaurant_id]
-  debugger
   return {
   currentUserId: session.id,
   reservation: entities.reservations[ownProps.match.params.reservationId],
@@ -15,14 +13,11 @@ const mSTP = ({session, entities}, ownProps) => {
 
 
 const mDTP = dispatch => {
-  debugger
   return {
     requestRestaurant: restaurantId => {
-      debugger
       dispatch(requestRestaurant(restaurantId))
     },
     requestReservation: (userId, reservationId) => {
-      debugger
       dispatch(requestReservation(userId, reservationId))
     }
   }

@@ -161,3 +161,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #B8222E;
 
 }
+
+.show-page-time-slots{
+  margin-bottom: 15px;
+}
+
+.show-page-time-slots > ul > li {
+  padding: 10px 25px;
+  width: 30%;
+}

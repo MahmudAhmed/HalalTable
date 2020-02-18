@@ -1183,6 +1183,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1210,7 +1218,6 @@ var currDay = now.getDate();
 var min = new Date(currYear, currMonth, currDay).toISOString().slice(0, 10);
 
 var getRestaurantHours = function getRestaurantHours(open, close) {
-  debugger;
   if (!open) return [];
   var openTime = new Date(open);
   var utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
@@ -1226,7 +1233,6 @@ var getRestaurantHours = function getRestaurantHours(open, close) {
   }
 
   ;
-  debugger;
   return restaurantHours;
 };
 
@@ -1242,15 +1248,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ReservationShow).call(this, props));
     _this.state = {
-      partySize: 5,
-      date: "2020-03-03",
+      partySize: 1,
+      date: "2021-01-01",
       time: new Date(),
-      restaurantHours: [],
       slots: []
-    }; // debugger
-
+    };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.haveHours = false;
+    _this.handleBtnClick = _this.handleBtnClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1266,12 +1270,6 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      // const { requestReservation, requestRestaurant, currentUserId, match} = this.props;
-      // requestReservation(currentUserId, match.params.reservationId).then( res => {
-      //   requestRestaurant(Object.values(res.reservations)[0].restaurant_id);
-      //   // this.restaurantHours = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time);
-      // })
-      // debugger
       var _this$props = this.props,
           requestReservation = _this$props.requestReservation,
           currentUserId = _this$props.currentUserId,
@@ -1281,40 +1279,70 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      // debugger
-      if (this.haveHours) {
-        debugger;
+      if (prevProps.reservation !== this.props.reservation) {
+        var _this$props2 = this.props,
+            reservation = _this$props2.reservation,
+            requestRestaurant = _this$props2.requestRestaurant;
+        requestRestaurant(reservation.restaurant_id);
         this.setState({
-          partySize: this.props.reservation.party_size,
-          date: new Date(this.props.reservation.date),
-          time: this.props.reservation.time,
-          restaurantHours: getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time) // slots: [this.state.restaurantHours[0], this.state.restaurantHours[1], this.state.restaurantHours[2]]
-
+          partySize: reservation.party_size,
+          date: reservation.date,
+          time: reservation.time
         });
-        this.haveHours = false;
-
-        if (prevProps.reservation !== this.props.reservation) {
-          debugger;
-          this.props.requestRestaurant(this.props.reservation.restaurant_id);
-          this.haveHours = true;
-        }
       }
+    }
+  }, {
+    key: "handleBtnClick",
+    value: function handleBtnClick(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var idx;
+      this.availableTime = [];
+      this.timeSlots.forEach(function (time, i) {
+        if (time.getTime() === new Date(_this3.state.time).getTime()) {
+          idx = i;
+        }
+      });
+
+      if (idx === 0) {
+        this.availableTime[0] = this.timeSlots[idx];
+        this.availableTime[1] = this.timeSlots[idx + 1];
+        this.availableTime[2] = this.timeSlots[idx + 2];
+      } else if (idx === this.timeSlots.length - 1) {
+        this.availableTime[0] = this.timeSlots[idx - 2];
+        this.availableTime[1] = this.timeSlots[idx - 1];
+        this.availableTime[2] = this.timeSlots[idx];
+      } else {
+        this.availableTime[0] = this.timeSlots[idx - 1];
+        this.availableTime[1] = this.timeSlots[idx];
+        this.availableTime[2] = this.timeSlots[idx + 1];
+      }
+
+      this.setState({
+        slots: _toConsumableArray(this.availableTime)
+      });
+      document.querySelector(".available-time-slots").classList.add("is-open");
+    }
+  }, {
+    key: "handleModifyClick",
+    value: function handleModifyClick() {
+      document.querySelector(".reserve-edit-form").classList.add("is-open");
+      document.querySelector(".modify-reservation-btns").classList.add("is-closed");
     }
   }, {
     key: "render",
     value: function render() {
-      // debugger
-      var timeSlots = this.state.restaurantHours.map(function (time, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: i,
-          id: "select-option",
-          value: time
-        }, time.toLocaleString('en-US', {
-          hour: 'numeric',
-          minute: 'numeric',
-          hour12: true
-        }));
-      });
+      var _this4 = this;
+
+      this.timeSlots;
+
+      if (Object.values(this.props.restaurant).length >= 1) {
+        this.timeSlots = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time); // this.setState({slots: [...this.timeSlots.slice(3)]})
+      } else {
+        this.timeSlots = [];
+      }
+
       var partySize = Array(20).fill().map(function (_, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: i + 1,
@@ -1322,10 +1350,9 @@ function (_React$Component) {
           value: "".concat(i + 1)
         }, i + 1);
       });
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-show-outside-container"
-      }, this.state.restaurantHours, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-confirm-header"
@@ -1371,7 +1398,11 @@ function (_React$Component) {
         className: "reservation-edit container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "modify-reservation-btns"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Modify"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Cancel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleModifyClick
+      }, "Modify"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Cancel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "reserve-edit-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "reservation-form-title",
         id: "edit-reservation-title"
       }, "Change Your Reservation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1384,7 +1415,7 @@ function (_React$Component) {
         className: "select-party-size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "reservation-size",
-        defaultValue: this.state.partySize,
+        value: this.state.partySize,
         onChange: this.handleChange("partySize")
       }, partySize))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "date-time-reservation"
@@ -1407,226 +1438,43 @@ function (_React$Component) {
       }, "Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "reservation-time",
         onChange: this.handleChange("time")
-      }, timeSlots))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "available-time-slots"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.timeSlots.map(function (time, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i,
+          id: "select-option",
+          value: time
+        }, time.toLocaleString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }));
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "available-time-slots show-page-time-slots"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Select a time:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "time-slots"
+      }, this.state.slots.map(function (time, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: idx,
+          onClick: _this4.handleTimeClick,
+          className: "time-slot-btn"
+        }, time.toLocaleString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "reserve-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn",
         onClick: this.handleBtnClick
-      }, "Find a Table"))))));
+      }, "Find a Table")))))));
     }
   }]);
 
   return ReservationShow;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ReservationShow); // import React from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// const now = new Date();
-// const currYear = now.getFullYear();
-// const currMonth = now.getMonth();
-// const currDay = now.getDate();
-// const min = new Date(currYear, currMonth, currDay)
-//   .toISOString()
-//   .slice(0, 10);
-// const getRestaurantHours = (open, close) => {
-//   debugger
-//   if (!open) return [];
-//   const openTime = new Date(open);
-//   let utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
-//   const closeTime = new Date(close);
-//   let utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
-//   if (openTime > closeTime) utcCloseTime.setDate(utcCloseTime.getDate() + 1);
-//   const restaurantHours = [];
-//   while (true) {
-//     if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
-//     restaurantHours.push(new Date(utcOpenTime.getTime()));
-//     utcOpenTime.setHours(utcOpenTime.getHours() + 1);
-//   };
-//   return restaurantHours
-// }
-// class ReservationShow extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     debugger
-//     this.restaurantHours = [];
-//     this.state = this.restaurantHours[0] ? {
-//       partySize: this.props.reservation.party_size,
-//       date: new Date(this.props.reservation.date),
-//       time: this.props.reservation.time,
-//       slots: [this.restaurantHours[0], this.restaurantHours[1], this.restaurantHours[2]]
-//     } : {
-//         partySize: 1,
-//         date: new Date(),
-//         time: new Date("12:00 pm"),
-//         slots: []
-//       }
-//     this.handleChange = this.handleChange.bind(this);
-//     // this.handleBtnClick = this.handleBtnClick.bind(this);
-//     // this.handleTimeClick = this.handleTimeClick.bind(this);
-//     // this.availableTime = [];
-//   }
-//   handleChange(field) {
-//     return e => {
-//       this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
-//     }
-//   }
-//   componentDidMount() {
-//     const { requestReservation, requestRestaurant, currentUserId, match } = this.props;
-//     requestReservation(currentUserId, match.params.reservationId).then(res => {
-//       requestRestaurant(Object.values(res.reservations)[0].restaurant_id);
-//       this.restaurantHours = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time);
-//     })
-//   }
-//   // componentDidUpdate(prevProps) {
-//   //   debugger
-//   //   if (prevProps.reservation !== this.props.reservation){
-//   //     debugger
-//   //     this.props.requestRestaurant(this.props.reservation.restaurant_id)
-//   // this.setState({
-//   //   partySize: this.props.reservation.party_size,
-//   //   date: new Date(this.props.reservation.date),
-//   //   time: this.props.reservation.time,
-//   //   slots: [this.restaurantHours[0], this.restaurantHours[1], this.restaurantHours[2]]
-//   // })
-//   //   }
-//   //   if (prevProps.restaurant !== this.props.restaurant) {
-//   //     debugger
-//   //     this.restaurantHours = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time)
-//   //   }
-//   // }
-//   // handleBtnClick(e) {
-//   //   e.preventDefault();
-//   //   let idx;
-//   //   this.restaurantHours.forEach((time, i) => {
-//   //     if (time.getTime() === this.state.time.getTime()) {
-//   //       idx = i;
-//   //     }
-//   //   })
-//   //   if (idx === 0) {
-//   //     this.availableTime[0] = this.restaurantHours[idx]
-//   //     this.availableTime[1] = this.restaurantHours[idx + 1]
-//   //     this.availableTime[2] = this.restaurantHours[idx + 2]
-//   //   } else if (idx === this.restaurantHours.length - 1) {
-//   //     this.availableTime[0] = this.restaurantHours[idx - 2]
-//   //     this.availableTime[1] = this.restaurantHours[idx - 1]
-//   //     this.availableTime[2] = this.restaurantHours[idx]
-//   //   } else {
-//   //     this.availableTime[0] = this.restaurantHours[idx - 1]
-//   //     this.availableTime[1] = this.restaurantHours[idx]
-//   //     this.availableTime[2] = this.restaurantHours[idx + 1]
-//   //   }
-//   //   this.setState({
-//   //     slots: [...this.availableTime]
-//   //   })
-//   //   document.querySelector(".available-time-slots").classList.add("is-open")
-//   // }
-//   // handleTimeClick(e) {
-//   //   e.preventDefault();
-//   //   const { createReservation, currentUserId } = this.props;
-//   //   const formData = { party_size: this.state.partySize, date: this.state.date, time: this.state.time, restaurant_id: this.props.restaurant.id }
-//   //   createReservation(formData, currentUserId)
-//   // }
-//   render() {
-//     const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
-//     const timeSlots = this.restaurantHours.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</option>)
-//     // debugger
-//     return (
-//       <div className="reservation-show-outside-container">
-//         <div className="reservation-show-container">
-//           <div className="reservation-confirm-header">
-//             <span><FontAwesomeIcon
-//               icon="calendar-check"
-//               color="black"
-//               className="res-header-icon"
-//             /></span>
-//             <div className="reservation-show-header-text">
-//               <h3>Thanks! Your reservation is confirmed.</h3>
-//               <p>Confirmation #10203</p>
-//             </div>
-//           </div>
-//           <div className="reservation-details-container">
-//             <div className="restaurant-image-container" id="reservation-show-image">
-//               <img className="restaurant-image" src="//images.otstatic.com/prod/25772382/1/small.jpg" />
-//             </div>
-//             <div className="reservation-details">
-//               <h4>Brooklyn Cider House</h4>
-//               <div className="reservation-subheader">
-//                 <div className="reservation-date">
-//                   <span><FontAwesomeIcon
-//                     icon={["far", "calendar"]}
-//                     color="black"
-//                     className="subheader-icon"
-//                   /></span>
-//                   <p>Tue, Feb 18</p>
-//                 </div>
-//                 <div className="reservation-confirm-time">
-//                   <span><FontAwesomeIcon
-//                     icon={["far", "clock"]}
-//                     color="black"
-//                     className="subheader-icon"
-//                   /></span>
-//                   <p>6:45 pm</p>
-//                 </div>
-//                 <div className="reservation-party-size">
-//                   <span><FontAwesomeIcon
-//                     icon={["far", "user"]}
-//                     color="black"
-//                     className="subheader-icon"
-//                   /></span>
-//                   <p>2 people</p>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//           <div id="special-request">
-//             <span>No Special Request</span>
-//           </div>
-//           <section className="reservation-edit container">
-//             <section className="modify-reservation-btns">
-//               <button>Modify</button>
-//               <button>Cancel</button>
-//             </section>
-//             <h3 className="reservation-form-title" id="edit-reservation-title">Change Your Reservation</h3>
-//             <div className="reservation-inputs">
-//               <div className="reservation-form-party-size">
-//                 <span className="reservation-labels">Party Size</span>
-//                 <div className="select-party-size">
-//                   <select className="reservation-size" defaultValue={this.state.partySize} onChange={this.handleChange("partySize")}>{partySize}</select>
-//                 </div>
-//               </div>
-//               <section className="date-time-reservation">
-//                 <div className="choose-date">
-//                   <span className="reservation-labels">Date</span>
-//                   <div id="reservation-date">
-//                     <input
-//                       type="date"
-//                       className="show-res-input"
-//                       min={min}
-//                       value={this.state.date}
-//                       onChange={this.handleChange("date")}
-//                     />
-//                   </div>
-//                 </div>
-//                 <div className="choose-time">
-//                   <span className="reservation-labels">Time</span>
-//                   <select className="reservation-time" onChange={this.handleChange("time")}>{timeSlots}</select>
-//                 </div>
-//               </section>
-//               <section className="available-time-slots">
-//               </section>
-//               <div id="reserve-btn">
-//                 <button className="btn" onClick={this.handleBtnClick}>Find a Table</button>
-//               </div>
-//             </div>
-//           </section>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-// export default ReservationShow;
+/* harmony default export */ __webpack_exports__["default"] = (ReservationShow);
 
 /***/ }),
 
@@ -1651,8 +1499,6 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
-  // const test = entities.restaurants[entities.reservations[ownProps.match.params.reservationId].restaurant_id]
-  debugger;
   return {
     currentUserId: session.id,
     reservation: entities.reservations[ownProps.match.params.reservationId],
@@ -1661,14 +1507,11 @@ var mSTP = function mSTP(_ref, ownProps) {
 };
 
 var mDTP = function mDTP(dispatch) {
-  debugger;
   return {
     requestRestaurant: function requestRestaurant(restaurantId) {
-      debugger;
       dispatch(Object(_actions_restaurant_action__WEBPACK_IMPORTED_MODULE_1__["requestRestaurant"])(restaurantId));
     },
     requestReservation: function requestReservation(userId, reservationId) {
-      debugger;
       dispatch(Object(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_3__["requestReservation"])(userId, reservationId));
     }
   };
