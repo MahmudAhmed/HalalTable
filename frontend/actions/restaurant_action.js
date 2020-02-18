@@ -24,7 +24,9 @@ const receiveRestaurants= (restaurants) => ({
 
 export const requestRestaurants = () => dispatch => {
   return APIUtil.fetchRestaurants().then(
-    (restaurants) => dispatch(receiveRestaurants(restaurants))
+    (restaurants) => {
+      dispatch(receiveRestaurants(restaurants))
+    }
   );
 };
 

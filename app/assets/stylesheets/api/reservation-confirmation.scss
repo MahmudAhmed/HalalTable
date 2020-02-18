@@ -1,13 +1,17 @@
-.reservation-page-container{
+.reservation-page-container, .reservation-show-outside-container{
   font-family: 'Muli', sans-serif;
   width: 90%;
   margin: auto;
   // background-color: red;
   // height: 500px;
-  display: flex;
+  // display: flex;
   background-color: white;
   box-sizing: border-box;
   padding: 32px 80px;
+}
+
+.reservation-show-outside-container{
+
 }
 
 .reservation-form-container{
@@ -116,17 +120,7 @@
   padding: 0 10px;
 }
 
-.reservation-show-outside-container{
-  font-family: 'Muli', sans-serif;
-  width: 90%;
-  margin: auto;
-  // background-color: red;
-  // height: 500px;
-  // display: flex;
-  background-color: white;
-  box-sizing: border-box;
-  padding: 32px 80px;
-}
+
 
 .reservation-show-container{
   // padding: 20px 50px;
@@ -149,6 +143,8 @@
 #special-request{
   padding: 5px 15px 15px;
   color: #B5B5B5;
+  border-bottom: solid 1px #d8d9db;
+
 }
 
 .reservation-show-header-text{
@@ -167,3 +163,28 @@
   margin: 0;  
 }
 
+.modify-reservation-btns{
+  display: flex;
+  padding: 15px;
+  justify-content: flex-end;
+}
+
+.modify-reservation-btns button{
+  margin-left: 10px;
+  font-size: 16px;
+  color: #60b2d0;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.modify-reservation-btns button:hover{
+  color: #bb232e;
+}
+
+#edit-reservation-title{
+  border: none;
+}
+
+.show-res-input{
+  width: 100%;
+}

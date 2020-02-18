@@ -54,9 +54,9 @@ class CreateReservation extends React.Component {
           </div>
           <span className="privacy-policy">By clicking “Complete reservation” you agree to the <strong>HalalTable Terms of Use</strong> and <strong>Privacy Policy</strong>. Standard text message rates may apply. You may opt out of receiving text messages at any time.</span>
         </div>
-        <div className="right-container-reservation-page"> 
+        {/* <div className="right-container-reservation-page"> 
           <img src="https://image.flaticon.com/sprites/new_packs/2010744-cooking.png"/>
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -51,7 +51,7 @@ import RestaurantsIndexContainer from "./restaurants/restaurants_index_container
 import RestaurantShowContainer from "./restaurants/restaurant-show-container";
 import CreateReservation from "./reservations/create_reservation";
 import ReservationShow from "./reservations/show_reservation";
-
+import ShowReservationContainer from "./reservations/show_reservation_container";
 
 
 const App = () => (
@@ -72,8 +72,8 @@ const App = () => (
     />
 
     <Route
-      path="/reservations/show"
-      component={ReservationShow}
+      path="/reservations/:reservationId"
+      component={ShowReservationContainer}
     />
 
     {/* <LoginFormContainer /> */}

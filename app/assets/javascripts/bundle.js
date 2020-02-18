@@ -260,7 +260,7 @@ var receiveRestaurants = function receiveRestaurants(restaurants) {
 var requestRestaurants = function requestRestaurants() {
   return function (dispatch) {
     return _util_restaurant_util__WEBPACK_IMPORTED_MODULE_0__["fetchRestaurants"]().then(function (restaurants) {
-      return dispatch(receiveRestaurants(restaurants));
+      dispatch(receiveRestaurants(restaurants));
     });
   };
 };
@@ -464,6 +464,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./restaurants/restaurant-show-container */ "./frontend/components/restaurants/restaurant-show-container.js");
 /* harmony import */ var _reservations_create_reservation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./reservations/create_reservation */ "./frontend/components/reservations/create_reservation.jsx");
 /* harmony import */ var _reservations_show_reservation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reservations/show_reservation */ "./frontend/components/reservations/show_reservation.jsx");
+/* harmony import */ var _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./reservations/show_reservation_container */ "./frontend/components/reservations/show_reservation_container.js");
 
 
 
@@ -474,6 +475,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCalendarAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faMapMarkerAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faHamburger"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBookmark"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUtensils"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faMoneyBillAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBuilding"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faClock"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSignLanguage"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faTshirt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSubway"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCreditCard"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faExternalLinkAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faPhoneAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCalendar"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faUser"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCalendarCheck"]);
+
 
 
 
@@ -501,8 +503,8 @@ var App = function App() {
     path: "/reservations/new",
     component: _reservations_create_reservation__WEBPACK_IMPORTED_MODULE_11__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/reservations/show",
-    component: _reservations_show_reservation__WEBPACK_IMPORTED_MODULE_12__["default"]
+    path: "/reservations/:reservationId",
+    component: _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_13__["default"]
   }));
 };
 
@@ -887,11 +889,7 @@ function (_React$Component) {
         className: "btn"
       }, "Complete reservation")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "privacy-policy"
-      }, "By clicking \u201CComplete reservation\u201D you agree to the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "HalalTable Terms of Use"), " and ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Privacy Policy"), ". Standard text message rates may apply. You may opt out of receiving text messages at any time.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "right-container-reservation-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://image.flaticon.com/sprites/new_packs/2010744-cooking.png"
-      })));
+      }, "By clicking \u201CComplete reservation\u201D you agree to the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "HalalTable Terms of Use"), " and ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Privacy Policy"), ". Standard text message rates may apply. You may opt out of receiving text messages at any time.")));
     }
   }]);
 
@@ -1116,7 +1114,7 @@ function (_React$Component) {
         className: "reservation-form-party-size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "reservation-labels"
-      }, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-party-size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "reservation-size",
@@ -1185,6 +1183,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1193,9 +1193,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1203,27 +1203,129 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var now = new Date();
+var currYear = now.getFullYear();
+var currMonth = now.getMonth();
+var currDay = now.getDate();
+var min = new Date(currYear, currMonth, currDay).toISOString().slice(0, 10);
+
+var getRestaurantHours = function getRestaurantHours(open, close) {
+  debugger;
+  if (!open) return [];
+  var openTime = new Date(open);
+  var utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
+  var closeTime = new Date(close);
+  var utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
+  if (openTime > closeTime) utcCloseTime.setDate(utcCloseTime.getDate() + 1);
+  var restaurantHours = [];
+
+  while (true) {
+    if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
+    restaurantHours.push(new Date(utcOpenTime.getTime()));
+    utcOpenTime.setHours(utcOpenTime.getHours() + 1);
+  }
+
+  ;
+  debugger;
+  return restaurantHours;
+};
 
 var ReservationShow =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(ReservationShow, _React$Component);
 
-  function ReservationShow() {
+  function ReservationShow(props) {
+    var _this;
+
     _classCallCheck(this, ReservationShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ReservationShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ReservationShow).call(this, props));
+    _this.state = {
+      partySize: 5,
+      date: "2020-03-03",
+      time: new Date(),
+      restaurantHours: [],
+      slots: []
+    }; // debugger
+
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.haveHours = false;
+    return _this;
   }
 
   _createClass(ReservationShow, [{
+    key: "handleChange",
+    value: function handleChange(field) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, field, field === "time" ? new Date(e.target.value) : e.target.value));
+      };
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // const { requestReservation, requestRestaurant, currentUserId, match} = this.props;
+      // requestReservation(currentUserId, match.params.reservationId).then( res => {
+      //   requestRestaurant(Object.values(res.reservations)[0].restaurant_id);
+      //   // this.restaurantHours = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time);
+      // })
+      // debugger
+      var _this$props = this.props,
+          requestReservation = _this$props.requestReservation,
+          currentUserId = _this$props.currentUserId,
+          match = _this$props.match;
+      requestReservation(currentUserId, match.params.reservationId);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      // debugger
+      if (this.haveHours) {
+        debugger;
+        this.setState({
+          partySize: this.props.reservation.party_size,
+          date: new Date(this.props.reservation.date),
+          time: this.props.reservation.time,
+          restaurantHours: getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time) // slots: [this.state.restaurantHours[0], this.state.restaurantHours[1], this.state.restaurantHours[2]]
+
+        });
+        this.haveHours = false;
+
+        if (prevProps.reservation !== this.props.reservation) {
+          debugger;
+          this.props.requestRestaurant(this.props.reservation.restaurant_id);
+          this.haveHours = true;
+        }
+      }
+    }
+  }, {
     key: "render",
-    // constructor(props) {
-    //   super(props);
-    // }
     value: function render() {
+      // debugger
+      var timeSlots = this.state.restaurantHours.map(function (time, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i,
+          id: "select-option",
+          value: time
+        }, time.toLocaleString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }));
+      });
+      var partySize = Array(20).fill().map(function (_, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i + 1,
+          id: "select-option",
+          value: "".concat(i + 1)
+        }, i + 1);
+      });
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-show-outside-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.restaurantHours, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-confirm-header"
@@ -1265,14 +1367,314 @@ function (_React$Component) {
         className: "subheader-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "2 people"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "special-request"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "No Special Request"))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "No Special Request")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "reservation-edit container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "modify-reservation-btns"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Modify"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Cancel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "reservation-form-title",
+        id: "edit-reservation-title"
+      }, "Change Your Reservation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-inputs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-form-party-size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "reservation-labels"
+      }, "Party Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "select-party-size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "reservation-size",
+        defaultValue: this.state.partySize,
+        onChange: this.handleChange("partySize")
+      }, partySize))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "date-time-reservation"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choose-date"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "reservation-labels"
+      }, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "reservation-date"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "date",
+        className: "show-res-input",
+        min: min,
+        value: this.state.date,
+        onChange: this.handleChange("date")
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "choose-time"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "reservation-labels"
+      }, "Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "reservation-time",
+        onChange: this.handleChange("time")
+      }, timeSlots))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "available-time-slots"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "reserve-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn",
+        onClick: this.handleBtnClick
+      }, "Find a Table"))))));
     }
   }]);
 
   return ReservationShow;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ReservationShow);
+/* harmony default export */ __webpack_exports__["default"] = (ReservationShow); // import React from "react";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// const now = new Date();
+// const currYear = now.getFullYear();
+// const currMonth = now.getMonth();
+// const currDay = now.getDate();
+// const min = new Date(currYear, currMonth, currDay)
+//   .toISOString()
+//   .slice(0, 10);
+// const getRestaurantHours = (open, close) => {
+//   debugger
+//   if (!open) return [];
+//   const openTime = new Date(open);
+//   let utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
+//   const closeTime = new Date(close);
+//   let utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
+//   if (openTime > closeTime) utcCloseTime.setDate(utcCloseTime.getDate() + 1);
+//   const restaurantHours = [];
+//   while (true) {
+//     if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
+//     restaurantHours.push(new Date(utcOpenTime.getTime()));
+//     utcOpenTime.setHours(utcOpenTime.getHours() + 1);
+//   };
+//   return restaurantHours
+// }
+// class ReservationShow extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     debugger
+//     this.restaurantHours = [];
+//     this.state = this.restaurantHours[0] ? {
+//       partySize: this.props.reservation.party_size,
+//       date: new Date(this.props.reservation.date),
+//       time: this.props.reservation.time,
+//       slots: [this.restaurantHours[0], this.restaurantHours[1], this.restaurantHours[2]]
+//     } : {
+//         partySize: 1,
+//         date: new Date(),
+//         time: new Date("12:00 pm"),
+//         slots: []
+//       }
+//     this.handleChange = this.handleChange.bind(this);
+//     // this.handleBtnClick = this.handleBtnClick.bind(this);
+//     // this.handleTimeClick = this.handleTimeClick.bind(this);
+//     // this.availableTime = [];
+//   }
+//   handleChange(field) {
+//     return e => {
+//       this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
+//     }
+//   }
+//   componentDidMount() {
+//     const { requestReservation, requestRestaurant, currentUserId, match } = this.props;
+//     requestReservation(currentUserId, match.params.reservationId).then(res => {
+//       requestRestaurant(Object.values(res.reservations)[0].restaurant_id);
+//       this.restaurantHours = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time);
+//     })
+//   }
+//   // componentDidUpdate(prevProps) {
+//   //   debugger
+//   //   if (prevProps.reservation !== this.props.reservation){
+//   //     debugger
+//   //     this.props.requestRestaurant(this.props.reservation.restaurant_id)
+//   // this.setState({
+//   //   partySize: this.props.reservation.party_size,
+//   //   date: new Date(this.props.reservation.date),
+//   //   time: this.props.reservation.time,
+//   //   slots: [this.restaurantHours[0], this.restaurantHours[1], this.restaurantHours[2]]
+//   // })
+//   //   }
+//   //   if (prevProps.restaurant !== this.props.restaurant) {
+//   //     debugger
+//   //     this.restaurantHours = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time)
+//   //   }
+//   // }
+//   // handleBtnClick(e) {
+//   //   e.preventDefault();
+//   //   let idx;
+//   //   this.restaurantHours.forEach((time, i) => {
+//   //     if (time.getTime() === this.state.time.getTime()) {
+//   //       idx = i;
+//   //     }
+//   //   })
+//   //   if (idx === 0) {
+//   //     this.availableTime[0] = this.restaurantHours[idx]
+//   //     this.availableTime[1] = this.restaurantHours[idx + 1]
+//   //     this.availableTime[2] = this.restaurantHours[idx + 2]
+//   //   } else if (idx === this.restaurantHours.length - 1) {
+//   //     this.availableTime[0] = this.restaurantHours[idx - 2]
+//   //     this.availableTime[1] = this.restaurantHours[idx - 1]
+//   //     this.availableTime[2] = this.restaurantHours[idx]
+//   //   } else {
+//   //     this.availableTime[0] = this.restaurantHours[idx - 1]
+//   //     this.availableTime[1] = this.restaurantHours[idx]
+//   //     this.availableTime[2] = this.restaurantHours[idx + 1]
+//   //   }
+//   //   this.setState({
+//   //     slots: [...this.availableTime]
+//   //   })
+//   //   document.querySelector(".available-time-slots").classList.add("is-open")
+//   // }
+//   // handleTimeClick(e) {
+//   //   e.preventDefault();
+//   //   const { createReservation, currentUserId } = this.props;
+//   //   const formData = { party_size: this.state.partySize, date: this.state.date, time: this.state.time, restaurant_id: this.props.restaurant.id }
+//   //   createReservation(formData, currentUserId)
+//   // }
+//   render() {
+//     const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
+//     const timeSlots = this.restaurantHours.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</option>)
+//     // debugger
+//     return (
+//       <div className="reservation-show-outside-container">
+//         <div className="reservation-show-container">
+//           <div className="reservation-confirm-header">
+//             <span><FontAwesomeIcon
+//               icon="calendar-check"
+//               color="black"
+//               className="res-header-icon"
+//             /></span>
+//             <div className="reservation-show-header-text">
+//               <h3>Thanks! Your reservation is confirmed.</h3>
+//               <p>Confirmation #10203</p>
+//             </div>
+//           </div>
+//           <div className="reservation-details-container">
+//             <div className="restaurant-image-container" id="reservation-show-image">
+//               <img className="restaurant-image" src="//images.otstatic.com/prod/25772382/1/small.jpg" />
+//             </div>
+//             <div className="reservation-details">
+//               <h4>Brooklyn Cider House</h4>
+//               <div className="reservation-subheader">
+//                 <div className="reservation-date">
+//                   <span><FontAwesomeIcon
+//                     icon={["far", "calendar"]}
+//                     color="black"
+//                     className="subheader-icon"
+//                   /></span>
+//                   <p>Tue, Feb 18</p>
+//                 </div>
+//                 <div className="reservation-confirm-time">
+//                   <span><FontAwesomeIcon
+//                     icon={["far", "clock"]}
+//                     color="black"
+//                     className="subheader-icon"
+//                   /></span>
+//                   <p>6:45 pm</p>
+//                 </div>
+//                 <div className="reservation-party-size">
+//                   <span><FontAwesomeIcon
+//                     icon={["far", "user"]}
+//                     color="black"
+//                     className="subheader-icon"
+//                   /></span>
+//                   <p>2 people</p>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//           <div id="special-request">
+//             <span>No Special Request</span>
+//           </div>
+//           <section className="reservation-edit container">
+//             <section className="modify-reservation-btns">
+//               <button>Modify</button>
+//               <button>Cancel</button>
+//             </section>
+//             <h3 className="reservation-form-title" id="edit-reservation-title">Change Your Reservation</h3>
+//             <div className="reservation-inputs">
+//               <div className="reservation-form-party-size">
+//                 <span className="reservation-labels">Party Size</span>
+//                 <div className="select-party-size">
+//                   <select className="reservation-size" defaultValue={this.state.partySize} onChange={this.handleChange("partySize")}>{partySize}</select>
+//                 </div>
+//               </div>
+//               <section className="date-time-reservation">
+//                 <div className="choose-date">
+//                   <span className="reservation-labels">Date</span>
+//                   <div id="reservation-date">
+//                     <input
+//                       type="date"
+//                       className="show-res-input"
+//                       min={min}
+//                       value={this.state.date}
+//                       onChange={this.handleChange("date")}
+//                     />
+//                   </div>
+//                 </div>
+//                 <div className="choose-time">
+//                   <span className="reservation-labels">Time</span>
+//                   <select className="reservation-time" onChange={this.handleChange("time")}>{timeSlots}</select>
+//                 </div>
+//               </section>
+//               <section className="available-time-slots">
+//               </section>
+//               <div id="reserve-btn">
+//                 <button className="btn" onClick={this.handleBtnClick}>Find a Table</button>
+//               </div>
+//             </div>
+//           </section>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+// export default ReservationShow;
+
+/***/ }),
+
+/***/ "./frontend/components/reservations/show_reservation_container.js":
+/*!************************************************************************!*\
+  !*** ./frontend/components/reservations/show_reservation_container.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_restaurant_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/restaurant_action */ "./frontend/actions/restaurant_action.js");
+/* harmony import */ var _show_reservation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./show_reservation */ "./frontend/components/reservations/show_reservation.jsx");
+/* harmony import */ var _actions_reservations_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/reservations_action */ "./frontend/actions/reservations_action.js");
+
+
+
+
+
+var mSTP = function mSTP(_ref, ownProps) {
+  var session = _ref.session,
+      entities = _ref.entities;
+  // const test = entities.restaurants[entities.reservations[ownProps.match.params.reservationId].restaurant_id]
+  debugger;
+  return {
+    currentUserId: session.id,
+    reservation: entities.reservations[ownProps.match.params.reservationId],
+    restaurant: Object.values(entities.restaurants).length >= 1 ? entities.restaurants[entities.reservations[ownProps.match.params.reservationId].restaurant_id] : {}
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  debugger;
+  return {
+    requestRestaurant: function requestRestaurant(restaurantId) {
+      debugger;
+      dispatch(Object(_actions_restaurant_action__WEBPACK_IMPORTED_MODULE_1__["requestRestaurant"])(restaurantId));
+    },
+    requestReservation: function requestReservation(userId, reservationId) {
+      debugger;
+      dispatch(Object(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_3__["requestReservation"])(userId, reservationId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_show_reservation__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 

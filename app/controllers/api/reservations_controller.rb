@@ -1,8 +1,9 @@
 class Api::ReservationsController < ApplicationController
   
   def index 
-    @reservations = Reservation.all 
-    render json: @reservations
+    # debugger
+    @reservations = Reservation.where(user_id: current_user.id) 
+    render :index
   end
 
   def show 

@@ -110,7 +110,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .choose-date, .choose-time{
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 50%;
 }
 
 .choose-date{

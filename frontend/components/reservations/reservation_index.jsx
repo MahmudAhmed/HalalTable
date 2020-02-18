@@ -96,9 +96,9 @@ class ReservationForm extends React.Component {
         <div className="reservation-inputs">  
           <div className="reservation-form-party-size">
             <span className="reservation-labels">Party Size</span>
-            <form className="select-party-size">
+            <div className="select-party-size">
               <select className="reservation-size" onChange={this.handleChange("partySize")}>{partySize}</select>
-            </form>
+            </div>
           </div>
           <section className="date-time-reservation">
             <div className="choose-date">
