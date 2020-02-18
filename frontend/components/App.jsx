@@ -18,7 +18,8 @@ import {
   faTshirt,
   faSubway,
   faExternalLinkAlt,
-  faPhoneAlt
+  faPhoneAlt,
+  faCalendarCheck
   
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -41,13 +42,16 @@ library.add(
   faExternalLinkAlt,
   faPhoneAlt,
   faCalendar,
-  faUser
+  faUser,
+  faCalendarCheck
 );
 import { SignInPageContainer } from "./session_forms/login_form_container";
 import { SignUpPageContainer } from "./session_forms/signup_form_container";
 import RestaurantsIndexContainer from "./restaurants/restaurants_index_container";
 import RestaurantShowContainer from "./restaurants/restaurant-show-container";
-import ReservationConfirmation from "./reservations/reservation_confirmation";
+import CreateReservation from "./reservations/create_reservation";
+import ReservationShow from "./reservations/show_reservation";
+
 
 
 const App = () => (
@@ -64,7 +68,12 @@ const App = () => (
     />
     <Route
       path="/reservations/new"
-      component={ReservationConfirmation}
+      component={CreateReservation}
+    />
+
+    <Route
+      path="/reservations/show"
+      component={ReservationShow}
     />
 
     {/* <LoginFormContainer /> */}

@@ -102,3 +102,68 @@
 .privacy-policy > strong{
   color: #DA3743;
 }
+
+.reservation-confirm-header{
+  display: flex;
+  // padding: 20px 0;
+  margin-bottom: 10px;
+  background-color: #55b68d;
+  padding: 1rem 1.5rem;
+}
+
+.reservation-confirm-header > span{
+  display: flex;
+  padding: 0 10px;
+}
+
+.reservation-show-outside-container{
+  font-family: 'Muli', sans-serif;
+  width: 90%;
+  margin: auto;
+  // background-color: red;
+  // height: 500px;
+  // display: flex;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 32px 80px;
+}
+
+.reservation-show-container{
+  // padding: 20px 50px;
+  margin: auto;
+  box-shadow: 0px 3px 11px rgba(0,0,0,0.25);
+  background-color: white;
+  max-width: 800px;
+}
+
+.res-header-icon{
+  margin: auto;
+  font-size: 52px;
+  color: white;
+}
+
+#reservation-show-image{
+  margin-left: 15px;
+}
+
+#special-request{
+  padding: 5px 15px 15px;
+  color: #B5B5B5;
+}
+
+.reservation-show-header-text{
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.reservation-show-header-text > p{
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;  
+}
+

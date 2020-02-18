@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Image from 'app/assets/images/middle_eastern.jpg';
 
-class ReservationConfirmation extends React.Component {
+class CreateReservation extends React.Component {
   // constructor(props) {
   //   super(props);
   // }
@@ -62,4 +62,4 @@ class ReservationConfirmation extends React.Component {
   }
 }
 
-export default ReservationConfirmation;
+export default CreateReservation;
