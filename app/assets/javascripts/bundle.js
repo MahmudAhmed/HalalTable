@@ -462,6 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 /* harmony import */ var _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./restaurants/restaurants_index_container */ "./frontend/components/restaurants/restaurants_index_container.js");
 /* harmony import */ var _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./restaurants/restaurant-show-container */ "./frontend/components/restaurants/restaurant-show-container.js");
+/* harmony import */ var _reservations_reservation_confirmation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./reservations/reservation_confirmation */ "./frontend/components/reservations/reservation_confirmation.jsx");
 
 
 
@@ -471,7 +472,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCalendarAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faMapMarkerAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faHamburger"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBookmark"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUtensils"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faMoneyBillAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBuilding"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faClock"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSignLanguage"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faTshirt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSubway"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCreditCard"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faExternalLinkAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faPhoneAlt"]);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCalendarAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faMapMarkerAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faHamburger"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBookmark"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUtensils"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faMoneyBillAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBuilding"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faClock"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSignLanguage"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faTshirt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSubway"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCreditCard"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faExternalLinkAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faPhoneAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCalendar"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faUser"]);
+
 
 
 
@@ -493,6 +495,9 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/restaurants/:restaurantId",
     component: _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/reservations/new",
+    component: _reservations_reservation_confirmation__WEBPACK_IMPORTED_MODULE_11__["default"]
   }));
 };
 
@@ -781,6 +786,114 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_nav_bar__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/reservations/reservation_confirmation.jsx":
+/*!***********************************************************************!*\
+  !*** ./frontend/components/reservations/reservation_confirmation.jsx ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+ // import Image from 'app/assets/images/middle_eastern.jpg';
+
+var ReservationConfirmation =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ReservationConfirmation, _React$Component);
+
+  function ReservationConfirmation() {
+    _classCallCheck(this, ReservationConfirmation);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ReservationConfirmation).apply(this, arguments));
+  }
+
+  _createClass(ReservationConfirmation, [{
+    key: "render",
+    // constructor(props) {
+    //   super(props);
+    // }
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-page-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "You're almost done!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-details-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-image-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "restaurant-image",
+        src: "//images.otstatic.com/prod/25772382/1/small.jpg"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-details"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Brooklyn Cider House"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-subheader"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-date"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: ["far", "calendar"],
+        color: "black",
+        className: "subheader-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Tue, Feb 18")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-confirm-time"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: ["far", "clock"],
+        color: "black",
+        className: "subheader-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "6:45 pm")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-party-size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: ["far", "user"],
+        color: "black",
+        className: "subheader-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "2 people"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "input reservation-optional-input",
+        placeholder: "Add a special request (optional)"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn"
+      }, "Complete reservation")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "privacy-policy"
+      }, "By clicking \u201CComplete reservation\u201D you agree to the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "HalalTable Terms of Use"), " and ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Privacy Policy"), ". Standard text message rates may apply. You may opt out of receiving text messages at any time.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "right-container-reservation-page"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://image.flaticon.com/sprites/new_packs/2010744-cooking.png"
+      })));
+    }
+  }]);
+
+  return ReservationConfirmation;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ReservationConfirmation);
 
 /***/ }),
 

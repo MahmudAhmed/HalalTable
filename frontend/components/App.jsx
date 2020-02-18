@@ -6,7 +6,7 @@ import LoginFormContainer from "./session_forms/login_form_container";
 import SignupFormContainer from "./session_forms/signup_form_container";
 import NavBar from "./nav_bar/nav_bar_container";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBookmark, faCommentAlt, faMoneyBillAlt, faBuilding, faClock, faCreditCard } from "@fortawesome/free-regular-svg-icons";
+import { faBookmark, faCommentAlt,faUser, faCalendar, faMoneyBillAlt, faBuilding, faClock, faCreditCard } from "@fortawesome/free-regular-svg-icons";
 import {
   faCalendarAlt,
   faMapMarkerAlt,
@@ -39,13 +39,15 @@ library.add(
   faSubway,
   faCreditCard,
   faExternalLinkAlt,
-  faPhoneAlt
-
+  faPhoneAlt,
+  faCalendar,
+  faUser
 );
 import { SignInPageContainer } from "./session_forms/login_form_container";
 import { SignUpPageContainer } from "./session_forms/signup_form_container";
 import RestaurantsIndexContainer from "./restaurants/restaurants_index_container";
 import RestaurantShowContainer from "./restaurants/restaurant-show-container";
+import ReservationConfirmation from "./reservations/reservation_confirmation";
 
 
 const App = () => (
@@ -59,6 +61,10 @@ const App = () => (
     <Route
       path="/restaurants/:restaurantId"
       component={RestaurantShowContainer}
+    />
+    <Route
+      path="/reservations/new"
+      component={ReservationConfirmation}
     />
 
     {/* <LoginFormContainer /> */}

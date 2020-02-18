@@ -1,0 +1,104 @@
+.reservation-page-container{
+  font-family: 'Muli', sans-serif;
+  width: 90%;
+  margin: auto;
+  // background-color: red;
+  // height: 500px;
+  display: flex;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 32px 80px;
+}
+
+.reservation-form-container{
+  padding: 20px 50px;
+  margin: auto;
+  box-shadow: 0px 3px 11px rgba(0,0,0,0.25);
+  background-color: white;
+  max-width: 700px;
+}
+
+.right-container-reservation-page{
+  // width: 40%;
+  width: 300px;
+  margin: auto;
+  // background-color: blue;
+  height: 300px;
+    // background-image: image_url("logo-2.png") no-repeat;
+
+}
+
+.right-container-reservation-page > img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+
+.reservation-form-container > h3{
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 32px;
+  margin-bottom: 16px;
+}
+
+.reservation-details-container{
+  // background-color: orangered;
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.restaurant-image-container{
+  width: 80px;
+}
+
+.reservation-details {
+  -webkit-box-flex: 1;
+    // -ms-flex: 1 0 0%;
+  flex: 1 0 0%;
+  margin: 5px 16px;
+}
+
+.reservation-details > h4{
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 32px;
+}
+
+.reservation-subheader{
+  display: flex;
+}
+
+.reservation-subheader > div{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  margin: 0 32px 0 0;
+  display: flex;
+  // padding: 0 0 5px 10px;
+}
+
+
+.subheader-icon{
+  width: 24px;
+  margin-right: 10px;
+  display: inline-block;
+  line-height: 0;
+}
+
+.reservation-optional-input, .reservation-button{
+  width: 400px;
+  margin: 10px auto;
+}
+
+
+.privacy-policy{
+  white-space: wrap;
+}
+
+
+.privacy-policy > strong{
+  color: #DA3743;
+}
