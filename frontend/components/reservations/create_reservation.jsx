@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 // import Image from 'app/assets/images/middle_eastern.jpg';
 
 class CreateReservation extends React.Component {
@@ -13,25 +13,30 @@ class CreateReservation extends React.Component {
 
   handleBtnClick(e) {
     e.preventDefault();
-    const { createReservation, currentUserId } = this.props;
+    const { createReservation, currentUserId, history, reservationId } = this.props;
     const { partySize, date, time, restaurantId } = this.props.location.state;
 
     const formData = { party_size: partySize, date: date, time: time, restaurant_id: restaurantId, special_request: this.state.special_request}
-    debugger
-    createReservation(formData, currentUserId).then( (res) => {
-      debugger 
-      console.log(res);
-    })
+    // debugger
+    this.props.createReservation(formData, currentUserId)
+    // .then( () => {
+    //   history.push(`/reservations/${reservationId}`);
+    // })
   }
 
   handleChange(e){
     this.setState({special_request: e.target.value})
   }
 
+
   render() {
-    // this.props.location.state ? "" : <Redirect to="/restaurants" />
-    this.props.location.state ? "" : this.props.history.push("/restaurants/1")
     debugger
+    if (this.props.reservationId){
+      this.props.history.push(`/reservations/${this.props.reservationId}`)
+      // return <Redirect to={`/reservations/${this.props.reservationId}`}/>
+    }
+    // this.props.location.state ? "" : this.props.history.push("/restaurants/1")
+    if (!this.props.location.state) return <Redirect to={`/restaurants/1`} />
     const { partySize, date, time, restaurantName } = this.props.location.state;
 
     debugger
@@ -87,4 +92,4 @@ class CreateReservation extends React.Component {
   }
 }
 
-export default CreateReservation;
+export default withRouter(CreateReservation);

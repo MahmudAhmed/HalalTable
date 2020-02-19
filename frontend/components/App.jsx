@@ -1,5 +1,6 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Router } from "react-router-dom";
+import history from "./history";
 
 import { AuthRoute, ProtectRoute } from "../util/route_util";
 
@@ -81,24 +82,30 @@ const App = () => (
     <header>
       <NavBar />
     </header>
-    <Switch>
+    {/* <Switch> */}
       <AuthRoute path="/login" component={SignInPageContainer} />
       <AuthRoute path="/signup" component={SignUpPageContainer} />
       <Route
+        exact
         path="/restaurants/:restaurantId"
         component={RestaurantShowContainer}
       />
       <ProtectRoute
-        path="/reservations/create/new"
+        exact path="/reservations/create/new"
         component={CreateReservationContainer}
       />
 
       <ProtectRoute
-        path="/reservations/:reservationId"
+        exact path="/reservations/:reservationId"
         component={ShowReservationContainer}
       />
+<<<<<<< HEAD
       <Route path="/restaurants" component={RestaurantsIndexContainer} />
     </Switch>
+=======
+      <Route exact path="/restaurants" component={RestaurantsIndexContainer} />
+    {/* </Switch> */}
+>>>>>>> Reservations
     {/* <LoginFormContainer /> */}
     {/* <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} /> */}

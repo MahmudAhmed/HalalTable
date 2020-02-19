@@ -1,6 +1,6 @@
 import React from "react"; 
 import StarRatings from "react-star-ratings";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class RestaurantIndexItems extends React.Component {
   // constructor(props){
@@ -13,7 +13,8 @@ class RestaurantIndexItems extends React.Component {
 
   render() {
     const { restaurant } = this.props;
-    
+    debugger
+    if (!restaurant.overall_ratings) return null;
     return (
       <li className="restaurant-index-item">
         <div className="index-image">
@@ -24,12 +25,12 @@ class RestaurantIndexItems extends React.Component {
         <div className="restaurant-details">
           <h1><Link to={`/restaurants/${restaurant.id}`}>{restaurant.name}</Link></h1>
           <div className="index-reviews">
-            <StarRatings
-              rating={4.403}
+            {<StarRatings
+              rating={restaurant.overall_ratings || 5}
               starDimension="20px"
               starSpacing="1px"
               starRatedColor="orange"
-            />
+            />}
           </div>
           <section className="price-cuisines-city">
             <span className="pcc" id="price-range">
@@ -42,7 +43,7 @@ class RestaurantIndexItems extends React.Component {
               {restaurant.city}
             </span>
           </section>
-          <ul className="time-slot-container">
+          {/* <ul className="time-slot-container">
             <li className="time-slot">
               <a href="#">
                 <span>6:00 PM</span>
@@ -63,7 +64,7 @@ class RestaurantIndexItems extends React.Component {
                 <span>7:30 PM</span>
               </a>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </li>
     );
@@ -71,4 +72,4 @@ class RestaurantIndexItems extends React.Component {
 
 }
 
-export default RestaurantIndexItems;
+export default withRouter(RestaurantIndexItems);
