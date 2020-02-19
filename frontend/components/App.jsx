@@ -1,9 +1,8 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import { AuthRoute, ProtectRoute } from "../util/route_util";
-import LoginFormContainer from "./session_forms/login_form_container";
-import SignupFormContainer from "./session_forms/signup_form_container";
+
 import NavBar from "./nav_bar/nav_bar_container";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBookmark, faCommentAlt,faUser, faCalendar, faMoneyBillAlt, faBuilding, faClock, faCreditCard } from "@fortawesome/free-regular-svg-icons";
@@ -49,33 +48,36 @@ import { SignInPageContainer } from "./session_forms/login_form_container";
 import { SignUpPageContainer } from "./session_forms/signup_form_container";
 import RestaurantsIndexContainer from "./restaurants/restaurants_index_container";
 import RestaurantShowContainer from "./restaurants/restaurant-show-container";
-import CreateReservation from "./reservations/create_reservation";
-import ReservationShow from "./reservations/show_reservation";
+import CreateReservationContainer from "./reservations/create_reservation_container";
 import ShowReservationContainer from "./reservations/show_reservation_container";
 
+
+
+// resservation_c
 
 const App = () => (
   <div id="doc">
     <header>
       <NavBar />
     </header>
-    <AuthRoute path="/login" component={SignInPageContainer} />
-    <AuthRoute path="/signup" component={SignUpPageContainer} />
-    <Route exact path="/restaurants" component={RestaurantsIndexContainer} />
-    <Route
-      path="/restaurants/:restaurantId"
-      component={RestaurantShowContainer}
-    />
-    <Route
-      path="/reservations/new"
-      component={CreateReservation}
-    />
+    <Switch>
+      <AuthRoute path="/login" component={SignInPageContainer} />
+      <AuthRoute path="/signup" component={SignUpPageContainer} />
+      <Route
+        path="/restaurants/:restaurantId"
+        component={RestaurantShowContainer}
+      />
+      <Route
+        path="/reservations/create/new"
+        component={CreateReservationContainer}
+      />
 
-    <Route
-      path="/reservations/:reservationId"
-      component={ShowReservationContainer}
-    />
-
+      <Route
+        path="/reservations/:reservationId"
+        component={ShowReservationContainer}
+      />
+      <Route exact path="/restaurants" component={RestaurantsIndexContainer} />
+    </Switch>
     {/* <LoginFormContainer /> */}
     {/* <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} /> */}

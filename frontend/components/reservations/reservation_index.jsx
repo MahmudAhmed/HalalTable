@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 const now = new Date();
@@ -123,9 +124,8 @@ class ReservationForm extends React.Component {
               {
                 this.state.slots.map((time, idx) => 
                 <li key={idx} 
-                onClick={this.handleTimeClick}
                 className="time-slot-btn">
-                {time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+                    <Link to={{ pathname: "/reservations/create/new", state: { partySize: this.state.partySize, date: this.state.date, time: time, restaurantId: this.props.restaurant.id, restaurantName: this.props.restaurant.name  } }}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Link>
                 </li>)
               }
             </ul>

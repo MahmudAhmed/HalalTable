@@ -454,17 +454,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_forms/login_form_container */ "./frontend/components/session_forms/login_form_container.js");
-/* harmony import */ var _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_forms/signup_form_container */ "./frontend/components/session_forms/signup_form_container.js");
-/* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.js");
-/* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
-/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.js");
+/* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
+/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./session_forms/login_form_container */ "./frontend/components/session_forms/login_form_container.js");
+/* harmony import */ var _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./session_forms/signup_form_container */ "./frontend/components/session_forms/signup_form_container.js");
 /* harmony import */ var _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./restaurants/restaurants_index_container */ "./frontend/components/restaurants/restaurants_index_container.js");
 /* harmony import */ var _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./restaurants/restaurant-show-container */ "./frontend/components/restaurants/restaurant-show-container.js");
-/* harmony import */ var _reservations_create_reservation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./reservations/create_reservation */ "./frontend/components/reservations/create_reservation.jsx");
-/* harmony import */ var _reservations_show_reservation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reservations/show_reservation */ "./frontend/components/reservations/show_reservation.jsx");
-/* harmony import */ var _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./reservations/show_reservation_container */ "./frontend/components/reservations/show_reservation_container.js");
+/* harmony import */ var _reservations_create_reservation_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./reservations/create_reservation_container */ "./frontend/components/reservations/create_reservation_container.js");
+/* harmony import */ var _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reservations/show_reservation_container */ "./frontend/components/reservations/show_reservation_container.js");
 
 
 
@@ -472,40 +471,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_6__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCalendarAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faMapMarkerAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faHamburger"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBookmark"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUtensils"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faMoneyBillAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBuilding"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faClock"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSignLanguage"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faTshirt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faSubway"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCreditCard"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faExternalLinkAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faPhoneAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCalendar"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faUser"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCalendarCheck"]);
-
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_4__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCalendarAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faMapMarkerAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faHamburger"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faBookmark"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faUtensils"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faMoneyBillAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faBuilding"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faClock"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faSignLanguage"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faTshirt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faSubway"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faCreditCard"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faExternalLinkAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faPhoneAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faCalendar"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faUser"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCalendarCheck"]);
 
 
 
 
 
-
+ // resservation_c
 
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "doc"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
     path: "/login",
-    component: _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_3__["SignInPageContainer"]
+    component: _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_7__["SignInPageContainer"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
     path: "/signup",
-    component: _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["SignUpPageContainer"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
-    path: "/restaurants",
-    component: _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_8__["SignUpPageContainer"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/restaurants/:restaurantId",
     component: _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/reservations/new",
-    component: _reservations_create_reservation__WEBPACK_IMPORTED_MODULE_11__["default"]
+    path: "/reservations/create/new",
+    component: _reservations_create_reservation_container__WEBPACK_IMPORTED_MODULE_11__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/reservations/:reservationId",
-    component: _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_13__["default"]
-  }));
+    component: _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_12__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/restaurants",
+    component: _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_9__["default"]
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -818,9 +814,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -834,18 +830,61 @@ var CreateReservation =
 function (_React$Component) {
   _inherits(CreateReservation, _React$Component);
 
-  function CreateReservation() {
+  function CreateReservation(props) {
+    var _this;
+
     _classCallCheck(this, CreateReservation);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CreateReservation).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreateReservation).call(this, props));
+    _this.state = {
+      special_request: ""
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleBtnClick = _this.handleBtnClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(CreateReservation, [{
+    key: "handleBtnClick",
+    value: function handleBtnClick(e) {
+      e.preventDefault();
+      var _this$props = this.props,
+          createReservation = _this$props.createReservation,
+          currentUserId = _this$props.currentUserId;
+      var _this$props$location$ = this.props.location.state,
+          partySize = _this$props$location$.partySize,
+          date = _this$props$location$.date,
+          time = _this$props$location$.time,
+          restaurantId = _this$props$location$.restaurantId;
+      var formData = {
+        party_size: partySize,
+        date: date,
+        time: time,
+        restaurant_id: restaurantId,
+        special_request: this.state.special_request
+      };
+      debugger;
+      createReservation(formData, currentUserId).then(function (res) {
+        debugger;
+        console.log("hello");
+      });
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.setState({
+        special_request: e.target.value
+      });
+    }
+  }, {
     key: "render",
-    // constructor(props) {
-    //   super(props);
-    // }
     value: function render() {
+      var _this$props$location$2 = this.props.location.state,
+          partySize = _this$props$location$2.partySize,
+          date = _this$props$location$2.date,
+          time = _this$props$location$2.time,
+          restaurantName = _this$props$location$2.restaurantName;
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-page-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -859,7 +898,7 @@ function (_React$Component) {
         src: "//images.otstatic.com/prod/25772382/1/small.jpg"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-details"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Brooklyn Cider House"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, restaurantName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-subheader"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-date"
@@ -867,26 +906,32 @@ function (_React$Component) {
         icon: ["far", "calendar"],
         color: "black",
         className: "subheader-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Tue, Feb 18")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-confirm-time"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: ["far", "clock"],
         color: "black",
         className: "subheader-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "6:45 pm")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, time.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-party-size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: ["far", "user"],
         color: "black",
         className: "subheader-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "2 people"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, partySize))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "input reservation-optional-input",
-        placeholder: "Add a special request (optional)"
+        placeholder: "Add a special request (optional)",
+        onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn"
+        className: "btn",
+        onClick: this.handleBtnClick
       }, "Complete reservation")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "privacy-policy"
       }, "By clicking \u201CComplete reservation\u201D you agree to the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "HalalTable Terms of Use"), " and ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Privacy Policy"), ". Standard text message rates may apply. You may opt out of receiving text messages at any time.")));
@@ -900,18 +945,18 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/reservations/reservation_container.js":
-/*!*******************************************************************!*\
-  !*** ./frontend/components/reservations/reservation_container.js ***!
-  \*******************************************************************/
+/***/ "./frontend/components/reservations/create_reservation_container.js":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/reservations/create_reservation_container.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reservation_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reservation_index */ "./frontend/components/reservations/reservation_index.jsx");
-/* harmony import */ var _actions_reservations_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/reservations_action */ "./frontend/actions/reservations_action.js");
+/* harmony import */ var _actions_reservations_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/reservations_action */ "./frontend/actions/reservations_action.js");
+/* harmony import */ var _create_reservation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create_reservation */ "./frontend/components/reservations/create_reservation.jsx");
 
 
 
@@ -926,12 +971,12 @@ var mSTP = function mSTP(_ref) {
 var mDTP = function mDTP(dispatch) {
   return {
     createReservation: function createReservation() {
-      return dispatch(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_2__["createReservation"].apply(void 0, arguments));
+      return dispatch(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_1__["createReservation"].apply(void 0, arguments));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_reservation_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_create_reservation__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -946,6 +991,7 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -973,6 +1019,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 var now = new Date();
@@ -1146,13 +1193,23 @@ function (_React$Component) {
       }, this.state.slots.map(function (time, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx,
-          onClick: _this4.handleTimeClick,
           className: "time-slot-btn"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: {
+            pathname: "/reservations/create/new",
+            state: {
+              partySize: _this4.state.partySize,
+              date: _this4.state.date,
+              time: time,
+              restaurantId: _this4.props.restaurant.id,
+              restaurantName: _this4.props.restaurant.name
+            }
+          }
         }, time.toLocaleString('en-US', {
           hour: 'numeric',
           minute: 'numeric',
           hour12: true
-        }));
+        })));
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "reserve-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1236,17 +1293,17 @@ var getRestaurantHours = function getRestaurantHours(open, close) {
   return restaurantHours;
 };
 
-var ReservationShow =
+var ShowReservation =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(ReservationShow, _React$Component);
+  _inherits(ShowReservation, _React$Component);
 
-  function ReservationShow(props) {
+  function ShowReservation(props) {
     var _this;
 
-    _classCallCheck(this, ReservationShow);
+    _classCallCheck(this, ShowReservation);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ReservationShow).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ShowReservation).call(this, props));
     _this.state = {
       partySize: 1,
       date: "2021-01-01",
@@ -1255,10 +1312,11 @@ function (_React$Component) {
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleBtnClick = _this.handleBtnClick.bind(_assertThisInitialized(_this));
+    _this.handleUpdateClick = _this.handleUpdateClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(ReservationShow, [{
+  _createClass(ShowReservation, [{
     key: "handleChange",
     value: function handleChange(field) {
       var _this2 = this;
@@ -1297,6 +1355,7 @@ function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
+      debugger;
       var idx;
       this.availableTime = [];
       this.timeSlots.forEach(function (time, i) {
@@ -1331,14 +1390,41 @@ function (_React$Component) {
       document.querySelector(".modify-reservation-btns").classList.add("is-closed");
     }
   }, {
+    key: "handleUpdateClick",
+    value: function handleUpdateClick(e) {
+      e.preventDefault();
+      var _this$props3 = this.props,
+          updateReservation = _this$props3.updateReservation,
+          currentUserId = _this$props3.currentUserId,
+          reservation = _this$props3.reservation;
+      var _this$state = this.state,
+          partySize = _this$state.partySize,
+          date = _this$state.date,
+          time = _this$state.time,
+          restaurantId = _this$state.restaurantId;
+      var formData = {
+        party_size: partySize,
+        date: date,
+        time: time,
+        restaurant_id: restaurantId
+      };
+      debugger;
+      updateReservation(formData, currentUserId, reservation.id).then(function (res) {
+        debugger;
+        console.log("hello");
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
 
+      if (!this.props.reservation) return null;
       this.timeSlots;
 
       if (Object.values(this.props.restaurant).length >= 1) {
-        this.timeSlots = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time); // this.setState({slots: [...this.timeSlots.slice(3)]})
+        debugger;
+        this.timeSlots = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time);
       } else {
         this.timeSlots = [];
       }
@@ -1350,6 +1436,10 @@ function (_React$Component) {
           value: "".concat(i + 1)
         }, i + 1);
       });
+      var _this$props4 = this.props,
+          restaurant = _this$props4.restaurant,
+          reservation = _this$props4.reservation;
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-show-outside-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1372,7 +1462,7 @@ function (_React$Component) {
         src: "//images.otstatic.com/prod/25772382/1/small.jpg"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-details"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Brooklyn Cider House"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, restaurant.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-subheader"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-date"
@@ -1380,19 +1470,23 @@ function (_React$Component) {
         icon: ["far", "calendar"],
         color: "black",
         className: "subheader-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Tue, Feb 18")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, reservation.date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-confirm-time"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: ["far", "clock"],
         color: "black",
         className: "subheader-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "6:45 pm")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, new Date(reservation.time).toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-party-size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: ["far", "user"],
         color: "black",
         className: "subheader-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "2 people"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, reservation.party_size))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "special-request"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "No Special Request")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "reservation-edit container"
@@ -1455,7 +1549,7 @@ function (_React$Component) {
       }, this.state.slots.map(function (time, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx,
-          onClick: _this4.handleTimeClick,
+          onClick: _this4.handleUpdateClick,
           className: "time-slot-btn"
         }, time.toLocaleString('en-US', {
           hour: 'numeric',
@@ -1471,10 +1565,10 @@ function (_React$Component) {
     }
   }]);
 
-  return ReservationShow;
+  return ShowReservation;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ReservationShow);
+/* harmony default export */ __webpack_exports__["default"] = (ShowReservation);
 
 /***/ }),
 
@@ -1513,6 +1607,9 @@ var mDTP = function mDTP(dispatch) {
     },
     requestReservation: function requestReservation(userId, reservationId) {
       dispatch(Object(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_3__["requestReservation"])(userId, reservationId));
+    },
+    updateReservation: function updateReservation(formData, userId, reservationId) {
+      dispatch(Object(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_3__["updateReservation"])(formData, userId, reservationId));
     }
   };
 };
@@ -1900,7 +1997,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_anchor_link_smooth_scroll__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-star-ratings */ "./node_modules/react-star-ratings/build/index.js");
 /* harmony import */ var react_star_ratings__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_star_ratings__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _reservations_reservation_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reservations/reservation_container */ "./frontend/components/reservations/reservation_container.js");
+/* harmony import */ var _reservations_reservation_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reservations/reservation_index */ "./frontend/components/reservations/reservation_index.jsx");
 /* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./menu */ "./frontend/components/restaurants/menu.jsx");
 /* harmony import */ var _reviews_review_index_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../reviews/review_index_container */ "./frontend/components/reviews/review_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -2088,7 +2185,7 @@ function (_React$Component) {
         restaurant: restaurant
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "right-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservations_reservation_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservations_reservation_index__WEBPACK_IMPORTED_MODULE_5__["default"], {
         restaurant: restaurant
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-right-details"
