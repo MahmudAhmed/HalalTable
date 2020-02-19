@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Redirect } from "react-router-dom";
 // import Image from 'app/assets/images/middle_eastern.jpg';
 
 class CreateReservation extends React.Component {
@@ -9,6 +10,7 @@ class CreateReservation extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleBtnClick = this.handleBtnClick.bind(this)
   }
+
   handleBtnClick(e) {
     e.preventDefault();
     const { createReservation, currentUserId } = this.props;
@@ -18,7 +20,7 @@ class CreateReservation extends React.Component {
     debugger
     createReservation(formData, currentUserId).then( (res) => {
       debugger 
-      console.log("hello");
+      console.log(res);
     })
   }
 
@@ -27,7 +29,11 @@ class CreateReservation extends React.Component {
   }
 
   render() {
+    // this.props.location.state ? "" : <Redirect to="/restaurants" />
+    this.props.location.state ? "" : this.props.history.push("/restaurants/1")
+    debugger
     const { partySize, date, time, restaurantName } = this.props.location.state;
+
     debugger
     return (
       <div className="reservation-page-container">

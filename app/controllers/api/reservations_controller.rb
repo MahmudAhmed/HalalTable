@@ -12,7 +12,6 @@ class Api::ReservationsController < ApplicationController
   end 
 
   def create 
-    # debugger
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
 
@@ -24,7 +23,6 @@ class Api::ReservationsController < ApplicationController
   end
 
   def update
-    # debugger
     @reservation = Reservation.find(params[:id])
     @reservation.user_id = current_user.id
 
@@ -47,7 +45,7 @@ class Api::ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:party_size, :date, :time, :special_request, :restaurant_id)
+    params.require(:reservation).permit(:party_size, :status, :date, :time, :special_request, :restaurant_id)
   end
 
 end

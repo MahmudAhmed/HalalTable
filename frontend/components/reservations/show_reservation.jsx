@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Router } from "react-router-dom";
 
 const now = new Date();
 const currYear = now.getFullYear();
@@ -37,7 +38,8 @@ class ShowReservation extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
-    this.handleUpdateClick = this.handleUpdateClick.bind(this)
+    this.handleUpdateClick = this.handleUpdateClick.bind(this);
+    this.handleCancelClick = this.handleCancelClick.bind(this);
   }
 
 
@@ -103,7 +105,8 @@ class ShowReservation extends React.Component {
     document.querySelector(".available-time-slots").classList.add("is-open")
   }
 
-  handleModifyClick() {
+  handleModifyClick(e) {
+    e.preventDefault();
     document.querySelector(".reserve-edit-form").classList.add("is-open")
     document.querySelector(".modify-reservation-btns").classList.add("is-closed")
   }
@@ -117,10 +120,24 @@ class ShowReservation extends React.Component {
 
       const formData = { party_size: partySize, date: date, time: time, restaurant_id: restaurantId }
       debugger
-      updateReservation(formData, currentUserId, reservation.id).then(() => {
-        this.props.history.push(`/reservations/${reservationId}`)
-      })
+      updateReservation(formData, currentUserId, reservation.id)
+      document.querySelector(".reserve-edit-form").classList.remove("is-open")
+      document.querySelector(".modify-reservation-btns").classList.remove("is-closed")
+
+      // updateReservation(formData, currentUserId, reservation.id).then(() => {
+      //   // document.querySelector(".reserve-edit-form").classList.remove("is-open")
+      //   // document.querySelector(".modify-reservation-btns").classList.remove("is-closed")
+      //   // Router.dispatch(location.getCurrentPath(), null);
+
+      // })
     }
+  }
+
+  handleCancelClick(e){
+    e.preventDefault();
+    const { updateReservation, currentUserId, reservation } = this.props;
+    const formData = { status: "cancelled" }
+    updateReservation(formData, currentUserId, reservation.id)
   }
 
 
@@ -140,10 +157,10 @@ class ShowReservation extends React.Component {
     const { restaurant, reservation } = this.props;
     debugger
 
-    const header = reservation.status !== "upcoming" ? (
+    const header = reservation.status === "upcoming" ? (
       <div className="reservation-confirm-header">
         <span><FontAwesomeIcon
-          icon="calendar-check"
+          icon={["far", "calendar-check"]}
           color="black"
           className="res-header-icon"
         /></span>
@@ -155,7 +172,7 @@ class ShowReservation extends React.Component {
       ) : (
       <div className="reservation-cancelled-header">
         <span><FontAwesomeIcon
-          icon="calendar-check"
+          icon={["far", "calendar-times"]}
           color="black"
           className="res-header-icon"
         /></span>
@@ -164,7 +181,13 @@ class ShowReservation extends React.Component {
           <p>Please contact the restaurant for further inquiry...</p>
         </div>
       </div> 
-      )
+      );
+    const modifyBtns = reservation.status === "upcoming" ? (
+      <section className="modify-reservation-btns">
+        <button onClick={this.handleModifyClick}>Modify</button>
+        <button onClick={this.handleCancelClick}>Cancel</button>
+      </section>
+    ) : "";
     return (
       <div className="reservation-show-outside-container">
         <div className="reservation-show-container">
@@ -207,11 +230,7 @@ class ShowReservation extends React.Component {
             <span>No Special Request</span>
           </div>
           <section className="reservation-edit container">
-            <section className="modify-reservation-btns">
-              <button onClick={this.handleModifyClick}>Modify</button>
-              <button>Cancel</button>
-            </section>
-
+            {modifyBtns}
             <section className="reserve-edit-form">
               <h3 className="reservation-form-title" id="edit-reservation-title">Change Your Reservation</h3>
               <div className="reservation-inputs">

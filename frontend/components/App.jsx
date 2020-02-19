@@ -5,7 +5,18 @@ import { AuthRoute, ProtectRoute } from "../util/route_util";
 
 import NavBar from "./nav_bar/nav_bar_container";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBookmark, faCommentAlt,faUser, faCalendar, faMoneyBillAlt, faBuilding, faClock, faCreditCard } from "@fortawesome/free-regular-svg-icons";
+import { 
+  faBookmark, 
+  faCommentAlt,
+  faUser, 
+  faCalendar, 
+  faMoneyBillAlt, 
+  faBuilding, 
+  faClock, 
+  faCreditCard,
+  faCalendarTimes,
+  faCalendarCheck,
+} from "@fortawesome/free-regular-svg-icons";
 import {
   faCalendarAlt,
   faMapMarkerAlt,
@@ -18,7 +29,7 @@ import {
   faSubway,
   faExternalLinkAlt,
   faPhoneAlt,
-  faCalendarCheck
+  
   
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -42,7 +53,8 @@ library.add(
   faPhoneAlt,
   faCalendar,
   faUser,
-  faCalendarCheck
+  faCalendarCheck,
+  faCalendarTimes
 );
 import { SignInPageContainer } from "./session_forms/login_form_container";
 import { SignUpPageContainer } from "./session_forms/signup_form_container";
