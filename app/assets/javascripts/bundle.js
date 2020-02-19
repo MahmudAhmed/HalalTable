@@ -900,6 +900,12 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      debugger;
+      console.log("hello");
+    }
+  }, {
     key: "render",
     value: function render() {
       debugger;
@@ -2385,6 +2391,8 @@ function (_React$Component) {
     // }
     value: function render() {
       var restaurant = this.props.restaurant;
+      debugger;
+      if (!restaurant.overall_ratings) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "restaurant-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2400,7 +2408,7 @@ function (_React$Component) {
       }, restaurant.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-reviews"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_ratings__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        rating: 4.403,
+        rating: restaurant.overall_ratings || 5,
         starDimension: "20px",
         starSpacing: "1px",
         starRatedColor: "orange"
@@ -2415,32 +2423,14 @@ function (_React$Component) {
       }, restaurant.cuisines), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "pcc addBulletPoint",
         id: "city"
-      }, restaurant.city)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "time-slot-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "time-slot"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "6:00 PM"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "time-slot"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "6:30 PM"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "time-slot"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "7:00 PM"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "time-slot"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "7:30 PM"))))));
+      }, restaurant.city))));
     }
   }]);
 
   return RestaurantIndexItems;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (RestaurantIndexItems);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(RestaurantIndexItems));
 
 /***/ }),
 
@@ -2502,31 +2492,56 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var restaurants = this.props.restaurants;
-      var display = restaurants.map(function (restaurant) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurant_index_items__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: restaurant.id,
-          restaurant: restaurant
-        });
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "filter-search-bar"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-page"
+      // debugger
+      // const { restaurants } = this.props;
+      // const display = restaurants.map( restaurant => (
+      //   <RestaurantIndexItems 
+      //   key={restaurant.id}
+      //   restaurant={restaurant} 
+      //   />)
+      // ) 
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "splash-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "splash-form-title"
+      }, "Find your table for any occasion"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-date-time-size"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "filter-bar"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "restaurants-index"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "top-index-section"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "top-index-border"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "top-index-text"
-      }, "100% Zabihah Halal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-        icon: "hamburger",
-        className: "top-index-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, display))));
+        className: "splash-date"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: ["far", "calendar"],
+        color: "black",
+        className: "splash-calendar-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "date"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-time"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: ["far", "clock"],
+        color: "black",
+        className: "splash-clock-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, "10:00 am"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Time"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-size"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: ["far", "user"],
+        color: "black",
+        className: "splash-party-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "splash-size"
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        selected: true
+      }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Size"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-location-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "splash-location-select"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "NYC/Manhattan"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Brooklyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Queens"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Bronx"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Staten Island"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Long Island"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn",
+        id: "splash-btn"
+      }, "Let's go")))));
     }
   }]);
 

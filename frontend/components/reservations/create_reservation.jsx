@@ -27,6 +27,10 @@ class CreateReservation extends React.Component {
   handleChange(e){
     this.setState({special_request: e.target.value})
   }
+  componentWillUnmount(){
+    debugger
+    console.log("hello");
+  }
 
   render() {
     debugger
