@@ -27,19 +27,16 @@ class CreateReservation extends React.Component {
   handleChange(e){
     this.setState({special_request: e.target.value})
   }
-  componentWillUnmount(){
-    debugger
-    console.log("hello");
-  }
+
 
   render() {
     debugger
-    this.props.reservationId ? (
+    if (this.props.reservationId){
       this.props.history.push(`/reservations/${this.props.reservationId}`)
-    ) : (
-      ""
-    );
-    this.props.location.state ? "" : this.props.history.push("/restaurants/1")
+      // return <Redirect to={`/reservations/${this.props.reservationId}`}/>
+    }
+    // this.props.location.state ? "" : this.props.history.push("/restaurants/1")
+    if (!this.props.location.state) return <Redirect to={`/restaurants/1`} />
     const { partySize, date, time, restaurantName } = this.props.location.state;
 
     debugger

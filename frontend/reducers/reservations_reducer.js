@@ -7,7 +7,8 @@ const reservationsReducer = (state = {}, action) => {
     case RECEIVE_RESERVATIONS:
       return Object.assign(action.reservations)
     case RECEIVE_RESERVATION:
-      return merge({}, state, action.reservation)
+      debugger
+      return action.reservation
     case REMOVE_RESERVATION:
       const reservations = Object.assign({}, state)
       delete reservations[action.reservationId]

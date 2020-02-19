@@ -8,19 +8,14 @@ const mSTP = ({ session, entities }) => {
   debugger
   return {
   currentUserId: session.id,
-  reservationId: Object.values(entities.reservations)[0]
+  reservationId: Object.keys(entities.reservations)[0]
 }};
 
 
 const mDTP = (dispatch, ownProps) => {
   return {
     createReservation: (formData, currentUserId) => {
-      // debugger
       dispatch(createReservation(formData, currentUserId))
-      // .then((res) => { 
-      //   debugger
-      //   // ownProps.history.push(`/reservations/${ownProps.reservationId}`);
-      // })
     },
   }
 };

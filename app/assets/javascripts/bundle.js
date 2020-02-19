@@ -900,17 +900,18 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      debugger;
-      console.log("hello");
-    }
-  }, {
     key: "render",
     value: function render() {
       debugger;
-      this.props.reservationId ? this.props.history.push("/reservations/".concat(this.props.reservationId)) : "";
-      this.props.location.state ? "" : this.props.history.push("/restaurants/1");
+
+      if (this.props.reservationId) {
+        this.props.history.push("/reservations/".concat(this.props.reservationId)); // return <Redirect to={`/reservations/${this.props.reservationId}`}/>
+      } // this.props.location.state ? "" : this.props.history.push("/restaurants/1")
+
+
+      if (!this.props.location.state) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+        to: "/restaurants/1"
+      });
       var _this$props$location$2 = this.props.location.state,
           partySize = _this$props$location$2.partySize,
           date = _this$props$location$2.date,
@@ -1001,18 +1002,14 @@ var mSTP = function mSTP(_ref) {
   debugger;
   return {
     currentUserId: session.id,
-    reservationId: Object.values(entities.reservations)[0]
+    reservationId: Object.keys(entities.reservations)[0]
   };
 };
 
 var mDTP = function mDTP(dispatch, ownProps) {
   return {
     createReservation: function createReservation(formData, currentUserId) {
-      // debugger
-      dispatch(Object(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_1__["createReservation"])(formData, currentUserId)); // .then((res) => { 
-      //   debugger
-      //   // ownProps.history.push(`/reservations/${ownProps.reservationId}`);
-      // })
+      dispatch(Object(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_1__["createReservation"])(formData, currentUserId));
     }
   };
 };
@@ -1372,6 +1369,7 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
+      debugger;
       var _this$props = this.props,
           requestReservation = _this$props.requestReservation,
           currentUserId = _this$props.currentUserId,
@@ -1475,6 +1473,7 @@ function (_React$Component) {
   }, {
     key: "handleCancelClick",
     value: function handleCancelClick(e) {
+      debugger;
       e.preventDefault();
       var _this$props3 = this.props,
           updateReservation = _this$props3.updateReservation,
@@ -4415,7 +4414,8 @@ var reservationsReducer = function reservationsReducer() {
       return Object.assign(action.reservations);
 
     case _actions_reservations_action__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_RESERVATION"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_0__["merge"])({}, state, action.reservation);
+      debugger;
+      return action.reservation;
 
     case _actions_reservations_action__WEBPACK_IMPORTED_MODULE_1__["REMOVE_RESERVATION"]:
       var reservations = Object.assign({}, state);

@@ -52,6 +52,7 @@ class ShowReservation extends React.Component {
 
 
   componentDidMount() {
+    debugger
     const { requestReservation, currentUserId, match } = this.props;
     requestReservation(currentUserId, match.params.reservationId)
   }
@@ -134,6 +135,7 @@ class ShowReservation extends React.Component {
   }
 
   handleCancelClick(e){
+    debugger
     e.preventDefault();
     const { updateReservation, currentUserId, reservation } = this.props;
     const formData = { status: "cancelled" }
