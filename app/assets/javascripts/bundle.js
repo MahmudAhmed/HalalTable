@@ -453,17 +453,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.js");
-/* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
-/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./session_forms/login_form_container */ "./frontend/components/session_forms/login_form_container.js");
-/* harmony import */ var _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./session_forms/signup_form_container */ "./frontend/components/session_forms/signup_form_container.js");
-/* harmony import */ var _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./restaurants/restaurants_index_container */ "./frontend/components/restaurants/restaurants_index_container.js");
-/* harmony import */ var _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./restaurants/restaurant-show-container */ "./frontend/components/restaurants/restaurant-show-container.js");
-/* harmony import */ var _reservations_create_reservation_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./reservations/create_reservation_container */ "./frontend/components/reservations/create_reservation_container.js");
-/* harmony import */ var _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reservations/show_reservation_container */ "./frontend/components/reservations/show_reservation_container.js");
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./history */ "./frontend/components/history.js");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.js");
+/* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
+/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./session_forms/login_form_container */ "./frontend/components/session_forms/login_form_container.js");
+/* harmony import */ var _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./session_forms/signup_form_container */ "./frontend/components/session_forms/signup_form_container.js");
+/* harmony import */ var _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./restaurants/restaurants_index_container */ "./frontend/components/restaurants/restaurants_index_container.js");
+/* harmony import */ var _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./restaurants/restaurant-show-container */ "./frontend/components/restaurants/restaurant-show-container.js");
+/* harmony import */ var _reservations_create_reservation_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reservations/create_reservation_container */ "./frontend/components/reservations/create_reservation_container.js");
+/* harmony import */ var _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./reservations/show_reservation_container */ "./frontend/components/reservations/show_reservation_container.js");
 
 
 
@@ -471,7 +472,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_4__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCalendarAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faMapMarkerAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faHamburger"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faBookmark"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faUtensils"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faMoneyBillAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faBuilding"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faClock"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faSignLanguage"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faTshirt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faSubway"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faCreditCard"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faExternalLinkAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faPhoneAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faCalendar"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faUser"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faCalendarCheck"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faCalendarTimes"]);
+
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_5__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCalendarAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faAngleDown"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faMapMarkerAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faBars"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faHamburger"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faBookmark"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCommentAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faUtensils"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faMoneyBillAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faBuilding"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faClock"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faSignLanguage"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faTshirt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faSubway"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCreditCard"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faExternalLinkAlt"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faPhoneAlt"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCalendar"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faUser"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCalendarCheck"], _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCalendarTimes"]);
 
 
 
@@ -482,29 +484,47 @@ _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_4__["library"].add(_f
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "doc"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["AuthRoute"], {
     path: "/login",
-    component: _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_7__["SignInPageContainer"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
+    component: _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_8__["SignInPageContainer"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["AuthRoute"], {
     path: "/signup",
-    component: _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_8__["SignUpPageContainer"]
+    component: _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_9__["SignUpPageContainer"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/restaurants/:restaurantId",
-    component: _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_10__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectRoute"], {
+    component: _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectRoute"], {
+    exact: true,
     path: "/reservations/create/new",
-    component: _reservations_create_reservation_container__WEBPACK_IMPORTED_MODULE_11__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectRoute"], {
+    component: _reservations_create_reservation_container__WEBPACK_IMPORTED_MODULE_12__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectRoute"], {
+    exact: true,
     path: "/reservations/:reservationId",
-    component: _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_12__["default"]
+    component: _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_13__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/restaurants",
-    component: _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_9__["default"]
-  })));
+    component: _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/history.js":
+/*!****************************************!*\
+  !*** ./frontend/components/history.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! history */ "./node_modules/history/esm/history.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(history__WEBPACK_IMPORTED_MODULE_0__["createBrowserHistory"])());
 
 /***/ }),
 
@@ -852,7 +872,9 @@ function (_React$Component) {
       e.preventDefault();
       var _this$props = this.props,
           createReservation = _this$props.createReservation,
-          currentUserId = _this$props.currentUserId;
+          currentUserId = _this$props.currentUserId,
+          history = _this$props.history,
+          reservationId = _this$props.reservationId;
       var _this$props$location$ = this.props.location.state,
           partySize = _this$props$location$.partySize,
           date = _this$props$location$.date,
@@ -864,12 +886,11 @@ function (_React$Component) {
         time: time,
         restaurant_id: restaurantId,
         special_request: this.state.special_request
-      };
-      debugger;
-      createReservation(formData, currentUserId).then(function (res) {
-        debugger;
-        console.log(res);
-      });
+      }; // debugger
+
+      this.props.createReservation(formData, currentUserId); // .then( () => {
+      //   history.push(`/reservations/${reservationId}`);
+      // })
     }
   }, {
     key: "handleChange",
@@ -881,9 +902,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // this.props.location.state ? "" : <Redirect to="/restaurants" />
-      this.props.location.state ? "" : this.props.history.push("/restaurants/1");
       debugger;
+      this.props.reservationId ? this.props.history.push("/reservations/".concat(this.props.reservationId)) : "";
+      this.props.location.state ? "" : this.props.history.push("/restaurants/1");
       var _this$props$location$2 = this.props.location.state,
           partySize = _this$props$location$2.partySize,
           date = _this$props$location$2.date,
@@ -946,7 +967,7 @@ function (_React$Component) {
   return CreateReservation;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (CreateReservation);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(CreateReservation));
 
 /***/ }),
 
@@ -962,26 +983,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_reservations_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/reservations_action */ "./frontend/actions/reservations_action.js");
 /* harmony import */ var _create_reservation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create_reservation */ "./frontend/components/reservations/create_reservation.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
 
 var mSTP = function mSTP(_ref) {
-  var session = _ref.session;
+  var session = _ref.session,
+      entities = _ref.entities;
+  debugger;
   return {
-    currentUserId: session.id
+    currentUserId: session.id,
+    reservationId: Object.values(entities.reservations)[0]
   };
 };
 
-var mDTP = function mDTP(dispatch) {
+var mDTP = function mDTP(dispatch, ownProps) {
   return {
-    createReservation: function createReservation() {
-      return dispatch(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_1__["createReservation"].apply(void 0, arguments));
+    createReservation: function createReservation(formData, currentUserId) {
+      // debugger
+      dispatch(Object(_actions_reservations_action__WEBPACK_IMPORTED_MODULE_1__["createReservation"])(formData, currentUserId)); // .then((res) => { 
+      //   debugger
+      //   // ownProps.history.push(`/reservations/${ownProps.reservationId}`);
+      // })
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_create_reservation__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_create_reservation__WEBPACK_IMPORTED_MODULE_2__["default"])));
 
 /***/ }),
 
@@ -3409,6 +3439,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App */ "./frontend/components/App.jsx");
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./history */ "./frontend/components/history.js");
+
 
 
 

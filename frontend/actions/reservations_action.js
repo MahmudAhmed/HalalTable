@@ -49,6 +49,7 @@ export const createReservation = (formData, userId) => dispatch => {
   return APIUtil.postReservation(formData, userId).then(
     (reservation) => {
       dispatch(receiveReservation(reservation))
+      
     },
     (err) => {
       dispatch(receiveReservationErrors(err.responseJSON))
