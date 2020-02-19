@@ -501,7 +501,9 @@ var App = function App() {
     exact: true,
     path: "/restaurants",
     component: _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_9__["default"]
-  })));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    id: "footer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Mahmud Ahmed")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);

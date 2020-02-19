@@ -93,10 +93,10 @@ const App = () => (
     {/* <LoginFormContainer /> */}
     {/* <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} /> */}
-    {/* <footer id="footer">
+    <footer id="footer">
         <p>Mahmud Ahmed</p>
       
-      </footer> */}
+    </footer>
   </div>
 );
 
