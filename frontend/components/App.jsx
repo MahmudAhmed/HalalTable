@@ -28,20 +28,24 @@ import {
   faTshirt,
   faSubway,
   faExternalLinkAlt,
-  faPhoneAlt,
-  
-  
+  faPhoneAlt,  
 } from "@fortawesome/free-solid-svg-icons";
 
+import {
+  faLinkedin,
+  faGithubSquare,
+  faMedium
+} from "@fortawesome/free-brands-svg-icons";
+
 library.add(
-  faCalendarAlt, 
-  faAngleDown, 
-  faMapMarkerAlt, 
-  faBars, 
-  faHamburger, 
-  faBookmark, 
-  faCommentAlt, 
-  faUtensils, 
+  faCalendarAlt,
+  faAngleDown,
+  faMapMarkerAlt,
+  faBars,
+  faHamburger,
+  faBookmark,
+  faCommentAlt,
+  faUtensils,
   faMoneyBillAlt,
   faBuilding,
   faClock,
@@ -54,14 +58,19 @@ library.add(
   faCalendar,
   faUser,
   faCalendarCheck,
-  faCalendarTimes
+  faCalendarTimes,
+  faLinkedin,
+  faGithubSquare,
+  faMedium
 );
+
 import { SignInPageContainer } from "./session_forms/login_form_container";
 import { SignUpPageContainer } from "./session_forms/signup_form_container";
 import RestaurantsIndexContainer from "./restaurants/restaurants_index_container";
 import RestaurantShowContainer from "./restaurants/restaurant-show-container";
 import CreateReservationContainer from "./reservations/create_reservation_container";
 import ShowReservationContainer from "./reservations/show_reservation_container";
+import { Footer } from "./footer/footer";
 
 
 
@@ -88,15 +97,12 @@ const App = () => (
         path="/reservations/:reservationId"
         component={ShowReservationContainer}
       />
-      <Route exact path="/restaurants" component={RestaurantsIndexContainer} />
+      <Route path="/restaurants" component={RestaurantsIndexContainer} />
     </Switch>
     {/* <LoginFormContainer /> */}
     {/* <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} /> */}
-    <footer id="footer">
-        <p>Mahmud Ahmed</p>
-      
-    </footer>
+    <Footer />
   </div>
 );
 

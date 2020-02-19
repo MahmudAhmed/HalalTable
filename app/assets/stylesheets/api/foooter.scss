@@ -1,0 +1,25 @@
+#footer{
+  position: sticky;
+  bottom: 0;
+  top: 100%;
+  width: 90%;
+  margin: auto;
+  padding: 50px 100px;
+  background-color: #3C3C3C;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+}
+
+.footer-icons-container{
+  display: flex;
+}
+
+.footer-icon{
+  font-size: 32px;
+  padding: 5px;
+}
