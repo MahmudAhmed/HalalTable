@@ -59,7 +59,7 @@ class RestaurantShow extends React.Component {
   render() {
     window.addEventListener("scroll", () => this.stickyHeader() )
     if (!this.props.restaurant) return null; 
-    const { restaurant, reviews, menu } = this.props;
+    const { restaurant, reviews, menu, loggedIn } = this.props;
     const reviewCount = Object.keys(reviews).length;
     return (
       <section className="show-page">
@@ -163,7 +163,7 @@ class RestaurantShow extends React.Component {
           </main>
           <aside className="right-content">
             <div>
-              <ReservationForm restaurant={restaurant} />
+              <ReservationForm restaurant={restaurant} loggedIn={loggedIn} />
             </div>
             <div className="restaurant-right-details">
               <div id="sidebar-map">

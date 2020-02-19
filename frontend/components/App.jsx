@@ -79,12 +79,12 @@ const App = () => (
         path="/restaurants/:restaurantId"
         component={RestaurantShowContainer}
       />
-      <Route
+      <ProtectRoute
         path="/reservations/create/new"
         component={CreateReservationContainer}
       />
 
-      <Route
+      <ProtectRoute
         path="/reservations/:reservationId"
         component={ShowReservationContainer}
       />

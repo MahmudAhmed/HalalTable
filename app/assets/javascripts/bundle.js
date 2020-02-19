@@ -491,10 +491,10 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/restaurants/:restaurantId",
     component: _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_10__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectRoute"], {
     path: "/reservations/create/new",
     component: _reservations_create_reservation_container__WEBPACK_IMPORTED_MODULE_11__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectRoute"], {
     path: "/reservations/:reservationId",
     component: _reservations_show_reservation_container__WEBPACK_IMPORTED_MODULE_12__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -1119,23 +1119,33 @@ function (_React$Component) {
     }
   }, {
     key: "handleTimeClick",
-    value: function handleTimeClick(e) {
-      e.preventDefault();
-      var _this$props = this.props,
-          createReservation = _this$props.createReservation,
-          currentUserId = _this$props.currentUserId;
-      var formData = {
-        party_size: this.state.partySize,
-        date: this.state.date,
-        time: this.state.time,
-        restaurant_id: this.props.restaurant.id
+    value: function handleTimeClick(time) {
+      var _this4 = this;
+
+      var that = this;
+      return function (e) {
+        debugger;
+
+        if (that.props.loggedIn) {
+          that.props.history.push({
+            pathname: "/reservations/create/new",
+            state: {
+              partySize: _this4.state.partySize,
+              date: _this4.state.date,
+              time: time,
+              restaurantId: _this4.props.restaurant.id,
+              restaurantName: _this4.props.restaurant.name
+            }
+          });
+        } else {
+          document.querySelector(".modal-login").classList.add("is-open");
+        }
       };
-      createReservation(formData, currentUserId);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       // debugger
       var partySize = Array(20).fill().map(function (_, i) {
@@ -1198,23 +1208,13 @@ function (_React$Component) {
       }, this.state.slots.map(function (time, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx,
-          className: "time-slot-btn"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: {
-            pathname: "/reservations/create/new",
-            state: {
-              partySize: _this4.state.partySize,
-              date: _this4.state.date,
-              time: time,
-              restaurantId: _this4.props.restaurant.id,
-              restaurantName: _this4.props.restaurant.name
-            }
-          }
+          className: "time-slot-btn",
+          onClick: _this5.handleTimeClick(time)
         }, time.toLocaleString('en-US', {
           hour: 'numeric',
           minute: 'numeric',
           hour12: true
-        })));
+        }));
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "reserve-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1227,7 +1227,7 @@ function (_React$Component) {
   return ReservationForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ReservationForm);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ReservationForm));
 
 /***/ }),
 
@@ -1539,7 +1539,7 @@ function (_React$Component) {
         className: "subheader-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, reservation.party_size))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "special-request"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "No Special Request")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, reservation.special_request)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "reservation-edit container"
       }, modifyBtns, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "reserve-edit-form"
@@ -2002,7 +2002,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(_ref, ownProps) {
-  var entities = _ref.entities;
+  var entities = _ref.entities,
+      session = _ref.session;
   var tempMenu = {
     menu_items: {
       item_1: ""
@@ -2011,7 +2012,8 @@ var mSTP = function mSTP(_ref, ownProps) {
   return {
     restaurant: entities.restaurants[ownProps.match.params.restaurantId],
     reviews: Object.values(entities.reviews),
-    menu: entities.menus[ownProps.match.params.restaurantId] || tempMenu
+    menu: entities.menus[ownProps.match.params.restaurantId] || tempMenu,
+    loggedIn: Boolean(session.id)
   };
 };
 
@@ -2144,7 +2146,8 @@ function (_React$Component) {
       var _this$props = this.props,
           restaurant = _this$props.restaurant,
           reviews = _this$props.reviews,
-          menu = _this$props.menu;
+          menu = _this$props.menu,
+          loggedIn = _this$props.loggedIn;
       var reviewCount = Object.keys(reviews).length;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "show-page"
@@ -2233,7 +2236,8 @@ function (_React$Component) {
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "right-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservations_reservation_index__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        restaurant: restaurant
+        restaurant: restaurant,
+        loggedIn: loggedIn
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-right-details"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

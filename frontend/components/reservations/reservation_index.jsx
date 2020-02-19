@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 
 const now = new Date();
@@ -79,11 +79,16 @@ class ReservationForm extends React.Component {
     document.querySelector(".available-time-slots").classList.add("is-open")
   }
 
-  handleTimeClick(e){
-    e.preventDefault();
-    const { createReservation, currentUserId } = this.props;
-    const formData = { party_size: this.state.partySize, date: this.state.date, time: this.state.time, restaurant_id: this.props.restaurant.id}
-    createReservation(formData, currentUserId)
+  handleTimeClick(time){
+    const that = this
+    return e => {
+      debugger
+      if (that.props.loggedIn) {
+        that.props.history.push({ pathname: "/reservations/create/new", state: { partySize: this.state.partySize, date: this.state.date, time: time, restaurantId: this.props.restaurant.id, restaurantName: this.props.restaurant.name }})
+      } else {
+        document.querySelector(".modal-login").classList.add("is-open");
+      }
+    }
   }
   
   render() {
@@ -124,8 +129,9 @@ class ReservationForm extends React.Component {
               {
                 this.state.slots.map((time, idx) => 
                 <li key={idx} 
-                className="time-slot-btn">
-                    <Link to={{ pathname: "/reservations/create/new", state: { partySize: this.state.partySize, date: this.state.date, time: time, restaurantId: this.props.restaurant.id, restaurantName: this.props.restaurant.name  } }}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</Link>
+                className="time-slot-btn"
+                onClick={this.handleTimeClick(time)}>
+                    {time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
                 </li>)
               }
             </ul>
@@ -139,4 +145,4 @@ class ReservationForm extends React.Component {
   }
 }
 
-export default ReservationForm;
+export default withRouter(ReservationForm);

@@ -227,7 +227,7 @@ class ShowReservation extends React.Component {
             </div>
           </div>
           <div id="special-request">
-            <span>No Special Request</span>
+            <span>{reservation.special_request}</span>
           </div>
           <section className="reservation-edit container">
             {modifyBtns}
