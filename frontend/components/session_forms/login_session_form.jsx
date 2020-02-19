@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, Link, withRouter } from "react-router-dom";
 
 class LoginSessionForm extends React.Component {
   constructor(props) {
@@ -16,12 +16,12 @@ class LoginSessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.login(user).then(() => this.setState({
+    this.props.login(user).then(() =>
+      this.setState({
         email: "",
         password: ""
-      }) 
-    ); 
-     
+      })
+    );
   }
 
   handleChange(field) {
@@ -36,7 +36,7 @@ class LoginSessionForm extends React.Component {
     this.setState({
       email: "",
       password: ""
-    })
+    });
   }
 
   toggleForms(e) {
@@ -45,24 +45,21 @@ class LoginSessionForm extends React.Component {
   }
 
   render() {
-
     const { errors, loggedIn } = this.props;
-    const displayErrors = errors.map((err, idx) => <h3 className="form-errors" key={idx}>{err}</h3>);
+    const displayErrors = errors.map((err, idx) => (
+      <h3 className="form-errors" key={idx}>
+        {err}
+      </h3>
+    ));
     loggedIn ? $(".modal-login").removeClass("is-open") : "";
 
     return (
       <div className="modal-login">
-        <span 
-        className="modal-close" 
-        title="close"
-        onClick={this.handleClick}>
-        &times;
+        <span className="modal-close" title="close" onClick={this.handleClick}>
+          &times;
         </span>
 
-        <section 
-        className="modal-screen" 
-        onClick={this.handleClick}>
-        </section>
+        <section className="modal-screen" onClick={this.handleClick}></section>
 
         <form className="modal-form" onSubmit={this.handleSubmit}>
           <h1>Please sign in</h1>
@@ -85,14 +82,14 @@ class LoginSessionForm extends React.Component {
           />
           <button className="btn">Sign In</button>
           <br />
-          <span className="button-alternative">New to HalalTable?   
-          <strong onClick={this.toggleForms}>  Create an account</strong>
+          <span className="button-alternative">
+            New to HalalTable?
+            <strong onClick={this.toggleForms}> Create an account</strong>
           </span>
-          
         </form>
       </div>
     );
   }
 }
 
-export default LoginSessionForm;
+export default withRouter(LoginSessionForm);

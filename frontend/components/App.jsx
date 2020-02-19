@@ -99,13 +99,8 @@ const App = () => (
         exact path="/reservations/:reservationId"
         component={ShowReservationContainer}
       />
-<<<<<<< HEAD
-      <Route path="/restaurants" component={RestaurantsIndexContainer} />
-    </Switch>
-=======
       <Route exact path="/restaurants" component={RestaurantsIndexContainer} />
     {/* </Switch> */}
->>>>>>> Reservations
     {/* <LoginFormContainer /> */}
     {/* <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} /> */}

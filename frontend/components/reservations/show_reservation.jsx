@@ -195,34 +195,52 @@ class ShowReservation extends React.Component {
         <div className="reservation-show-container">
           {header}
           <div className="reservation-details-container">
-            <div className="restaurant-image-container" id="reservation-show-image">
-              <img className="restaurant-image" src="//images.otstatic.com/prod/25772382/1/small.jpg" />
+            <div
+              className="restaurant-image-container"
+              id="reservation-show-image"
+            >
+              <img
+                className="restaurant-image"
+                src="//images.otstatic.com/prod/25772382/1/small.jpg"
+              />
             </div>
             <div className="reservation-details">
               <h4>{restaurant.name}</h4>
               <div className="reservation-subheader">
                 <div className="reservation-date">
-                  <span><FontAwesomeIcon
-                    icon={["far", "calendar"]}
-                    color="black"
-                    className="subheader-icon"
-                  /></span>
+                  <span>
+                    <FontAwesomeIcon
+                      icon={["far", "calendar"]}
+                      color="black"
+                      className="subheader-icon"
+                    />
+                  </span>
                   <p>{reservation.date}</p>
                 </div>
                 <div className="reservation-confirm-time">
-                  <span><FontAwesomeIcon
-                    icon={["far", "clock"]}
-                    color="black"
-                    className="subheader-icon"
-                  /></span>
-                  <p>{new Date(reservation.time).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p>
+                  <span>
+                    <FontAwesomeIcon
+                      icon={["far", "clock"]}
+                      color="black"
+                      className="subheader-icon"
+                    />
+                  </span>
+                  <p>
+                    {new Date(reservation.time).toLocaleString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      hour12: true
+                    })}
+                  </p>
                 </div>
                 <div className="reservation-party-size">
-                  <span><FontAwesomeIcon
-                    icon={["far", "user"]}
-                    color="black"
-                    className="subheader-icon"
-                  /></span>
+                  <span>
+                    <FontAwesomeIcon
+                      icon={["far", "user"]}
+                      color="black"
+                      className="subheader-icon"
+                    />
+                  </span>
                   <p>{reservation.party_size}</p>
                 </div>
               </div>
@@ -234,12 +252,23 @@ class ShowReservation extends React.Component {
           <section className="reservation-edit container">
             {modifyBtns}
             <section className="reserve-edit-form">
-              <h3 className="reservation-form-title" id="edit-reservation-title">Change Your Reservation</h3>
+              <h3
+                className="reservation-form-title"
+                id="edit-reservation-title"
+              >
+                Change Your Reservation
+              </h3>
               <div className="reservation-inputs">
                 <div className="reservation-form-party-size">
                   <span className="reservation-labels">Party Size</span>
                   <div className="select-party-size">
-                    <select className="reservation-size" value={this.state.partySize} onChange={this.handleChange("partySize")}>{partySize}</select>
+                    <select
+                      className="reservation-size"
+                      value={this.state.partySize}
+                      onChange={this.handleChange("partySize")}
+                    >
+                      {partySize}
+                    </select>
                   </div>
                 </div>
                 <section className="date-time-reservation">
@@ -257,30 +286,59 @@ class ShowReservation extends React.Component {
                   </div>
                   <div className="choose-time">
                     <span className="reservation-labels">Time</span>
-                    <select className="reservation-time" onChange={this.handleChange("time")}>
-                      {this.timeSlots.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</option>)}
+                    <select
+                      className="reservation-time"
+                      onChange={this.handleChange("time")}
+                    >
+                      {this.timeSlots.map((time, i) => (
+                        <option key={i} id="select-option" value={time}>
+                          {time.toLocaleString("en-US", {
+                            hour: "numeric",
+                            minute: "numeric",
+                            hour12: true
+                          })}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </section>
-                <section className="available-time-slots show-page-time-slots" >
+                <section className="available-time-slots show-page-time-slots">
                   <h2>Select a time:</h2>
                   <ul className="time-slots">
-                    {
-                      this.state.slots.map((time, idx) =>
-                        <li key={idx}
-                          onClick={this.handleUpdateClick(time)}
-                          className="time-slot-btn">
-                          {time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
-                        </li>)
-                    }
+                    {this.state.slots.map((time, idx) => (
+                      <li
+                        key={idx}
+                        onClick={this.handleUpdateClick(time)}
+                        className="time-slot-btn"
+                      >
+                        {time.toLocaleString("en-US", {
+                          hour: "numeric",
+                          minute: "numeric",
+                          hour12: true
+                        })}
+                      </li>
+                    ))}
                   </ul>
                 </section>
                 <div id="reserve-btn">
-                  <button className="btn" onClick={this.handleBtnClick}>Find a Table</button>
+                  <button className="btn" onClick={this.handleBtnClick}>
+                    Find a Table
+                  </button>
                 </div>
               </div>
             </section>
           </section>
+        </div>
+        <div className="reservation-show-btns-container">
+          {" "}
+          <div className="reservation-show-btns">
+            <button
+              className="btn"
+              onClick={() => this.props.history.push("/")}
+            >
+              Return Home
+            </button>
+          </div>
         </div>
       </div>
     );
