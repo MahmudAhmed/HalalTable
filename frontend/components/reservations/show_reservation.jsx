@@ -67,6 +67,13 @@ class ShowReservation extends React.Component {
 
   }
 
+  // componentWillUpdate(nextProps){
+  //   if (nextProps.reservation !== this.props.reservation) {
+  //     const { requestReservation, currentUserId, match } = this.props;
+  //     requestReservation(currentUserId, match.params.reservationId)
+  //   }
+  // }
+
   handleBtnClick(e) {
     e.preventDefault();
     debugger
@@ -101,17 +108,19 @@ class ShowReservation extends React.Component {
     document.querySelector(".modify-reservation-btns").classList.add("is-closed")
   }
 
-  handleUpdateClick(e) {
-    e.preventDefault();
-    const { updateReservation, currentUserId, reservation } = this.props;
-    const { partySize, date, time, restaurantId } = this.state;
-
-    const formData = { party_size: partySize, date: date, time: time, restaurant_id: restaurantId }
-    debugger
-    updateReservation(formData, currentUserId, reservation.id).then((res) => {
+  handleUpdateClick(time) {
+    return e => {
       debugger
-      console.log("hello");
-    })
+      e.preventDefault();
+      const { updateReservation, currentUserId, reservation } = this.props;
+      const { partySize, date, restaurantId } = this.state;
+
+      const formData = { party_size: partySize, date: date, time: time, restaurant_id: restaurantId }
+      debugger
+      updateReservation(formData, currentUserId, reservation.id).then(() => {
+        this.props.history.push(`/reservations/${reservationId}`)
+      })
+    }
   }
 
 
@@ -130,20 +139,36 @@ class ShowReservation extends React.Component {
 
     const { restaurant, reservation } = this.props;
     debugger
+
+    const header = reservation.status !== "upcoming" ? (
+      <div className="reservation-confirm-header">
+        <span><FontAwesomeIcon
+          icon="calendar-check"
+          color="black"
+          className="res-header-icon"
+        /></span>
+        <div className="reservation-show-header-text">
+          <h3>Thanks! Your reservation is confirmed.</h3>
+          <p>Confirmation #10203</p>
+        </div>
+      </div> 
+      ) : (
+      <div className="reservation-cancelled-header">
+        <span><FontAwesomeIcon
+          icon="calendar-check"
+          color="black"
+          className="res-header-icon"
+        /></span>
+        <div className="reservation-show-header-text">
+          <h3>This reservation has been cancelled.</h3>
+          <p>Please contact the restaurant for further inquiry...</p>
+        </div>
+      </div> 
+      )
     return (
       <div className="reservation-show-outside-container">
         <div className="reservation-show-container">
-          <div className="reservation-confirm-header">
-            <span><FontAwesomeIcon
-              icon="calendar-check"
-              color="black"
-              className="res-header-icon"
-            /></span>
-            <div className="reservation-show-header-text">
-              <h3>Thanks! Your reservation is confirmed.</h3>
-              <p>Confirmation #10203</p>
-            </div>
-          </div>
+          {header}
           <div className="reservation-details-container">
             <div className="restaurant-image-container" id="reservation-show-image">
               <img className="restaurant-image" src="//images.otstatic.com/prod/25772382/1/small.jpg" />
@@ -222,7 +247,7 @@ class ShowReservation extends React.Component {
                     {
                       this.state.slots.map((time, idx) =>
                         <li key={idx}
-                          onClick={this.handleUpdateClick}
+                          onClick={this.handleUpdateClick(time)}
                           className="time-slot-btn">
                           {time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
                         </li>)

@@ -1348,7 +1348,13 @@ function (_React$Component) {
           time: reservation.time
         });
       }
-    }
+    } // componentWillUpdate(nextProps){
+    //   if (nextProps.reservation !== this.props.reservation) {
+    //     const { requestReservation, currentUserId, match } = this.props;
+    //     requestReservation(currentUserId, match.params.reservationId)
+    //   }
+    // }
+
   }, {
     key: "handleBtnClick",
     value: function handleBtnClick(e) {
@@ -1391,33 +1397,36 @@ function (_React$Component) {
     }
   }, {
     key: "handleUpdateClick",
-    value: function handleUpdateClick(e) {
-      e.preventDefault();
-      var _this$props3 = this.props,
-          updateReservation = _this$props3.updateReservation,
-          currentUserId = _this$props3.currentUserId,
-          reservation = _this$props3.reservation;
-      var _this$state = this.state,
-          partySize = _this$state.partySize,
-          date = _this$state.date,
-          time = _this$state.time,
-          restaurantId = _this$state.restaurantId;
-      var formData = {
-        party_size: partySize,
-        date: date,
-        time: time,
-        restaurant_id: restaurantId
-      };
-      debugger;
-      updateReservation(formData, currentUserId, reservation.id).then(function (res) {
+    value: function handleUpdateClick(time) {
+      var _this4 = this;
+
+      return function (e) {
         debugger;
-        console.log("hello");
-      });
+        e.preventDefault();
+        var _this4$props = _this4.props,
+            updateReservation = _this4$props.updateReservation,
+            currentUserId = _this4$props.currentUserId,
+            reservation = _this4$props.reservation;
+        var _this4$state = _this4.state,
+            partySize = _this4$state.partySize,
+            date = _this4$state.date,
+            restaurantId = _this4$state.restaurantId;
+        var formData = {
+          party_size: partySize,
+          date: date,
+          time: time,
+          restaurant_id: restaurantId
+        };
+        debugger;
+        updateReservation(formData, currentUserId, reservation.id).then(function () {
+          _this4.props.history.push("/reservations/".concat(reservationId));
+        });
+      };
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (!this.props.reservation) return null;
       this.timeSlots;
@@ -1436,15 +1445,11 @@ function (_React$Component) {
           value: "".concat(i + 1)
         }, i + 1);
       });
-      var _this$props4 = this.props,
-          restaurant = _this$props4.restaurant,
-          reservation = _this$props4.reservation;
+      var _this$props3 = this.props,
+          restaurant = _this$props3.restaurant,
+          reservation = _this$props3.reservation;
       debugger;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "reservation-show-outside-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "reservation-show-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var header = reservation.status !== "upcoming" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-confirm-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: "calendar-check",
@@ -1452,7 +1457,20 @@ function (_React$Component) {
         className: "res-header-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-show-header-text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Thanks! Your reservation is confirmed."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Confirmation #10203"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Thanks! Your reservation is confirmed."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Confirmation #10203"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-cancelled-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: "calendar-check",
+        color: "black",
+        className: "res-header-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-show-header-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "This reservation has been cancelled."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please contact the restaurant for further inquiry...")));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-show-outside-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reservation-show-container"
+      }, header, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reservation-details-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-image-container",
@@ -1549,7 +1567,7 @@ function (_React$Component) {
       }, this.state.slots.map(function (time, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx,
-          onClick: _this4.handleUpdateClick,
+          onClick: _this5.handleUpdateClick(time),
           className: "time-slot-btn"
         }, time.toLocaleString('en-US', {
           hour: 'numeric',

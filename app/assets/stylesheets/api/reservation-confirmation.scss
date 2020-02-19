@@ -120,6 +120,18 @@
   padding: 0 10px;
 }
 
+.reservation-cancelled-header{
+  display: flex;
+  // padding: 20px 0;
+  margin-bottom: 10px;
+  background-color: #DA3743;
+  padding: 1rem 1.5rem;
+}
+
+.reservation-cancelled-header > span{
+  display: flex;
+  padding: 0 10px;
+}
 
 
 .reservation-show-container{

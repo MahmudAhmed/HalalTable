@@ -13,6 +13,8 @@
 #
 
 class Reservation < ApplicationRecord
+  validates :restaurant_id, :user_id, :party_side, :date, :time, presence: true
+  validates :status, inclusion: { in: [ "upcoming", "cancelled", "completed"]}
   
   belongs_to :restaurant
 
