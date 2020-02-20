@@ -29,7 +29,8 @@ import {
   faTshirt,
   faSubway,
   faExternalLinkAlt,
-  faPhoneAlt,  
+  faPhoneAlt,
+  faTrophy,  
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -62,7 +63,8 @@ library.add(
   faCalendarTimes,
   faLinkedin,
   faGithubSquare,
-  faMedium
+  faMedium,
+  faTrophy
 );
 
 import { SignInPageContainer } from "./session_forms/login_form_container";
@@ -74,7 +76,6 @@ import ShowReservationContainer from "./reservations/show_reservation_container"
 import { Footer } from "./footer/footer";
 
 
-
 const App = () => (
   <div id="doc">
     <header>
@@ -84,17 +85,18 @@ const App = () => (
       <AuthRoute path="/login" component={SignInPageContainer} />
       <AuthRoute path="/signup" component={SignUpPageContainer} />
       <Route
-        exact
         path="/restaurants/:restaurantId"
         component={RestaurantShowContainer}
       />
+
       <ProtectRoute
         exact path="/reservations/create/new"
         component={CreateReservationContainer}
       />
 
+
       <ProtectRoute
-        exact path="/reservations/:reservationId"
+        exact path="/restaurants/:restaurantId"
         component={ShowReservationContainer}
       />
       <Route exact path="/restaurants" component={RestaurantsIndexContainer} />

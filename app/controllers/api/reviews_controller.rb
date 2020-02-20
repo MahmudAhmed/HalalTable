@@ -11,6 +11,7 @@ class Api::ReviewsController < ApplicationController
     @review.user_id = current_user.id
 
     if @review.save 
+      @review.restaurant.average_ratings
       render :show
     else
       render json: @review.errors.full_messages, status: 422
@@ -21,6 +22,7 @@ class Api::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
    
     if @review.user_id == current_user.id && @review.update(review_params)
+      @review.restaurant.average_ratings
       render :show
     else
       render json: @review.errors.full_messages, status: 422

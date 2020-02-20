@@ -26,14 +26,14 @@ class RestaurantIndexItems extends React.Component {
 
   componentDidUpdate(prevProps){
     if (prevProps.formData != this.props.formData) {
-      debugger
+      
       this.setState({formData: this.props.formData})
       this.getSlots();
     }
   }
 
   getSlots() {
-    // debugger
+    // 
     let idx = -1;
     this.availableTime = [];
     const formTime = this.state.formData.time
@@ -59,7 +59,7 @@ class RestaurantIndexItems extends React.Component {
       this.availableTime[1] = this.timeSlots[idx];
       this.availableTime[2] = this.timeSlots[idx + 1];
     }
-    debugger
+    
     this.setState({
       slots: [...this.availableTime]
     });
@@ -68,7 +68,7 @@ class RestaurantIndexItems extends React.Component {
   render() {
     const { restaurant } = this.props;
     if (!restaurant.overall_ratings) return null;
-    // debugger
+    // 
     return (
       <li className="restaurant-index-item">
         <div className="index-image">
@@ -136,7 +136,7 @@ export default withRouter(RestaurantIndexItems);
 //   .slice(0, 10);
 
 const getRestaurantHours = (open, close) => {
-  debugger
+  
   if (!open) return [];
   const openTime = new Date(open);
   let utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);

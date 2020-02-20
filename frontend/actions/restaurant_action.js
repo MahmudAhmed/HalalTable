@@ -22,8 +22,8 @@ const receiveRestaurants= (restaurants) => ({
 
 ///thunk actions
 
-export const requestRestaurants = () => dispatch => {
-  return APIUtil.fetchRestaurants().then(
+export const requestRestaurants = (...args) => dispatch => {
+  return APIUtil.fetchRestaurants(...args).then(
     (restaurants) => {
       dispatch(receiveRestaurants(restaurants))
     }

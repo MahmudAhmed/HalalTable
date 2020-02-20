@@ -10,7 +10,7 @@ const mSTP = ({entities}) => ({
 
 
 const mDTP = dispatch => ({
-  requestRestaurants: () => dispatch(requestRestaurants()),
+  requestRestaurants: (...args) => dispatch(requestRestaurants(...args)),
   // requestRestaurant: restaurantId => dispatch(requestRestaurant(restaurantId))
 });
 

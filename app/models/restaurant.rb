@@ -41,6 +41,10 @@ class Restaurant < ApplicationRecord
 
   has_many :reservations
 
+  def average_ratings
+    self.update!(ratings: self.reviews.average(:overall).to_f)
+  end
+  
 end
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import RestaurantIndexItems from "./restaurant_index_items";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Route } from "react-router-dom";
+import StarRatings from "react-star-ratings";
 
 
 
@@ -12,10 +12,15 @@ class RestaurantsIndex extends React.Component {
       date: min,
       time: new Date("Sat, 01 Jan 2000 10:00:00 UTC +00:00"),
       partySize: 2,
-      slots: []
+      slots: [],
+      city: "NYC/Manhattan",
+      price: [],
+      cuisine: []
+      
     };
-    debugger
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleBtnClick = this.handleBtnClick.bind(this);
+    this.handlePriceClick = this.handlePriceClick.bind(this);
   }
 
   componentDidMount() {
@@ -33,9 +38,38 @@ class RestaurantsIndex extends React.Component {
     }
   }
 
+  handleBtnClick(e){
+    e.preventDefault();
+    this.props.requestRestaurants({city: this.state.city, price: this.state.price});
+  }
+
+  handlePriceClick(price){
+    const statePrice = this.state.price;
+    let priceFilters;
+    const that = this;
+    return e => {
+      if (statePrice.indexOf(price) === -1){
+        e.target.classList.add("price-selected")
+        that.setState({
+          price: [...statePrice, price]
+        })
+        priceFilters = [...statePrice, price]
+      } else {
+        e.target.classList.remove("price-selected")
+        that.setState({ price: statePrice.filter( p => p != price )})
+        priceFilters = statePrice.filter(p => p != price)
+      }
+      that.props.requestRestaurants({ city: that.state.city, price: priceFilters});
+    }
+  }
+
+  handleRatingClick(){
+
+  }
+
   render() {
     const { restaurants } = this.props;
-    if (restaurants.length === 0) return null;
+    if (!this.timeSlots) return null;
     const partySize = Array(20)
     .fill()
     .map((_, i) => (
@@ -112,30 +146,118 @@ class RestaurantsIndex extends React.Component {
                   icon="map-marker-alt"
                   className="splash-location-icon"
                 />
-                <select className="splash-location-select">
-                  <option>NYC/Manhattan</option>
-                  <option>Brooklyn</option>
-                  <option>Queens</option>
-                  <option>Bronx</option>
-                  <option>Staten Island</option>
-                  <option>Long Island</option>
+                <select className="splash-location-select" value={this.state.city} onChange={this.handleChange("city")}>
+                  <option value="NYC/Manhattan">NYC/Manhattan</option>
+                  <option value="Brooklyn">Brooklyn</option>
+                  <option value="Queens">Queens</option>
+                  <option value="Bronx">Bronx</option>
+                  <option value="Staten Island">Staten Island</option>
+                  <option value="Long Island">Long Island</option>
                 </select>
               </div>
-              <button className="btn" id="splash-btn">
+              <button className="btn" id="splash-btn" onClick={this.handleBtnClick}>
                 Let's go
               </button>
             </form>
           </section>
         </div>
-        <div className="index-page">
-          <div className="filter-bar"></div>
-          <div className="restaurants-index">
-            <div className="top-index-section">
-              <div className="top-index-border"></div>
-              <span className="top-index-text">100% Zabihah Halal</span>
-              <FontAwesomeIcon icon="hamburger" className="top-index-icon" />
+        <div className="index-page-container">
+          <div className="index-page">
+            <div className="filter-bar">
+              <section className="price-filter-container">
+                <div className="filters-title">
+                  <FontAwesomeIcon
+                    icon={["far", "money-bill-alt"]}
+                    className="filter-icon"
+                  />
+                  <span>Price</span>
+                </div>
+                <ul className="price-filter-items">
+                  <li onClick={this.handlePriceClick("$")} title="$30 and under">$</li>
+                  <li onClick={this.handlePriceClick("$$")} title="$31 and $50">$$</li>
+                  <li onClick={this.handlePriceClick("$$$")} title="$50 and over">$$$</li>
+                </ul>
+              </section>
+              <section className="ratings-filter-container">
+                <div className="filters-title">
+                  <FontAwesomeIcon
+                    icon="trophy"
+                    className="filter-icon"
+                  />
+                  <span>Rating</span>
+                </div>
+                <div className="rating-filter-items">
+                  <div>
+                    <input type="checkbox" value="" />
+                    <StarRatings
+                      rating={5}
+                      starDimension="20px"
+                      starSpacing="1px"
+                      starRatedColor="orange"
+                    />
+                  </div>
+                  <div>
+                    <input type="checkbox" value="" />
+                    <StarRatings
+                      rating={4}
+                      starDimension="20px"
+                      starSpacing="1px"
+                      starRatedColor="orange"
+                    />
+                    <span> & up</span>
+                  </div>
+                  <div>
+                    <input type="checkbox" value="" />
+                    <StarRatings
+                      rating={3}
+                      starDimension="20px"
+                      starSpacing="1px"
+                      starRatedColor="orange"
+                    />
+                    <span> & up</span>
+                  </div>
+                </div>
+              </section>
+              <section className="cuisine-filter-container">
+                <div className="filters-title">
+                  <FontAwesomeIcon
+                    icon="utensils"
+                    className="filter-icon"
+                  />
+                  <span>Cuisine</span>
+                </div>
+                <ul className="cuisine-filter-items">
+                  <li>
+                    <input type="checkbox" value="Afgan" />
+                    <label>Afgan</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" value="Barbeque" />
+                    <label>Barbeque</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" value="Burgers & Wings" />
+                    <label>Burgers & Wings</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" value="Middle Eastern" />
+                    <label>Middle Eastern</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" value="Turkish" />
+                    <label>Turkish</label>
+                  </li>
+                </ul>
+              </section>
             </div>
-            <ul>{display}</ul>
+            <div className="restaurants-index">
+              <div className="top-index-section">
+                <div className="top-index-border"></div>
+                <span className="top-index-text">100% Zabihah Halal</span>
+                <FontAwesomeIcon icon="hamburger" className="top-index-icon" />
+              </div>
+              <ul>{display}</ul>
+            </div>
           </div>
         </div>
       </>
@@ -154,7 +276,7 @@ const currDay = now.getDate();
 const min = new Date(currYear, currMonth, currDay).toISOString().slice(0, 10);
 
 const getRestaurantHours = (open, close) => {
-  debugger
+
   if (!open) return [];
   const openTime = new Date(open);
   let utcOpenTime = new Date(

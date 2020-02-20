@@ -1,17 +1,15 @@
+.index-page-container{
+  background-color: white;
+  width: 90%;
+  margin: auto;
+}
+
 .index-page{
   display: flex;
   margin: auto;
-  width: 90%;
+  width: 60%;
   justify-content: center;
-  background-color: green;
 }
-
-.filter-bar{
-  background-color: red;
-  width: 40%;
-}
-
-
 
 .restaurants-index{
   background-color: white;
@@ -23,6 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: end;
+  margin-top: 10px;
 }
 .top-index-border{
   flex-grow: 1;
@@ -141,4 +140,10 @@
 
 .index-reviews{
   margin: 5px 0; 
+}
+
+@media all and (max-width: 1100px) {
+  .index-page{
+    width: 100%;
+  }
 }
