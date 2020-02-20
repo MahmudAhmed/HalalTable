@@ -16,13 +16,14 @@ class RestaurantsIndex extends React.Component {
       city: "NYC/Manhattan",
       price: [],
       rating: 3,
-      cuisine: []
+      cuisines: []
       
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handlePriceClick = this.handlePriceClick.bind(this);
     this.handleRatingClick = this.handleRatingClick.bind(this);
+    this.handleCuisineClick = this.handleCuisineClick.bind(this);
   }
 
   componentDidMount() {
@@ -69,6 +70,24 @@ class RestaurantsIndex extends React.Component {
     e.preventDefault();
     this.setState({ rating: e.target.value })
     this.props.requestRestaurants({ city: this.state.city, price: this.state.price, rating: e.target.value });
+  }
+
+  handleCuisineClick(cuisine) {
+    debugger
+    const stateCuisine = this.state.cuisines;
+    return e => {
+      let cuisineFilters;
+      if (stateCuisine.indexOf(cuisine) === -1) {
+        this.setState({
+          cuisines: [...stateCuisine, cuisine]
+        })
+        cuisineFilters = [...stateCuisine, cuisine]
+      } else {
+        this.setState({ cuisines: stateCuisine.filter(p => p != cuisine) })
+        cuisineFilters = stateCuisine.filter(p => p != cuisine)
+      }
+      this.props.requestRestaurants({ city: this.state.city, price: this.state.price, rating: this.state.rating, cuisines: cuisineFilters });
+    }
   }
 
   render() {
@@ -232,23 +251,23 @@ class RestaurantsIndex extends React.Component {
                 </div>
                 <ul className="cuisine-filter-items">
                   <li>
-                    <input type="checkbox" value="Afgan" />
+                    <input type="checkbox" value="Afgan" onClick={this.handleCuisineClick("Afgan")}/>
                     <label>Afgan</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Barbeque" />
+                    <input type="checkbox" value="Barbeque" onClick={this.handleCuisineClick("Barbeque")} />
                     <label>Barbeque</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Burgers & Wings" />
+                    <input type="checkbox" value="Burgers & Wings" onClick={this.handleCuisineClick("Burgers & Wings")} />
                     <label>Burgers & Wings</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Middle Eastern" />
+                    <input type="checkbox" value="Middle Eastern" onClick={this.handleCuisineClick("Middle Eastern")} />
                     <label>Middle Eastern</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Turkish" />
+                    <input type="checkbox" value="Turkish" onClick={this.handleCuisineClick("Turkish")} />
                     <label>Turkish</label>
                   </li>
                 </ul>

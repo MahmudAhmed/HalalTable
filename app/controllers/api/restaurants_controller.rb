@@ -7,6 +7,7 @@ class Api::RestaurantsController < ApplicationController
         @restaurants = @restaurants.where(:price_range => params[:filters][:price])
       end
       if params[:filters][:cuisines]
+        # debugger
         @restaurants = @restaurants.where(:cuisines => params[:filters][:cuisines])
       end
       if params[:filters][:rating]
