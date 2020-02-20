@@ -15,12 +15,14 @@ class RestaurantsIndex extends React.Component {
       slots: [],
       city: "NYC/Manhattan",
       price: [],
+      rating: 3,
       cuisine: []
       
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handlePriceClick = this.handlePriceClick.bind(this);
+    this.handleRatingClick = this.handleRatingClick.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +36,7 @@ class RestaurantsIndex extends React.Component {
   handleChange(field) {
     return e => {
       e.preventDefault();
+      debugger
       this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
     }
   }
@@ -46,25 +49,26 @@ class RestaurantsIndex extends React.Component {
   handlePriceClick(price){
     const statePrice = this.state.price;
     let priceFilters;
-    const that = this;
     return e => {
       if (statePrice.indexOf(price) === -1){
         e.target.classList.add("price-selected")
-        that.setState({
+        this.setState({
           price: [...statePrice, price]
         })
         priceFilters = [...statePrice, price]
       } else {
         e.target.classList.remove("price-selected")
-        that.setState({ price: statePrice.filter( p => p != price )})
+        this.setState({ price: statePrice.filter( p => p != price )})
         priceFilters = statePrice.filter(p => p != price)
       }
-      that.props.requestRestaurants({ city: that.state.city, price: priceFilters});
+      this.props.requestRestaurants({ city: this.state.city, price: priceFilters, rating: this.state.rating});
     }
   }
 
-  handleRatingClick(){
-
+  handleRatingClick(e){
+    e.preventDefault();
+    this.setState({ rating: e.target.value })
+    this.props.requestRestaurants({ city: this.state.city, price: this.state.price, rating: e.target.value });
   }
 
   render() {
@@ -188,7 +192,7 @@ class RestaurantsIndex extends React.Component {
                 </div>
                 <div className="rating-filter-items">
                   <div>
-                    <input type="checkbox" value="" />
+                    <input name="ratings-filter" type="radio" value="5" checked={ this.state.rating === "5" } onChange={this.handleRatingClick}/>
                     <StarRatings
                       rating={5}
                       starDimension="20px"
@@ -197,7 +201,7 @@ class RestaurantsIndex extends React.Component {
                     />
                   </div>
                   <div>
-                    <input type="checkbox" value="" />
+                    <input name="ratings-filter" type="radio" value="4" checked = { this.state.rating === "4" } onChange={this.handleRatingClick} />
                     <StarRatings
                       rating={4}
                       starDimension="20px"
@@ -207,7 +211,7 @@ class RestaurantsIndex extends React.Component {
                     <span> & up</span>
                   </div>
                   <div>
-                    <input type="checkbox" value="" />
+                    <input name="ratings-filter" type="radio" value="3" checked={ this.state.rating === "3" }  onChange={this.handleRatingClick}/>
                     <StarRatings
                       rating={3}
                       starDimension="20px"

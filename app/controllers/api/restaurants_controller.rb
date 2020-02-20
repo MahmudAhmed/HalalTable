@@ -10,6 +10,7 @@ class Api::RestaurantsController < ApplicationController
         @restaurants = @restaurants.where(:cuisines => params[:filters][:cuisines])
       end
       if params[:filters][:rating]
+        # debugger
         @restaurants = @restaurants.where("ratings >= ?", params[:filters][:rating])
       end
     else
