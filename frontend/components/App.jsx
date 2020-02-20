@@ -75,14 +75,12 @@ import { Footer } from "./footer/footer";
 
 
 
-// resservation_c
-
 const App = () => (
   <div id="doc">
     <header>
       <NavBar />
     </header>
-    {/* <Switch> */}
+    <Switch>
       <AuthRoute path="/login" component={SignInPageContainer} />
       <AuthRoute path="/signup" component={SignUpPageContainer} />
       <Route
@@ -100,10 +98,7 @@ const App = () => (
         component={ShowReservationContainer}
       />
       <Route exact path="/restaurants" component={RestaurantsIndexContainer} />
-    {/* </Switch> */}
-    {/* <LoginFormContainer /> */}
-    {/* <AuthRoute path="/login" component={LoginFormContainer} />
-      <AuthRoute path="/signup" component={SignupFormContainer} /> */}
+    </Switch>
     <Footer />
   </div>
 );

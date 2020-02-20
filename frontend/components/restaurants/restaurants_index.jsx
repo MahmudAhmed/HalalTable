@@ -6,22 +6,22 @@ import { Route } from "react-router-dom";
 
 
 class RestaurantsIndex extends React.Component {
-  // constructor(props){
-
-  // }
+  constructor(props){
+    super(props);
+  }
   componentDidMount(){
     this.props.requestRestaurants();
   }
 
   render() {
-    // debugger
-    // const { restaurants } = this.props;
-    // const display = restaurants.map( restaurant => (
-    //   <RestaurantIndexItems 
-    //   key={restaurant.id}
-    //   restaurant={restaurant} 
-    //   />)
-    // ) 
+    const { restaurants } = this.props;
+    const display = restaurants.map( restaurant => (
+      <RestaurantIndexItems 
+      key={restaurant.id}
+      restaurant={restaurant} 
+      />)
+    ) 
+      debugger
     return (
       <>
         <div className="splash-form-container">
@@ -35,7 +35,6 @@ class RestaurantsIndex extends React.Component {
                   <div className="splash-date">
                     <FontAwesomeIcon
                       icon={["far", "calendar"]}
-                      color="black"
                       className="splash-calendar-icon"
                     />
                     <input type="date" />
@@ -44,12 +43,11 @@ class RestaurantsIndex extends React.Component {
                   <div className="splash-time">
                     <FontAwesomeIcon
                       icon={["far", "clock"]}
-                      color="black"
                       className="splash-clock-icon"
                     />
-                    <select>
+                    <select value="10:00 am">
                       {" "}
-                      <option selected>10:00 am</option>
+                      <option>10:00 am</option>
                       <option>Time</option>
                     </select>
                   </div>
@@ -57,18 +55,18 @@ class RestaurantsIndex extends React.Component {
                   <div className="splash-size">
                     <FontAwesomeIcon
                       icon={["far", "user"]}
-                      color="black"
                       className="splash-party-icon"
                     />
-                    <select id="splash-size">
+                    <select value="1" id="splash-size">
                       {" "}
-                      <option selected>1</option>
+                      <option>1</option>
                       <option>Size</option>
                     </select>
                   </div>
                 </div>
               </section>
               <div className="splash-location-container">
+                <FontAwesomeIcon icon="map-marker-alt" className="splash-location-icon" />
                 <select className="splash-location-select">
                   <option>NYC/Manhattan</option>
                   <option>Brooklyn</option>
@@ -82,77 +80,8 @@ class RestaurantsIndex extends React.Component {
                 Let's go
               </button>
             </form>
-
-            {/* <div className="splash-inputs"> 
-
-                  <div className="choose-date">
-                    <span className="reservation-labels">Date</span>
-                    <div id="reservation-date">
-                      <input
-                        type="date"
-                        className="show-res-input"
-                      />
-                    </div>
-                  </div> */}
-            {/* <div className="choose-time">
-                    <span className="reservation-labels">Time</span>
-                    <select
-                      className="reservation-time"
-                      onChange={this.handleChange("time")}
-                    >
-                      {this.timeSlots.map((time, i) => (
-                        <option key={i} id="select-option" value={time}>
-                          {time.toLocaleString("en-US", {
-                            hour: "numeric",
-                            minute: "numeric",
-                            hour12: true
-                          })}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </section>
-
-                <div className="reservation-form-party-size">
-                  <span className="reservation-labels">Party Size</span>
-                  <div className="select-party-size">
-                    <select
-                      className="reservation-size"
-                      value={this.state.partySize}
-                      onChange={this.handleChange("partySize")}
-                    >
-                      {partySize}
-                    </select>
-                  </div>
-                </div>
-                
-                <section className="available-time-slots show-page-time-slots">
-                  <h2>Select a time:</h2>
-                  <ul className="time-slots">
-                    {this.state.slots.map((time, idx) => (
-                      <li
-                        key={idx}
-                        onClick={this.handleUpdateClick(time)}
-                        className="time-slot-btn"
-                      >
-                        {time.toLocaleString("en-US", {
-                          hour: "numeric",
-                          minute: "numeric",
-                          hour12: true
-                        })}
-                      </li>
-                    ))}
-                      </ul>*/}
-
-            {/* <div id="reserve-btn">
-                  <button className="btn" onClick={this.handleBtnClick}>
-                    Find a Table
-                  </button>
-                </div>
-              </div> */}
           </section>
         </div>
-        {/* <nav className="filter-search-bar"></nav>
         <div className="index-page">
           <div className="filter-bar"></div>
           <div className="restaurants-index">
@@ -163,7 +92,7 @@ class RestaurantsIndex extends React.Component {
             </div>
             <ul>{display}</ul>
           </div>
-        </div> */}
+        </div>
       </>
     );
   }
