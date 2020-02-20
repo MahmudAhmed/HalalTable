@@ -6,22 +6,48 @@ import { Route } from "react-router-dom";
 
 
 class RestaurantsIndex extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
+    this.state = {
+      date: min,
+      time: new Date("Sat, 01 Jan 2000 10:00:00 UTC +00:00"),
+      partySize: 2,
+      slots: []
+    };
+    debugger
+    this.handleChange = this.handleChange.bind(this)
   }
-  componentDidMount(){
+
+  componentDidMount() {
     this.props.requestRestaurants();
+    this.timeSlots = getRestaurantHours(
+      new Date("Sat, 01 Jan 2000 10:00:00 UTC +00:00"),
+      new Date("Sat, 01 Jan 2000 00:00:00 UTC +00:00")
+    );
+  }
+
+  handleChange(field) {
+    return e => {
+      e.preventDefault();
+      this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
+    }
   }
 
   render() {
     const { restaurants } = this.props;
-    const display = restaurants.map( restaurant => (
-      <RestaurantIndexItems 
-      key={restaurant.id}
-      restaurant={restaurant} 
-      />)
-    ) 
-      debugger
+    if (restaurants.length === 0) return null;
+    const partySize = Array(20)
+    .fill()
+    .map((_, i) => (
+      <option key={i + 1} id="select-option" value={`${i + 1}`}>
+          {i + 1}
+      </option>
+    ));
+
+    // debugger
+    const display = restaurants.map(restaurant => (
+      <RestaurantIndexItems key={restaurant.id} restaurant={restaurant} formData={this.state} />
+    ));
     return (
       <>
         <div className="splash-form-container">
@@ -37,7 +63,13 @@ class RestaurantsIndex extends React.Component {
                       icon={["far", "calendar"]}
                       className="splash-calendar-icon"
                     />
-                    <input type="date" />
+                    <input
+                      type="date"
+                      className="show-res-input"
+                      min={min}
+                      value={this.state.date}
+                      onChange={this.handleChange("date")}
+                    />
                   </div>
 
                   <div className="splash-time">
@@ -45,10 +77,17 @@ class RestaurantsIndex extends React.Component {
                       icon={["far", "clock"]}
                       className="splash-clock-icon"
                     />
-                    <select value="10:00 am">
+                    <select value={this.state.time} onChange={this.handleChange("time")}>
                       {" "}
-                      <option>10:00 am</option>
-                      <option>Time</option>
+                      {this.timeSlots.map((time, i) => (
+                        <option key={i} id="select-option" value={time}>
+                          {time.toLocaleString("en-US", {
+                            hour: "numeric",
+                            minute: "numeric",
+                            hour12: true
+                          })}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
@@ -57,16 +96,22 @@ class RestaurantsIndex extends React.Component {
                       icon={["far", "user"]}
                       className="splash-party-icon"
                     />
-                    <select value="1" id="splash-size">
+                    <select
+                      value={this.state.partySize}
+                      id="splash-size"
+                      onChange={this.handleChange("partySize")}
+                    >
                       {" "}
-                      <option>1</option>
-                      <option>Size</option>
+                      {partySize}
                     </select>
                   </div>
                 </div>
               </section>
               <div className="splash-location-container">
-                <FontAwesomeIcon icon="map-marker-alt" className="splash-location-icon" />
+                <FontAwesomeIcon
+                  icon="map-marker-alt"
+                  className="splash-location-icon"
+                />
                 <select className="splash-location-select">
                   <option>NYC/Manhattan</option>
                   <option>Brooklyn</option>
@@ -96,7 +141,35 @@ class RestaurantsIndex extends React.Component {
       </>
     );
   }
-
 }
 
 export default RestaurantsIndex;
+
+
+
+const now = new Date();
+const currYear = now.getFullYear();
+const currMonth = now.getMonth();
+const currDay = now.getDate();
+const min = new Date(currYear, currMonth, currDay).toISOString().slice(0, 10);
+
+const getRestaurantHours = (open, close) => {
+  debugger
+  if (!open) return [];
+  const openTime = new Date(open);
+  let utcOpenTime = new Date(
+    openTime.getTime() + openTime.getTimezoneOffset() * 60000
+  );
+  const closeTime = new Date(close);
+  let utcCloseTime = new Date(
+    closeTime.getTime() + closeTime.getTimezoneOffset() * 60000
+  );
+  if (openTime > closeTime) utcCloseTime.setDate(utcCloseTime.getDate() + 1);
+  const restaurantHours = [];
+  while (true) {
+    if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
+    restaurantHours.push(new Date(utcOpenTime.getTime()));
+    utcOpenTime.setHours(utcOpenTime.getHours() + 1);
+  }
+  return restaurantHours;
+};

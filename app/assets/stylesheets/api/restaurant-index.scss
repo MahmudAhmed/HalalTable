@@ -118,24 +118,26 @@
   padding-left: 0;
 }
 
-.time-slot a {
+.time-slot span {
   background: #da3743;
   border: 1px solid #da3743;
   border-radius: 4px;
   padding: 3px 10px;
-}
-.time-slot a:hover {
-  border-color: #bb232e;
-  background: #bb232e;
-}
-
-.time-slot > a > span{
   color: white; 
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
-  // line-height: 20px;
+  cursor: pointer;
 }
+.time-slot span:hover {
+  border-color: #bb232e;
+  background: #bb232e;
+}
+
+// .time-slot > a > span{
+  
+//   // line-height: 20px;
+// }
 
 .index-reviews{
   margin: 5px 0; 

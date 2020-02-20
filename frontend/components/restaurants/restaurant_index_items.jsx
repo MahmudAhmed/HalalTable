@@ -5,24 +5,70 @@ import { Link, withRouter } from "react-router-dom";
 
 
 class RestaurantIndexItems extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
+
+    this.timeSlots = getRestaurantHours(
+      props.restaurant.open_time,
+      props.restaurant.close_time
+    );
+
     this.state = {
-      date: min,
-      time: new Date(),
-      partySize: 2, 
+      formData: props.formData,
       slots: []
+    };
+    this.getSlots = this.getSlots.bind(this);
+  }
+
+  componentDidMount(){
+    this.getSlots()
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.formData != this.props.formData) {
+      debugger
+      this.setState({formData: this.props.formData})
+      this.getSlots();
     }
   }
-  // componentDidMount(){
-  //   const { restaurant, requestRestaurant } = this.props;
-  //   requestRestaurant(restaurant.id)
-  // }
+
+  getSlots() {
+    // debugger
+    let idx = -1;
+    this.availableTime = [];
+    const formTime = this.state.formData.time
+    const formTimeUTC = new Date(formTime.getTime() + formTime.getTimezoneOffset() * 60000)
+    this.timeSlots.forEach((time, i) => {
+      if (time.getTime() === formTimeUTC.getTime()) {
+        idx = i;
+      }
+    });
+    this.setState({
+      slots: []
+    })
+    if (idx === 0 || idx === -1) {
+      this.availableTime[0] = this.timeSlots[0];
+      this.availableTime[1] = this.timeSlots[1];
+      this.availableTime[2] = this.timeSlots[2];
+    } else if (idx === this.timeSlots.length - 1) {
+      this.availableTime[0] = this.timeSlots[idx - 2];
+      this.availableTime[1] = this.timeSlots[idx - 1];
+      this.availableTime[2] = this.timeSlots[idx];
+    } else {
+      this.availableTime[0] = this.timeSlots[idx - 1];
+      this.availableTime[1] = this.timeSlots[idx];
+      this.availableTime[2] = this.timeSlots[idx + 1];
+    }
+    debugger
+    this.setState({
+      slots: [...this.availableTime]
+    });
+  }
 
   render() {
     const { restaurant } = this.props;
-    debugger
     if (!restaurant.overall_ratings) return null;
+    // debugger
     return (
       <li className="restaurant-index-item">
         <div className="index-image">
@@ -57,46 +103,40 @@ class RestaurantIndexItems extends React.Component {
               {restaurant.city}
             </span>
           </section>
-          {/* <ul className="time-slot-container">
-            <li className="time-slot">
-              <a href="#">
-                <span>6:00 PM</span>
-              </a>
-            </li>
-            <li className="time-slot">
-              <a href="#">
-                <span>6:30 PM</span>
-              </a>
-            </li>
-            <li className="time-slot">
-              <a href="#">
-                <span>7:00 PM</span>
-              </a>
-            </li>
-            <li className="time-slot">
-              <a href="#">
-                <span>7:30 PM</span>
-              </a>
-            </li>
-          </ul> */}
+         
+          <ul className="time-slot-container">
+            {this.state.slots.map((time, idx) => (
+              <li
+                key={idx}
+                // onClick={this.handleUpdateClick(time)}
+                className="time-slot"
+              >
+                <span>{time.toLocaleString("en-US", {
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true
+                })}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </li>
     );
   }
-
 }
 
 export default withRouter(RestaurantIndexItems);
 
-const now = new Date();
-const currYear = now.getFullYear();
-const currMonth = now.getMonth();
-const currDay = now.getDate();
-const min = new Date(currYear, currMonth, currDay)
-  .toISOString()
-  .slice(0, 10);
+// const now = new Date();
+// const currYear = now.getFullYear();
+// const currMonth = now.getMonth();
+// const currDay = now.getDate();
+// const min = new Date(currYear, currMonth, currDay)
+//   .toISOString()
+//   .slice(0, 10);
 
 const getRestaurantHours = (open, close) => {
+  debugger
   if (!open) return [];
   const openTime = new Date(open);
   let utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
@@ -111,3 +151,4 @@ const getRestaurantHours = (open, close) => {
   };
   return restaurantHours
 }
+
