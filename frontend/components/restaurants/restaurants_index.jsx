@@ -10,7 +10,7 @@ class RestaurantsIndex extends React.Component {
     super(props);
     this.state = {
       slots: [],
-      city: "All",
+      city: props.location.state ? props.location.state.city : "All",
       price: [],
       rating: 3,
       cuisines: [],
@@ -25,7 +25,7 @@ class RestaurantsIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestRestaurants();
+    this.props.requestRestaurants({city: this.state.city});
   }
 
   handleChange(field) {
@@ -100,6 +100,7 @@ class RestaurantsIndex extends React.Component {
   }
 
   render() {
+    debugger
     const { restaurants } = this.props;
 
     const display = restaurants.map(restaurant => (
