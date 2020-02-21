@@ -7,6 +7,7 @@ import ReservationForm from "../reservations/reservation_index";
 
 import MenuItems from "./menu";
 import ReviewsIndexContainer from "../reviews/review_index_container";
+import RestaurantMap from "../map/restaurant_map";
 
 const getPrice = (price_range) => {
   if (price_range === "$$") {
@@ -165,13 +166,10 @@ class RestaurantShow extends React.Component {
             <div>
               <ReservationForm restaurant={restaurant} loggedIn={loggedIn} />
             </div>
-            <div className="restaurant-right-details">
               <div id="sidebar-map">
-
-
-
-
+                <RestaurantMap restaurant={restaurant}/>
               </div>
+            <div className="restaurant-right-details">
               <section>
                 <FontAwesomeIcon
                   icon={["far", "building"]}
