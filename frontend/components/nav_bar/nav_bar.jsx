@@ -72,7 +72,7 @@ class NavBar extends React.Component {
             </div>
             <span className="header-menu-triangle"></span>
             <ul className="header-menu">
-              <Link to="/my-profile">
+              <Link to="/my/profile">
                 <li>
                   My Profile
                 </li>

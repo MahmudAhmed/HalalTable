@@ -4,20 +4,6 @@ import { Redirect, Link, withRouter } from "react-router-dom";
 const Profile = (props) => {
   debugger
   return (
-    <div className="profile-page-container">
-      <aside className="profile-side-container">
-          <ul className="main-menu-profile">
-            <li>
-              <span>My Profile</span>
-            </li>
-            <li>
-              <span>My Reservations</span>
-            </li>
-            <li>
-              <span>My Saved Kitchens</span>
-            </li>
-          </ul>
-      </aside>
       <main className="profile-main-container">
         <section className="profile-main-section">
           <div>
@@ -43,7 +29,6 @@ const Profile = (props) => {
           </div>
         </section>
       </main>
-    </div>
   )
 }
 

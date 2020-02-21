@@ -74,7 +74,7 @@ import RestaurantShowContainer from "./restaurants/restaurant-show-container";
 import CreateReservationContainer from "./reservations/create_reservation_container";
 import ShowReservationContainer from "./reservations/show_reservation_container";
 import { Footer } from "./footer/footer";
-import ProfileContainer from "./main_menu/profile_container";
+import MainMenu from "./main_menu/main-menu";
 
 const App = () => (
   <div id="doc">
@@ -85,8 +85,8 @@ const App = () => (
       <AuthRoute path="/login" component={SignInPageContainer} />
       <AuthRoute path="/signup" component={SignUpPageContainer} />
       <ProtectRoute
-        path="/my-profile"
-        component={ProfileContainer}
+        path="/my/profile"
+        component={MainMenu}
       />
       <Route
         path="/restaurants/:restaurantId"
