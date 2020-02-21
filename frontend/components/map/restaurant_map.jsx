@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 
 class RestaurantMap extends React.Component {
   componentDidMount() {
-    debugger
-    const restaurantLatLng = { lat: 40.737, lng: -73.946}
+    const { restaurant } = this.props;
+    const restaurantLatLng = { lat: restaurant.lat, lng: restaurant.lng}
     const mapOptions = {
       center: restaurantLatLng,
       zoom: 13
@@ -15,7 +15,7 @@ class RestaurantMap extends React.Component {
     this.marker = new google.maps.Marker({
       position: restaurantLatLng,
       map: this.map,
-      title: 'Addy\'s BBQ'
+      title: restaurant.name
     })    
   }
 

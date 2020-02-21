@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Favorites from "./favorites";
-import { requestFavorites, deleteFavorite } from "../../actions/favorites_action";
+import { requestFavorites, deleteFavorite, createFavorite } from "../../actions/favorites_action";
 
 
 
@@ -18,6 +18,6 @@ const mDTP = (dispatch) => ({
   requestFavorites: (userId) => dispatch(requestFavorites(userId)),
   deleteFavorite: (userId, favoriteId) => dispatch(deleteFavorite(userId, favoriteId))
 });
-
+createFavorite
 export default connect(mSTP, mDTP)(Favorites);
 

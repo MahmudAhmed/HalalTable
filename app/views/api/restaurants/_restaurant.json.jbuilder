@@ -1,5 +1,5 @@
 ratings_count = { 1 => 0, 2 => 0, 3=> 0, 4=> 0, 5=> 0 }
-json.extract! restaurant, :id, :name, :street_address, :city, :state, :zip, :website, :description, :open_time, :close_time, :price_range, :capacity, :cuisines, :owner_id
+json.extract! restaurant, :id, :name, :street_address, :city, :state, :zip, :website, :description, :open_time, :close_time, :price_range, :capacity, :cuisines, :owner_id, :lat, :lng
 
 overall_ratings = 0
 food_ratings = 0

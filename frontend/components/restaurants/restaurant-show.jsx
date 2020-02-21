@@ -24,11 +24,17 @@ class RestaurantShow extends React.Component {
   constructor(props){
     super(props);
     this.stickyHeader = this.stickyHeader.bind(this)
+    this.handleFavClick = this.handleFavClick.bind(this)
+    this.state = { isFave: props.favorites.find(fave => fave.restaurant_id === props.restaurant.id)}
   }
   
   
   componentDidMount() {
+  
     this.props.requestRestaurant(this.props.match.params.restaurantId);
+    if (this.props.userId) { 
+      this.props.requestFavorites(this.props.userId)
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -36,14 +42,20 @@ class RestaurantShow extends React.Component {
       const id = this.props.match.params.restaurantId
       this.props.requestRestaurant(id);
     }
-
+    
     this.header = document.getElementById("nav-list");
     this.resForm = document.getElementById("reservation-forms");
     if (this.header) {
       this.sticky = this.header.offsetTop
     }
+    
+    if (this.props.favorites !== prevProps.favorites ) {
+      debugger
+      this.setState({ isFave: this.props.favorites.find(fave => fave.restaurant_id === parseInt(prevProps.match.params.restaurantId)) })
+    }
+    debugger
   }
-  
+    
   
   stickyHeader() {
     if (this.header){
@@ -57,16 +69,36 @@ class RestaurantShow extends React.Component {
     }
   }
 
+  handleFavClick(e){
+    e.preventDefault();
+    
+    const { loggedIn, createFavorite, deleteFavorite, favorites, restaurant, userId } = this.props;
+    if (!loggedIn){
+      document.querySelector(".modal-login").classList.add("is-open");
+      return
+    }
+    // this.setState({ isFave: favorites.find( fave => fave.restaurant_id === restaurant.id ) });
+    debugger
+    if (this.state.isFave){
+      deleteFavorite(userId, this.state.isFave.id)
+      this.setState({isFave: null}) 
+    } else{
+      createFavorite({restaurant_id: restaurant.id}, userId)
+      this.setState({ isFave: { restaurant_id: restaurant.id } }) 
+    }
+  }
+
   render() {
     window.addEventListener("scroll", () => this.stickyHeader() )
     if (!this.props.restaurant) return null; 
+    debugger
     const { restaurant, reviews, menu, loggedIn } = this.props;
     const reviewCount = Object.keys(reviews).length;
     return (
       <section className="show-page">
         <div id="show-page-splash">
-          <div id="favorite-button">
-            <button className="splash-favorite-button">
+          <div id="favorite-button" className={this.state.isFave ? "is-fave" : ""}>
+            <button className="splash-favorite-button" onClick={this.handleFavClick}>
               <FontAwesomeIcon
                 icon={["far", "bookmark"]}
                 color="black"

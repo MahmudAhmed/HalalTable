@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import RestaurantShow from "./restaurant-show";
+import { deleteFavorite, createFavorite, requestFavorites } from "../../actions/favorites_action";
 
 import {
   requestRestaurant
@@ -12,12 +13,18 @@ const mSTP = ({ entities, session }, ownProps) => {
     restaurant: entities.restaurants[ownProps.match.params.restaurantId],
     reviews: Object.values(entities.reviews),
     menu: entities.menus[ownProps.match.params.restaurantId] || tempMenu,
-    loggedIn: Boolean(session.id) 
+    userId: session.id,
+    loggedIn: Boolean(session.id),
+    favorites: Object.values(entities.favorites) || []
   }
 };
 
 const mDTP = dispatch => ({
-  requestRestaurant: restaurantId => dispatch(requestRestaurant(restaurantId))
+  requestRestaurant: restaurantId => dispatch(requestRestaurant(restaurantId)),
+  requestFavorites: userId => dispatch(requestFavorites(userId)),
+  deleteFavorite: (userId, favoriteId) => dispatch(deleteFavorite(userId, favoriteId)),
+  createFavorite: (formData, userId) => dispatch(createFavorite(formData, userId)),
 });
+
 
 export default connect(mSTP, mDTP)(RestaurantShow);

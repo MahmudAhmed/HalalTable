@@ -26,6 +26,7 @@ class Restaurant < ApplicationRecord
     :state, :zip, :description, :open_time, :close_time, 
       :price_range, :capacity, :cuisines, presence: true
   validates :street_address, uniqueness: true
+  validates :lat, uniqueness: { scope: :lng}
 
   has_many_attached :photos
 

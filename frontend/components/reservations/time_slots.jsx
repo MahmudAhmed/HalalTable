@@ -103,41 +103,7 @@ class TimeSlots extends React.Component {
     document.querySelector(".available-time-slots").classList.add("is-open");
   }
 
-  // handleModifyClick(e) {
-  //   e.preventDefault();
-  //   document.querySelector(".reserve-edit-form").classList.add("is-open");
-  //   document
-  //     .querySelector(".modify-reservation-btns")
-  //     .classList.add("is-closed");
-  // }
-
-  // handleUpdateClick(time) {
-  //   return e => {
-  //     e.preventDefault();
-  //     const { updateReservation, currentUserId, reservation } = this.props;
-  //     const { partySize, date, restaurantId } = this.state;
-
-  //     const formData = {
-  //       party_size: partySize,
-  //       date: date,
-  //       time: time,
-  //       restaurant_id: restaurantId
-  //     };
-  //     updateReservation(formData, currentUserId, reservation.id);
-  //     document.querySelector(".reserve-edit-form").classList.remove("is-open");
-  //     document
-  //       .querySelector(".modify-reservation-btns")
-  //       .classList.remove("is-closed");
-
-  //     // updateReservation(formData, currentUserId, reservation.id).then(() => {
-  //     //   // document.querySelector(".reserve-edit-form").classList.remove("is-open")
-  //     //   // document.querySelector(".modify-reservation-btns").classList.remove("is-closed")
-  //     //   // Router.dispatch(location.getCurrentPath(), null);
-
-  //     // })
-  //   };
-  // }
-
+  
   handleCancelClick(e) {
     e.preventDefault();
     const { updateReservation, currentUserId, reservation } = this.props;

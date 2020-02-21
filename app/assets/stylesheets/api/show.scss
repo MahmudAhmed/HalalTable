@@ -30,11 +30,17 @@
   right: 2rem;
   box-sizing: border-box;
   border: 2px solid #fff;
+  font-weight: 600;
   
 }
 
 #favorite-button:hover{
   border: 2px solid #da3743;
+}
+
+.is-fave{
+  background-color: #DA3743 !important;
+  color: white !important;
 }
 
 .splash-favorite-button{
