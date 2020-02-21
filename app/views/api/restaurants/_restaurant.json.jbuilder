@@ -8,7 +8,6 @@ ambience_ratings = 0
 
 
 restaurant.reviews.each do |review|
-  # debugger
   ratings_count[review.overall] += 1
   
   overall_ratings += review.overall

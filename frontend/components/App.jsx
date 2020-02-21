@@ -85,7 +85,7 @@ const App = () => (
       <AuthRoute path="/login" component={SignInPageContainer} />
       <AuthRoute path="/signup" component={SignUpPageContainer} />
       <ProtectRoute
-        path="/my/profile"
+        path="/my/"
         component={MainMenu}
       />
       <Route
@@ -100,7 +100,7 @@ const App = () => (
 
 
       <ProtectRoute
-        exact path="/restaurants/:restaurantId"
+        exact path="/reservations/:reservationId"
         component={ShowReservationContainer}
       />
       <Route exact path="/restaurants" component={RestaurantsIndexContainer} />

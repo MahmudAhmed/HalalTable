@@ -11,7 +11,6 @@ import { AuthRoute, ProtectRoute } from "../../util/route_util";
 class ReviewsIndex extends React.Component {
 
   render() {
-    // debugger
     const { reviews, restaurant, currentUser, deleteReview} = this.props;
     return (
       <div id="show-review">
@@ -161,7 +160,6 @@ export default withRouter(ReviewsIndex);
 
 
 //   render() {
-//     // debugger
 //     const { reviews, restaurant, currentUser, deleteReview } = this.props;
 //     return (
 //       <div id="show-review">

@@ -6,7 +6,6 @@ import Profile from "./profile";
 
 
 const mSTP = ({ entities, session }) => {
-  debugger
   return {
     user: entities.users[session.id]
   }

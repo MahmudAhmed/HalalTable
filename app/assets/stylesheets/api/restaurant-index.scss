@@ -49,7 +49,7 @@
   // flex-direction: row;
 }
 
-.restaurant-details > h1{
+.restaurant-details > h1, .nav-reservation-details > h1{
   font-size: 1.575rem;
   font-weight: 700;
   line-height: 2rem;
@@ -61,6 +61,31 @@
 .restaurant-details {
   padding-left: 2.5%;
   margin-bottom: 10px;
+}
+
+.nav-reservation-details {
+  padding: 0 10px 10px;
+  margin-bottom: 15px;
+  position: relative;
+  // box-sizing: border-box;
+  // background-color: red;
+}
+
+#reservation-nav-button{
+  font-size: 14px;
+  color: #60b2d0;
+  cursor: pointer;
+  font-weight: 400;
+  position: absolute; 
+  right: 15px;
+  bottom: -8px;
+  // display: flex;
+  // justify-content: flex-end;
+}
+
+#reservation-nav-button:hover{
+  font-size: 14px;
+  color: #DA3743;
 }
 
 .price-cuisines-city{

@@ -35,13 +35,56 @@ class NavBar extends React.Component {
       .classList.remove("is-open");
   }
 
+  componentDidUpdate(prevProps){
+    debugger
+    const { requestReservations, currentUser } = this.props;
+    if (prevProps.currentUser != this.props.currentUser && currentUser){
+      debugger
+
+      requestReservations(currentUser.id);
+    }
+  }
+
   loginDemoUser() {
     this.props.login({ email: "demo@ht.com", password: "fireball42" });
     document.querySelector(".sidenav").classList.remove("is-open");
   }
 
   render() {
-    const { currentUser } = this.props;
+    debugger
+    const { currentUser, reservations } = this.props;
+    const reservation = reservations.find(res => res.status === "upcoming")
+    const upcomingReservations = reservation ? (
+      <div className="nav-reservation-details">
+        <h1 id="reservation-nav-title" >
+          <Link to={`/restaurants/${reservation.restaurant_id}`} target="_blank">
+            {reservation.restaurant_name}
+          </Link>
+        </h1>
+        <div className="reservation-item-details">
+          <div className="reservation-date-time">
+            <span>{reservation.date}</span>
+            <span> at {new Date(reservation.time).toLocaleString("en-US", {
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true
+            })}</span>
+          </div>
+          <div className="reservation-party-size">
+            <span>Table for </span>
+            <span>{reservation.party_size}</span>
+            <span>{reservation.party_size > 1 ? " people" : " person"}</span>
+          </div>
+          <button id="reservation-nav-button"><Link to={`/reservations/${reservation.id}`}>Modify/View</Link></button>
+
+        </div>
+
+      </div>
+    ) : (
+    <div className="no-reservations">
+      You have no upcoming reservations
+    </div >
+    )
     const display = currentUser ? (
       <>
         <ul className="right-header">
@@ -55,9 +98,7 @@ class NavBar extends React.Component {
             <span className="calender-triangle"></span>
             <ul className="calender">
               <div className="menu-sub-header">Upcoming</div>
-              <div className="no-reservations">
-                You have no upcoming reservations
-              </div>
+              {upcomingReservations}
             </ul>
           </li>
           <li className="main-menu">
@@ -77,9 +118,11 @@ class NavBar extends React.Component {
                   My Profile
                 </li>
               </Link>
-              <li>
-                <a href="#">My Dining History</a>
-              </li>
+              <Link to="/my/reservations">
+                <li>
+                  <a href="#">My Dining History</a>
+                </li>
+              </Link>
               <li>
                 <a href="#">My Saved Restaurants</a>
               </li>

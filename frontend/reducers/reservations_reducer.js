@@ -7,7 +7,6 @@ const reservationsReducer = (state = {}, action) => {
     case RECEIVE_RESERVATIONS:
       return Object.assign(action.reservations)
     case RECEIVE_RESERVATION:
-      debugger
       return action.reservation
     case REMOVE_RESERVATION:
       const reservations = Object.assign({}, state)

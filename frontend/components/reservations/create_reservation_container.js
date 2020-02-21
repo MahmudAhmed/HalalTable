@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 
 
 const mSTP = ({ session, entities }) => {
-  debugger
   return {
   currentUserId: session.id,
   reservationId: Object.keys(entities.reservations)[0]

@@ -82,7 +82,6 @@ class ReservationForm extends React.Component {
   handleTimeClick(time){
     const that = this
     return e => {
-      debugger
       if (that.props.loggedIn) {
         that.props.history.push({ pathname: "/reservations/create/new", state: { partySize: this.state.partySize, date: this.state.date, time: time, restaurantId: this.props.restaurant.id, restaurantName: this.props.restaurant.name }})
       } else {
@@ -92,7 +91,6 @@ class ReservationForm extends React.Component {
   }
   
   render() {
-    // debugger
     const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
 
     const timeSlots = this.restaurantHours.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</option>)

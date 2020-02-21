@@ -1,7 +1,6 @@
 class Api::ReservationsController < ApplicationController
   
   def index 
-    # debugger
     @reservations = Reservation.where(user_id: current_user.id) 
     render :index
   end
@@ -23,6 +22,7 @@ class Api::ReservationsController < ApplicationController
   end
 
   def update
+
     @reservation = Reservation.find(params[:id])
     @reservation.user_id = current_user.id
 

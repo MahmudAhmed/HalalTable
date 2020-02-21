@@ -29,7 +29,6 @@ end
 # @restaurants.each do |restaurant|
 #   json.set! restaurant.id do 
 #     json.extract! restaurant, :id, :name, :city, :cuisines, :price_range
-#     # debugger
 #     sum = restaurant.reviews.inject(0) do |sum, review|
 #       sum + review.overall 
 #     end

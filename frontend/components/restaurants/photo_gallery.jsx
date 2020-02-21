@@ -129,7 +129,7 @@ const photos = [{
 //   }
 
 //   handleClick(e, { url }){
-//     debugger
+//     
 //     // this.url = url;
 //     // $(".photo-grid").addClass("is-open");
 //   }

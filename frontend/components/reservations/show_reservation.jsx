@@ -52,7 +52,6 @@ class ShowReservation extends React.Component {
 
 
   componentDidMount() {
-    debugger
     const { requestReservation, currentUserId, match } = this.props;
     requestReservation(currentUserId, match.params.reservationId)
   }
@@ -79,7 +78,6 @@ class ShowReservation extends React.Component {
 
   handleBtnClick(e) {
     e.preventDefault();
-    debugger
     let idx;
     this.availableTime = [];
     this.timeSlots.forEach((time, i) => {
@@ -114,13 +112,11 @@ class ShowReservation extends React.Component {
 
   handleUpdateClick(time) {
     return e => {
-      debugger
       e.preventDefault();
       const { updateReservation, currentUserId, reservation } = this.props;
       const { partySize, date, restaurantId } = this.state;
 
       const formData = { party_size: partySize, date: date, time: time, restaurant_id: restaurantId }
-      debugger
       updateReservation(formData, currentUserId, reservation.id)
       document.querySelector(".reserve-edit-form").classList.remove("is-open")
       document.querySelector(".modify-reservation-btns").classList.remove("is-closed")
@@ -135,11 +131,10 @@ class ShowReservation extends React.Component {
   }
 
   handleCancelClick(e){
-    debugger
     e.preventDefault();
-    const { updateReservation, currentUserId, reservation } = this.props;
+    const { updateReservation, userId, reservation } = this.props;
     const formData = { status: "cancelled" }
-    updateReservation(formData, currentUserId, reservation.id)
+    updateReservation(formData, userId, reservation.id)
   }
 
 
@@ -147,7 +142,6 @@ class ShowReservation extends React.Component {
     if (!this.props.reservation) return null;
     this.timeSlots;
     if (Object.values(this.props.restaurant).length >= 1) {
-      debugger
       this.timeSlots = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time)
     } else {
       this.timeSlots = [];
@@ -157,7 +151,6 @@ class ShowReservation extends React.Component {
     const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
 
     const { restaurant, reservation } = this.props;
-    debugger
 
     const header = reservation.status === "upcoming" ? (
       <div className="reservation-confirm-header">

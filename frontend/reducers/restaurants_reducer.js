@@ -8,10 +8,8 @@ const restaurantsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_RESTAURANTS:
-      // debugger
       return Object.assign({}, action.restaurants);
     case RECEIVE_RESTAURANT:
-      // debugger
       return merge({}, state, { [action.restaurant.id]: action.restaurant });
     default:
       return state;

@@ -8,7 +8,6 @@ class RestaurantIndexItems extends React.Component {
   
   
   render() {
-    debugger
     const { restaurant } = this.props;
     if (!restaurant.overall_ratings) return null;
     // 

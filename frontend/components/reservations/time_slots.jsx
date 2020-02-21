@@ -77,7 +77,6 @@ class TimeSlots extends React.Component {
 
   handleBtnClick(e) {
     e.preventDefault();
-    debugger;
     let idx;
     this.availableTime = [];
     this.timeSlots.forEach((time, i) => {
@@ -114,7 +113,6 @@ class TimeSlots extends React.Component {
 
   // handleUpdateClick(time) {
   //   return e => {
-  //     debugger;
   //     e.preventDefault();
   //     const { updateReservation, currentUserId, reservation } = this.props;
   //     const { partySize, date, restaurantId } = this.state;
@@ -125,7 +123,6 @@ class TimeSlots extends React.Component {
   //       time: time,
   //       restaurant_id: restaurantId
   //     };
-  //     debugger;
   //     updateReservation(formData, currentUserId, reservation.id);
   //     document.querySelector(".reserve-edit-form").classList.remove("is-open");
   //     document
@@ -152,7 +149,6 @@ class TimeSlots extends React.Component {
     if (!this.props.reservation) return null;
     this.timeSlots;
     if (Object.values(this.props.restaurant).length >= 1) {
-      debugger;
       this.timeSlots = getRestaurantHours(
         this.props.restaurant.open_time,
         this.props.restaurant.close_time
@@ -170,7 +166,6 @@ class TimeSlots extends React.Component {
       ));
 
     const { restaurant, reservation } = this.props;
-    debugger;
 
     const header =
       reservation.status === "upcoming" ? (

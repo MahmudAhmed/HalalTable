@@ -1,0 +1,33 @@
+.profile-side-container{
+  margin-top: 50px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  max-width: 400px;
+  height: 250px;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  // border: 1px solid #B5B5B5;
+  box-shadow: 0 2px 8px rgba(153,153,153,.4);
+  margin-right: 25px;
+}
+
+.is-selected{
+  color: #333333;
+  font-weight: 700;
+}
+
+
+.main-menu-profile > div{
+  font-weight: 600;
+  color: #B5B5B5;
+  margin-bottom: 10px;
+}
+
+
+
+.main-menu-profile > div:hover{
+  cursor: pointer;
+  color: #D1323D
+}

@@ -17,7 +17,6 @@ class CreateReservation extends React.Component {
     const { partySize, date, time, restaurantId } = this.props.location.state;
 
     const formData = { party_size: partySize, date: date, time: time, restaurant_id: restaurantId, special_request: this.state.special_request}
-    // debugger
     this.props.createReservation(formData, currentUserId)
     // .then( () => {
     //   history.push(`/reservations/${reservationId}`);
@@ -30,7 +29,6 @@ class CreateReservation extends React.Component {
 
 
   render() {
-    debugger
     if (this.props.reservationId){
       this.props.history.push(`/reservations/${this.props.reservationId}`)
       // return <Redirect to={`/reservations/${this.props.reservationId}`}/>
@@ -39,7 +37,6 @@ class CreateReservation extends React.Component {
     if (!this.props.location.state) return <Redirect to={`/restaurants/1`} />
     const { partySize, date, time, restaurantName } = this.props.location.state;
 
-    debugger
     return (
       <div className="reservation-page-container">
         <div className="reservation-form-container">

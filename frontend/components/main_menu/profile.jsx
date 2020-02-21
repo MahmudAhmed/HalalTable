@@ -2,7 +2,6 @@ import React from "react";
 import { Redirect, Link, withRouter } from "react-router-dom";
 
 const Profile = (props) => {
-  debugger
   return (
       <main className="profile-main-container">
         <section className="profile-main-section">
