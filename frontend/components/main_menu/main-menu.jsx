@@ -2,6 +2,8 @@ import React from "react";
 import { Redirect, Link, withRouter, Route } from "react-router-dom";
 import ProfileContainer from "./profile_container";
 import MyReservationsContainer from "./my_reservations_container";
+import MyFavoritesContainer from "./favorites_container";
+
 class MainMenu extends React.Component {
   constructor(props){
     super(props);
@@ -41,6 +43,10 @@ class MainMenu extends React.Component {
         <Route
           path="/my/reservations"
           component={MyReservationsContainer}
+        />
+        <Route
+          path="/my/favorites"
+          component={MyFavoritesContainer}
         />
       </div>
     )

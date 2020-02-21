@@ -36,10 +36,8 @@ class NavBar extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    debugger
     const { requestReservations, currentUser } = this.props;
     if (prevProps.currentUser != this.props.currentUser && currentUser){
-      debugger
 
       requestReservations(currentUser.id);
     }
@@ -51,7 +49,6 @@ class NavBar extends React.Component {
   }
 
   render() {
-    debugger
     const { currentUser, reservations } = this.props;
     const reservation = reservations.find(res => res.status === "upcoming")
     const upcomingReservations = reservation ? (
@@ -123,9 +120,11 @@ class NavBar extends React.Component {
                   <a href="#">My Dining History</a>
                 </li>
               </Link>
-              <li>
-                <a href="#">My Saved Restaurants</a>
-              </li>
+              <Link to="/my/favorites">
+                <li>
+                  <a href="#">My Saved Restaurants</a>
+                </li>
+              </Link>
               <li>
                 <a href="#" onClick={this.handleLogout.bind(this)}>
                   Sign Out

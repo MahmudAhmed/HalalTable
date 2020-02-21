@@ -3,10 +3,6 @@ import { Redirect, Link, withRouter, Route } from "react-router-dom";
 import ReservationIndexItem from "./reservation_index_items";
 
 class MyReservations extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { selectedButton: null}
-  }
 
   componentDidMount(){
     const {requestReservations, userId} = this.props;

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
+import { createFavorite, deleteFavorite, requestFavorites } from "./actions/favorites_action";
 
 
 
@@ -19,7 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-
+  window.createFavorite = createFavorite;
+  window.deleteFavorite = deleteFavorite;
+  window.requestFavorites = requestFavorites;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
