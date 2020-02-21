@@ -1,14 +1,15 @@
 .splash-form-container{
   margin: auto;
   width: 90%;
-  background-color: turquoise;
+  background: linear-gradient(90deg,rgba(47,45,65,.7),rgba(47,45,65,.7)), image-url('splash.jpg') no-repeat;
+  background-size: cover;
   font-family: 'Muli', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 50px 20px;
   box-sizing: border-box;
-  
+  height: 350px;
 }
 
 .splash-form-title{

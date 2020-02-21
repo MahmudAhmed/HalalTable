@@ -75,7 +75,6 @@ import CreateReservationContainer from "./reservations/create_reservation_contai
 import ShowReservationContainer from "./reservations/show_reservation_container";
 import { Footer } from "./footer/footer";
 
-
 const App = () => (
   <div id="doc">
     <header>
@@ -100,6 +99,7 @@ const App = () => (
         component={ShowReservationContainer}
       />
       <Route exact path="/restaurants" component={RestaurantsIndexContainer} />
+      <Route component={RestaurantsIndexContainer}/>
     </Switch>
     <Footer />
   </div>

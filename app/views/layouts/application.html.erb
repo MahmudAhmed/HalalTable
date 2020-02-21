@@ -14,11 +14,14 @@
 
     <script type="text/javascript">
       window.headerLogo = "<%= image_url('logo-2.png') %>";
+      window.splashImage = "<%= image_url('splash.jpg') %>";
+      // window.splahVideo = "<%= video_tag "video.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "home_video" %>"
     </script>
 
   </head>
 
   <body>
+    
     <%= yield %>
   </body>
 </html>

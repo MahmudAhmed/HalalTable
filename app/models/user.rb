@@ -14,12 +14,11 @@
 #
 
 CITY = [
-  "NYC/Manhattan",
+  "Manhattan",
   "Queens",
   "Brooklyn",
   "Bronx",
-  "Staten Island",
-  "Long Island"
+  "Staten Island"
 ]
 
 class User < ApplicationRecord

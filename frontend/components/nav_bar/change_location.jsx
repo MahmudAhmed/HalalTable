@@ -22,7 +22,7 @@ export const ChangeLocation = () => {
         <div>10XX</div>
       </li>
       <li>
-        <div>NYC/Manhattan</div>
+        <div>Manhattan</div>
         <div>350</div>
       </li>
       <li>
@@ -41,10 +41,7 @@ export const ChangeLocation = () => {
         <div>Staten Island</div>
         <div>150</div>
       </li>
-      <li>
-        <div>Long Island</div>
-        <div>20</div>
-      </li>
+
     </ul>
   </div>
 )}

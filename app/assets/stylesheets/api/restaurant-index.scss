@@ -50,20 +50,22 @@
 }
 
 .restaurant-details > h1{
-  font-size: 1.125rem;
+  font-size: 1.575rem;
   font-weight: 700;
+  line-height: 2rem;
   color: #247f9e;
   padding-bottom: 2px;
+  white-space: nowrap;
 }
 
 .restaurant-details {
-  padding-top: 5px;
   padding-left: 2.5%;
-  width: 100%;
+  margin-bottom: 10px;
 }
 
 .price-cuisines-city{
   // padding-top: 2px;
+  white-space: nowrap;
   margin: 5px 0;
 }
 
@@ -84,8 +86,10 @@
 }
 
 .index-image{
-  width: 37%;
-  max-width: 13rem; 
+  width: 10vw;
+  min-width: 130px;
+
+  overflow: hidden;
   // padding-right: 10px;
 }
 
@@ -103,32 +107,32 @@
   max-width: 100vw;
 }
 
-.time-slot-container{
+.index-buttons-container{
   display: flex;
   // overflow: scroll;
 }
 
-.time-slot{
+.index-buttons{
   padding: 0 4px;
   margin-top: 10px;
 }
 
-.time-slot:first-child{
+.index-buttons:first-child{
   padding-left: 0;
 }
 
-.time-slot span {
+.index-buttons span {
   background: #da3743;
   border: 1px solid #da3743;
-  border-radius: 4px;
-  padding: 3px 10px;
+  // border-radius: 4px;
+  padding: 5px 10px;
   color: white; 
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
   cursor: pointer;
 }
-.time-slot span:hover {
+.index-buttons span:hover {
   border-color: #bb232e;
   background: #bb232e;
 }

@@ -80,12 +80,11 @@ class SignUpPage extends React.Component {
             defaultValue="Primary Dining Location *"
             onChange={this.handleChange("primary_location")}>
             <option disabled >Primary Dining Location *</option>
-            <option value="NYC/Manhattan">NYC/Manhattan</option>
+            <option value="Manhattan">Manhattan</option>
             <option value="Brooklyn">Brooklyn</option>
             <option value="Queens">Queens</option>
             <option value="Bronx">Bronx</option>
             <option value="Staten Island">Staten Island</option>
-            <option value="Long Island">Long Island</option>
           </select>
 
           <button className="btn">Create Account</button>
