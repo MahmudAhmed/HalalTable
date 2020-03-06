@@ -27,7 +27,6 @@ class Restaurant < ApplicationRecord
       :price_range, :capacity, :cuisines, presence: true
   validates :street_address, uniqueness: true
   validates :lat, uniqueness: { scope: :lng}
-
   has_many_attached :photos
 
   belongs_to :owner, 

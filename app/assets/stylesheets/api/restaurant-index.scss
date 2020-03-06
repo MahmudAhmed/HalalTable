@@ -162,10 +162,23 @@
   background: #bb232e;
 }
 
-// .time-slot > a > span{
-  
-//   // line-height: 20px;
-// }
+.notfound{
+  color: #e1e1e1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notfound > h1 {
+  font-size: 100px;
+  padding-top: 50px;
+}
+
+.notfound > h3 {
+  font-size: 30px;
+  padding-top: 25px;
+}
 
 .index-reviews{
   margin: 5px 0; 

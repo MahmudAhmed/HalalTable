@@ -2,7 +2,7 @@ import React from "react";
 import RestaurantIndexItems from "./restaurant_index_items";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StarRatings from "react-star-ratings";
-
+import { EMOJIS } from "../../util/emojis_util";
 class RestaurantsIndex extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +36,10 @@ class RestaurantsIndex extends React.Component {
   handleBtnClick(e){
     e.preventDefault();
     this.props.requestRestaurants({city: this.state.city, price: this.state.price});
+  }
+
+  displayRandomEmoji(){
+    return EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
   }
 
   handlePriceClick(price){
@@ -99,7 +103,11 @@ class RestaurantsIndex extends React.Component {
 
   render() {
     const { restaurants } = this.props;
-    const display = restaurants.map(restaurant => (
+    const display = restaurants.length === 0 ? 
+    <div className="notfound">
+      <h1>{this.displayRandomEmoji()}</h1>
+      <h3>No Restaurants found...</h3>
+    </div>: restaurants.map(restaurant => (
       <RestaurantIndexItems key={restaurant.id} restaurant={restaurant}/>
     ));
     return (
