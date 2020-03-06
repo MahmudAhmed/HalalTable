@@ -23,6 +23,7 @@ class RestaurantsIndex extends React.Component {
   }
 
   componentDidMount() {
+    debugger
     this.props.requestRestaurants({city: this.state.city});
   }
 
@@ -30,12 +31,14 @@ class RestaurantsIndex extends React.Component {
     return e => {
       e.preventDefault();
       this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
+      if (field === "city"){
+        this.setState({locations: [e.target.value]}, () => console.log(this.state.locations))
+      }
     }
   }
 
   handleBtnClick(e){
     e.preventDefault();
-
     this.props.requestRestaurants({ city: this.state.city});
   }
 
@@ -44,6 +47,7 @@ class RestaurantsIndex extends React.Component {
   }
 
   sendFilters(){
+    debugger
     this.props.requestRestaurants({
       price: this.state.price,
       rating: this.state.rating,
@@ -73,6 +77,7 @@ class RestaurantsIndex extends React.Component {
 
   handleCuisineClick(cuisine) {
     return e => {
+      debugger
       if (this.state.cuisines.indexOf(cuisine) === -1) {
         this.setState({
           cuisines: [...this.state.cuisines, cuisine]
