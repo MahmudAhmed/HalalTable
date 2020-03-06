@@ -140,6 +140,7 @@
 .index-buttons{
   padding: 0 4px;
   margin-top: 10px;
+  border-radius: 2px;
 }
 
 .index-buttons:first-child{
@@ -154,6 +155,7 @@
   color: white; 
   font-size: 14px;
   font-weight: 600;
+  border-radius: 2px;
   white-space: nowrap;
   cursor: pointer;
 }

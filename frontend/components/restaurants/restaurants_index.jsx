@@ -23,7 +23,6 @@ class RestaurantsIndex extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.requestRestaurants({city: this.state.city});
   }
 
@@ -47,7 +46,6 @@ class RestaurantsIndex extends React.Component {
   }
 
   sendFilters(){
-    debugger
     this.props.requestRestaurants({
       price: this.state.price,
       rating: this.state.rating,
@@ -77,7 +75,6 @@ class RestaurantsIndex extends React.Component {
 
   handleCuisineClick(cuisine) {
     return e => {
-      debugger
       if (this.state.cuisines.indexOf(cuisine) === -1) {
         this.setState({
           cuisines: [...this.state.cuisines, cuisine]
@@ -101,7 +98,6 @@ class RestaurantsIndex extends React.Component {
   }
 
   render() {
-    debugger
     const { restaurants } = this.props;
     const display = restaurants.length === 0 ? 
     <div className="notfound">
