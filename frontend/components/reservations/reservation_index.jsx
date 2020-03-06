@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
-
+import { withRouter } from "react-router-dom";
 
 const now = new Date();
 const currYear = now.getFullYear();
@@ -29,9 +28,7 @@ const getRestaurantHours = (open, close) => {
 class ReservationForm extends React.Component {
   constructor(props){
     super(props);
-
-    this.restaurantHours = getRestaurantHours(props.restaurant.open_time, props.restaurant.close_time)
-        
+    this.restaurantHours = getRestaurantHours(props.restaurant.open_time, props.restaurant.close_time);
     this.state = { 
       partySize: 1, 
       date: min,
@@ -47,7 +44,7 @@ class ReservationForm extends React.Component {
 
   handleChange(field){
     return e => {
-      this.setState({[field]: (field === "time" ? new Date(e.target.value) : e.target.value)})
+      this.setState({[field]: (field === "time" ? new Date(e.target.value) : e.target.value)});
     }
   }
 

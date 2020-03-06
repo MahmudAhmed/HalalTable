@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Link, withRouter, Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import ProfileContainer from "./profile_container";
 import MyReservationsContainer from "./my_reservations_container";
 import MyFavoritesContainer from "./favorites_container";

@@ -5,7 +5,6 @@ export const fetchReviews = restaurantId => {
   });
 };
 
-
 export const createReview = (formData, restaurantId) => {
   return $.ajax({
     method: "POST",

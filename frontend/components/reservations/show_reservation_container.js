@@ -3,14 +3,12 @@ import { requestRestaurant } from "../../actions/restaurant_action";
 import ShowReservation from "./show_reservation";
 import { requestReservation, updateReservation } from "../../actions/reservations_action";
 
-
 const mSTP = ({session, entities}, ownProps) => {
   return {
   currentUserId: session.id,
   reservation: entities.reservations[ownProps.match.params.reservationId],
   restaurant: Object.values(entities.restaurants).length >= 1 ? entities.restaurants[entities.reservations[ownProps.match.params.reservationId].restaurant_id] : {}
 }};
-
 
 const mDTP = dispatch => {
   return {
@@ -26,7 +24,6 @@ const mDTP = dispatch => {
 
   }
 };
-
 
 export default connect(mSTP, mDTP)(ShowReservation);
 

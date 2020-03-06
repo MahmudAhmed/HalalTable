@@ -43,11 +43,9 @@ export const createFavorite = (formData, userId) => dispatch => {
   return APIUtil.createFavorite(formData, userId).then(
     (favorite) => {
       dispatch(receiveFavorite(favorite))
-      // return true; 
     },
     (err) => {
       dispatch(receiveFavoriteErrors(err.responseJSON))
-      // return false
     }
   );
 };

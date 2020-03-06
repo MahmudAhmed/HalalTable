@@ -1,14 +1,9 @@
-
-
 import React from "react";
-import { Redirect, Link, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class FavoriteIndexItem extends React.Component {
-
-
   render() {
     const { favorite, deleteFavorite, userId } = this.props;
-    debugger
     return (
       <div className="restaurant-index-item">
         <div className="index-image" id="reservation-item-pic">

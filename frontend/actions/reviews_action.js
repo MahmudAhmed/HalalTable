@@ -29,8 +29,6 @@ const receiveReviewErrors = errors => ({
   errors
 });
 
-
-
 ///thunk actions
 
 export const requestReviews = (restaurantId) => dispatch => {
@@ -43,11 +41,9 @@ export const createReview = (formData, restaurantId) => dispatch => {
   return APIUtil.createReview(formData, restaurantId).then(
     (review) => {
       dispatch(receiveReview(review))
-      // return true; 
     },
     (err) => {
       dispatch(receiveReviewErrors(err.responseJSON))
-      // return false
     }
   );
 };

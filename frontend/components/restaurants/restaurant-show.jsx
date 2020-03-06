@@ -20,15 +20,13 @@ const getPrice = (price_range) => {
 }
 
 class RestaurantShow extends React.Component {
-  
   constructor(props){
     super(props);
     this.stickyHeader = this.stickyHeader.bind(this)
     this.handleFavClick = this.handleFavClick.bind(this)
     this.state = { isFave: props.favorites.find(fave => fave.restaurant_id === props.restaurant.id)}
   }
-  
-  
+   
   componentDidMount() {
   
     this.props.requestRestaurant(this.props.match.params.restaurantId);
@@ -41,22 +39,17 @@ class RestaurantShow extends React.Component {
     if (this.props.match.params.restaurantId !== prevProps.match.params.restaurantId) {
       const id = this.props.match.params.restaurantId
       this.props.requestRestaurant(id);
-    }
-    
+    }  
     this.header = document.getElementById("nav-list");
     this.resForm = document.getElementById("reservation-forms");
     if (this.header) {
       this.sticky = this.header.offsetTop
-    }
-    
+    }  
     if (this.props.favorites !== prevProps.favorites ) {
-      debugger
       this.setState({ isFave: this.props.favorites.find(fave => fave.restaurant_id === parseInt(prevProps.match.params.restaurantId)) })
     }
-    debugger
   }
     
-  
   stickyHeader() {
     if (this.header){
       if ((window.pageYOffset - 317) >= this.sticky) {
@@ -78,7 +71,6 @@ class RestaurantShow extends React.Component {
       return
     }
     // this.setState({ isFave: favorites.find( fave => fave.restaurant_id === restaurant.id ) });
-    debugger
     if (this.state.isFave){
       deleteFavorite(userId, this.state.isFave.id)
       this.setState({isFave: null}) 
@@ -91,7 +83,6 @@ class RestaurantShow extends React.Component {
   render() {
     window.addEventListener("scroll", () => this.stickyHeader() )
     if (!this.props.restaurant) return null; 
-    debugger
     const { restaurant, reviews, menu, loggedIn } = this.props;
     const reviewCount = Object.keys(reviews).length;
     return (
@@ -293,10 +284,8 @@ class RestaurantShow extends React.Component {
                   <p>(201) 313-9463</p>
                 </div>
               </section>
-
             </div>
-          </aside>
-          
+          </aside>         
         </section>
       </section>
     );

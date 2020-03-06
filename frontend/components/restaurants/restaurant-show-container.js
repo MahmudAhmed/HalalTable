@@ -26,5 +26,4 @@ const mDTP = dispatch => ({
   createFavorite: (formData, userId) => dispatch(createFavorite(formData, userId)),
 });
 
-
 export default connect(mSTP, mDTP)(RestaurantShow);

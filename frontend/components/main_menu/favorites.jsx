@@ -1,28 +1,16 @@
 import React from "react";
-import { Redirect, Link, withRouter, Route } from "react-router-dom";
 import FavoriteIndexItem from "./favorite_index_items";
 
-
 class Favorites extends React.Component {
- 
   componentDidMount() {
     const { requestFavorites, userId } = this.props;
     requestFavorites(userId)
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (Object.values(prevProps.reservations).length !== Object.values(this.props.reservations).length) {
-  //     const { requestReservations, userId } = this.props;
-  //     requestReservations(userId)
-  //   }
-  // }
-
-
   render() {
     const { favorites, deleteFavorite, userId } = this.props;
     const faveList = favorites.length > 0 ? favorites.map(favorite => <FavoriteIndexItem key={favorite.id} favorite={favorite} deleteFavorite={deleteFavorite} userId={userId} />)
       : <p className="no-fave">You have no favorite restaurants to show on this list.</p>
-
     return (
       <div className="reservation-index-container">
         <section className="reservation-upcoming-container">

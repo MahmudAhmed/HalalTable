@@ -1,7 +1,6 @@
 import React from "react";
 
 class MenuItems extends React.Component {
-
   render() {
     const { item } = this.props;
     if (item === "") return null; 
@@ -16,7 +15,6 @@ class MenuItems extends React.Component {
       </li>
     );
   }
-
 }
 
 export default MenuItems;

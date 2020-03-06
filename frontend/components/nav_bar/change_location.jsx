@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter } from "react-router-dom";
 
 class ChangeLocation extends React.Component {
-
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this)
@@ -32,27 +31,21 @@ class ChangeLocation extends React.Component {
           <div className="menu-sub-header">Choose Your City</div>
           <li onClick={this.handleClick("All")}>
             <div>All</div>
-            {/* <div>10XX</div> */}
           </li>
           <li onClick={this.handleClick("Manhattan")}> 
             <div>Manhattan</div>
-            {/* <div>350</div> */}
           </li>
           <li onClick={this.handleClick("Brooklyn")}>
             <div>Brooklyn</div>
-            {/* <div>380</div> */}
           </li>
           <li onClick={this.handleClick("Queens")}>
             <div>Queens</div>
-            {/* <div>340</div> */}
           </li>
           <li onClick={this.handleClick("Bronx")}>
             <div>Bronx</div>
-            {/* <div>110</div> */}
           </li>
           <li onClick={this.handleClick("Staten Island")}>
             <div>Staten Island</div>
-            {/* <div>150</div> */}
           </li>
 
         </ul>

@@ -3,9 +3,6 @@ import { updateReview } from "../../actions/reviews_action";
 import ReviewForm from "./review_form";
 import { withRouter } from "react-router-dom";
 
-
-
-
 const mSTP = ({ entities, errors }, ownProps) => {
   return {
     restaurantId: ownProps.match.params.restaurantId,
@@ -13,7 +10,6 @@ const mSTP = ({ entities, errors }, ownProps) => {
     review: entities.reviews[ownProps.match.params.id]
   }
 };
-
 
 const mDTP = (dispatch,ownProps) => {
   return {

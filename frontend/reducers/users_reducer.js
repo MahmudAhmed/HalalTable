@@ -1,6 +1,5 @@
 import { RECEIVE_USER } from "../actions/session_action";
 
-
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
@@ -9,7 +8,6 @@ const usersReducer = (state = {}, action) => {
     default:
       return state;
   }
-
 }
 
 export default usersReducer;

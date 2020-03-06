@@ -28,53 +28,6 @@ const getRestaurantHours = (open, close) => {
 };
 
 class TimeSlots extends React.Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     partySize: 1,
-  //     date: "2021-01-01",
-  //     time: new Date(),
-  //     slots: []
-  //   };
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.handleBtnClick = this.handleBtnClick.bind(this);
-  //   this.handleUpdateClick = this.handleUpdateClick.bind(this);
-  //   this.handleCancelClick = this.handleCancelClick.bind(this);
-  // }
-
-  // handleChange(field) {
-  //   return e => {
-  //     this.setState({
-  //       [field]: field === "time" ? new Date(e.target.value) : e.target.value
-  //     });
-  //   };
-  // }
-
-  // componentDidMount() {
-  //   const { requestReservation, currentUserId, match } = this.props;
-  //   requestReservation(currentUserId, match.params.reservationId);
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.reservation !== this.props.reservation) {
-  //     const { reservation, requestRestaurant } = this.props;
-  //     requestRestaurant(reservation.restaurant_id);
-  //     this.setState({
-  //       partySize: reservation.party_size,
-  //       date: reservation.date,
-  //       time: reservation.time
-  //     });
-  //   }
-  // }
-
-  // componentWillUpdate(nextProps){
-  //   if (nextProps.reservation !== this.props.reservation) {
-  //     const { requestReservation, currentUserId, match } = this.props;
-  //     requestReservation(currentUserId, match.params.reservationId)
-  //   }
-  // }
-
   handleBtnClick(e) {
     e.preventDefault();
     let idx;

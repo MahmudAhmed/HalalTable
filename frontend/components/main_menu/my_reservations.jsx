@@ -1,9 +1,7 @@
 import React from "react";
-import { Redirect, Link, withRouter, Route } from "react-router-dom";
 import ReservationIndexItem from "./reservation_index_items";
 
 class MyReservations extends React.Component {
-
   componentDidMount(){
     const {requestReservations, userId} = this.props;
     requestReservations(userId)
@@ -15,7 +13,6 @@ class MyReservations extends React.Component {
       requestReservations(userId)
     }
   }
-
 
   render() {
     const { reservations, updateReservation, userId } = this.props;

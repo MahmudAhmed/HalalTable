@@ -1,10 +1,6 @@
 import { connect } from "react-redux";
 import Favorites from "./favorites";
-import { requestFavorites, deleteFavorite, createFavorite } from "../../actions/favorites_action";
-
-
-
-
+import { requestFavorites, deleteFavorite } from "../../actions/favorites_action";
 
 const mSTP = ({ entities, session }) => {
   return {
@@ -13,11 +9,10 @@ const mSTP = ({ entities, session }) => {
   }
 };
 
-
 const mDTP = (dispatch) => ({
   requestFavorites: (userId) => dispatch(requestFavorites(userId)),
   deleteFavorite: (userId, favoriteId) => dispatch(deleteFavorite(userId, favoriteId))
 });
-createFavorite
+
 export default connect(mSTP, mDTP)(Favorites);
 

@@ -12,7 +12,6 @@ export const fetchReservation = (userId, reservationId) => {
   });
 };
 
-
 export const postReservation = (formData, userId) => {
   return $.ajax({
     method: "POST",
@@ -35,6 +34,3 @@ export const destroyReservation = (userId, reservationId) => {
     url: `/api/users/${userId}/reservations/${reservationId}`
   });
 };
-
-
-// formData = { restaurant_id: 1, user_id: 2, party_size: 5, date: "2/10/2020", time: "5:00pm" }

@@ -213,7 +213,6 @@ class NavBar extends React.Component {
     return (
       <section className="header-bar">
         <nav className="left-header">
-          {/* <span id="fullscreen"></span> */}
           <h1 className="header-logo">
             <Link to="/restaurants/">
               <img src={window.headerLogo} />

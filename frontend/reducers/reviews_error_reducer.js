@@ -1,6 +1,5 @@
 import { RECEIVE_REVIEW, REMOVE_REVIEW, RECEIVE_REVIEW_ERRORS } from "../actions/reviews_action";
 
-
 const reviewsErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
@@ -13,7 +12,6 @@ const reviewsErrorsReducer = (state = [], action) => {
     default:
       return state;
   }
-
 }
 
 export default reviewsErrorsReducer;

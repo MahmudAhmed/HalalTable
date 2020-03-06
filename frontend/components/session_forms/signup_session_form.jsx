@@ -125,7 +125,6 @@ class SignUpSessionForm extends React.Component {
           <span className="button-alternative">Already Have an Account?
           <strong onClick={this.toggleForms}>  Click Here to Login!</strong>
           </span>
-
         </form>
       </div>
     );

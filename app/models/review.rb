@@ -19,7 +19,6 @@ class Review < ApplicationRecord
   validates :body, presence: true
   validates :overall, :food, :service, :ambience, :inclusion => { :in => 0..5 }
   validates :user_id, uniqueness: { scope: :restaurant_id, message: "already reviewed this restaurant" }
-  # after_validation :self.restaurant.average_ratings
   belongs_to :restaurant
 
   belongs_to :user

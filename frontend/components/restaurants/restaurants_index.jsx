@@ -3,8 +3,6 @@ import RestaurantIndexItems from "./restaurant_index_items";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StarRatings from "react-star-ratings";
 
-
-
 class RestaurantsIndex extends React.Component {
   constructor(props) {
     super(props);
@@ -100,9 +98,7 @@ class RestaurantsIndex extends React.Component {
   }
 
   render() {
-    debugger
     const { restaurants } = this.props;
-
     const display = restaurants.map(restaurant => (
       <RestaurantIndexItems key={restaurant.id} restaurant={restaurant}/>
     ));
@@ -270,33 +266,3 @@ class RestaurantsIndex extends React.Component {
 }
 
 export default RestaurantsIndex;
-
-
-
-const now = new Date();
-const currYear = now.getFullYear();
-const currMonth = now.getMonth();
-const currDay = now.getDate();
-const min = new Date(currYear, currMonth, currDay).toISOString().slice(0, 10);
-
-const getRestaurantHours = (open, close) => {
-
-  if (!open) return [];
-  const openTime = new Date(open);
-  let utcOpenTime = new Date(
-    openTime.getTime() + openTime.getTimezoneOffset() * 60000
-  );
-  const closeTime = new Date(close);
-  let utcCloseTime = new Date(
-    closeTime.getTime() + closeTime.getTimezoneOffset() * 60000
-  );
-  if (openTime > closeTime) utcCloseTime.setDate(utcCloseTime.getDate() + 1);
-  const restaurantHours = [];
-  while (true) {
-    if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
-    restaurantHours.push(new Date(utcOpenTime.getTime()));
-    utcOpenTime.setHours(utcOpenTime.getHours() + 1);
-  }
-  return restaurantHours;
-};
-

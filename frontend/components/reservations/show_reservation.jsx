@@ -1,6 +1,5 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Router } from "react-router-dom";
 
 const now = new Date();
 const currYear = now.getFullYear();
@@ -42,14 +41,11 @@ class ShowReservation extends React.Component {
     this.handleCancelClick = this.handleCancelClick.bind(this);
   }
 
-
-
   handleChange(field) {
     return e => {
       this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
     }
   }
-
 
   componentDidMount() {
     const { requestReservation, currentUserId, match } = this.props;
@@ -68,13 +64,6 @@ class ShowReservation extends React.Component {
     }
 
   }
-
-  // componentWillUpdate(nextProps){
-  //   if (nextProps.reservation !== this.props.reservation) {
-  //     const { requestReservation, currentUserId, match } = this.props;
-  //     requestReservation(currentUserId, match.params.reservationId)
-  //   }
-  // }
 
   handleBtnClick(e) {
     e.preventDefault();
@@ -120,13 +109,6 @@ class ShowReservation extends React.Component {
       updateReservation(formData, currentUserId, reservation.id)
       document.querySelector(".reserve-edit-form").classList.remove("is-open")
       document.querySelector(".modify-reservation-btns").classList.remove("is-closed")
-
-      // updateReservation(formData, currentUserId, reservation.id).then(() => {
-      //   // document.querySelector(".reserve-edit-form").classList.remove("is-open")
-      //   // document.querySelector(".modify-reservation-btns").classList.remove("is-closed")
-      //   // Router.dispatch(location.getCurrentPath(), null);
-
-      // })
     }
   }
 
@@ -146,12 +128,8 @@ class ShowReservation extends React.Component {
     } else {
       this.timeSlots = [];
     }
-
-
     const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
-
     const { restaurant, reservation } = this.props;
-
     const header = reservation.status === "upcoming" ? (
       <div className="reservation-confirm-header">
         <span><FontAwesomeIcon

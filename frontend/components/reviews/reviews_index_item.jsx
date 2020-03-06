@@ -4,13 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { Link, withRouter } from "react-router-dom";
 
-
-
 class ReviewsIndexItem extends React.Component {
-
-  
-
-
   render() {
     const { review, currentUser, deleteReview, match } = this.props;
     const displayButtons = currentUser === review.user_id ? ( 
@@ -84,6 +78,5 @@ class ReviewsIndexItem extends React.Component {
   }
 
 }
-
 
 export default withRouter(ReviewsIndexItem);

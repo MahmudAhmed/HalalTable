@@ -5,7 +5,6 @@ export const fetchFavorites = userId => {
   });
 };
 
-
 export const createFavorite = (formData, userId) => {
   return $.ajax({
     method: "POST",
@@ -13,8 +12,6 @@ export const createFavorite = (formData, userId) => {
     data: { favorite: formData }
   });
 };
-
-
 
 export const deleteFavorite = (userId, favoriteId) => {
   return $.ajax({

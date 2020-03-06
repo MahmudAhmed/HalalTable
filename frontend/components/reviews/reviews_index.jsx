@@ -7,9 +7,7 @@ import ReviewButton from "./review_button";
 import EditReviewFormContainer from "./edit_review_form_container";
 import { AuthRoute, ProtectRoute } from "../../util/route_util";
 
-
 class ReviewsIndex extends React.Component {
-
   render() {
     const { reviews, restaurant, currentUser, deleteReview} = this.props;
     return (

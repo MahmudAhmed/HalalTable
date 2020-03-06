@@ -2,15 +2,12 @@ import { connect } from "react-redux";
 import MyReservations from "./my_reservations";
 import { requestReservations, updateReservation } from "../../actions/reservations_action";
 
-
-
 const mSTP = ({ entities, session }) => {
   return {
     userId: session.id,
     reservations: Object.values(entities.reservations) || []
   }
 };
-
 
 const mDTP = (dispatch) => {
   return {

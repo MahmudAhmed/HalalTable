@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Redirect, withRouter } from "react-router-dom";
-// import Image from 'app/assets/images/middle_eastern.jpg';
 
 class CreateReservation extends React.Component {
   constructor(props) {
@@ -18,22 +17,16 @@ class CreateReservation extends React.Component {
 
     const formData = { party_size: partySize, date: date, time: time, restaurant_id: restaurantId, special_request: this.state.special_request}
     this.props.createReservation(formData, currentUserId)
-    // .then( () => {
-    //   history.push(`/reservations/${reservationId}`);
-    // })
   }
 
   handleChange(e){
     this.setState({special_request: e.target.value})
   }
 
-
   render() {
     if (this.props.reservationId){
       this.props.history.push(`/reservations/${this.props.reservationId}`)
-      // return <Redirect to={`/reservations/${this.props.reservationId}`}/>
     }
-    // this.props.location.state ? "" : this.props.history.push("/restaurants/1")
     if (!this.props.location.state) return <Redirect to={`/restaurants/1`} />
     const { partySize, date, time, restaurantName } = this.props.location.state;
 
