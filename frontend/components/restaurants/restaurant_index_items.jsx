@@ -6,7 +6,6 @@ class RestaurantIndexItems extends React.Component {
   render() {
     const { restaurant } = this.props;
     if (!restaurant.overall_ratings) return null;
-    // 
     return (
       <li className="restaurant-index-item">
         <div className="index-image">

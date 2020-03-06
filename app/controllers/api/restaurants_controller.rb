@@ -1,5 +1,6 @@
 class Api::RestaurantsController < ApplicationController
   def index
+    debugger
     if params[:filters]
       if params[:filters][:city] 
         @restaurants = params[:filters][:city] == "All" ? 
@@ -19,8 +20,8 @@ class Api::RestaurantsController < ApplicationController
       if params[:filters][:cuisines]
             @restaurants = @restaurants.where(:cuisines => params[:filters][:cuisines])
       end
-
       if params[:filters][:rating]
+        debugger
             @restaurants = @restaurants.where("ratings >= ?", params[:filters][:rating])
       end
 
