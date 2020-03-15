@@ -1,5 +1,6 @@
 class Api::RestaurantsController < ApplicationController
   def index
+    debugger
     if params[:filters]
       if params[:filters][:city] 
         @restaurants = params[:filters][:city] == "All" ? 

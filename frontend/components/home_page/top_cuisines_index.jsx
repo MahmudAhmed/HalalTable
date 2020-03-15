@@ -1,33 +1,39 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { withRouter } from "react-router-dom";
 
 class TopCusinines extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCusinineClick = this.handleCusinineClick.bind(this);
+  }
+
   componentDidMount(){
     const rightScroll = document.querySelector(".scroll-right");
-    const cusinesList = document.querySelector(".cusines-list");
-    if (cusinesList.offsetWidth === cusinesList.scrollWidth) {
+    const cuisinesList = document.querySelector(".cuisines-list");
+    if (cuisinesList.offsetWidth === cuisinesList.scrollWidth) {
       rightScroll.style.display = "none"
     }
   }
 
   handleScroll(e) {
-    const cusinesList = document.querySelector(".cusines-list");
+    const cuisinesList = document.querySelector(".cuisines-list");
     const leftScroll = document.querySelector(".scroll-left");
     const rightScroll = document.querySelector(".scroll-right");
-    if (cusinesList.scrollLeft === 0) {
+    if (cuisinesList.scrollLeft === 0) {
       leftScroll.style.display = "none"
     } else {
       leftScroll.style.display = "block"
     }
 
-    if (cusinesList.offsetWidth === cusinesList.scrollWidth) {
+    if (cuisinesList.offsetWidth === cuisinesList.scrollWidth) {
       rightScroll.style.display = "none"
     }
 
-    const leftPos = cusinesList.scrollLeft;
-    const ulWidth = cusinesList.offsetWidth;
+    const leftPos = cuisinesList.scrollLeft;
+    const ulWidth = cuisinesList.offsetWidth;
     debugger
-    var scrollwidth = cusinesList.scrollWidth;
+    var scrollwidth = cuisinesList.scrollWidth;
     if (leftPos === scrollwidth - ulWidth) {
       rightScroll.style.display = "none"
     } else {
@@ -38,19 +44,25 @@ class TopCusinines extends React.Component {
   handleScrollClick(btn){
     return e => {
       e.preventDefault();
-      const cusinesList = document.querySelector(".cusines-list");
-      btn === "right" ? cusinesList.scrollLeft += 40 : cusinesList.scrollLeft -= 40
+      const cuisinesList = document.querySelector(".cuisines-list");
+      btn === "right" ? cuisinesList.scrollLeft += 40 : cuisinesList.scrollLeft -= 40
     }
   }
 
   handleResize(){
-    debugger
     const rightScroll = document.querySelector(".scroll-right");
-    const cusinesList = document.querySelector(".cusines-list");
-    if (cusinesList.offsetWidth === cusinesList.scrollWidth) {
+    const cuisinesList = document.querySelector(".cuisines-list");
+    if (cuisinesList.offsetWidth === cuisinesList.scrollWidth) {
       rightScroll.style.display = "none"
     } else {
       rightScroll.style.display = "block"
+    }
+  }
+
+  handleCusinineClick(value){
+    return e => {
+      e.preventDefault();
+      this.props.history.push({ pathname: "/restaurants", state: { cuisine: value } });
     }
   }
 
@@ -58,49 +70,49 @@ class TopCusinines extends React.Component {
     window.addEventListener('resize', this.handleResize)
     return (
       <>
-        <ul className="cusines-list" onScroll={this.handleScroll}>
+        <ul className="cuisines-list" onScroll={this.handleScroll}>
           <div className="scroll-left" onClick={this.handleScrollClick("left")}>
             <div className="scroll-icons" >
               <FontAwesomeIcon icon="angle-left" />
             </div>
           </div>
-          <li className="cusine-list-item">
+          <li className="cuisine-list-item" onClick={this.handleCusinineClick("Afgan")}>
             <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg"/>
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Afgan Restaurants Around You</p>
             </div>
           </li>
-          <li className="cusine-list-item">
+          <li className="cuisine-list-item" onClick={this.handleCusinineClick("Barbeque")}>
             <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Barbeque Restaurants Around You</p>
             </div>
           </li>
-          <li className="cusine-list-item">
+          <li className="cuisine-list-item" onClick={this.handleCusinineClick("Burgers & Wings")}>
             <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Burgers & Wings Restaurants Around You</p>
             </div>
           </li>
-          <li className="cusine-list-item">
+          <li className="cuisine-list-item" onClick={this.handleCusinineClick("Middle Eastern")}>
             <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Middle Eastern Restaurants Around You</p>
             </div>
           </li>
-          <li className="cusine-list-item">
+          <li className="cuisine-list-item" onClick={this.handleCusinineClick("Turkish")}>
             <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Turkish Restaurants Around You</p>
             </div>
           </li>
-          <li className="cusine-list-item">
+          <li className="cuisine-list-item">
             <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Turkish Restaurants Around You</p>
             </div>
           </li>
-          <li className="cusine-list-item">
+          <li className="cuisine-list-item">
             <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Turkish Restaurants Around You</p>
@@ -117,4 +129,4 @@ class TopCusinines extends React.Component {
   }
 }
 
-export default TopCusinines;
+export default withRouter(TopCusinines);

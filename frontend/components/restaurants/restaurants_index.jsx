@@ -12,7 +12,7 @@ class RestaurantsIndex extends React.Component {
       city: props.location.state ? props.location.state.city : "All",
       price: [],
       rating: 3,
-      cuisines: [],
+      cuisines: props.location.state ? [props.location.state.cuisine] : [],
       locations: []
     };
     this.handleChange = this.handleChange.bind(this);
@@ -24,7 +24,7 @@ class RestaurantsIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestRestaurants({city: this.state.city});
+    this.sendFilters();
   }
 
   handleChange(field) {
