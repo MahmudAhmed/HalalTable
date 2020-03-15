@@ -3,7 +3,7 @@ import ReviewsIndexItem from "./reviews_index_item";
 import StarRatings from "react-star-ratings";
 import CreateReviewFormContainer from "./create_review_form_container";
 import { Route, withRouter } from "react-router-dom";
-import ReviewButton from "./review_button";
+import ReviewButtonContainer from "./review_button_container";
 import EditReviewFormContainer from "./edit_review_form_container";
 import { AuthRoute, ProtectRoute } from "../../util/route_util";
 
@@ -115,7 +115,7 @@ class ReviewsIndex extends React.Component {
             <ProtectRoute path="/restaurants/:restaurantId/leave-a-review" component={CreateReviewFormContainer} />
             <ProtectRoute path="/restaurants/:restaurantId/reviews/:id" component={EditReviewFormContainer} />
           </div>
-          <Route exact path="/restaurants/:restaurantId" component={ReviewButton} />
+          <Route exact path="/restaurants/:restaurantId" component={ReviewButtonContainer} />
         </div>
         <div>
           <ul>

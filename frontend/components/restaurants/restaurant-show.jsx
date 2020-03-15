@@ -180,7 +180,6 @@ class RestaurantShow extends React.Component {
                 </ul>
               </div>
               <section>
-
                 <ReviewsIndexContainer reviews={reviews} restaurant={restaurant} />
               </section>
             </div>
