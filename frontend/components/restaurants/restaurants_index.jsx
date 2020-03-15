@@ -6,6 +6,7 @@ import { EMOJIS } from "../../util/emojis_util";
 class RestaurantsIndex extends React.Component {
   constructor(props) {
     super(props);
+    debugger
     this.state = {
       slots: [],
       city: props.location.state ? props.location.state.city : "All",
@@ -31,7 +32,7 @@ class RestaurantsIndex extends React.Component {
       e.preventDefault();
       this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
       if (field === "city"){
-        this.setState({locations: [e.target.value]}, () => console.log(this.state.locations))
+        this.setState({locations: [e.target.value]})
       }
     }
   }

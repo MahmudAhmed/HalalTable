@@ -11,6 +11,8 @@ import CreateReservationContainer from "./reservations/create_reservation_contai
 import ShowReservationContainer from "./reservations/show_reservation_container";
 import { Footer } from "./footer/footer";
 import MainMenu from "./main_menu/main-menu";
+import HomePage from "./home_page/homepage";
+
 
 const App = () => (
   <div id="doc">
@@ -40,7 +42,8 @@ const App = () => (
         component={ShowReservationContainer}
       />
       <Route exact path="/restaurants" component={RestaurantsIndexContainer} />
-      <Route component={RestaurantsIndexContainer}/>
+      {/* <Route component={RestaurantsIndexContainer}/> */}
+      <Route exact path="/" component={HomePage}/>
     </Switch>
     <Footer />
   </div>

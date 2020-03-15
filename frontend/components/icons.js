@@ -24,6 +24,8 @@ import {
   faExternalLinkAlt,
   faPhoneAlt,
   faTrophy,
+  faAngleLeft,
+  faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -57,7 +59,9 @@ library.add(
   faLinkedin,
   faGithubSquare,
   faMedium,
-  faTrophy
+  faTrophy,
+  faAngleLeft,
+  faAngleRight
 );
 
 export{ library }
