@@ -11,8 +11,8 @@ class ChangeLocation extends React.Component {
   handleClick(city) {
     return e => {
       e.preventDefault();
-      document.querySelector(".location").style.display = "none"
-      document.querySelector(".location-triangle").style.display = "none"
+      // document.querySelector(".location").style.display = "none"
+      // document.querySelector(".location-triangle").style.display = "none"
       this.props.history.push({ pathname: "/restaurants", state: { city } })
     }
   }

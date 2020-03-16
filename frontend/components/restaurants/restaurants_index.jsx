@@ -9,11 +9,11 @@ class RestaurantsIndex extends React.Component {
     debugger
     this.state = {
       slots: [],
-      city: props.location.state ? props.location.state.city : "All",
+      // city: props.location.state ? props.location.state.city : "All",
       price: [],
       rating: 3,
       cuisines: props.location.state ? [props.location.state.cuisine] : [],
-      locations: []
+      locations: props.location.state && props.location.state.city ? [...props.location.state.city] : []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
@@ -120,7 +120,7 @@ class RestaurantsIndex extends React.Component {
                   icon="map-marker-alt"
                   className="splash-location-icon"
                 />
-                <select className="splash-location-select" value={this.state.city} onChange={this.handleChange("city")}>
+                <select className="splash-location-select" value={this.state.locations[0] || "All"} onChange={this.handleChange("city")}>
                   <option value="All">All New York / Tri-State Area</option>
                   <option value="Manhattan">Manhattan</option>
                   <option value="Brooklyn">Brooklyn</option>
@@ -202,23 +202,27 @@ class RestaurantsIndex extends React.Component {
                 </div>
                 <ul className="cuisine-filter-items">
                   <li>
-                    <input type="checkbox" value="Afgan" onClick={this.handleCuisineClick("Afgan")}/>
+                    <input type="checkbox" value="Afgan" onClick={this.handleCuisineClick("Afgan")} defaultChecked={this.state.cuisines.includes("Afgan")}/>
                     <label>Afgan</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Barbeque" onClick={this.handleCuisineClick("Barbeque")} />
+                    <input type="checkbox" value="Barbeque" onClick={this.handleCuisineClick("Barbeque")} defaultChecked={this.state.cuisines.includes("Barbeque")}/>
                     <label>Barbeque</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Burgers & Wings" onClick={this.handleCuisineClick("Burgers & Wings")} />
+                    <input type="checkbox" value="Burgers & Wings" onClick={this.handleCuisineClick("Burgers & Wings")} defaultChecked={this.state.cuisines.includes("Burgers & Wings")}/>
                     <label>Burgers & Wings</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Middle Eastern" onClick={this.handleCuisineClick("Middle Eastern")} />
+                    <input type="checkbox" value="Indian" onClick={this.handleCuisineClick("Indian")} defaultChecked={this.state.cuisines.includes("Indian")} />
+                    <label>Indian</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" value="Middle Eastern" onClick={this.handleCuisineClick("Middle Eastern")} defaultChecked={this.state.cuisines.includes("Middle Eastern")}/>
                     <label>Middle Eastern</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Turkish" onClick={this.handleCuisineClick("Turkish")} />
+                    <input type="checkbox" value="Turkish" onClick={this.handleCuisineClick("Turkish")} defaultChecked={this.state.cuisines.includes("Turkish")}/>
                     <label>Turkish</label>
                   </li>
                 </ul>
@@ -233,23 +237,23 @@ class RestaurantsIndex extends React.Component {
                 </div>
                 <ul className="city-filter-items">
                   <li>
-                    <input type="checkbox" value="Manhattan" onClick={this.handleLocationClick("Manhattan")} />
+                    <input type="checkbox" value="Manhattan" onClick={this.handleLocationClick("Manhattan")} defaultChecked={this.state.locations.includes("Manhattan")}/>
                     <label>Manhattan</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Brooklyn" onClick={this.handleLocationClick("Brooklyn")} />
+                    <input type="checkbox" value="Brooklyn" onClick={this.handleLocationClick("Brooklyn")} defaultChecked={this.state.locations.includes("Brooklyn")}/>
                     <label>Brooklyn</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Queens" onClick={this.handleLocationClick("Queens")} />
+                    <input type="checkbox" value="Queens" onClick={this.handleLocationClick("Queens")} defaultChecked={this.state.locations.includes("Queens")}/>
                     <label>Queens</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Bronx" onClick={this.handleLocationClick("Bronx")} />
+                    <input type="checkbox" value="Bronx" onClick={this.handleLocationClick("Bronx")} defaultChecked={this.state.locations.includes("Bronx")}/>
                     <label>Bronx</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Staten Island" onClick={this.handleLocationClick("Staten Island")} />
+                    <input type="checkbox" value="Staten Island" onClick={this.handleLocationClick("Staten Island")} defaultChecked={this.state.locations.includes("Staten Island")}/>
                     <label>Staten Island</label>
                   </li>
                 </ul>

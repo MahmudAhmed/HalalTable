@@ -77,45 +77,52 @@ class TopCusinines extends React.Component {
             </div>
           </div>
           <li className="cuisine-list-item" onClick={this.handleCusinineClick("Afgan")}>
-            <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg"/>
+            <img src={window.afganDish} />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Afgan Restaurants Around You</p>
             </div>
           </li>
           <li className="cuisine-list-item" onClick={this.handleCusinineClick("Barbeque")}>
-            <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
+            <img src={window.bbqDish} />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Barbeque Restaurants Around You</p>
             </div>
           </li>
           <li className="cuisine-list-item" onClick={this.handleCusinineClick("Burgers & Wings")}>
-            <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
+            <img src={window.burgersDish} />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Burgers & Wings Restaurants Around You</p>
             </div>
           </li>
+          <li className="cuisine-list-item">
+            <img src={window.indianDish} />
+            <div className="cuisine-title-container">
+              <p className="cuisine-title">Best Indian Restaurants Around You</p>
+            </div>
+          </li>
           <li className="cuisine-list-item" onClick={this.handleCusinineClick("Middle Eastern")}>
-            <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
+            <img src={window.middleEasternDish} />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Middle Eastern Restaurants Around You</p>
             </div>
           </li>
+          <li className="cuisine-list-item">
+            <img src={window.seafoodDish} />
+            <div className="cuisine-title-container">
+              <p className="cuisine-title">Best Seafood Restaurants Around You</p>
+            </div>
+          </li>
           <li className="cuisine-list-item" onClick={this.handleCusinineClick("Turkish")}>
-            <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
+            <img src={window.turkishDish} />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Turkish Restaurants Around You</p>
             </div>
           </li>
+          
           <li className="cuisine-list-item">
-            <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
+            <img src={window.veggieDish} />
             <div className="cuisine-title-container">
-              <p className="cuisine-title">Best Turkish Restaurants Around You</p>
-            </div>
-          </li>
-          <li className="cuisine-list-item">
-            <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
-            <div className="cuisine-title-container">
-              <p className="cuisine-title">Best Turkish Restaurants Around You</p>
+              <p className="cuisine-title">Best Vegetarian Restaurants Around You</p>
             </div>
           </li>
           <div className="scroll-right" onClick={this.handleScrollClick("right")}>

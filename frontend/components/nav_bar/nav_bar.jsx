@@ -214,7 +214,7 @@ class NavBar extends React.Component {
       <section className="header-bar">
         <nav className="left-header">
           <h1 className="header-logo">
-            <Link to="/restaurants/">
+            <Link to="/">
               <img src={window.headerLogo} />
             </Link>
           </h1>

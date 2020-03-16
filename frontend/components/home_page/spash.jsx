@@ -13,6 +13,7 @@ class Splash extends React.Component{
 
   handleBtnClick(e) {
     e.preventDefault();
+    debugger
     this.props.history.push({ pathname: "/restaurants", state: { city: this.state.city } });
   }
 
