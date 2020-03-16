@@ -12,3 +12,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+RUN SECRET_KEY_BASE="Hello, Assets!" RAILS_ENV=production bundle exec rake assets:precompile
+RUN SECRET_KEY_BASE="I'm bored with you!" RAILS_ENV=staging bundle exec rake assets:precompile
