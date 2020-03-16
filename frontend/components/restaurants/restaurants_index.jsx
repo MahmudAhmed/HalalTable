@@ -107,7 +107,6 @@ class RestaurantsIndex extends React.Component {
     </div>: restaurants.map(restaurant => (
       <RestaurantIndexItems key={restaurant.id} restaurant={restaurant}/>
     ));
-    debugger
     return (
       <>
         <div className="splash-form-container">
@@ -163,7 +162,7 @@ class RestaurantsIndex extends React.Component {
                 </div>
                 <div className="rating-filter-items">
                   <div>
-                    <input name="ratings-filter" type="radio" value="5" defaultChecked={ `${this.state.rating === 5}`} onChange={this.handleRatingClick}/>
+                    <input name="ratings-filter" type="radio" value="5" checked={ this.state.rating === "5"} onChange={this.handleRatingClick}/>
                     <StarRatings
                       rating={5}
                       starDimension="20px"
@@ -172,7 +171,7 @@ class RestaurantsIndex extends React.Component {
                     />
                   </div>
                   <div>
-                    <input name="ratings-filter" type="radio" value="4" defaultChecked={`${this.state.rating === 4}` } onChange={this.handleRatingClick} />
+                    <input name="ratings-filter" type="radio" value="4" checked={this.state.rating === "4" } onChange={this.handleRatingClick} />
                     <StarRatings
                       rating={4}
                       starDimension="20px"
@@ -182,7 +181,7 @@ class RestaurantsIndex extends React.Component {
                     <span> & up</span>
                   </div>
                   <div>
-                    <input name="ratings-filter" type="radio" value="3" defaultChecked={`${this.state.rating === 3}` }  onChange={this.handleRatingClick}/>
+                    <input name="ratings-filter" type="radio" value="3" checked={this.state.rating === "3" }  onChange={this.handleRatingClick}/>
                     <StarRatings
                       rating={3}
                       starDimension="20px"
