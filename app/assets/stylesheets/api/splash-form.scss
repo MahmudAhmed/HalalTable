@@ -21,7 +21,6 @@
 }
 
 .splash-form > form {
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,8 +122,8 @@
 }
 
 .splash-location-container{
-  width: 540px;
-  // margin:auto;
+  width: 29vw;
+  min-width: 300px;
   position: relative;
 }
 
@@ -141,7 +140,8 @@
 }
 
 #splash-btn{
-  width: 540px;
+  width: 29vw;
+  min-width: 300px;
   height: 48px;
   margin-top: .6rem;
   padding: 0;

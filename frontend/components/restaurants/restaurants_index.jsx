@@ -11,9 +11,9 @@ class RestaurantsIndex extends React.Component {
       slots: [],
       // city: props.location.state ? props.location.state.city : "All",
       price: [],
-      rating: 3,
+      rating: 0,
       cuisines: props.location.state ? [props.location.state.cuisine] : [],
-      locations: props.location.state && props.location.state.city ? [...props.location.state.city] : []
+      locations: props.location.state && props.location.state.city ? [props.location.state.city] : []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
@@ -32,7 +32,7 @@ class RestaurantsIndex extends React.Component {
       e.preventDefault();
       this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
       if (field === "city"){
-        this.setState({locations: [e.target.value]})
+        this.setState({ locations: [e.target.value] })
       }
     }
   }
@@ -107,6 +107,7 @@ class RestaurantsIndex extends React.Component {
     </div>: restaurants.map(restaurant => (
       <RestaurantIndexItems key={restaurant.id} restaurant={restaurant}/>
     ));
+    debugger
     return (
       <>
         <div className="splash-form-container">

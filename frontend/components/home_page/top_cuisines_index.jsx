@@ -94,7 +94,7 @@ class TopCusinines extends React.Component {
               <p className="cuisine-title">Best Burgers & Wings Restaurants Around You</p>
             </div>
           </li>
-          <li className="cuisine-list-item">
+          <li className="cuisine-list-item" onClick={this.handleCusinineClick("Indian")}>
             <img src={window.indianDish} />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Indian Restaurants Around You</p>

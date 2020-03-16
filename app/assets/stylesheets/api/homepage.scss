@@ -62,7 +62,7 @@
   font-size: 16px;
 }
 
-.cuisine-list-item{
+.cuisine-list-item, .borough{
   position: relative;
   min-width: 13rem;
   height: 13rem;
@@ -81,16 +81,19 @@
   overflow: hidden;
 }
 
-.cuisine-title-container{
+.cuisine-title-container, .borough-title-container{
   position: absolute;
   background-color: rgba($color: #000000, $alpha: 0.5);
   display: flex;
+  justify-content: center;
   align-items: center;
   text-align: center;
   height: 100%;
+  width: 100%;
+  cursor: pointer;
 }
 
-.cuisine-title{
+.cuisine-title, .borough-title{
   color: #fff;
   text-shadow: rgba(0,0,0,.25) 0 2px 2px;
   white-space: pre-wrap;
@@ -100,9 +103,33 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
+  cursor: pointer;
 }
 .cuisine-list-item img{
   border-radius: 4px;
+}
+
+.borough img{
+  border-radius: 4px;
+  height: 100%;
+}
+
+.boroughs-list{
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.borough{
+  margin: 5px;
+  background-color: red;
+  height: 150px;
+  min-width: 225px;
+  width: calc((100% - (16px * 11)) * 4 / 12 + (3 * 16px));
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -110,5 +137,43 @@
   #homepage-content{
       max-width: 80rem;
       margin: auto;
+  }
+}
+@media all and (max-width: 800px) {
+  .splash-form-container, #homepage-container, .index-page-container {
+    width: 100% !important;
+    overflow: hidden;
+  }
+
+  .splash-form-title{
+    white-space: nowrap;
+    font-size: 28px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .restaurant-details a {
+    white-space: pre-wrap;
+  }
+
+
+}
+
+@media all and (max-width: 600px) {
+  .index-page{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .restaurants-index{
+    width: 100% !important;
+  }
+
+  .restaurant-details a {
+    font-size: 4vw;
+  }
+
+  .filter-bar {
+    width: 90%;
   }
 }

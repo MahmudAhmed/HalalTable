@@ -19,7 +19,7 @@ class Splash extends React.Component{
 
   handleChange(e) {
     e.preventDefault();
-    this.setState({ city: [e.target.value] })
+    this.setState({ city: e.target.value })
   }
 
 
