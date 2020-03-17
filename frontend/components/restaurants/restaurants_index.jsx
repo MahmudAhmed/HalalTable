@@ -118,7 +118,11 @@ class RestaurantsIndex extends React.Component {
                   icon="map-marker-alt"
                   className="splash-location-icon"
                 />
-                <select className="splash-location-select" value={this.state.locations[0] || "All"} onChange={this.handleChange("city")}>
+                <select
+                  className="splash-location-select"
+                  value={this.state.locations[0] || "All"}
+                  onChange={this.handleChange("city")}
+                >
                   <option value="All">All New York / Tri-State Area</option>
                   <option value="Manhattan">Manhattan</option>
                   <option value="Brooklyn">Brooklyn</option>
@@ -127,7 +131,11 @@ class RestaurantsIndex extends React.Component {
                   <option value="Staten Island">Staten Island</option>
                 </select>
               </div>
-              <button className="btn" id="splash-btn" onClick={this.handleBtnClick}>
+              <button
+                className="btn"
+                id="splash-btn"
+                onClick={this.handleBtnClick}
+              >
                 Let's go
               </button>
             </form>
@@ -145,22 +153,37 @@ class RestaurantsIndex extends React.Component {
                   <span>Price</span>
                 </div>
                 <ul className="price-filter-items">
-                  <li onClick={this.handlePriceClick("$")} title="$30 and under">$</li>
-                  <li onClick={this.handlePriceClick("$$")} title="$31 and $50">$$</li>
-                  <li onClick={this.handlePriceClick("$$$")} title="$50 and over">$$$</li>
+                  <li
+                    onClick={this.handlePriceClick("$")}
+                    title="$30 and under"
+                  >
+                    $
+                  </li>
+                  <li onClick={this.handlePriceClick("$$")} title="$31 and $50">
+                    $$
+                  </li>
+                  <li
+                    onClick={this.handlePriceClick("$$$")}
+                    title="$50 and over"
+                  >
+                    $$$
+                  </li>
                 </ul>
               </section>
               <section className="ratings-filter-container">
                 <div className="filters-title">
-                  <FontAwesomeIcon
-                    icon="trophy"
-                    className="filter-icon"
-                  />
+                  <FontAwesomeIcon icon="trophy" className="filter-icon" />
                   <span>Rating</span>
                 </div>
                 <div className="rating-filter-items">
                   <div>
-                    <input name="ratings-filter" type="radio" value="5" checked={ this.state.rating === "5"} onChange={this.handleRatingClick}/>
+                    <input
+                      name="ratings-filter"
+                      type="radio"
+                      value="5"
+                      checked={this.state.rating === "5"}
+                      onChange={this.handleRatingClick}
+                    />
                     <StarRatings
                       rating={5}
                       starDimension="20px"
@@ -169,7 +192,13 @@ class RestaurantsIndex extends React.Component {
                     />
                   </div>
                   <div>
-                    <input name="ratings-filter" type="radio" value="4" checked={this.state.rating === "4" } onChange={this.handleRatingClick} />
+                    <input
+                      name="ratings-filter"
+                      type="radio"
+                      value="4"
+                      checked={this.state.rating === "4"}
+                      onChange={this.handleRatingClick}
+                    />
                     <StarRatings
                       rating={4}
                       starDimension="20px"
@@ -179,7 +208,13 @@ class RestaurantsIndex extends React.Component {
                     <span> & up</span>
                   </div>
                   <div>
-                    <input name="ratings-filter" type="radio" value="3" checked={this.state.rating === "3" }  onChange={this.handleRatingClick}/>
+                    <input
+                      name="ratings-filter"
+                      type="radio"
+                      value="3"
+                      checked={this.state.rating === "3"}
+                      onChange={this.handleRatingClick}
+                    />
                     <StarRatings
                       rating={3}
                       starDimension="20px"
@@ -192,36 +227,85 @@ class RestaurantsIndex extends React.Component {
               </section>
               <section className="cuisine-filter-container">
                 <div className="filters-title">
-                  <FontAwesomeIcon
-                    icon="utensils"
-                    className="filter-icon"
-                  />
+                  <FontAwesomeIcon icon="utensils" className="filter-icon" />
                   <span>Cuisine</span>
                 </div>
                 <ul className="cuisine-filter-items">
                   <li>
-                    <input type="checkbox" value="Afgan" onClick={this.handleCuisineClick("Afgan")} defaultChecked={this.state.cuisines.includes("Afgan")}/>
+                    <input
+                      type="checkbox"
+                      value="Afgan"
+                      onClick={this.handleCuisineClick("Afgan")}
+                      defaultChecked={this.state.cuisines.includes("Afgan")}
+                    />
                     <label>Afgan</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Barbeque" onClick={this.handleCuisineClick("Barbeque")} defaultChecked={this.state.cuisines.includes("Barbeque")}/>
+                    <input
+                      type="checkbox"
+                      value="Barbeque"
+                      onClick={this.handleCuisineClick("Barbeque")}
+                      defaultChecked={this.state.cuisines.includes("Barbeque")}
+                    />
                     <label>Barbeque</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Burgers & Wings" onClick={this.handleCuisineClick("Burgers & Wings")} defaultChecked={this.state.cuisines.includes("Burgers & Wings")}/>
+                    <input
+                      type="checkbox"
+                      value="Burgers & Wings"
+                      onClick={this.handleCuisineClick("Burgers & Wings")}
+                      defaultChecked={this.state.cuisines.includes(
+                        "Burgers & Wings"
+                      )}
+                    />
                     <label>Burgers & Wings</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Indian" onClick={this.handleCuisineClick("Indian")} defaultChecked={this.state.cuisines.includes("Indian")} />
+                    <input
+                      type="checkbox"
+                      value="Indian"
+                      onClick={this.handleCuisineClick("Indian")}
+                      defaultChecked={this.state.cuisines.includes("Indian")}
+                    />
                     <label>Indian</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Middle Eastern" onClick={this.handleCuisineClick("Middle Eastern")} defaultChecked={this.state.cuisines.includes("Middle Eastern")}/>
+                    <input
+                      type="checkbox"
+                      value="Middle Eastern"
+                      onClick={this.handleCuisineClick("Middle Eastern")}
+                      defaultChecked={this.state.cuisines.includes(
+                        "Middle Eastern"
+                      )}
+                    />
                     <label>Middle Eastern</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Turkish" onClick={this.handleCuisineClick("Turkish")} defaultChecked={this.state.cuisines.includes("Turkish")}/>
+                    <input
+                      type="checkbox"
+                      value="Seafood"
+                      onClick={this.handleCuisineClick("Seafood")}
+                      defaultChecked={this.state.cuisines.includes("Seafood")}
+                    />
+                    <label>Seafood</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      value="Turkish"
+                      onClick={this.handleCuisineClick("Turkish")}
+                      defaultChecked={this.state.cuisines.includes("Turkish")}
+                    />
                     <label>Turkish</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      value="Vegetarian"
+                      onClick={this.handleCuisineClick("Vegetarian")}
+                      defaultChecked={this.state.cuisines.includes("Vegetarian")}
+                    />
+                    <label>Vegetarian</label>
                   </li>
                 </ul>
               </section>
@@ -235,23 +319,52 @@ class RestaurantsIndex extends React.Component {
                 </div>
                 <ul className="city-filter-items">
                   <li>
-                    <input type="checkbox" value="Manhattan" onClick={this.handleLocationClick("Manhattan")} defaultChecked={this.state.locations.includes("Manhattan")}/>
+                    <input
+                      type="checkbox"
+                      value="Manhattan"
+                      onClick={this.handleLocationClick("Manhattan")}
+                      defaultChecked={this.state.locations.includes(
+                        "Manhattan"
+                      )}
+                    />
                     <label>Manhattan</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Brooklyn" onClick={this.handleLocationClick("Brooklyn")} defaultChecked={this.state.locations.includes("Brooklyn")}/>
+                    <input
+                      type="checkbox"
+                      value="Brooklyn"
+                      onClick={this.handleLocationClick("Brooklyn")}
+                      defaultChecked={this.state.locations.includes("Brooklyn")}
+                    />
                     <label>Brooklyn</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Queens" onClick={this.handleLocationClick("Queens")} defaultChecked={this.state.locations.includes("Queens")}/>
+                    <input
+                      type="checkbox"
+                      value="Queens"
+                      onClick={this.handleLocationClick("Queens")}
+                      defaultChecked={this.state.locations.includes("Queens")}
+                    />
                     <label>Queens</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Bronx" onClick={this.handleLocationClick("Bronx")} defaultChecked={this.state.locations.includes("Bronx")}/>
+                    <input
+                      type="checkbox"
+                      value="Bronx"
+                      onClick={this.handleLocationClick("Bronx")}
+                      defaultChecked={this.state.locations.includes("Bronx")}
+                    />
                     <label>Bronx</label>
                   </li>
                   <li>
-                    <input type="checkbox" value="Staten Island" onClick={this.handleLocationClick("Staten Island")} defaultChecked={this.state.locations.includes("Staten Island")}/>
+                    <input
+                      type="checkbox"
+                      value="Staten Island"
+                      onClick={this.handleLocationClick("Staten Island")}
+                      defaultChecked={this.state.locations.includes(
+                        "Staten Island"
+                      )}
+                    />
                     <label>Staten Island</label>
                   </li>
                 </ul>
