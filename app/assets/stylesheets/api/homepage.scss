@@ -155,10 +155,17 @@
     margin-bottom: 10px !important;
   }
 
+  #restaurant-title{
+    font-size: 8vw !important;
+  }
+
   .restaurant-details a {
     white-space: pre-wrap;
   }
 
+  .show-page {
+    width: 100% !important;
+  }
 
 }
 
@@ -179,5 +186,11 @@
 
   .filter-bar {
     width: 90%;
+  }
+}
+
+@media all and (max-width: 1200px) {
+  .right-content{
+    display: none;
   }
 }
