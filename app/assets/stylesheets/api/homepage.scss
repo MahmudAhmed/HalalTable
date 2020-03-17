@@ -31,6 +31,10 @@
   background: transparent;
 }
 
+*::-webkit-scrollbar {
+  height: 0;
+  background: transparent;
+}
 .scroll-left, .scroll-right{
   position: absolute;
   background-color: white;

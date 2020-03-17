@@ -6,10 +6,8 @@ import { EMOJIS } from "../../util/emojis_util";
 class RestaurantsIndex extends React.Component {
   constructor(props) {
     super(props);
-    debugger
     this.state = {
       slots: [],
-      // city: props.location.state ? props.location.state.city : "All",
       price: [],
       rating: 0,
       cuisines: props.location.state ? [props.location.state.cuisine] : [],
