@@ -33,8 +33,8 @@ Restaurant.last.main_photo.attach(io: file, filename: "1.jpg")
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/addy6.jpg"), filename: "addy6.jpg")
 
 Restaurant.create!(name: "Shawarmania", phone_number: "(718) 545-1800", street_address: "22-49 31st St", city: "Queens", state: "NY", zip: "11105", description: Faker::Restaurant.description, open_time: "11:00", close_time: "22:00", price_range: "$$", capacity: 20, cuisines: "Middle Eastern", owner_id: 2, ratings: 5, lat: 51.702350 , lng: 4.846990)
-# Restaurant.last.main_photo.attach(io: open("/home/vault/Desktop/halal-table-photos/profile-photos/architecture-ceiling-chairs-chandeliers-262047.jpg"), filename: "2.jpg")
-
+file = open('https://s3.amazonaws.com/halaltable-seeds/2.jpg')
+Restaurant.last.main_photo.attach(io: file, filename: "2.jpg")
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/shawarma1.jpg"), filename: "shawarma1.jpg")
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/shawarma2.jpg"), filename: "shawarma2.jpg")
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/shawarma3.jpeg"), filename: "shawarma3.jpeg")
@@ -42,7 +42,8 @@ Restaurant.create!(name: "Shawarmania", phone_number: "(718) 545-1800", street_a
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/shawarma5.jpeg"), filename: "shawarma5.jpeg")
 
 Restaurant.create!(name: "AwesomeSauce", phone_number: "(718) 204-0275", street_address: "40-06 Queens Blvd S", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "00:00", price_range: "$$", capacity: 22, cuisines: "Burgers & Wings", owner_id: 1, ratings: 5, lat: 40.718980, lng: -73.880980)
-# Restaurant.last.main_photo.attach(io: open("/home/vault/Desktop/halal-table-photos/profile-photos/blur-breakfast-chef-cooking-262978.jpg"), filename: "23.jpg")
+file = open('https://s3.amazonaws.com/halaltable-seeds/3.jpg')
+Restaurant.last.main_photo.attach(io: file, filename: "3.jpg")
 
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/as1.jpg"), filename: "as1.jpg")
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/as2.jpg"), filename: "as2.jpg")
@@ -51,7 +52,8 @@ Restaurant.create!(name: "AwesomeSauce", phone_number: "(718) 204-0275", street_
 
 
 Restaurant.create!(name: "Duzan", phone_number: "(718) 204-7488", street_address: "2411 Steinway St", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "00:00", price_range: "$$", capacity: 15, cuisines: "Middle Eastern", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.910881)
-# Restaurant.last.main_photo.attach(io: open("/home/vault/Desktop/halal-table-photos/profile-photos/blur-breakfast-chef-cooking-262978.jpg"), filename: "3.jpg")
+file = open('https://s3.amazonaws.com/halaltable-seeds/4.jpg')
+Restaurant.last.main_photo.attach(io: file, filename: "4.jpg")
 
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/duzan1.jpg"), filename: "duzan1.jpg")
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/duzan2.jpg"), filename: "duzan2.jpg")
