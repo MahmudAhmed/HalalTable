@@ -28,6 +28,7 @@ class Restaurant < ApplicationRecord
   validates :street_address, uniqueness: true
   validates :lat, uniqueness: { scope: :lng}
   has_many_attached :photos
+  has_one_attached :main_photo
 
   belongs_to :owner, 
     class_name: :User,

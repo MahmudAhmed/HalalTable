@@ -98,6 +98,7 @@ class RestaurantsIndex extends React.Component {
 
   render() {
     const { restaurants } = this.props;
+    debugger
     const display = restaurants.length === 0 ? 
     <div className="notfound">
       <h1>{this.displayRandomEmoji()}</h1>

@@ -169,7 +169,7 @@ class RestaurantShow extends React.Component {
                 <h2 className="display-subheader" id="photos-section">
                   Photos
                 </h2>
-                <PhotoGallery />
+                <PhotoGallery photos={restaurant.photoUrl}/>
               </div>
               <div id="menu-div">
                 <h2 className="display-subheader" id="menu-section">
