@@ -23,7 +23,9 @@ User.create!(email: "user6@ht.com", first_name: Faker::Name.first_name , last_na
 User.create!(email: "demo@ht.com", first_name: "Demo" , last_name: "User" , primary_location: "Queens", password: "fireball42")
 
 Restaurant.create!(name: "Addy’s Barbeque", phone_number: "(718) 433-9568", street_address: "30-94 Steinway St", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:00", price_range: "$$", capacity: 30, cuisines: "Barbeque", owner_id: 1, ratings: 5, lat: 40.756630, lng: -73.922160)
-# Restaurant.last.main_photo.attach(io: open("https://halaltable-dev.s3.amazonaws.com/Rd688ArtXAadtEP8bDRGwqBi"), filename: "1.jpg")
+
+file = open('https://s3.amazonaws.com/halaltable-seeds/1.jpg')
+Restaurant.last.main_photo.attach(io: file, filename: "1.jpg")
 
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/addy3.jpg"), filename: "addy3.jpg")
 # Restaurant.last.photos.attach(io: open("/home/vault/Desktop/halal-table-photos/addy4.jpg"), filename: "addy4.jpg")
