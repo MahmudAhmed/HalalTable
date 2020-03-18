@@ -2,6 +2,7 @@ import React from "react";
 
 class PhotoGallery extends React.Component {
   render(){
+    console.log(this.props.main_photo);
     console.log(this.props.photos);
     return (
       <div className="photo-container">
