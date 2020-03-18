@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
+
 User.destroy_all
 Restaurant.destroy_all
 Menu.destroy_all
@@ -362,3 +363,5 @@ Favorite.create!(restaurant_id: 5, user_id: 6)
 Favorite.create!(restaurant_id: 6, user_id: 6)
 Favorite.create!(restaurant_id: 2, user_id: 6)
 Favorite.create!(restaurant_id: 3, user_id: 6)
+
+
