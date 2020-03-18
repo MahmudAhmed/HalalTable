@@ -39,7 +39,7 @@ Restaurant.create!(name: "Shawarmania", phone_number: "(718) 545-1800", street_a
 # Restaurant.last.photos.attach(io: File.open("/home/vault/Desktop/halal-table-photos/shawarma5.jpeg"), filename: "shawarma5.jpeg")
 
 Restaurant.create!(name: "AwesomeSauce", phone_number: "(718) 204-0275", street_address: "40-06 Queens Blvd S", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "00:00", price_range: "$$", capacity: 22, cuisines: "Burgers & Wings", owner_id: 1, ratings: 5, lat: 40.718980, lng: -73.880980)
-# Restaurant.last.main_photo.attach(io: File.open("/home/vault/Desktop/halal-table-photos/profile-photos/woman-in-front-of-table-1267315.jpg"), filename: "23.jpg")
+# Restaurant.last.main_photo.attach(io: File.open("/home/vault/Desktop/halal-table-photos/profile-photos/blur-breakfast-chef-cooking-262978.jpg"), filename: "23.jpg")
 
 # Restaurant.last.photos.attach(io: File.open("/home/vault/Desktop/halal-table-photos/as1.jpg"), filename: "as1.jpg")
 # Restaurant.last.photos.attach(io: File.open("/home/vault/Desktop/halal-table-photos/as2.jpg"), filename: "as2.jpg")
