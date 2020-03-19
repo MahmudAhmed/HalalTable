@@ -152,7 +152,7 @@ Restaurant.last.main_photo.attach(io: file19, filename: "10.jpg")
 
 Restaurant.create!(name: "BURGERS by Honest Chops", phone_number: Faker::PhoneNumber.cell_phone, street_address: "99 MacDougal St", city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Burgers & Wings", owner_id: 4, ratings: 5, lat: 40.712772, lng: -74.006058)
 file10 = open('https://s3.amazonaws.com/halaltable-seeds/11.jpg')
-Restaurant.last.main_photo.attach(io: file10  filename: "11.jpg")
+Restaurant.last.main_photo.attach(io: file10,  filename: "11.jpg")
 
 # Restaurant.last.photos.attach(io: gallary_photo_5, filename: "shawarma1.jpg")
 # Restaurant.last.photos.attach(io: gallary_photo_6, filename: "shawarma2.jpg")
