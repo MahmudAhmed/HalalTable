@@ -182,7 +182,7 @@ Restaurant.last.main_photo.attach(io: file12, filename: "13.jpg")
 
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Indian", owner_id: 4, ratings: 5, lat: 40.712732, lng: -74.00258)
-file13 = open('https://s3.amazonaws.com/halaltable-seeds/14.jpg'13)
+file13 = open('https://s3.amazonaws.com/halaltable-seeds/14.jpg')
 Restaurant.last.main_photo.attach(io: file13, filename: "14.jpg")
 
 # Restaurant.last.photos.attach(io: gallary_photo_18, filename: "sami1.jpg")
