@@ -28,16 +28,17 @@ class RestaurantsIndex extends React.Component {
   handleChange(field) {
     return e => {
       e.preventDefault();
-      this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
       if (field === "city"){
-        this.setState({ locations: [e.target.value] })
+        this.setState({ locations: [e.target.value] });
+        return;
       }
+      this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
     }
   }
 
   handleBtnClick(e){
     e.preventDefault();
-    this.props.requestRestaurants({ city: this.state.city});
+    this.sendFilters();
   }
 
   displayRandomEmoji(){
@@ -98,7 +99,6 @@ class RestaurantsIndex extends React.Component {
 
   render() {
     const { restaurants } = this.props;
-    debugger
     const display = restaurants.length === 0 ? 
     <div className="notfound">
       <h1>{this.displayRandomEmoji()}</h1>
@@ -106,6 +106,7 @@ class RestaurantsIndex extends React.Component {
     </div>: restaurants.map(restaurant => (
       <RestaurantIndexItems key={restaurant.id} restaurant={restaurant}/>
     ));
+    debugger
     return (
       <>
         <div className="splash-form-container">
@@ -324,7 +325,7 @@ class RestaurantsIndex extends React.Component {
                       type="checkbox"
                       value="Manhattan"
                       onClick={this.handleLocationClick("Manhattan")}
-                      defaultChecked={this.state.locations.includes(
+                      checked={this.state.locations.includes(
                         "Manhattan"
                       )}
                     />
@@ -335,7 +336,7 @@ class RestaurantsIndex extends React.Component {
                       type="checkbox"
                       value="Brooklyn"
                       onClick={this.handleLocationClick("Brooklyn")}
-                      defaultChecked={this.state.locations.includes("Brooklyn")}
+                      checked={this.state.locations.includes("Brooklyn")}
                     />
                     <label>Brooklyn</label>
                   </li>
@@ -344,7 +345,7 @@ class RestaurantsIndex extends React.Component {
                       type="checkbox"
                       value="Queens"
                       onClick={this.handleLocationClick("Queens")}
-                      defaultChecked={this.state.locations.includes("Queens")}
+                      checked={this.state.locations.includes("Queens")}
                     />
                     <label>Queens</label>
                   </li>
@@ -353,7 +354,7 @@ class RestaurantsIndex extends React.Component {
                       type="checkbox"
                       value="Bronx"
                       onClick={this.handleLocationClick("Bronx")}
-                      defaultChecked={this.state.locations.includes("Bronx")}
+                      checked={this.state.locations.includes("Bronx")}
                     />
                     <label>Bronx</label>
                   </li>
@@ -362,7 +363,7 @@ class RestaurantsIndex extends React.Component {
                       type="checkbox"
                       value="Staten Island"
                       onClick={this.handleLocationClick("Staten Island")}
-                      defaultChecked={this.state.locations.includes(
+                      checked={this.state.locations.includes(
                         "Staten Island"
                       )}
                     />
