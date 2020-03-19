@@ -10,7 +10,7 @@ class Search extends React.Component {
     const {restaurants, requestRestaurants} = this.props;
     return(
       <div>
-        <SearchMap restaurants={restaurants} />
+        <SearchMap restaurants={restaurants} requestRestaurants={requestRestaurants} />
         <AllRestaurant restaurants={restaurants} requestRestaurants={requestRestaurants} />
 
       </div>

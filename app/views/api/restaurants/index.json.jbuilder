@@ -1,6 +1,6 @@
 @restaurants.each do |restaurant|
   json.set! restaurant.id do 
-    json.extract! restaurant, :id, :name, :city, :cuisines, :price_range, :open_time, :close_time
+    json.extract! restaurant, :id, :name, :city, :cuisines, :price_range, :open_time, :close_time, :lat, :lng
     # debugger
     json.photoUrl url_for(restaurant.main_photo) if restaurant.main_photo.attached?
 

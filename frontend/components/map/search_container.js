@@ -8,10 +8,12 @@ const mapStateToProps = ({ entities }) => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  requestRestaurants: () => dispatch(requestRestaurants()),
-
-});
+const mapDispatchToProps = dispatch => {
+  debugger
+  return {
+    requestRestaurants: (args) => dispatch(requestRestaurants(args)),
+  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
 

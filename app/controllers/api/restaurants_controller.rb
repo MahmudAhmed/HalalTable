@@ -1,7 +1,9 @@
 class Api::RestaurantsController < ApplicationController
   def index
     if params[:filters]
-      if params[:filters][:city] 
+      if params[:filters][:bounds] 
+        @restaurants = Restaurant.in_bounds(params[:filters][:bounds])
+      elsif params[:filters][:city] 
         @restaurants = params[:filters][:city] == ["All"] ? 
         Restaurant
           .all
@@ -23,10 +25,13 @@ class Api::RestaurantsController < ApplicationController
       if params[:filters][:rating]
             @restaurants = @restaurants.where("ratings >= ?", params[:filters][:rating])
       end
-
+      
     else
       @restaurants = Restaurant.includes(:reviews).all
     end
+    
+    
+
     render :index
   end
 
