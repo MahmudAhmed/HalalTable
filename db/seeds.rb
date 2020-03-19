@@ -24,8 +24,8 @@ User.create!(email: "demo@ht.com", first_name: "Demo" , last_name: "User" , prim
 
 Restaurant.create!(name: "Addy’s Barbeque", phone_number: "(718) 433-9568", street_address: "30-94 Steinway St", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:00", price_range: "$$", capacity: 30, cuisines: "Barbeque", owner_id: 1, ratings: 5, lat: 40.756630, lng: -73.922160)
 
-file = open('https://s3.amazonaws.com/halaltable-seeds/1.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "1.jpg")
+file1 = open('https://s3.amazonaws.com/halaltable-seeds/1.jpg')
+Restaurant.last.main_photo.attach(io: file1, filename: "1.jpg")
 gallary_photo_1 = open('https://s3.amazonaws.com/halaltable-seeds/addy3.jpg')
 gallary_photo_2 = open('https://s3.amazonaws.com/halaltable-seeds/addy4.jpg')
 gallary_photo_3 = open('https://s3.amazonaws.com/halaltable-seeds/addy5.jpg')
@@ -36,8 +36,8 @@ Restaurant.last.photos.attach(io: gallary_photo_3, filename: "addy5.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_4, filename: "addy6.jpg")
 
 Restaurant.create!(name: "Shawarmania", phone_number: "(718) 545-1800", street_address: "22-49 31st St", city: "Queens", state: "NY", zip: "11105", description: Faker::Restaurant.description, open_time: "11:00", close_time: "22:00", price_range: "$$", capacity: 20, cuisines: "Middle Eastern", owner_id: 2, ratings: 5, lat: 51.702350 , lng: 4.846990)
-file = open('https://s3.amazonaws.com/halaltable-seeds/2.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "2.jpg")
+file2 = open('https://s3.amazonaws.com/halaltable-seeds/2.jpg')
+Restaurant.last.main_photo.attach(io: file2, filename: "2.jpg")
 gallary_photo_5 = open('https://s3.amazonaws.com/halaltable-seeds/shawarma1.jpg')
 gallary_photo_6 = open('https://s3.amazonaws.com/halaltable-seeds/shawarma2.jpg')
 gallary_photo_7 = open('https://s3.amazonaws.com/halaltable-seeds/shawarma3.jpeg')
@@ -51,8 +51,8 @@ Restaurant.last.photos.attach(io: gallary_photo_31, filename: "shawarma5.jpeg")
 
 
 Restaurant.create!(name: "AwesomeSauce", phone_number: "(718) 204-0275", street_address: "40-06 Queens Blvd S", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "00:00", price_range: "$$", capacity: 22, cuisines: "Burgers & Wings", owner_id: 1, ratings: 5, lat: 40.718980, lng: -73.880980)
-file = open('https://s3.amazonaws.com/halaltable-seeds/3.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "3.jpg")
+file3 = open('https://s3.amazonaws.com/halaltable-seeds/3.jpg')
+Restaurant.last.main_photo.attach(io: file3, filename: "3.jpg")
 gallary_photo_9 = open('https://s3.amazonaws.com/halaltable-seeds/as1.jpg')
 gallary_photo_10 = open('https://s3.amazonaws.com/halaltable-seeds/as2.jpg')
 gallary_photo_11 = open('https://s3.amazonaws.com/halaltable-seeds/as3.jpg')
@@ -65,8 +65,8 @@ Restaurant.last.photos.attach(io: gallary_photo_12, filename: "as4.jpg")
 
 
 Restaurant.create!(name: "Duzan", phone_number: "(718) 204-7488", street_address: "2411 Steinway St", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "00:00", price_range: "$$", capacity: 15, cuisines: "Middle Eastern", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.910881)
-file = open('https://s3.amazonaws.com/halaltable-seeds/4.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "4.jpg")
+file4 = open('https://s3.amazonaws.com/halaltable-seeds/4.jpg')
+Restaurant.last.main_photo.attach(io: file4, filename: "4.jpg")
 
 gallary_photo_13 = open('https://s3.amazonaws.com/halaltable-seeds/duzan1.jpg')
 gallary_photo_14 = open('https://s3.amazonaws.com/halaltable-seeds/duzan2.jpg')
@@ -81,8 +81,8 @@ Restaurant.last.photos.attach(io: gallary_photo_17, filename: "duzan5.png")
 
 
 Restaurant.create!(name: "Sami's Kabab House", phone_number: "(917) 832-7165", street_address: "35-57 Crescent St", city: "Queens", state: "NY", zip: "11106", description: Faker::Restaurant.description, open_time: "11:00", close_time: "23:30", price_range: "$$$", capacity: 15, cuisines: "Afgan", owner_id: 5, ratings: 5, lat: 40.768669, lng: -73.912881)
-file = open('https://s3.amazonaws.com/halaltable-seeds/5.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "5.jpg")
+file5 = open('https://s3.amazonaws.com/halaltable-seeds/5.jpg')
+Restaurant.last.main_photo.attach(io: file5, filename: "5.jpg")
 gallary_photo_18 = open('https://s3.amazonaws.com/halaltable-seeds/sami1.jpg')
 gallary_photo_19 = open('https://s3.amazonaws.com/halaltable-seeds/sami2.jpeg')
 gallary_photo_20 = open('https://s3.amazonaws.com/halaltable-seeds/sami3.jpg')
@@ -96,8 +96,8 @@ Restaurant.last.photos.attach(io: gallary_photo_22, filename: "sami5.jpg")
 
 
 Restaurant.create!(name: "Peri Peri Grill House", phone_number: "(917) 966-8614", street_address: "235 Malcolm X Blvd", city: "Brooklyn", state: "NY", zip: "11233", description: Faker::Restaurant.description, open_time: "12:00", close_time: "00:00", price_range: "$$", capacity: 25, cuisines: "Middle Eastern", owner_id: 1, ratings: 5, lat: 40.650002, lng: -73.949997)
-file = open('https://s3.amazonaws.com/halaltable-seeds/6.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "6.jpg")
+file6 = open('https://s3.amazonaws.com/halaltable-seeds/6.jpg')
+Restaurant.last.main_photo.attach(io: file6, filename: "6.jpg")
 
 gallary_photo_23 = open('https://s3.amazonaws.com/halaltable-seeds/peri1.jpeg')
 gallary_photo_24 = open('https://s3.amazonaws.com/halaltable-seeds/peri2.jpg')
@@ -110,8 +110,8 @@ Restaurant.last.photos.attach(io: gallary_photo_26, filename: "peri4.jpg")
 
 
 Restaurant.create!(name: "Taci's Beyti", phone_number: "(718) 627-5750", street_address: "1953 Coney Island Ave", city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "23:00", price_range: "$$", capacity: 25, cuisines: "Turkish", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.913881)
-file = open('https://s3.amazonaws.com/halaltable-seeds/7.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "7.jpg")
+file7 = open('https://s3.amazonaws.com/halaltable-seeds/7.jpg')
+Restaurant.last.main_photo.attach(io: file7, filename: "7.jpg")
 
 gallary_photo_27 = open('https://s3.amazonaws.com/halaltable-seeds/taci1.jpg')
 gallary_photo_28 = open('https://s3.amazonaws.com/halaltable-seeds/taci2.jpg')
@@ -124,8 +124,8 @@ Restaurant.last.photos.attach(io: gallary_photo_30, filename: "taci4.jpg")
 
 
 Restaurant.create!(name: "Tava Turkish Mediterranean", phone_number: "(718) 499-5600", street_address: "318 5th Ave", city: "Brooklyn", state: "NY", zip: "11215", description: Faker::Restaurant.description, open_time: "11:00", close_time: "22:00", price_range: "$$$", capacity: 15, cuisines: "Turkish", owner_id: 2, ratings: 5, lat: 40.718669, lng: -73.915881)
-file = open('https://s3.amazonaws.com/halaltable-seeds/8.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "8.jpg")
+file8 = open('https://s3.amazonaws.com/halaltable-seeds/8.jpg')
+Restaurant.last.main_photo.attach(io: file8, filename: "8.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_23, filename: "peri1.jpeg")
 Restaurant.last.photos.attach(io: gallary_photo_24, filename: "peri2.jpg")
@@ -133,8 +133,8 @@ Restaurant.last.photos.attach(io: gallary_photo_25, filename: "peri3.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_26, filename: "peri4.jpg")
 
 Restaurant.create!(name: "Ariana Afghan Kebab Restaurant", phone_number: "(212) 262-2323", street_address: "787 9th Ave", city: "Manhattan", state: "NY", zip: "10019", description: Faker::Restaurant.description, open_time: "11:30", close_time: "22:30", price_range: "$$", capacity: 15, cuisines: "Afgan", owner_id: 6, ratings: 5, lat: 40.763669, lng: -73.910881)
-file = open('https://s3.amazonaws.com/halaltable-seeds/9.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "9.jpg")
+file9 = open('https://s3.amazonaws.com/halaltable-seeds/9.jpg')
+Restaurant.last.main_photo.attach(io: file9, filename: "9.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_27, filename: "taci1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_28, filename: "taci2.jpg")
@@ -142,8 +142,8 @@ Restaurant.last.photos.attach(io: gallary_photo_29, filename: "taci3.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_30, filename: "taci4.jpg")
 
 Restaurant.create!(name: "The MasalaWala", phone_number: "(212) 358-9300", street_address: "179 Essex St", city: "Manhattan", state: "NY", zip: "10002", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Indian", owner_id: 1, ratings: 5, lat: 40.730610, lng: -73.935242)
-file = open('https://s3.amazonaws.com/halaltable-seeds/10.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "10.jpg")
+file19 = open('https://s3.amazonaws.com/halaltable-seeds/10.jpg')
+Restaurant.last.main_photo.attach(io: file19, filename: "10.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_1, filename: "addy3.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_2, filename: "addy4.jpg")
@@ -151,8 +151,8 @@ Restaurant.last.photos.attach(io: gallary_photo_3, filename: "addy5.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_4, filename: "addy6.jpg")
 
 Restaurant.create!(name: "BURGERS by Honest Chops", phone_number: Faker::PhoneNumber.cell_phone, street_address: "99 MacDougal St", city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Burgers & Wings", owner_id: 4, ratings: 5, lat: 40.712772, lng: -74.006058)
-file = open('https://s3.amazonaws.com/halaltable-seeds/11.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "11.jpg")
+file10 = open('https://s3.amazonaws.com/halaltable-seeds/11.jpg')
+Restaurant.last.main_photo.attach(io: file10  filename: "11.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_5, filename: "shawarma1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_6, filename: "shawarma2.jpg")
@@ -162,8 +162,8 @@ Restaurant.last.photos.attach(io: gallary_photo_31, filename: "shawarma5.jpeg")
 
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Burgers & Wings", owner_id: 4, ratings: 5, lat: 40.712712, lng: -74.006258)
-file = open('https://s3.amazonaws.com/halaltable-seeds/12.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "12.jpg")
+file11 = open('https://s3.amazonaws.com/halaltable-seeds/12.jpg')
+Restaurant.last.main_photo.attach(io: file11, filename: "12.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_9, filename: "as1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_10, filename: "as2.jpg")
@@ -171,8 +171,8 @@ Restaurant.last.photos.attach(io: gallary_photo_11, filename: "as3.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_12, filename: "as4.jpg")
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$", capacity: 25, cuisines: "Afgan", owner_id: 4, ratings: 5, lat: 40.712722, lng: -74.006458)
-file = open('https://s3.amazonaws.com/halaltable-seeds/13.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "13.jpg")
+file12 = open('https://s3.amazonaws.com/halaltable-seeds/13.jpg')
+Restaurant.last.main_photo.attach(io: file12, filename: "13.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_13, filename: "duzan1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_14, filename: "duzan2.jpg")
@@ -182,8 +182,8 @@ Restaurant.last.photos.attach(io: gallary_photo_17, filename: "duzan5.png")
 
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Indian", owner_id: 4, ratings: 5, lat: 40.712732, lng: -74.00258)
-file = open('https://s3.amazonaws.com/halaltable-seeds/14.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "14.jpg")
+file13 = open('https://s3.amazonaws.com/halaltable-seeds/14.jpg'13)
+Restaurant.last.main_photo.attach(io: file13, filename: "14.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_18, filename: "sami1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_19, filename: "sami2.jpeg")
@@ -192,8 +192,8 @@ Restaurant.last.photos.attach(io: gallary_photo_21, filename: "sami4.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_22, filename: "sami5.jpg")
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Middle Eastern", owner_id: 4, ratings: 5, lat: 40.712772, lng: -74.006258)
-file = open('https://s3.amazonaws.com/halaltable-seeds/15.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "15.jpg")
+file14 = open('https://s3.amazonaws.com/halaltable-seeds/15.jpg')
+Restaurant.last.main_photo.attach(io: file14, filename: "15.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_23, filename: "peri1.jpeg")
 Restaurant.last.photos.attach(io: gallary_photo_24, filename: "peri2.jpg")
@@ -201,8 +201,8 @@ Restaurant.last.photos.attach(io: gallary_photo_25, filename: "peri3.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_26, filename: "peri4.jpg")
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$", capacity: 25, cuisines: "Afgan", owner_id: 4, ratings: 5,lat: 40.761669, lng: -73.963881)
-file = open('https://s3.amazonaws.com/halaltable-seeds/16.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "16.jpg")
+file15 = open('https://s3.amazonaws.com/halaltable-seeds/16.jpg')
+Restaurant.last.main_photo.attach(io: file15, filename: "16.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_27, filename: "taci1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_28, filename: "taci2.jpg")
@@ -210,8 +210,8 @@ Restaurant.last.photos.attach(io: gallary_photo_29, filename: "taci3.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_30, filename: "taci4.jpg")
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Indian", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.917881)
-file = open('https://s3.amazonaws.com/halaltable-seeds/17.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "17.jpg")
+file16 = open('https://s3.amazonaws.com/halaltable-seeds/17.jpg')
+Restaurant.last.main_photo.attach(io: file16, filename: "17.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_23, filename: "peri1.jpeg")
 Restaurant.last.photos.attach(io: gallary_photo_24, filename: "peri2.jpg")
@@ -219,8 +219,8 @@ Restaurant.last.photos.attach(io: gallary_photo_25, filename: "peri3.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_26, filename: "peri4.jpg")
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Middle Eastern", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.963881)
-file = open('https://s3.amazonaws.com/halaltable-seeds/18.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "18.jpg")
+file17 = open('https://s3.amazonaws.com/halaltable-seeds/18.jpg')
+Restaurant.last.main_photo.attach(io: file17, filename: "18.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_1, filename: "addy3.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_2, filename: "addy4.jpg")
@@ -228,8 +228,8 @@ Restaurant.last.photos.attach(io: gallary_photo_3, filename: "addy5.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_4, filename: "addy6.jpg")
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$", capacity: 25, cuisines: "Afgan", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.9613881)
-file = open('https://s3.amazonaws.com/halaltable-seeds/19.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "19.jpg")
+file18 = open('https://s3.amazonaws.com/halaltable-seeds/19.jpg')
+Restaurant.last.main_photo.attach(io: file18, filename: "19.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_5, filename: "shawarma1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_6, filename: "shawarma2.jpg")
@@ -239,8 +239,8 @@ Restaurant.last.photos.attach(io: gallary_photo_31, filename: "shawarma5.jpeg")
 
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Bronx", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Indian", owner_id: 4, ratings: 5, lat: 40.837048, lng: -73.865433)
-file = open('https://s3.amazonaws.com/halaltable-seeds/20.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "20.jpg")
+file20 = open('https://s3.amazonaws.com/halaltable-seeds/20.jpg')
+Restaurant.last.main_photo.attach(io: file20, filename: "20.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_9, filename: "as1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_10, filename: "as2.jpg")
@@ -248,8 +248,8 @@ Restaurant.last.photos.attach(io: gallary_photo_11, filename: "as3.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_12, filename: "as4.jpg")
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Staten Island", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Middle Eastern", owner_id: 4, ratings: 5, lat: 40.579021, lng: -74.151535)
-file = open('https://s3.amazonaws.com/halaltable-seeds/21.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "21.jpg")
+file21 = open('https://s3.amazonaws.com/halaltable-seeds/21.jpg')
+Restaurant.last.main_photo.attach(io: file21, filename: "21.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_13, filename: "duzan1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_14, filename: "duzan2.jpg")
@@ -258,8 +258,8 @@ Restaurant.last.photos.attach(io: gallary_photo_16, filename: "duzan4.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_17, filename: "duzan5.png")
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Queens", state: "NY", zip: "12345", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Seafood", owner_id: 1, ratings: 5, lat: 40.599021, lng: -74.351535)
-file = open('https://s3.amazonaws.com/halaltable-seeds/22.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "22.jpg")
+file22 = open('https://s3.amazonaws.com/halaltable-seeds/22.jpg')
+Restaurant.last.main_photo.attach(io: file22, filename: "22.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_18, filename: "sami1.jpg")
 Restaurant.last.photos.attach(io: gallary_photo_19, filename: "sami2.jpeg")
@@ -269,8 +269,8 @@ Restaurant.last.photos.attach(io: gallary_photo_22, filename: "sami5.jpg")
 
 
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Staten Island", state: "NY", zip: "78654", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Vegetarian", owner_id: 4, ratings: 5, lat: 42.579021, lng: -75.151535)
-file = open('https://s3.amazonaws.com/halaltable-seeds/23.jpg')
-Restaurant.last.main_photo.attach(io: file, filename: "23.jpg")
+file23 = open('https://s3.amazonaws.com/halaltable-seeds/23.jpg')
+Restaurant.last.main_photo.attach(io: file23, filename: "23.jpg")
 
 Restaurant.last.photos.attach(io: gallary_photo_23, filename: "peri1.jpeg")
 Restaurant.last.photos.attach(io: gallary_photo_24, filename: "peri2.jpg")
