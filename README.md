@@ -3,7 +3,7 @@
 
 ## Description
 <p align="center">
-  <img width="500" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/halaltable-preview.gif">
+  <img width="600" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/halaltable-preview.gif">
 </p>
 HalalTable is a single page app inspired by OpenTable, which allows users to search for halal restaurants in the five boroughs of NYC, make reservations and save specific restaurants as they wish. This app was built with Ruby on Rails for the backend and React-Redux for the frontend, using PostgreSQL to manage the database.
 
@@ -52,7 +52,7 @@ npm run webpack
   * Restaurants can be searched by either price, ratings, location, or cuisine. Additionally, the index page can be toggled to a map that allows filtering based on the zoom of the map
 
 <p align="center">
-  <img width="500" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/map-search.gif">
+  <img width="600" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/map-search.gif">
 </p>
 
 
@@ -92,7 +92,7 @@ npm run webpack
   * Users are able to cancel/edit existing reservations that have not already occurred
 
 <p align="center">
-  <img width="400" height="400" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/reservation.gif">
+  <img width="500" height="400" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/reservation.gif">
 </p>
 
 * Reviews
@@ -102,7 +102,7 @@ npm run webpack
   * Each Restaurant shows a list of all existing reviews
 
 <p align="center">
-  <img width="500" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/review.gif">
+  <img width="600" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/review.gif">
 </p>
 
 * Favorite/Save
