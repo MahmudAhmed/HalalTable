@@ -1,0 +1,29 @@
+.details-container{
+  // background-color: red;
+  margin-top: 20px;
+  display: none;
+}
+
+.left-details{
+  // background-color: seagreen;
+  width: 100%;
+}
+
+.right-details{
+  // background-color: yellowgreen;
+  width: 100%;
+}
+
+.details-map{
+  padding-top: 0 !important;
+  margin-bottom: 10px !important;
+}
+
+.left-details > section, .right-details > section{
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.left-details > section > div, .right-details > section > div{
+  padding-left: 10px;
+}

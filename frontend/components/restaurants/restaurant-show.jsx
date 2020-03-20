@@ -4,20 +4,10 @@ import PhotoGallery from "./photo_gallery";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarRatings from "react-star-ratings";
 import ReservationForm from "../reservations/reservation_index";
-
+import Details from "./details";
 import MenuItems from "./menu";
 import ReviewsIndexContainer from "../reviews/review_index_container";
 import RestaurantMap from "../map/restaurant_map";
-
-const getPrice = (price_range) => {
-  if (price_range === "$$") {
-    return "$30 and under"
-  } else if (price_range === "$$$") {
-    return "$31 to $50"
-  } else if (price_range === "$$$$") {
-    return "$50 and over"
-  }
-}
 
 class RestaurantShow extends React.Component {
   constructor(props){
@@ -78,13 +68,11 @@ class RestaurantShow extends React.Component {
 
   handleFavClick(e){
     e.preventDefault();
-    
     const { loggedIn, createFavorite, deleteFavorite, favorites, restaurant, userId } = this.props;
     if (!loggedIn){
       document.querySelector(".modal-login").classList.add("is-open");
       return
     }
-    // this.setState({ isFave: favorites.find( fave => fave.restaurant_id === restaurant.id ) });
     if (this.state.isFave){
       deleteFavorite(userId, this.state.isFave.id)
       this.setState({isFave: null}) 
@@ -304,6 +292,7 @@ class RestaurantShow extends React.Component {
               <div id="restaurant-overview">
                 {restaurant.description}
               </div>
+              <Details restaurant={restaurant} />
               <div id="gallery-div">
                 <h2 className="display-subheader" id="photos-section">
                   Photos
@@ -455,4 +444,15 @@ const getRestaurantHours = (open, close) => {
     utcOpenTime.setHours(utcOpenTime.getHours() + 1);
   };
   return restaurantHours
+}
+
+
+const getPrice = (price_range) => {
+  if (price_range === "$$") {
+    return "$30 and under"
+  } else if (price_range === "$$$") {
+    return "$31 to $50"
+  } else if (price_range === "$$$$") {
+    return "$50 and over"
+  }
 }
