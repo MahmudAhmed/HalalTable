@@ -109,6 +109,13 @@ npm run webpack
   * Users can save restaurants that they are interested in for booking in the future.
   * These restaurants are stored in their profiles.
 
+  
+* Optimized
+  <p align="center" display="flex">
+    <img width="600" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/cquery.gif">
+    <img width="600" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/cquery.gif">
+  </p>
+
 ## Future Endeavors
 
 * Optamize show page for mobile. 
