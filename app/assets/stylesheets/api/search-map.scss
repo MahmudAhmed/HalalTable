@@ -56,8 +56,6 @@
 }
 
 .map-view-container{
-  // background-color: blue;
-  // height: 64px;
     width: 100%;
     display: block;
     margin: 16px 16px 16px 0;
@@ -86,6 +84,16 @@
 .map-view-btn button{
   margin-left: 5px;
   cursor: pointer;
+}
+
+#marker-title{
+  font-weight: 700;
+  padding: 10px 0;
+  position: relative;
+}
+
+.info-window{
+  background-color: red;
 }
 
 
