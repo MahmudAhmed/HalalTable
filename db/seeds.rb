@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 
 User.destroy_all
 Restaurant.destroy_all
@@ -22,28 +23,228 @@ User.create!(email: "user6@ht.com", first_name: Faker::Name.first_name , last_na
 User.create!(email: "demo@ht.com", first_name: "Demo" , last_name: "User" , primary_location: "Queens", password: "fireball42")
 
 Restaurant.create!(name: "Addy’s Barbeque", phone_number: "(718) 433-9568", street_address: "30-94 Steinway St", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:00", price_range: "$$", capacity: 30, cuisines: "Barbeque", owner_id: 1, ratings: 5, lat: 40.756630, lng: -73.922160)
+
+file1 = open('https://s3.amazonaws.com/halaltable-seeds/1.jpg')
+Restaurant.last.main_photo.attach(io: file1, filename: "1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy3.jpg'), filename: "addy3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy4.jpg'), filename: "addy4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy5.jpg'), filename: "addy5.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy6.jpg'), filename: "addy6.jpg")
+
 Restaurant.create!(name: "Shawarmania", phone_number: "(718) 545-1800", street_address: "22-49 31st St", city: "Queens", state: "NY", zip: "11105", description: Faker::Restaurant.description, open_time: "11:00", close_time: "22:00", price_range: "$$", capacity: 20, cuisines: "Middle Eastern", owner_id: 2, ratings: 5, lat: 51.702350 , lng: 4.846990)
+file2 = open('https://s3.amazonaws.com/halaltable-seeds/2.jpg')
+Restaurant.last.main_photo.attach(io: file2, filename: "2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma1.jpg'), filename: "shawarma1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma2.jpg'), filename: "shawarma2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma3.jpeg'), filename: "shawarma3.jpeeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma4.jpg'), filename: "shawarma4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma5.jpeg'), filename: "shawarma5.jpeg")
+
+
 Restaurant.create!(name: "AwesomeSauce", phone_number: "(718) 204-0275", street_address: "40-06 Queens Blvd S", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "00:00", price_range: "$$", capacity: 22, cuisines: "Burgers & Wings", owner_id: 1, ratings: 5, lat: 40.718980, lng: -73.880980)
+file3 = open('https://s3.amazonaws.com/halaltable-seeds/3.jpg')
+Restaurant.last.main_photo.attach(io: file3, filename: "3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as1.jpg'), filename: "as1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as2.jpg'), filename: "as2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as3.jpg'), filename: "as3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as4.jpg'), filename: "as4.jpg")
+
+
+
 Restaurant.create!(name: "Duzan", phone_number: "(718) 204-7488", street_address: "2411 Steinway St", city: "Queens", state: "NY", zip: "11103", description: Faker::Restaurant.description, open_time: "12:00", close_time: "00:00", price_range: "$$", capacity: 15, cuisines: "Middle Eastern", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.910881)
+file4 = open('https://s3.amazonaws.com/halaltable-seeds/4.jpg')
+Restaurant.last.main_photo.attach(io: file4, filename: "4.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan1.jpg'), filename: "duzan1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan2.jpg'), filename: "duzan2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan3.jpg'), filename: "duzan3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan4.jpg'), filename: "duzan4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan5.png'), filename: "duzan5.png")
+
+
 Restaurant.create!(name: "Sami's Kabab House", phone_number: "(917) 832-7165", street_address: "35-57 Crescent St", city: "Queens", state: "NY", zip: "11106", description: Faker::Restaurant.description, open_time: "11:00", close_time: "23:30", price_range: "$$$", capacity: 15, cuisines: "Afgan", owner_id: 5, ratings: 5, lat: 40.768669, lng: -73.912881)
+file5 = open('https://s3.amazonaws.com/halaltable-seeds/5.jpg')
+Restaurant.last.main_photo.attach(io: file5, filename: "5.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami1.jpg'), filename: "sami1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami2.jpeg'), filename: "sami2.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami3.jpg'), filename: "sami3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami4.jpg'), filename: "sami4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami5.jpg'), filename: "sami5.jpg")
+
+
 Restaurant.create!(name: "Peri Peri Grill House", phone_number: "(917) 966-8614", street_address: "235 Malcolm X Blvd", city: "Brooklyn", state: "NY", zip: "11233", description: Faker::Restaurant.description, open_time: "12:00", close_time: "00:00", price_range: "$$", capacity: 25, cuisines: "Middle Eastern", owner_id: 1, ratings: 5, lat: 40.650002, lng: -73.949997)
+file6 = open('https://s3.amazonaws.com/halaltable-seeds/6.jpg')
+Restaurant.last.main_photo.attach(io: file6, filename: "6.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri1.jpeg'), filename: "peri1.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri2.jpg'), filename: "peri2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri3.jpg'), filename: "peri3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri4.jpg'), filename: "peri4.jpg")
+
+
 Restaurant.create!(name: "Taci's Beyti", phone_number: "(718) 627-5750", street_address: "1953 Coney Island Ave", city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "23:00", price_range: "$$", capacity: 25, cuisines: "Turkish", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.913881)
+file7 = open('https://s3.amazonaws.com/halaltable-seeds/7.jpg')
+Restaurant.last.main_photo.attach(io: file7, filename: "7.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci1.jpg'), filename: "taci1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci2.jpg'), filename: "taci2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci3.jpg'), filename: "taci3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci4.jpg'), filename: "taci4.jpg")
+
+
 Restaurant.create!(name: "Tava Turkish Mediterranean", phone_number: "(718) 499-5600", street_address: "318 5th Ave", city: "Brooklyn", state: "NY", zip: "11215", description: Faker::Restaurant.description, open_time: "11:00", close_time: "22:00", price_range: "$$$", capacity: 15, cuisines: "Turkish", owner_id: 2, ratings: 5, lat: 40.718669, lng: -73.915881)
+file8 = open('https://s3.amazonaws.com/halaltable-seeds/8.jpg')
+Restaurant.last.main_photo.attach(io: file8, filename: "8.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri1.jpeg'), filename: "peri1.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri2.jpg'), filename: "peri2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri3.jpg'), filename: "peri3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri4.jpg'), filename: "peri4.jpg")
+
 Restaurant.create!(name: "Ariana Afghan Kebab Restaurant", phone_number: "(212) 262-2323", street_address: "787 9th Ave", city: "Manhattan", state: "NY", zip: "10019", description: Faker::Restaurant.description, open_time: "11:30", close_time: "22:30", price_range: "$$", capacity: 15, cuisines: "Afgan", owner_id: 6, ratings: 5, lat: 40.763669, lng: -73.910881)
+file9 = open('https://s3.amazonaws.com/halaltable-seeds/9.jpg')
+Restaurant.last.main_photo.attach(io: file9, filename: "9.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci1.jpg'), filename: "taci1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci2.jpg'), filename: "taci2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci3.jpg'), filename: "taci3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci4.jpg'), filename: "taci4.jpg")
+
 Restaurant.create!(name: "The MasalaWala", phone_number: "(212) 358-9300", street_address: "179 Essex St", city: "Manhattan", state: "NY", zip: "10002", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Indian", owner_id: 1, ratings: 5, lat: 40.730610, lng: -73.935242)
+file19 = open('https://s3.amazonaws.com/halaltable-seeds/10.jpg')
+Restaurant.last.main_photo.attach(io: file19, filename: "10.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy3.jpg'), filename: "addy3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy4.jpg'), filename: "addy4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy5.jpg'), filename: "addy5.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy6.jpg'), filename: "addy6.jpg")
+
 Restaurant.create!(name: "BURGERS by Honest Chops", phone_number: Faker::PhoneNumber.cell_phone, street_address: "99 MacDougal St", city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Burgers & Wings", owner_id: 4, ratings: 5, lat: 40.712772, lng: -74.006058)
+file10 = open('https://s3.amazonaws.com/halaltable-seeds/11.jpg')
+Restaurant.last.main_photo.attach(io: file10,  filename: "11.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma1.jpg'), filename: "shawarma1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma2.jpg'), filename: "shawarma2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma3.jpeg'), filename: "shawarma3.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma4.jpg'), filename: "shawarma4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma5.jpeg'), filename: "shawarma5.jpeg")
+
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Burgers & Wings", owner_id: 4, ratings: 5, lat: 40.712712, lng: -74.006258)
+file11 = open('https://s3.amazonaws.com/halaltable-seeds/12.jpg')
+Restaurant.last.main_photo.attach(io: file11, filename: "12.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as1.jpg'), filename: "as1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as2.jpg'), filename: "as2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as3.jpg'), filename: "as3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as4.jpg'), filename: "as4.jpg")
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$", capacity: 25, cuisines: "Afgan", owner_id: 4, ratings: 5, lat: 40.712722, lng: -74.006458)
+file12 = open('https://s3.amazonaws.com/halaltable-seeds/13.jpg')
+Restaurant.last.main_photo.attach(io: file12, filename: "13.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan1.jpg'), filename: "duzan1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan2.jpg'), filename: "duzan2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan3.jpg'), filename: "duzan3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan4.jpg'), filename: "duzan4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan5.png'), filename: "duzan5.png")
+
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Indian", owner_id: 4, ratings: 5, lat: 40.712732, lng: -74.00258)
+file13 = open('https://s3.amazonaws.com/halaltable-seeds/14.jpg')
+Restaurant.last.main_photo.attach(io: file13, filename: "14.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami1.jpg'), filename: "sami1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami2.jpeg'), filename: "sami2.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami3.jpg'), filename: "sami3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami4.jpg'), filename: "sami4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami5.jpg'), filename: "sami5.jpg")
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Manhattan", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Middle Eastern", owner_id: 4, ratings: 5, lat: 40.712772, lng: -74.006258)
+file14 = open('https://s3.amazonaws.com/halaltable-seeds/15.jpg')
+Restaurant.last.main_photo.attach(io: file14, filename: "15.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri1.jpeg'), filename: "peri1.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri2.jpg'), filename: "peri2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri3.jpg'), filename: "peri3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri4.jpg'), filename: "peri4.jpg")
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$", capacity: 25, cuisines: "Afgan", owner_id: 4, ratings: 5,lat: 40.761669, lng: -73.963881)
+file15 = open('https://s3.amazonaws.com/halaltable-seeds/16.jpg')
+Restaurant.last.main_photo.attach(io: file15, filename: "16.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci1.jpg'), filename: "taci1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci2.jpg'), filename: "taci2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci3.jpg'), filename: "taci3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/taci4.jpg'), filename: "taci4.jpg")
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Indian", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.917881)
+file16 = open('https://s3.amazonaws.com/halaltable-seeds/17.jpg')
+Restaurant.last.main_photo.attach(io: file16, filename: "17.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri1.jpeg'), filename: "peri1.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri2.jpg'), filename: "peri2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri3.jpg'), filename: "peri3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri4.jpg'), filename: "peri4.jpg")
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Middle Eastern", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.963881)
+file17 = open('https://s3.amazonaws.com/halaltable-seeds/18.jpg')
+Restaurant.last.main_photo.attach(io: file17, filename: "18.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy3.jpg'), filename: "addy3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy4.jpg'), filename: "addy4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy5.jpg'), filename: "addy5.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/addy6.jpg'), filename: "addy6.jpg")
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Brooklyn", state: "NY", zip: "11223", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$", capacity: 25, cuisines: "Afgan", owner_id: 4, ratings: 5, lat: 40.768669, lng: -73.9613881)
+file18 = open('https://s3.amazonaws.com/halaltable-seeds/19.jpg')
+Restaurant.last.main_photo.attach(io: file18, filename: "19.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma1.jpg'), filename: "shawarma1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma2.jpg'), filename: "shawarma2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma3.jpeg'), filename: "shawarma3.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma4.jpg'), filename: "shawarma4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/shawarma5.jpeg'), filename: "shawarma5.jpeg")
+
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Bronx", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Indian", owner_id: 4, ratings: 5, lat: 40.837048, lng: -73.865433)
+file20 = open('https://s3.amazonaws.com/halaltable-seeds/20.jpg')
+Restaurant.last.main_photo.attach(io: file20, filename: "20.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as1.jpg'), filename: "as1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as2.jpg'), filename: "as2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as3.jpg'), filename: "as3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/as4.jpg'), filename: "as4.jpg")
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Staten Island", state: "NY", zip: "10012", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Middle Eastern", owner_id: 4, ratings: 5, lat: 40.579021, lng: -74.151535)
+file21 = open('https://s3.amazonaws.com/halaltable-seeds/21.jpg')
+Restaurant.last.main_photo.attach(io: file21, filename: "21.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan1.jpg'), filename: "duzan1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan2.jpg'), filename: "duzan2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan3.jpg'), filename: "duzan3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan4.jpg'), filename: "duzan4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/duzan5.png'), filename: "duzan5.png")
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Queens", state: "NY", zip: "12345", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$", capacity: 25, cuisines: "Seafood", owner_id: 1, ratings: 5, lat: 40.599021, lng: -74.351535)
+file22 = open('https://s3.amazonaws.com/halaltable-seeds/22.jpg')
+Restaurant.last.main_photo.attach(io: file22, filename: "22.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami1.jpg'), filename: "sami1.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami2.jpeg'), filename: "sami2.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami3.jpg'), filename: "sami3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami4.jpg'), filename: "sami4.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/sami5.jpg'), filename: "sami5.jpg")
+
+
 Restaurant.create!(name: Faker::Restaurant.name, phone_number: Faker::PhoneNumber.cell_phone, street_address: Faker::Address.street_address, city: "Staten Island", state: "NY", zip: "78654", description: Faker::Restaurant.description, open_time: "12:00", close_time: "22:30", price_range: "$$$", capacity: 25, cuisines: "Vegetarian", owner_id: 4, ratings: 5, lat: 42.579021, lng: -75.151535)
+file23 = open('https://s3.amazonaws.com/halaltable-seeds/23.jpg')
+Restaurant.last.main_photo.attach(io: file23, filename: "23.jpg")
+
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri1.jpeg'), filename: "peri1.jpeg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri2.jpg'), filename: "peri2.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri3.jpg'), filename: "peri3.jpg")
+Restaurant.last.photos.attach(io: open('https://s3.amazonaws.com/halaltable-seeds/peri4.jpg'), filename: "peri4.jpg")
 
 Menu.create!(restaurant_id: 1, item_1: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_2: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_3: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_4: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_5: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_6: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}")
 Menu.create!(restaurant_id: 2, item_1: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_2: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_3: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_4: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_5: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}", item_6: "#{Faker::Food.dish}--> #{Faker::Food.description}-->$#{Faker::Commerce.price}")
@@ -191,3 +392,5 @@ Favorite.create!(restaurant_id: 5, user_id: 6)
 Favorite.create!(restaurant_id: 6, user_id: 6)
 Favorite.create!(restaurant_id: 2, user_id: 6)
 Favorite.create!(restaurant_id: 3, user_id: 6)
+
+

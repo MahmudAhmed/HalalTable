@@ -27,5 +27,6 @@ json.overall_ratings (overall_ratings * 1.0) / count
 json.overall_food_ratings (food_ratings * 1.0) / count
 json.overall_service_ratings (service_ratings * 1.0) / count
 json.overall_ambience_ratings (ambience_ratings * 1.0) / count
-
+json.photoUrl restaurant.photos.map { |file| url_for(file) }
+json.mainPhoto url_for(restaurant.main_photo)
 

@@ -187,10 +187,15 @@
   .filter-bar {
     width: 90%;
   }
+
 }
 
 @media all and (max-width: 1200px) {
   .right-content{
     display: none;
+  }
+
+  .show-page-reserve{
+    display: block !important;
   }
 }

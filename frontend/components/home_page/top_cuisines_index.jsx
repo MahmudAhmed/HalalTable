@@ -32,7 +32,6 @@ class TopCusinines extends React.Component {
 
     const leftPos = cuisinesList.scrollLeft;
     const ulWidth = cuisinesList.offsetWidth;
-    debugger
     var scrollwidth = cuisinesList.scrollWidth;
     if (leftPos === scrollwidth - ulWidth) {
       rightScroll.style.display = "none"
@@ -106,7 +105,7 @@ class TopCusinines extends React.Component {
               <p className="cuisine-title">Best Middle Eastern Restaurants Around You</p>
             </div>
           </li>
-          <li className="cuisine-list-item">
+          <li className="cuisine-list-item" onClick={this.handleCusinineClick("Seafood")}>
             <img src={window.seafoodDish} />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Seafood Restaurants Around You</p>
@@ -119,7 +118,7 @@ class TopCusinines extends React.Component {
             </div>
           </li>
           
-          <li className="cuisine-list-item">
+          <li className="cuisine-list-item" onClick={this.handleCusinineClick("Vegetarian")}>
             <img src={window.veggieDish} />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Vegetarian Restaurants Around You</p>

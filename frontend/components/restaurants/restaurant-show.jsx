@@ -22,20 +22,34 @@ const getPrice = (price_range) => {
 class RestaurantShow extends React.Component {
   constructor(props){
     super(props);
+    this.state = { 
+      isFave: props.favorites.find(fave => fave.restaurant_id === props.restaurant.id),
+      partySize: 1,
+      date: min,
+      time: new Date(),
+      slots: []
+    };
     this.stickyHeader = this.stickyHeader.bind(this)
     this.handleFavClick = this.handleFavClick.bind(this)
-    this.state = { isFave: props.favorites.find(fave => fave.restaurant_id === props.restaurant.id)}
+    this.handleChange = this.handleChange.bind(this);
+    this.handleBtnClick = this.handleBtnClick.bind(this);
+    this.handleTimeClick = this.handleTimeClick.bind(this);
   }
    
   componentDidMount() {
-  
-    this.props.requestRestaurant(this.props.match.params.restaurantId);
+    this.props.requestRestaurant(this.props.match.params.restaurantId)
     if (this.props.userId) { 
       this.props.requestFavorites(this.props.userId)
     }
   }
 
   componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.restaurantHours = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time);
+      this.setState({ 
+        time: this.restaurantHours[0],
+        slots: [this.restaurantHours[0], this.restaurantHours[1], this.restaurantHours[2]]})
+    }
     if (this.props.match.params.restaurantId !== prevProps.match.params.restaurantId) {
       const id = this.props.match.params.restaurantId
       this.props.requestRestaurant(id);
@@ -80,11 +94,63 @@ class RestaurantShow extends React.Component {
     }
   }
 
+  handleChange(field) {
+    return e => {
+      this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) })
+    }
+  }
+
+  handleBtnClick(e) {
+    e.preventDefault();
+    let idx;
+    this.availableTime = [];
+    this.timeSlots.forEach((time, i) => {
+      if (time.getTime() === new Date(this.state.time).getTime()) {
+        idx = i;
+      }
+    })
+    if (idx === 0) {
+      this.availableTime[0] = this.timeSlots[idx]
+      this.availableTime[1] = this.timeSlots[idx + 1]
+      this.availableTime[2] = this.timeSlots[idx + 2]
+    } else if (idx === this.timeSlots.length - 1) {
+      this.availableTime[0] = this.timeSlots[idx - 2]
+      this.availableTime[1] = this.timeSlots[idx - 1]
+      this.availableTime[2] = this.timeSlots[idx]
+    } else {
+      this.availableTime[0] = this.timeSlots[idx - 1]
+      this.availableTime[1] = this.timeSlots[idx]
+      this.availableTime[2] = this.timeSlots[idx + 1]
+    }
+    this.setState({
+      slots: [...this.availableTime]
+    })
+    document.querySelector(".available-time-slots").classList.add("is-open")
+  }
+
+  handleTimeClick(time) {
+    const that = this
+    return e => {
+      if (that.props.loggedIn) {
+        that.props.history.push({ pathname: "/reservations/create/new", state: { partySize: this.state.partySize, date: this.state.date, time: time, restaurantId: this.props.restaurant.id, restaurantName: this.props.restaurant.name, mainPhoto: this.props.restaurant.mainPhoto } })
+      } else {
+        document.querySelector(".modal-login").classList.add("is-open");
+      }
+    }
+  }
+
   render() {
     window.addEventListener("scroll", () => this.stickyHeader() )
     if (!this.props.restaurant) return null; 
     const { restaurant, reviews, menu, loggedIn } = this.props;
     const reviewCount = Object.keys(reviews).length;
+    const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
+    this.timeSlots;
+    if (Object.values(this.props.restaurant).length >= 1) {
+      this.timeSlots = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time)
+    } else {
+      this.timeSlots = [];
+    }
     return (
       <section className="show-page">
         <div id="show-page-splash">
@@ -162,6 +228,79 @@ class RestaurantShow extends React.Component {
                   <span>{restaurant.cuisines}</span>
                 </section>
               </div>
+
+              <section className="show-page-reserve">
+                <h3
+                  className="reservation-form-title"
+                >
+                  Make Your Reservation
+              </h3>
+                <div className="reservation-inputs">
+                  <div className="reservation-form-party-size">
+                    <span className="reservation-labels">Party Size</span>
+                    <div className="select-party-size">
+                      <select
+                        className="reservation-size"
+                        value={this.state.partySize}
+                        onChange={this.handleChange("partySize")}
+                      >
+                        {partySize}
+                      </select>
+                    </div>
+                  </div>
+                  <section className="date-time-reservation">
+                    <div className="choose-date">
+                      <span className="reservation-labels">Date</span>
+                      <div id="reservation-date">
+                        <input
+                          type="date"
+                          className="show-res-input"
+                          min={min}
+                          value={this.state.date}
+                          onChange={this.handleChange("date")}
+                        />
+                      </div>
+                    </div>
+                    <div className="choose-time">
+                      <span className="reservation-labels">Time</span>
+                      <select
+                        className="reservation-time"
+                        onChange={this.handleChange("time")}
+                      >
+                        {this.timeSlots.map((time, i) => (
+                        <option key={i} id="select-option" value={time}>
+                          {time.toLocaleString("en-US", {
+                            hour: "numeric",
+                            minute: "numeric",
+                            hour12: true
+                          })}
+                        </option>
+                      ))}
+                      </select>
+                    </div>
+                  </section>
+                  <section className="available-time-slots show-page-time-slots">
+                    <h2>Select a time:</h2>
+                    <ul className="time-slots">
+                      {
+                        this.state.slots.map((time, idx) =>
+                          <li key={idx}
+                            className="time-slot-btn"
+                            onClick={this.handleTimeClick(time)}>
+                            {time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+                          </li>)
+                      }
+                    </ul>
+                  </section>
+                  <div id="reserve-btn">
+                    <button className="btn" onClick={this.handleBtnClick}>
+                      Find a Table
+                  </button>
+                  </div>
+                </div>
+              </section>
+
+
               <div id="restaurant-overview">
                 {restaurant.description}
               </div>
@@ -169,7 +308,7 @@ class RestaurantShow extends React.Component {
                 <h2 className="display-subheader" id="photos-section">
                   Photos
                 </h2>
-                <PhotoGallery />
+                <PhotoGallery photos={restaurant.photoUrl}/>
               </div>
               <div id="menu-div">
                 <h2 className="display-subheader" id="menu-section">
@@ -292,3 +431,28 @@ class RestaurantShow extends React.Component {
 }
 
 export default RestaurantShow;
+
+
+const now = new Date();
+const currYear = now.getFullYear();
+const currMonth = now.getMonth();
+const currDay = now.getDate();
+const min = new Date(currYear, currMonth, currDay)
+  .toISOString()
+  .slice(0, 10);
+
+const getRestaurantHours = (open, close) => {
+  if (!open) return [];
+  const openTime = new Date(open);
+  let utcOpenTime = new Date(openTime.getTime() + openTime.getTimezoneOffset() * 60000);
+  const closeTime = new Date(close);
+  let utcCloseTime = new Date(closeTime.getTime() + closeTime.getTimezoneOffset() * 60000);
+  if (openTime > closeTime) utcCloseTime.setDate(utcCloseTime.getDate() + 1);
+  const restaurantHours = [];
+  while (true) {
+    if (utcOpenTime.getTime() > utcCloseTime.getTime()) break;
+    restaurantHours.push(new Date(utcOpenTime.getTime()));
+    utcOpenTime.setHours(utcOpenTime.getHours() + 1);
+  };
+  return restaurantHours
+}

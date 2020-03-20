@@ -13,7 +13,6 @@ class Splash extends React.Component{
 
   handleBtnClick(e) {
     e.preventDefault();
-    debugger
     this.props.history.push({ pathname: "/restaurants", state: { city: this.state.city } });
   }
 
@@ -48,7 +47,7 @@ class Splash extends React.Component{
             </div>
             <button className="btn" id="splash-btn" onClick={this.handleBtnClick}>
               Let's go
-                    </button>
+            </button>
           </form>
         </section>
       </div>

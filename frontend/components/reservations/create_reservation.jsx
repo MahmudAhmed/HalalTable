@@ -28,15 +28,14 @@ class CreateReservation extends React.Component {
       this.props.history.push(`/reservations/${this.props.reservationId}`)
     }
     if (!this.props.location.state) return <Redirect to={`/restaurants/1`} />
-    const { partySize, date, time, restaurantName } = this.props.location.state;
-
+    const { partySize, date, time, restaurantName, mainPhoto } = this.props.location.state;
     return (
       <div className="reservation-page-container">
         <div className="reservation-form-container">
           <h3>You're almost done!</h3>
           <div className="reservation-details-container">
             <div className="restaurant-image-container">
-              <img className="restaurant-image" src="//images.otstatic.com/prod/25772382/1/small.jpg" />
+              <img className="restaurant-image" src={mainPhoto} />
             </div>
             <div className="reservation-details">
               <h4>{restaurantName}</h4>

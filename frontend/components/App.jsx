@@ -12,6 +12,7 @@ import ShowReservationContainer from "./reservations/show_reservation_container"
 import { Footer } from "./footer/footer";
 import MainMenu from "./main_menu/main-menu";
 import HomePage from "./home_page/homepage";
+import SearchContainer from "./map/search_container";
 
 
 const App = () => (
@@ -30,7 +31,10 @@ const App = () => (
         path="/restaurants/:restaurantId"
         component={RestaurantShowContainer}
       />
-
+      <Route
+        path="/maps"
+        component={SearchContainer}
+      />
       <ProtectRoute
         exact path="/reservations/create/new"
         component={CreateReservationContainer}

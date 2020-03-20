@@ -28,6 +28,7 @@ class Restaurant < ApplicationRecord
   validates :street_address, uniqueness: true
   validates :lat, uniqueness: { scope: :lng}
   has_many_attached :photos
+  has_one_attached :main_photo
 
   belongs_to :owner, 
     class_name: :User,
@@ -43,6 +44,16 @@ class Restaurant < ApplicationRecord
 
   def average_ratings
     self.update!(ratings: self.reviews.average(:overall).to_f)
+  end
+
+  def self.in_bounds(bounds)
+    ne_lat = bounds[:northEast][:lat].to_f
+    ne_lng = bounds[:northEast][:lng].to_f
+    sw_lat = bounds[:southWest][:lat].to_f
+    sw_lng = bounds[:southWest][:lng].to_f
+
+    Restaurant.where("lat between ? AND ? AND lng between ? AND ?", sw_lat, ne_lat,sw_lng, ne_lng)
+ 
   end
   
 end

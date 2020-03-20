@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 
 class ReviewButton extends React.Component {
   handleBtnClick(e){
-    debugger
     if (this.props.loggedIn) {
       this.props.history.push(`/restaurants/${this.props.match.params.restaurantId}/leave-a-review`)
     } else {

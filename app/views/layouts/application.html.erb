@@ -5,7 +5,7 @@
     <%= favicon_link_tag asset_path('favicon-32x32.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}" %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,900|Oswald|Signika:400,500,600,700|Sriracha&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all'%>
@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
     <script type="text/javascript">
       window.headerLogo = "<%= image_url('logo-2.png') %>";
-      // window.splashImage = "<%= image_url('splash.jpg') %>";
+      window.mapViewContainer = "<%= image_url('map-button-bkg.png') %>";
       window.afganDish = "<%= image_url('afgan-dish.jpg') %>";
       window.burgersDish = "<%= image_url('burgers-dish.jpeg') %>";
       window.middleEasternDish = "<%= image_url('middle-eastern-dish.jpeg') %>";

@@ -16,7 +16,7 @@ class ReservationIndexItem extends React.Component{
       <div className="restaurant-index-item">
         <div className="index-image" id="reservation-item-pic">
           <Link to={`/restaurants/${reservation.restaurant_id}`} target="_blank">
-            <img src="https://resizer.otstatic.com/v2/photos/legacy/1/24851452.jpg" />
+            <img src={reservation.photoUrl} />
           </Link>
         </div>
         <div className="restaurant-details">
