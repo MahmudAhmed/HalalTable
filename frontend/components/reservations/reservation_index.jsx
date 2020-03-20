@@ -80,7 +80,7 @@ class ReservationForm extends React.Component {
     const that = this
     return e => {
       if (that.props.loggedIn) {
-        that.props.history.push({ pathname: "/reservations/create/new", state: { partySize: this.state.partySize, date: this.state.date, time: time, restaurantId: this.props.restaurant.id, restaurantName: this.props.restaurant.name }})
+        that.props.history.push({ pathname: "/reservations/create/new", state: { partySize: this.state.partySize, date: this.state.date, time: time, restaurantId: this.props.restaurant.id, restaurantName: this.props.restaurant.name, mainPhoto: this.props.restaurant.mainPhoto }})
       } else {
         document.querySelector(".modal-login").classList.add("is-open");
       }

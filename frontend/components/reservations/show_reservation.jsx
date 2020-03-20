@@ -172,7 +172,7 @@ class ShowReservation extends React.Component {
             >
               <img
                 className="restaurant-image"
-                src="//images.otstatic.com/prod/25772382/1/small.jpg"
+                src={reservation.photoUrl}
               />
             </div>
             <div className="reservation-details">
