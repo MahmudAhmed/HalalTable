@@ -1,7 +1,8 @@
 # HalalTable
-**
+***
 
 ## Description
+![preview](https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/halaltable-preview.gif)
 
 HalalTable is a single page app inspired by OpenTable, which allows users to search for halal restaurants in the five boroughs of NYC, make reservations and save specific restaurants as they wish. This app was built with Ruby on Rails for the backend and React-Redux for the frontend, using PostgreSQL to manage the database.
 
