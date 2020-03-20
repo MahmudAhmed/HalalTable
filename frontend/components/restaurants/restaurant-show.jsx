@@ -161,258 +161,264 @@ class RestaurantShow extends React.Component {
           ></div>
         </div>
         <section className="page-content">
-          <main className="left-content">
-            <ul id="nav-list">
-              <li>
-                <AnchorLink href="#overview-section" offset="45">
-                  <span>Overview</span>
-                </AnchorLink>
-              </li>
-              <li>
-                <AnchorLink href="#photos-section" offset="45">
-                  <span>Photos</span>
-                </AnchorLink>
-              </li>
-              <li>
-                <AnchorLink href="#menu-section" offset="45">
-                  <span>Menu</span>
-                </AnchorLink>
-              </li>
-              <li>
-                <AnchorLink href="#show-review" offset="45">
-                  <span>Reviews</span>
-                </AnchorLink>
-              </li>
-            </ul>
+            <section className="show-page-container">
+              <section className="left-content-container">
+                <main className="left-content">
+                  <ul id="nav-list">
+                    <li>
+                      <AnchorLink href="#overview-section" offset="45">
+                        <span>Overview</span>
+                      </AnchorLink>
+                    </li>
+                    <li>
+                      <AnchorLink href="#photos-section" offset="45">
+                        <span>Photos</span>
+                      </AnchorLink>
+                    </li>
+                    <li>
+                      <AnchorLink href="#menu-section" offset="45">
+                        <span>Menu</span>
+                      </AnchorLink>
+                    </li>
+                    <li>
+                      <AnchorLink href="#show-review" offset="45">
+                        <span>Reviews</span>
+                      </AnchorLink>
+                    </li>
+                  </ul>
 
-            <div className="restaurant-details" id="overview-section">
-              <h1 id="restaurant-title">{restaurant.name}</h1>
-              <div className="restaurant-stats">
-                <section id="star-ratings">
-                  <StarRatings
-                    rating={restaurant.overall_ratings}
-                    starDimension="20px"
-                    starSpacing="1px"
-                    starRatedColor="orange"
-                  />
-                  <span>{restaurant.overall_ratings.toFixed(1)}</span>
-                </section>
-                <section id="total-reviews">
-                  <FontAwesomeIcon
-                    icon={["far", "comment-alt"]}
-                    className="stats-icon"
-                  />
-                  <span>{reviewCount} Reviews</span>
-                </section>
-                <section id="price-range">
-                  <FontAwesomeIcon
-                    icon={["far", "money-bill-alt"]}
-                    className="cash-icon"
-                  />
-                  <span>{getPrice(restaurant.price_range)}</span>
-                </section>
-                <section id="cuisines-type">
-                  <FontAwesomeIcon icon="utensils" className="cuisines-icon" />
-                  <span>{restaurant.cuisines}</span>
-                </section>
-              </div>
-
-              <section className="show-page-reserve">
-                <h3
-                  className="reservation-form-title"
-                >
-                  Make Your Reservation
-              </h3>
-                <div className="reservation-inputs">
-                  <div className="reservation-form-party-size">
-                    <span className="reservation-labels">Party Size</span>
-                    <div className="select-party-size">
-                      <select
-                        className="reservation-size"
-                        value={this.state.partySize}
-                        onChange={this.handleChange("partySize")}
-                      >
-                        {partySize}
-                      </select>
-                    </div>
-                  </div>
-                  <section className="date-time-reservation">
-                    <div className="choose-date">
-                      <span className="reservation-labels">Date</span>
-                      <div id="reservation-date">
-                        <input
-                          type="date"
-                          className="show-res-input"
-                          min={min}
-                          value={this.state.date}
-                          onChange={this.handleChange("date")}
+                  <div className="restaurant-details" id="overview-section">
+                    <h1 id="restaurant-title">{restaurant.name}</h1>
+                    <div className="restaurant-stats">
+                      <section id="star-ratings">
+                        <StarRatings
+                          rating={restaurant.overall_ratings}
+                          starDimension="20px"
+                          starSpacing="1px"
+                          starRatedColor="orange"
                         />
-                      </div>
+                        <span>{restaurant.overall_ratings.toFixed(1)}</span>
+                      </section>
+                      <section id="total-reviews">
+                        <FontAwesomeIcon
+                          icon={["far", "comment-alt"]}
+                          className="stats-icon"
+                        />
+                        <span>{reviewCount} Reviews</span>
+                      </section>
+                      <section id="price-range">
+                        <FontAwesomeIcon
+                          icon={["far", "money-bill-alt"]}
+                          className="cash-icon"
+                        />
+                        <span>{getPrice(restaurant.price_range)}</span>
+                      </section>
+                      <section id="cuisines-type">
+                        <FontAwesomeIcon icon="utensils" className="cuisines-icon" />
+                        <span>{restaurant.cuisines}</span>
+                      </section>
                     </div>
-                    <div className="choose-time">
-                      <span className="reservation-labels">Time</span>
-                      <select
-                        className="reservation-time"
-                        onChange={this.handleChange("time")}
+
+                    <section className="show-page-reserve">
+                      <h3
+                        className="reservation-form-title"
                       >
-                        {this.timeSlots.map((time, i) => (
-                        <option key={i} id="select-option" value={time}>
-                          {time.toLocaleString("en-US", {
-                            hour: "numeric",
-                            minute: "numeric",
-                            hour12: true
-                          })}
-                        </option>
-                      ))}
-                      </select>
+                        Make Your Reservation
+                    </h3>
+                      <div className="reservation-inputs">
+                        <div className="reservation-form-party-size">
+                          <span className="reservation-labels">Party Size</span>
+                          <div className="select-party-size">
+                            <select
+                              className="reservation-size"
+                              value={this.state.partySize}
+                              onChange={this.handleChange("partySize")}
+                            >
+                              {partySize}
+                            </select>
+                          </div>
+                        </div>
+                        <section className="date-time-reservation">
+                          <div className="choose-date">
+                            <span className="reservation-labels">Date</span>
+                            <div id="reservation-date">
+                              <input
+                                type="date"
+                                className="show-res-input"
+                                min={min}
+                                value={this.state.date}
+                                onChange={this.handleChange("date")}
+                              />
+                            </div>
+                          </div>
+                          <div className="choose-time">
+                            <span className="reservation-labels">Time</span>
+                            <select
+                              className="reservation-time"
+                              onChange={this.handleChange("time")}
+                            >
+                              {this.timeSlots.map((time, i) => (
+                              <option key={i} id="select-option" value={time}>
+                                {time.toLocaleString("en-US", {
+                                  hour: "numeric",
+                                  minute: "numeric",
+                                  hour12: true
+                                })}
+                              </option>
+                            ))}
+                            </select>
+                          </div>
+                        </section>
+                        <section className="available-time-slots show-page-time-slots">
+                          <h2>Select a time:</h2>
+                          <ul className="time-slots">
+                            {
+                              this.state.slots.map((time, idx) =>
+                                <li key={idx}
+                                  className="time-slot-btn"
+                                  onClick={this.handleTimeClick(time)}>
+                                  {time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+                                </li>)
+                            }
+                          </ul>
+                        </section>
+                        <div id="reserve-btn">
+                          <button className="btn" onClick={this.handleBtnClick}>
+                            Find a Table
+                        </button>
+                        </div>
+                      </div>
+                    </section>
+
+
+                    <div id="restaurant-overview">
+                      {restaurant.description}
                     </div>
-                  </section>
-                  <section className="available-time-slots show-page-time-slots">
-                    <h2>Select a time:</h2>
-                    <ul className="time-slots">
-                      {
-                        this.state.slots.map((time, idx) =>
-                          <li key={idx}
-                            className="time-slot-btn"
-                            onClick={this.handleTimeClick(time)}>
-                            {time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
-                          </li>)
-                      }
-                    </ul>
-                  </section>
-                  <div id="reserve-btn">
-                    <button className="btn" onClick={this.handleBtnClick}>
-                      Find a Table
-                  </button>
+                    <Details restaurant={restaurant} />
+                    <div id="gallery-div">
+                      <h2 className="display-subheader" id="photos-section">
+                        Photos
+                      </h2>
+                      <PhotoGallery photos={restaurant.photoUrl}/>
+                    </div>
+                    <div id="menu-div">
+                      <h2 className="display-subheader" id="menu-section">
+                        Menu
+                      </h2>
+                      <ul>
+                        {Object.values(menu.menu_items).map( (item, idx) => <MenuItems key={idx} item={item}/>)}
+                      </ul>
+                    </div>
+                    <section>
+                      <ReviewsIndexContainer reviews={reviews} restaurant={restaurant} />
+                    </section>
                   </div>
-                </div>
+                </main>
               </section>
-
-
-              <div id="restaurant-overview">
-                {restaurant.description}
-              </div>
-              <Details restaurant={restaurant} />
-              <div id="gallery-div">
-                <h2 className="display-subheader" id="photos-section">
-                  Photos
-                </h2>
-                <PhotoGallery photos={restaurant.photoUrl}/>
-              </div>
-              <div id="menu-div">
-                <h2 className="display-subheader" id="menu-section">
-                  Menu
-                </h2>
-                <ul>
-                  {Object.values(menu.menu_items).map( (item, idx) => <MenuItems key={idx} item={item}/>)}
-                </ul>
-              </div>
-              <section>
-                <ReviewsIndexContainer reviews={reviews} restaurant={restaurant} />
-              </section>
-            </div>
-          </main>
-          <aside className="right-content">
-            <div>
-              <ReservationForm restaurant={restaurant} loggedIn={loggedIn} />
-            </div>
-              <div id="sidebar-map">
-                <RestaurantMap restaurant={restaurant}/>
-              </div>
-            <div className="restaurant-right-details">
-              <section>
-                <FontAwesomeIcon
-                  icon={["far", "building"]}
-                  className="right-side-details-icon"
-                />
-                <div>
-                  <h4 className="right-side-header">Neighborhood</h4>
-                  <p>Edgewater</p>
-                </div>
-              </section>
-              <section>
-                <FontAwesomeIcon
-                  icon={["far", "clock"]}
-                  className="right-side-details-icon"
-                />
-                <div>
-                  <h4 className="right-side-header">Hours of operation</h4>
-                  <p>Mon-Sun</p>
-                  <p>7:00 am - 11:00 pm</p>
-                </div>
-              </section>
-              <section>
-                <FontAwesomeIcon
-                  icon="utensils"
-                  className="right-side-details-icon"
-                />
-                <div>
-                  <h4 className="right-side-header">Cuisines</h4>
-                  <p>Steak</p> 
-                </div>
-              </section>
-              <section>
-                <FontAwesomeIcon
-                  icon="sign-language"
-                  className="right-side-details-icon"
-                />
-                <div>
-                  <h4 className="right-side-header">Dining style</h4>
-                  <p>Fine Dining</p>
-                </div>
-              </section>
-              <section>
-                <FontAwesomeIcon
-                  icon="tshirt"
-                  className="right-side-details-icon"
-                />
-                <div>
-                  <h4 className="right-side-header">Dress code</h4>
-                  <p>Business Casual</p>
-                </div>
-              </section>
-              <section>
-                <FontAwesomeIcon
-                  icon="subway"
-                  className="right-side-details-icon"
-                />
-                <div>
-                  <h4 className="right-side-header">Public transit</h4>
-                  <p>Public transportation within one block.</p>
-                </div>
-              </section>
-              <section>
-                <FontAwesomeIcon
-                  icon={["far", "credit-card"]}
-                  className="right-side-details-icon"
-                />
-                <div>
-                  <h4 className="right-side-header">Payment options</h4>
-                  <p>AMEX, Discover, MasterCard, Visa</p>
-                </div>
-              </section>
-              <section>
-                <FontAwesomeIcon
-                  icon="external-link-alt"
-                  className="right-side-details-icon"
-                />
-                <div>
-                  <h4 className="right-side-header">Website</h4>
-                  <p>url</p>
-                </div>
-              </section>
-              <section>
-                <FontAwesomeIcon
-                  icon="phone-alt"
-                  className="right-side-details-icon"
-                />
-                <div>
-                  <h4 className="right-side-header">Phone number</h4>
-                  <p>(201) 313-9463</p>
-                </div>
-              </section>
-            </div>
-          </aside>         
+              <section className="right-content-container">
+                <aside className="right-content">
+                  <div>
+                    <ReservationForm restaurant={restaurant} loggedIn={loggedIn} />
+                  </div>
+                    <div id="sidebar-map">
+                      <RestaurantMap restaurant={restaurant}/>
+                    </div>
+                  <div className="restaurant-right-details">
+                    <section>
+                      <FontAwesomeIcon
+                        icon={["far", "building"]}
+                        className="right-side-details-icon"
+                      />
+                      <div>
+                        <h4 className="right-side-header">Neighborhood</h4>
+                        <p>Edgewater</p>
+                      </div>
+                    </section>
+                    <section>
+                      <FontAwesomeIcon
+                        icon={["far", "clock"]}
+                        className="right-side-details-icon"
+                      />
+                      <div>
+                        <h4 className="right-side-header">Hours of operation</h4>
+                        <p>Mon-Sun</p>
+                        <p>7:00 am - 11:00 pm</p>
+                      </div>
+                    </section>
+                    <section>
+                      <FontAwesomeIcon
+                        icon="utensils"
+                        className="right-side-details-icon"
+                      />
+                      <div>
+                        <h4 className="right-side-header">Cuisines</h4>
+                        <p>Steak</p> 
+                      </div>
+                    </section>
+                    <section>
+                      <FontAwesomeIcon
+                        icon="sign-language"
+                        className="right-side-details-icon"
+                      />
+                      <div>
+                        <h4 className="right-side-header">Dining style</h4>
+                        <p>Fine Dining</p>
+                      </div>
+                    </section>
+                    <section>
+                      <FontAwesomeIcon
+                        icon="tshirt"
+                        className="right-side-details-icon"
+                      />
+                      <div>
+                        <h4 className="right-side-header">Dress code</h4>
+                        <p>Business Casual</p>
+                      </div>
+                    </section>
+                    <section>
+                      <FontAwesomeIcon
+                        icon="subway"
+                        className="right-side-details-icon"
+                      />
+                      <div>
+                        <h4 className="right-side-header">Public transit</h4>
+                        <p>Public transportation within one block.</p>
+                      </div>
+                    </section>
+                    <section>
+                      <FontAwesomeIcon
+                        icon={["far", "credit-card"]}
+                        className="right-side-details-icon"
+                      />
+                      <div>
+                        <h4 className="right-side-header">Payment options</h4>
+                        <p>AMEX, Discover, MasterCard, Visa</p>
+                      </div>
+                    </section>
+                    <section>
+                      <FontAwesomeIcon
+                        icon="external-link-alt"
+                        className="right-side-details-icon"
+                      />
+                      <div>
+                        <h4 className="right-side-header">Website</h4>
+                        <p>url</p>
+                      </div>
+                    </section>
+                    <section>
+                      <FontAwesomeIcon
+                        icon="phone-alt"
+                        className="right-side-details-icon"
+                      />
+                      <div>
+                        <h4 className="right-side-header">Phone number</h4>
+                        <p>(201) 313-9463</p>
+                      </div>
+                    </section>
+                  </div>
+                </aside> 
+              </section>        
+          </section>
         </section>
       </section>
     );
