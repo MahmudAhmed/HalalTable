@@ -110,10 +110,14 @@ npm run webpack
   * These restaurants are stored in their profiles.
 
   
-* Optimized
-  <p align="center" display="flex">
+* Optimized Map Search
+  <p align="center" >
     <img width="600" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/cquery.gif">
-    <img width="600" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/cquery.gif">
+  </p>
+  
+* Optimized Show Page
+  <p align="center" >
+    <img width="600" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/cquery2.gif">
   </p>
 
 ## Future Endeavors
