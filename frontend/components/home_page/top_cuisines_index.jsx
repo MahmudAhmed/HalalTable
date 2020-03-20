@@ -32,7 +32,6 @@ class TopCusinines extends React.Component {
 
     const leftPos = cuisinesList.scrollLeft;
     const ulWidth = cuisinesList.offsetWidth;
-    debugger
     var scrollwidth = cuisinesList.scrollWidth;
     if (leftPos === scrollwidth - ulWidth) {
       rightScroll.style.display = "none"

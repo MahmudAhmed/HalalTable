@@ -9,7 +9,6 @@ const mapStateToProps = ({ entities }) => {
 }
 
 const mapDispatchToProps = dispatch => {
-  debugger
   return {
     requestRestaurants: (args) => dispatch(requestRestaurants(args)),
   }

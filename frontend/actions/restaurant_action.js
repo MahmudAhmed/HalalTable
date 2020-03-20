@@ -23,7 +23,6 @@ const receiveRestaurants= (restaurants) => ({
 ///thunk actions
 
 export const requestRestaurants = (...args) => dispatch => {
-  debugger
   return APIUtil.fetchRestaurants(...args).then(
     (restaurants) => {
       dispatch(receiveRestaurants(restaurants))

@@ -1,5 +1,4 @@
 export const fetchRestaurants = (filters) => {
-  debugger
   return $.ajax({
     method: "GET",
     url: "/api/restaurants",

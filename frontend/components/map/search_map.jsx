@@ -3,15 +3,11 @@ import MarkerManager from "../../util/marker_manager";
 
 
 class SearchMap extends React.Component{
-  // constructor(props){
-  //   super(props);
-  //   this.state = {};
-  // }
 
   componentDidMount() {
     const mapOptions = {
       center: { lat: 40.722840, lng: -73.912580 }, // this is SF
-      zoom:11
+      zoom:13
     };
 
     this.map = new google.maps.Map(this.SearchMapNode, mapOptions);
@@ -28,7 +24,6 @@ class SearchMap extends React.Component{
   }
 
   sendBounds(sw, ne) {
-    debugger
     const bounds = {
       "northEast": { "lat": ne.lat(), "lng": ne.lng() },
       "southWest": { "lat": sw.lat(), "lng": sw.lng() }

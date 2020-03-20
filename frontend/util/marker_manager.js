@@ -1,9 +1,9 @@
-export default class MarkerManager {
+class MarkerManager {
   constructor(map) {
     this.map = map;
     this.markers = {};
   }
-  
+
   updateMarkers(restaurants) {
     const restaurantMarkers = {}
 
@@ -28,11 +28,23 @@ export default class MarkerManager {
 
   createMarkerFromRestaurant(restaurant) {
     const latLng = { lat: restaurant.lat, lng: restaurant.lng };
-    return new google.maps.Marker({
+    var infowindow = new google.maps.InfoWindow({
+      content: (`<div id=>${restaurant.name}</div>`)
+    });
+
+    const marker = new google.maps.Marker({
       position: latLng,
       map: this.map,
       title: restaurant.name,
       id: restaurant.id
-    })
+    });
+
+    marker.addListener('click', function () {
+      infowindow.open(this.map, marker);
+    });
+
+    return marker
   }
 }
+
+export default MarkerManager;

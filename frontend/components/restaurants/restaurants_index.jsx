@@ -19,6 +19,7 @@ class RestaurantsIndex extends React.Component {
     this.handleRatingClick = this.handleRatingClick.bind(this);
     this.handleCuisineClick = this.handleCuisineClick.bind(this);
     this.handleLocationClick = this.handleLocationClick.bind(this);
+    this.handleMapViewClick = this.handleMapViewClick.bind(this);
   }
 
   componentDidMount() {
@@ -97,6 +98,11 @@ class RestaurantsIndex extends React.Component {
     }
   }
 
+  handleMapViewClick(e){
+    e.preventDefault();
+    this.props.history.push("/maps");
+  }
+
   render() {
     const { restaurants } = this.props;
     const display = restaurants.length === 0 ? 
@@ -106,7 +112,6 @@ class RestaurantsIndex extends React.Component {
     </div>: restaurants.map(restaurant => (
       <RestaurantIndexItems key={restaurant.id} restaurant={restaurant}/>
     ));
-    debugger
     return (
       <>
         <div className="splash-form-container">
@@ -146,6 +151,17 @@ class RestaurantsIndex extends React.Component {
         <div className="index-page-container">
           <div className="index-page">
             <div className="filter-bar">
+              <section className="map-view-container">
+                <div className="map-view-btn" onClick={this.handleMapViewClick}>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={["far", "map"]}
+                      className="filter-icon"
+                    />
+                    <button>Map</button>
+                  </div>
+                </div>
+              </section>
               <section className="price-filter-container">
                 <div className="filters-title">
                   <FontAwesomeIcon

@@ -10,6 +10,7 @@ import {
   faCreditCard,
   faCalendarTimes,
   faCalendarCheck,
+  faMap,
 } from "@fortawesome/free-regular-svg-icons";
 import {
   faCalendarAlt,
@@ -26,6 +27,7 @@ import {
   faTrophy,
   faAngleLeft,
   faAngleRight,
+  faList,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -61,7 +63,9 @@ library.add(
   faMedium,
   faTrophy,
   faAngleLeft,
-  faAngleRight
+  faAngleRight,
+  faList,
+  faMap
 );
 
 export{ library }
