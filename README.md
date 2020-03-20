@@ -1,5 +1,5 @@
 # HalalTable
-***
+**
 
 ## Description
 
@@ -38,12 +38,12 @@ npm run webpack
 
 ## HalalTable Features
 * User Authentication
-  ** Passwords authenticated and protected via BCrypt hashing functionality
-  ** Certain application features restricted to logged-in users
-  ** Demo account to test application without registration of an account
+  * Passwords authenticated and protected via BCrypt hashing functionality
+  * Certain application features restricted to logged-in users
+  * Demo account to test application without registration of an account
 
 * Restaurants and Search
-  ** Restaurants can be searched by either price, ratings, location, or cuisine. Additionally, the index page can be toggled to a map that allows filtering based on the zoom of the map
+  * Restaurants can be searched by either price, ratings, location, or cuisine. Additionally, the index page can be toggled to a map that allows filtering based on the zoom of the map
 
   ```
     this.map.addListener('idle', () => {
@@ -76,16 +76,24 @@ npm run webpack
   ```
 
 * Reservations
-  **Logged in users are able to create a reservation for a future date
-  **Users are able to access their reservations in their profile, available in the dropdown of the navigational bar when the users are logged in
-  **Users are able to cancel/edit existing reservations that have not already occurred
+  * Logged in users are able to create a reservation for a future date
+  * Users are able to access their reservations in their profile, available in the dropdown of the navigational bar when the users are logged in
+  * Users are able to cancel/edit existing reservations that have not already occurred
 
 * Reviews
-  **Users are able to write & update reviews for restaurants once they are logged in
-  **The review form can be accessed either on the restaurant's page or next to the user's past reservations in their profile
-  **Each Restaurant shows an overall rating that updates as an average of all existing reviews
-  **Each Restaurant shows a list of all existing reviews
+  * Users are able to write & update reviews for restaurants once they are logged in
+  * The review form can be accessed either on the restaurant's page or next to the user's past reservations in their profile
+  * Each Restaurant shows an overall rating that updates as an average of all existing reviews
+  * Each Restaurant shows a list of all existing reviews
 
 * Favorite/Save
-  ** Users can save restaurants that they are interested in for booking in the future.
-  ** These restaurants are stored in their profiles.
+  * Users can save restaurants that they are interested in for booking in the future.
+  * These restaurants are stored in their profiles.
+
+## Future Endeavors
+
+* Optamize show page for mobile. 
+* A more built out photo gallary for restaurants show page. 
+* Include reservation functionality from search page. 
+* More functional InfoWindow for Google Maps Api. 
+* Allow restaurant owners to be able to add their restaurants to HalalTables. 
