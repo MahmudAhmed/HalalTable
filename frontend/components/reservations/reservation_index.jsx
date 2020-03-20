@@ -6,8 +6,8 @@ const currYear = now.getFullYear();
 const currMonth = now.getMonth();
 const currDay = now.getDate();
 const min = new Date(currYear, currMonth, currDay)
-.toISOString()
-.slice(0, 10);
+  .toISOString()
+  .slice(0, 10);
 
 const getRestaurantHours = (open, close) => {
   const openTime = new Date(open);
@@ -26,75 +26,76 @@ const getRestaurantHours = (open, close) => {
 
 
 class ReservationForm extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.restaurantHours = getRestaurantHours(props.restaurant.open_time, props.restaurant.close_time);
-    this.state = { 
-      partySize: 1, 
+    this.state = {
+      partySize: 1,
       date: min,
       time: this.restaurantHours[0],
       slots: [this.restaurantHours[0], this.restaurantHours[1], this.restaurantHours[2]]
     };
-    
+
     this.handleChange = this.handleChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handleTimeClick = this.handleTimeClick.bind(this);
     this.availableTime = [];
   }
 
-  handleChange(field){
+  handleChange(field) {
     return e => {
-      this.setState({[field]: (field === "time" ? new Date(e.target.value) : e.target.value)});
+      this.setState({ [field]: (field === "time" ? new Date(e.target.value) : e.target.value) });
     }
   }
 
-  handleBtnClick(e){
+  handleBtnClick(e) {
     e.preventDefault();
 
-    let idx; 
-    this.restaurantHours.forEach( (time, i) => {
-      if (time.getTime() === this.state.time.getTime()){
+    let idx;
+    this.restaurantHours.forEach((time, i) => {
+      if (time.getTime() === this.state.time.getTime()) {
         idx = i;
       }
     })
-    if (idx === 0){
+    if (idx === 0) {
       this.availableTime[0] = this.restaurantHours[idx]
-      this.availableTime[1] = this.restaurantHours[idx+1]
-      this.availableTime[2] = this.restaurantHours[idx+2]
-    } else if (idx === this.restaurantHours.length - 1){
+      this.availableTime[1] = this.restaurantHours[idx + 1]
+      this.availableTime[2] = this.restaurantHours[idx + 2]
+    } else if (idx === this.restaurantHours.length - 1) {
       this.availableTime[0] = this.restaurantHours[idx - 2]
       this.availableTime[1] = this.restaurantHours[idx - 1]
       this.availableTime[2] = this.restaurantHours[idx]
     } else {
-      this.availableTime[0] = this.restaurantHours[idx-1]
+      this.availableTime[0] = this.restaurantHours[idx - 1]
       this.availableTime[1] = this.restaurantHours[idx]
-      this.availableTime[2] = this.restaurantHours[idx+1]
+      this.availableTime[2] = this.restaurantHours[idx + 1]
     }
     this.setState({
       slots: [...this.availableTime]
     })
+    debugger
     document.querySelector(".available-time-slots").classList.add("is-open")
   }
 
-  handleTimeClick(time){
+  handleTimeClick(time) {
     const that = this
     return e => {
       if (that.props.loggedIn) {
-        that.props.history.push({ pathname: "/reservations/create/new", state: { partySize: this.state.partySize, date: this.state.date, time: time, restaurantId: this.props.restaurant.id, restaurantName: this.props.restaurant.name, mainPhoto: this.props.restaurant.mainPhoto }})
+        that.props.history.push({ pathname: "/reservations/create/new", state: { partySize: this.state.partySize, date: this.state.date, time: time, restaurantId: this.props.restaurant.id, restaurantName: this.props.restaurant.name, mainPhoto: this.props.restaurant.mainPhoto } })
       } else {
         document.querySelector(".modal-login").classList.add("is-open");
       }
     }
   }
-  
+
   render() {
     const partySize = Array(20).fill().map((_, i) => <option key={i + 1} id="select-option" value={`${i + 1}`}>{i + 1}</option>);
-
+    debugger
     const timeSlots = this.restaurantHours.map((time, i) => <option key={i} id="select-option" value={time}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</option>)
     return (
       <div id="reservation-forms">
         <h3 className="reservation-form-title">Make a reservation</h3>
-        <div className="reservation-inputs">  
+        <div className="reservation-inputs">
           <div className="reservation-form-party-size">
             <span className="reservation-labels">Party Size</span>
             <div className="select-party-size">
@@ -104,7 +105,7 @@ class ReservationForm extends React.Component {
           <section className="date-time-reservation">
             <div className="choose-date">
               <span className="reservation-labels">Date</span>
-              <div id="reservation-date"> 
+              <div id="reservation-date">
                 <input
                   type="date"
                   min={min}
@@ -122,19 +123,19 @@ class ReservationForm extends React.Component {
             <h2>Select a time:</h2>
             <ul className="time-slots">
               {
-                this.state.slots.map((time, idx) => 
-                <li key={idx} 
-                className="time-slot-btn"
-                onClick={this.handleTimeClick(time)}>
+                this.state.slots.map((time, idx) =>
+                  <li key={idx}
+                    className="time-slot-btn"
+                    onClick={this.handleTimeClick(time)}>
                     {time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
-                </li>)
+                  </li>)
               }
             </ul>
           </section>
-        </div> 
+        </div>
         <div id="reserve-btn">
           <button className="btn" onClick={this.handleBtnClick}>Find a Table</button>
-        </div> 
+        </div>
       </div>
     );
   }

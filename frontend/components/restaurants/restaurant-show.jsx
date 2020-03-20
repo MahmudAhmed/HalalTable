@@ -113,7 +113,7 @@ class RestaurantShow extends React.Component {
     this.setState({
       slots: [...this.availableTime]
     })
-    document.querySelector(".available-time-slots").classList.add("is-open")
+    document.querySelector(".show-page-time-slots").classList.add("is-open")
   }
 
   handleTimeClick(time) {
@@ -269,7 +269,7 @@ class RestaurantShow extends React.Component {
                             </select>
                           </div>
                         </section>
-                        <section className="available-time-slots show-page-time-slots">
+                      <section className="available-display-slots show-page-time-slots">
                           <h2>Select a time:</h2>
                           <ul className="time-slots">
                             {

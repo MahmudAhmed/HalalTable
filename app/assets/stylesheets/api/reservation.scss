@@ -125,12 +125,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-bottom: 1.5px solid #D1323D;
 }
 
-.available-time-slots{
+.available-time-slots, .available-display-slots{
   display: none;
   box-sizing: border-box;
 }
 
-.available-time-slots > h2 {
+.available-time-slots > h2, .available-display-slots > h2 {
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
