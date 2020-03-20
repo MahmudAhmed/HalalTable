@@ -46,8 +46,6 @@ npm run webpack
   ** Restaurants can be searched by either price, ratings, location, or cuisine. Additionally, the index page can be toggled to a map that allows filtering based on the zoom of the map
 
   ```
-  ...
-  ////
     this.map.addListener('idle', () => {
       const bounds = this.map.getBounds();
       const southWest = bounds.getSouthWest();
@@ -55,8 +53,8 @@ npm run webpack
       this.sendBounds(southWest, northEast);
     });
 
-  }
-
+  ```
+  ```
   sendBounds(sw, ne) {
     const bounds = {
       "northEast": { "lat": ne.lat(), "lng": ne.lng() },
@@ -64,9 +62,9 @@ npm run webpack
     }
     this.props.requestRestaurants({bounds})
   }
-  ...
-  ///
-  ...
+  ```
+
+  ```
   def self.in_bounds(bounds)
     ne_lat = bounds[:northEast][:lat].to_f
     ne_lng = bounds[:northEast][:lng].to_f
