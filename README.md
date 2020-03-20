@@ -45,7 +45,7 @@ npm run webpack
   * Demo account to test application without registration of an account
 
 <p align="center">
-  <img width="300" height="300" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/auth.gif">
+  <img width="400" height="300" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/auth.gif">
 </p>
 
 * Restaurants and Search
