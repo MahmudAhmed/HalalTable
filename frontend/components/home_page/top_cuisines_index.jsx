@@ -106,7 +106,7 @@ class TopCusinines extends React.Component {
             </div>
           </li>
           <li className="cuisine-list-item">
-            <img src={window.seafoodDish} />
+            <img src={window.seafoodDish} onClick={this.handleCusinineClick("Seafood")}/>
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Seafood Restaurants Around You</p>
             </div>
@@ -118,7 +118,7 @@ class TopCusinines extends React.Component {
             </div>
           </li>
           
-          <li className="cuisine-list-item">
+          <li className="cuisine-list-item" onClick={this.handleCusinineClick("Vegetarian")}>
             <img src={window.veggieDish} />
             <div className="cuisine-title-container">
               <p className="cuisine-title">Best Vegetarian Restaurants Around You</p>
