@@ -1,24 +1,42 @@
-# README
+# HalalTable
+***
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+HalalTable is a single page app inspired by OpenTable, which allows users to search for halal restaurants in the five boroughs of NYC, make reservations and save specific restaurants as they wish. This app was built with Ruby on Rails for the backend and React-Redux for the frontend, using PostgreSQL to manage the database.
 
-* Ruby version
+## Technologies
+* Backend: Ruby on Rails/PostgreSQL
+* Frontend: JavaScript/React/Redux
+* Google Maps Api
+* AWS S3
 
-* System dependencies
+## Installation 
+***
 
-* Configuration
+### Pre-requisites
 
-* Database creation
+Postgres Database is required for OpenKitchen to operate correctly.
 
-* Database initialization
+### Setting up
+Please run the following commands:
+`
+bundle install
+npm install
+bundle exec rails db:create
+bundle exec rails db:migrate
+bundle exec rails db:seed
+`
 
-* How to run the test suite
+### Running the app
+Please run the following commands in separate tabs:
+`
+rails s
+npm start
+`
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+## Key Features
+* User authentication from frontend to backend ensures that the privacy of personal site use history is secured.
+* Users can use a demo log in to test out the site.
