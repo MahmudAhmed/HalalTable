@@ -150,17 +150,12 @@
   }
 
   .splash-form-title{
-    white-space: nowrap;
     font-size: 28px !important;
     margin-bottom: 10px !important;
   }
 
   #restaurant-title{
     font-size: 8vw !important;
-  }
-
-  .restaurant-details a {
-    white-space: pre-wrap;
   }
 
   .show-page {
@@ -182,12 +177,33 @@
 
   .restaurant-details a {
     font-size: 4vw;
+    white-space: normal;
+    line-height: 1rem;
+  }
+
+  .restaurant-details h1 {
+    font-size: 4vw !important;
+    white-space: normal !important;
+    line-height: 1.2rem !important;
+
   }
 
   .filter-bar {
     width: 90%;
   }
 
+  .boroughs-list {
+    flex-direction: column !important;
+  }
+
+  .borough {
+    width: 98% !important;
+    margin: 5px auto;
+  }
+
+  .index-buttons:last-child {
+    display: none !important;
+  }
 }
 
 @media all and (max-width: 1200px) {
