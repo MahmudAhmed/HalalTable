@@ -19,7 +19,7 @@ HalalTable is a single page app inspired by OpenTable, which allows users to sea
 
 ### Pre-requisites
 
-Postgres Database is required for OpenKitchen to operate correctly.
+Postgres Database is required for HalalTables to operate correctly.
 
 ### Setting up
 Please run the following commands:
