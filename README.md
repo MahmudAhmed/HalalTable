@@ -5,7 +5,7 @@
 <p align="center">
   <img width="600" height="500" src="https://github.com/MahmudAhmed/HalalTable/blob/master/app/assets/images/halaltable-preview.gif">
 </p>
-HalalTable is a single page app inspired by OpenTable, which allows users to search for halal restaurants in the five boroughs of NYC, make reservations and save specific restaurants as they wish. This app was built with Ruby on Rails for the backend and React-Redux for the frontend, using PostgreSQL to manage the database.
+HalalTable is a single page app inspired by OpenTable, which allows users to search for halal restaurants in the five boroughs of NYC, make reservations, save specific restaurants, and leave reviews. This app was built with Ruby on Rails and PostgreSQL for the backend and React, Redux for the frontend.
 
 ## Technologies
 * Backend: Ruby on Rails/PostgreSQL
@@ -39,6 +39,7 @@ npm run webpack
 ```
 
 ## HalalTable Features
+
 * User Authentication
   * Passwords authenticated and protected via BCrypt hashing functionality
   * Certain application features restricted to logged-in users
