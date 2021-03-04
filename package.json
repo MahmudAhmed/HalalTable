@@ -34,6 +34,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "babel-loader": "^8.2.2",
+    "chokidar": "^3.5.1",
     "google-maps-react": "^2.0.6",
     "react": "^16.14.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
