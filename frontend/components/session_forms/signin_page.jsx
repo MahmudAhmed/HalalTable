@@ -27,7 +27,7 @@ class SignInPage extends React.Component {
     return e => {
       this.setState({ [field]: e.target.value });
     };
-  }  
+  }
 
   loginDemoUser() {
     const { login, history } = this.props;
@@ -36,7 +36,7 @@ class SignInPage extends React.Component {
       url = history.location.state.from.pathname;
     }
     document.querySelector(".sidenav").classList.remove("is-open");
-    login({ email: "user1@ht.com", password: "fireball42" }).then(() => history.push(url));
+    login({ email: "demo@ht.com", password: "fireball42" }).then(() => history.push(url));
   }
 
   render() {

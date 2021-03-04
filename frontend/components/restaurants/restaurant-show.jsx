@@ -34,7 +34,7 @@ class RestaurantShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.restaurant !== this.props.restaurant) {
+    if (prevProps !== this.props) {
       this.restaurantHours = getRestaurantHours(this.props.restaurant.open_time, this.props.restaurant.close_time);
       this.setState({ 
         time: this.restaurantHours[0],
